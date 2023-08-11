@@ -1,0 +1,28 @@
+include ../../default/build-header
+	.main-full
+		| header
+	.main-full
+		h1 Popup
+	+popup-template(1,) 
+		.form
+			h3 Знакомься в отелях и бронируй номера с кем тебе по душе!
+			h4 Нажимая "Создать", вы принимаете наши 
+				a(href="#") Условия.
+				| Чтобы узнать, как мы обрабатываем ваши данные, ознакомьтесь с нашей 
+				a(href="#") Политика конфиденциальности
+				| и 
+				a(href="#") Политика в отношении файлов Cookie.
+			h4 Создайте аккаунт с помощью:
+		.btn-container 
+				.btn.reg-btn.google--btn
+					i 
+					span Создать через Gmail
+				//- .btn.reg-btn.vk--btn
+				//- 	i 
+				//- 	span Создать через VK
+				.btn.reg-btn.phone--btn
+					i
+					span Создать через номер телефона
+				.btn.reg-btn.mail--btn
+					i
+					span Создать через почту

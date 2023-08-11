@@ -1,0 +1,49 @@
+
+.stub
+  height: 120px
+
+header
+  @include positionElement(100%, auto, 0, auto, left, top, 3, absolute )
+  color: $blueColor
+  background-color: $whiteColor
+  min-width: 320px
+  a
+    text-decoration: none
+
+    &:hover
+      color: $goldColor
+  .btn
+    padding: 2px 5px
+    font-size: inherit
+  .btn-container
+    margin-left: auto
+  .hamburger-btn
+    display: none
+.logo
+  img
+    width: 170px
+    top: 21px
+    position: relative
+
+.nav-header
+  width: 100%
+  ul
+    display: flex
+    justify-content: space-between
+    width: 100%
+    font-weight: 600
+    list-style: none
+    padding: 0
+  li
+    position: relative
+
+  a
+    position: relative
+
+    text-decoration: none
+    color: $blueColorSecond
+    &:hover
+      color: $blueColor
+.feedback-header
+  margin-left: auto
+  gap: 30px

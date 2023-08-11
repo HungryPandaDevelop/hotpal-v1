@@ -1,0 +1,17 @@
+include ../default/build-header
+  .main-full
+    | header
+  .main-full
+    +breadcrumbs('Link')
+    h1 Content
+  .content 
+    .main-full
+      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, neque soluta, illo ipsa ullam id fugiat, quibusdam vitae consequuntur non quos. Praesentium harum qui accusamus nesciunt iste architecto animi deserunt.
+    .main-grid
+      - for(var i=0; i<7; i++)
+        .col-4 
+          |col-4
+    .main-full 
+      +pagination()
+  .main-full
+    | footer

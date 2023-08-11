@@ -1,0 +1,20 @@
+.settings-tabs-container
+  display: flex
+  justify-content: space-between
+  font-weight: 700
+  cursor: pointer
+  border: 1px solid $grayColor
+  border-bottom: 0
+  border-top-right-radius: 30px
+  position: relative
+  overflow: hidden
+.settings-tab
+  border-left: 1px solid $grayColor
+  width: 34%
+  text-align: center
+  padding: 15px
+  &:first-child
+    border: 0
+  &.active,
+  &:hover
+    background-color: $grayColorSecond

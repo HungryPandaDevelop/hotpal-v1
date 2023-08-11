@@ -1,0 +1,134 @@
+$icoSize: 24px
+$icoOffset: 8px
+
+.btn-close
+	@include icoEl($icoSize, $icoSize, "../images/icons/close-black.svg")
+	cursor: pointer
+	&:hover
+		background-image: url("../images/icons/close-blue.svg")
+.btn-trash
+	@include icoEl($icoSize, $icoSize, "../images/icons/trash-gray.svg", middle, 18px)
+	cursor: pointer
+	border: 1px solid $grayColor
+	border-radius: 100%
+	&:hover
+		background-image: url("../images/icons/trash-blue.svg")
+		border-color: $blueColor
+.btn-full
+	@include icoEl($icoSize, $icoSize, "../images/icons-app/full-black.svg", middle, 32px)
+	cursor: pointer
+	&:hover
+		background-image: url("../images/icons-app/full-blue.svg")
+
+.btn-hamburger
+	@include icoEl($icoSize, $icoSize, "../images/icons/hamburger-black.svg", middle, contain, center right)
+	cursor: pointer
+	&:hover
+		background-image: url("../images/icons/hamburger-gray.svg")
+
+.btn-whatsapp
+	border-color: $blackColor
+	i,span
+		display: inline-block
+		vertical-align: middle
+	i
+		@include icoEl($icoSize, $icoSize, "../images/social/whatsapp-black.svg")
+		margin-right: $icoOffset
+
+.btn-phone
+	border-color: $blackColor
+	i,span
+		display: inline-block
+		vertical-align: middle
+	i
+		@include icoEl($icoSize, $icoSize, "../images/icons-app/phone-btn.svg")
+		margin-right: $icoOffset
+.btn-reg
+	font-size: $standartSize
+	padding: 5px 12px 6px
+	text-align: left
+	max-width: 360px
+	margin: 0 auto 8px
+	display: block
+
+.btn-google
+	border-color: $blackColor
+	i,span
+		display: inline-block
+		vertical-align: middle
+	i
+		@include icoEl($icoSize, $icoSize, "../images/icons-app/google-color.svg")
+		margin-right: $icoOffset
+.btn-mail
+	border-color: $blackColor
+	i,span
+		display: inline-block
+		vertical-align: middle
+	i
+		background-color: $blueColorSecond
+		@include icoEl($icoSize, $icoSize, "../images/icons-app/e-mail-white.svg", middle, 18px)
+		margin-right: $icoOffset
+		border-radius: 100%
+.btn-vk
+	border-color: $blackColor
+	i,span
+		display: inline-block
+		vertical-align: middle
+	i
+		@include icoEl($icoSize, $icoSize, "../images/icons-app/vk-color.svg")
+		margin-right: $icoOffset
+.link-back
+	cursor: pointer
+	display: inline-block
+	i
+		@include icoEl($icoSize, $icoSize, "../images/arrows/carret-left-black.svg", middle, 30px)
+		margin-right: 0
+	span
+		vertical-align: middle
+	&:hover
+		color: $grayColor
+		i
+			background-image: url("../images/arrows/carret-left-blue.svg")
+
+$icoBtnSize: 50px
+.btn-ico
+	cursor: pointer
+	background-color: $whiteColor
+	border-radius: 100%
+	&:hover
+		background-color: $blueColor
+.btn-ico--favorites
+	@include icoEl($icoBtnSize, $icoBtnSize, "../images/icons/star-blue.svg", middle, 40px, center )
+	&:hover
+		background-image: url("../images/icons/star-white.svg")
+
+	&.active
+		background-image: url("../images/icons/star-fill-blue.svg")
+		&:hover
+			background-image: url("../images/icons/star-fill-white.svg")
+
+.btn-ico--like
+	@include icoEl($icoBtnSize, $icoBtnSize, "../images/icons-app/like-blue.svg", middle, 40px, center )
+	&:hover
+		background-image: url("../images/icons-app/like-white.svg")
+
+	&.active
+		background-image: url("../images/icons-app/like-fill-blue.svg")
+		&:hover
+			background-image: url("../images/icons-app/like-fill-white.svg")
+
+.btn-ico--blacklist
+	@include icoEl($icoBtnSize, $icoBtnSize, "../images/icons-app/blacklist-blue.svg", middle, 40px, center )
+	&.active,
+	&:hover
+		background-image: url("../images/icons-app/blacklist-white.svg")
+
+	&.active
+		background-image: url("../images/icons-app/blacklist-fill-blue.svg")
+		&:hover
+			background-image: url("../images/icons-app/blacklist-fill-white.svg")
+.btn-ico--chat
+	background-color: $whiteColor
+	@include icoEl($icoBtnSize, $icoBtnSize, "../images/icons-app/chat-blue.svg", middle, 40px)
+	&:hover
+		background-image: url("../images/icons-app/chat-white.svg")

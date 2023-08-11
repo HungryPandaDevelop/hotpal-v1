@@ -1,0 +1,16 @@
+include ../../default/build-header
+	.main-full
+		| header
+	.main-full
+		h1 Popup
+	+popup-template(1,) 
+		.form
+			h3 Поздравляем!
+				br 
+				|Вы успешно создали аккаунт.
+			h4 Остался последний шаг. Мы отправили вам на почту письмо с подтверждением вашего email
+			.reg-end 
+				h3 Пожалуйста, проверьте.
+				div
+					i.reg-end-ico
+			+inputSubmit('На сайт', 'btn--blue')

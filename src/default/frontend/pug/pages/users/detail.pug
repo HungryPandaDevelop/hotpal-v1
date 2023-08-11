@@ -1,0 +1,93 @@
+include ../../default/build-header
+include ../../blocks/header
+.stub
+.main-full 
+	.border-container
+		.main-grid
+			.col-8
+				.user-top-info--view
+					h2 Денис, 32
+					.user-info-gender
+						div
+							span Пол:
+							b M
+							.man-ico
+				.user-middle-info
+					.tags-container
+						h3 Цели:
+						a.tag(href="#")  
+							span Бокал в лобби
+						a.tag(href="#")  
+							span Бассейн или море
+						a.tag(href="#")  
+							span Свидание в номере
+						a.tag(href="#")  
+							span Поход в ресторан1
+					.btn-container
+						.btn-ico--favorites.btn-ico
+						.btn-ico--like.btn-ico
+						.btn-ico--chat.btn-ico
+						.btn-ico--dislike.btn-ico
+
+				.user-location 
+					h3 Текущее расположение
+					.user-location-info
+						.user-location-place.user-location-item
+							i.marker-ico
+							span Four Seasons Hotel Москва, м. Охотный ряд
+						.user-location-date.user-location-item
+							i.calendar-ico
+							span 5 - 13 Авг
+						.user-location-map
+			.col-4 
+				.user-photo.owl-main.owl-carousel 
+					div
+						img(src="/images/temp/avatar-1.jpg", alt="")
+					div
+						img(src="/images/temp/avatar-1.jpg", alt="")
+					div
+						img(src="/images/temp/avatar-1.jpg", alt="")
+			.col-12 
+				.border-delimetr.border-account
+			.col-8
+				.tags-container
+					h3 Интересы:
+					each val in ['Рестораны','Театр','Фитнес','Юмор','Цветы','Астрология','Кино','Спорткары','Танцы']
+						a.tag(href="#")  
+							span 
+								= val
+			.col-4
+				h3
+				.personal-info
+					ul.ln
+						li
+							.personal-info-name
+								i.portfel-ico
+								b Работа:
+							.personal-info-el Предприниматель
+						li
+							.personal-info-name
+								i.zodiak-ico
+								b Зодиак:
+							.personal-info-el Дева
+						li
+							.personal-info-name
+								i.celi-ico
+								b Цель поездки:
+							.personal-info-el Отдых
+						li
+							.personal-info-name
+								i.orientacia-ico
+								b Ориентация:
+							.personal-info-el Натурал
+			.col-12
+					.user-description
+						h3 О себе:
+						div
+							ul
+								li - Не ищу ничего серьезного.
+								li - Предприниматель, работаю сам на себя. Ни в чем себе не отказываю.
+								li - Обожаю собак, спорткары и хороший бурбон.
+								li - Если ты ищешь способ приятно провести время, то пиши!
+.stub
+include ../../blocks/footer

@@ -1,0 +1,52 @@
+.gender-btns
+	display: flex
+	gap: 14px
+	.btn
+		width: 50%
+		border: 1px solid $blueColor
+		&:hover,
+		&.active
+			color: $whiteColor
+			background-color: $blueColor
+	.man-btn
+		i
+			@include icoEl(20px, 16px, '../images/icons-app/man-black.svg')
+		&:hover,
+		&.active
+		i
+			background-image: url('../images/icons-app/man-white.svg')
+	.woman-btn
+		i
+			@include icoEl(20px, 16px, '../images/icons-app/woman-black.svg')
+		&:hover,
+		&.active
+		i
+			background-image: url('../images/icons-app/woman-white.svg')
+.popup-container
+	.link--back
+		position: absolute
+		left: 0
+		top: 0
+		margin: 15px
+	a
+		text-decoration: underline
+		&:hover
+			text-decoration: none
+	.reg-btn
+		color: $blackColor
+		&:hover
+			color: $blueColor
+			border-color: $blueColor
+	h4
+		margin-bottom: 15px
+	.btn-reg-container
+		margin-top: 30px
+.reg-end
+	text-align: center
+	margin: 0 0 30px
+	h3
+		color: $blueColor
+		font-size: $standartSize
+		margin: 30px 0 15px
+.reg-end-ico
+	@include icoEl(130px,100px, "../images/icons-app/reg-end.svg")

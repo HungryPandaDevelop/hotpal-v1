@@ -1,0 +1,45 @@
+include ../default/build-header
+	.main-full
+		| header
+	.main-full
+		h1 Form
+	.main-full
+		.form
+			.input-box
+				label Text 
+				+inputText('Text','require')
+			.input-box.input-animate
+				+inputText('Text animate')
+				label Text animate
+			.input-box
+				label Phone
+				+inputPhone('Phone', 'require')
+			.input-box.input-animate
+				+inputPhone('Phone')
+				label Phone
+			.input-box
+				label Email
+				+inputEmail('Email')
+			.input-box
+				label Checkbox
+				+inputCheckbox(['Опция 1', 'Опция 2'])  
+			.input-box
+				label Radio
+				+inputRadio(['Опция 1', 'Опция 2'], 'name')  
+
+			.input-box
+				label File
+				+inputFile(0, 'Выбрать файл')   
+			.input-box
+				label File
+				+inputFile(1, 'Нужные файлы', 'не большие')   
+
+			.input-box
+				label Photo
+				.input-photo
+					+inputFile(0, 'Выбрать фото',)   
+					.input-file-user
+			.input-box
+				+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			.input-box
+				+inputSubmit('Отправить', 'btn--blue btn-send')

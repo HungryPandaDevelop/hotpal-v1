@@ -1,0 +1,63 @@
+.chat-rooms
+  min-height: 300px
+  height: 100%
+  border: 1px solid $grayColor
+  border-radius: 15px
+  position: relative
+  overflow: hidden
+.rooms-item
+  position: relative
+  border-bottom: 1px solid $grayColor
+  padding: 8px 8px 8px 15px
+  cursor: pointer
+  width: 100%
+  text-decoration: none
+  &:hover,
+  &.active
+    background-color: $whiteColorSecond
+  .btn-trash
+    position: absolute
+    top: 0
+    right: 0
+    margin: 12px
+  a
+    display: block
+    width: 100%
+.rooms-item-face
+  width: 60px
+  height: 60px
+  position: relative
+  border-radius: 100%
+  vertical-align: middle
+  display: inline-block
+.rooms-item-name
+  font-weight: 700
+  display: block
+
+.rooms-item-info
+  text-align: right
+  width: calc( 100% - 106px )
+  display: inline-block
+  vertical-align: middle
+
+.rooms-item-date,
+.rooms-item-online,
+.rooms-item-count
+  display: inline-block
+  margin-left: 15px
+.rooms-item-date
+  font-size: $smallSize
+.rooms-item-count
+  @include positionElement(21px, 21px, 28px, 40px)
+  text-align: center
+  color: $whiteColor
+  background-color: $blueColor
+  border-radius: 100%
+  font-weight: 700
+
+.rooms-item-online
+  font-weight: 700
+  color: $blueColor
+.room-item-message
+  font-size: $smallSize
+  color: $grayColor

@@ -1,0 +1,51 @@
+.main-full.border-search-outer
+	.border-tabs-container
+		.border-tab.active Поиск по людям
+		.border-tab Поиск по отелям
+	.border-container.border-null-left.border-container-search
+		.main-grid
+			.input-box.col-2
+				label Пол
+				.switch-container
+					span 
+						.man-ico
+					.switch-input
+						i
+					span 
+						.woman-ico
+			.input-box.col-4 
+				label Возраст
+				.range-slider
+			.input-box.col-3 
+				label Город
+				+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			.col-3 
+				.btn-container 
+					.btn.btn--blue-border Еще фильтры
+					.btn.btn--blue Найти
+
+			//- full part
+			.input-box.col-6 
+				label Цели
+				.tags 
+					span.tag.tag--link Бокал в лобби
+					span.tag.tag--link Свидание в номере
+					span.tag.tag--link Бассейн или море
+			.input-box.col-6 
+				label Интересы
+				.tags 
+					span.tag.tag--link Рестораны
+					span.tag.tag--link Юмор
+					span.tag.tag--link Цветы
+					span.tag.tag--link Спорткары
+					span.tag.tag--link Кино
+			.input-box.col-6 
+				label Зодиак
+				+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			.input-box.col-6 
+				label Ориентация
+				+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			.col-3.col-offset-10
+				.btn-container.btn-container--bottom
+					.btn.btn--blue-border Свернуть
+					.btn.btn--blue Найти

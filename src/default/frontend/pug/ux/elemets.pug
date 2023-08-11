@@ -1,0 +1,40 @@
+include ../default/build-header
+	section
+		.main-full
+			h2 Social
+			+social(["vg","yg","gg","tlg","ig","wzg","fcg",])
+	section
+		.main-full
+			h2 Default
+			a.tag(href="#") tag
+			a.link(href="#") link
+			i.phone-ico
+			i.mail-ico
+			i.marker-ico
+	section
+		.main-full
+			h2 Btn
+			a.btn.btn--blue(href="#") Btn
+			a.btn.btn--blue-border(href="#") Btn
+	section
+		.main-full
+			h2 Btn-icons
+			a(href="#").close-btn
+			a(href="#").hamburger-btn
+			a(href="#").btn.phone-btn
+				i 
+				span phone
+			a(href="#").btn.whatsapp-btn
+				i
+				span whatsapp
+			a(href="#").btn.ico-in.ico-in--left
+				i
+					.back-ico
+						img(src="/images/icons/play-gray.svg", alt="")
+					.front-ico
+						img(src="/images/icons/play-black.svg", alt="")
+				span Play
+	section
+		.main-full
+			h2 Pagination
+			+pagination()

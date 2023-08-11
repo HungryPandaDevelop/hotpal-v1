@@ -1,0 +1,40 @@
+
+.popup
+  @include positionElement(100%, 100%, 0, 0, left, top, 4, fixed, flex)
+  h3,h4
+    color: $blackColor
+    text-align: center
+  h3
+    margin: 0 0 15px
+  h4
+    font-size: $standartSize
+    font-weight: 500
+    color: $blueColorSecond
+  .btn
+    width: 100%
+  .main-grid,
+  .main-full
+    padding: 0
+.popup-overlay
+  @include positionElement(100%, 100%, 0, 0)
+  background-color: $blueColor
+  opacity: 0.3
+
+.close-btn--popup
+  position: absolute
+  right: 0
+  top: 0
+  margin: 15px
+
+.popup-container
+  position: relative
+  background-color: $whiteColor
+  max-width: 600px
+  width: 100%
+  height: auto
+  margin: auto
+  padding: 45px
+  transition: ease-out 0.5s
+  overflow-y: auto
+  max-height: 100%
+  border-radius: 30px

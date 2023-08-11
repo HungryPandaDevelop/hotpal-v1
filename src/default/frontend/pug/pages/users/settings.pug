@@ -1,0 +1,75 @@
+include ../../default/build-header
+include ../../blocks/header
+.stub
+.main-full 
+	.border-tabs-container
+		.border-tab Кабинет
+		.border-tab.active Настройки
+	.settings-tabs-container
+		.settings-tab Личные данные
+		.settings-tab.active Приватность
+		.settings-tab Черный список
+	.border-container.border-null-top
+		.main-grid
+			//- .col-6
+			//- 	.input-box
+			//- 		label E-mail
+			//- 		+inputText('Text','require')
+			//- .col-6
+			//- 	.input-box
+			//- 		label Мобильный
+			//- 		+inputText('Text','require')
+			//- .col-4
+			//- 	.input-box
+			//- 		label Старый пароль
+			//- 		+inputText('Text','require')
+			//- .col-4
+			//- 	.input-box
+			//- 		label Новый пороль
+			//- 		+inputText('Text','require')
+			//- .col-4
+			//- 	.input-box
+			//- 		label Подтвержидения пароля
+			//- 		+inputText('Text','require')
+			//- .col-6
+			//- 	.btn.btn--blue-border Удалить аккаунт
+			//- .col-6
+			//- 	.btn-container-right
+			//- 		.btn.btn--blue Сохранить
+			//- ------------------
+			//- .col-6
+			//- 	.input-box
+			//- 		label Кто может отправлять мне приглашения
+			//- 		+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			//- .col-6
+			//- 	.input-box
+			//- 		label Кто может лайкать меня
+			//- 		+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			//- .col-6
+			//- 	.input-box
+			//- 		label Кто может видеть историю моих поисков
+			//- 		+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			//- .col-6
+			//- 	.input-box
+			//- 		label Кто может отправлять мне личные сообщения
+			//- 		+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			//- .col-6
+			//- 	.input-box
+			//- 		label Кто может видеть мой профиль в поиске
+			//- 		+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			//- .col-6
+			//- 	.input-box
+			//- 		label Кто может видеть мои цили
+			//- 		+inputSelect('Выбрать селект', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			//- ------------------
+			//- - for(var i=0;i<=6;i++ )
+			//- 		.col-3 
+			//- 			+likedisItem()
+			//- ------------------
+
+			- for(var i=0;i<=1;i++ )
+					.col-3 
+						+likeItem()
+
+.stub
+include ../../blocks/footer

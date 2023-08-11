@@ -1,0 +1,13 @@
+include ../../../default/build-header
+include ../../../blocks/header
+.stub
+include user-search-panel.pug
+.main-grid
+	-for(var a=0;a<=6;a++)
+		.col-4
+			+usersItem()
+.main-full 
+	.btn-container-section 
+		.btn.btn--blue Загрузить ещё
+.stub
+include ../../../blocks/footer

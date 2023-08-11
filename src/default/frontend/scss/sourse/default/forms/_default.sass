@@ -1,0 +1,53 @@
+
+input
+	-webkit-appearance: none
+	-webkit-border-radius: 0
+input:disabled
+	background-color: $grayColorSecond
+
+.input-decorate,
+.custom-select,
+.file-decorate
+	padding: 10px 15px
+	border: 0
+	border-radius: 30px
+	font-family: inherit
+	font-size: $smallSize
+	font-weight: 500
+	resize: none
+	width: 100%
+	background: none
+	color: $blackColor
+	border: 1px solid $grayColorThree
+	transition: ease-out 0.5s
+	&:focus
+		outline: 0
+		border-color: $blueColor
+	&::placeholder
+		color: $blackColor
+.input-date
+	padding: 9px 15px
+.file-decorate-error span,
+.input-error
+	border-color: $redColor
+.mail-error
+	border-color: $orangeColor
+.error-hint
+	color: $redColor
+	margin-top: 2px
+
+.input-box
+	// margin: 0 0 25px
+	position: relative
+	label
+		font-weight: 800
+		color: $blueColorSecond
+		margin: 0 0 8px
+		display: inline-block
+
+.data-input-container
+	position: relative
+	&::after
+		content: ""
+		@include positionElement(40px, 100%,0,0,right)
+		// outline: 1px solid red

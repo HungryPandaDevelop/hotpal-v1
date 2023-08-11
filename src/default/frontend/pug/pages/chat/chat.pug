@@ -1,0 +1,26 @@
+include ../../default/build-header
+include ../../blocks/header
+.stub
+.main-full 
+	.border-tabs-container
+		.border-tab.active Чат
+	.border-container.border-null-left.chat
+		.main-grid
+			.col-4
+				.chat-rooms
+					+roomItem('Ольга', '16.06.2023', 4)
+					+roomItem('Ольга', false)
+					+roomItem('Ольга', false,false, ' active')
+					
+			.col-8
+				include chat-messages
+				.chat-form
+					.main-grid 
+						.col-8
+							.form-container
+								+inputTextarea('Напишите сообщение...')
+						.col-4
+							.btn-container
+								+inputSubmit('Отправить', 'btn--blue btn-send')
+.stub
+include ../../blocks/footer

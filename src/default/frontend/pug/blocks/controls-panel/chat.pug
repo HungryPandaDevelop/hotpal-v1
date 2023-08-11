@@ -1,0 +1,17 @@
+.popup-chat
+	.chat-popup-header
+		.link-back
+			i
+		.chat-popup-face.img-use-bg
+		.chat-popup-info
+			div
+				.chat-popup-name Варвара
+				//- .chat-popup-date 10.10.2023
+				.chat-popup-online В сети
+			.btn-full
+	include ../../pages/chat/chat-messages
+	.chat-form
+		.form-container
+			+inputTextarea('Напишите сообщение...')
+		.btn-container
+			+inputSubmit('Отправить', 'btn--blue btn-send')

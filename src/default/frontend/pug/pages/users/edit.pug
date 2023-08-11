@@ -1,0 +1,120 @@
+include ../../default/build-header
+include ../../blocks/header
+.stub
+.main-full 
+	.border-tabs-container
+		.border-tab.active Кабинет
+		.border-tab Настройки
+	.border-container.border-null-left.account
+		.main-grid
+			.col-8
+				.user-top-info
+					.input-box
+						label Имя
+						+inputText('Text','require')
+					.input-box
+						label Дата рождения
+						+inputText('Text','require')
+					.input-box
+						label Пол
+						.switch-container
+							span 
+								.man-ico
+							.switch-input
+								i
+							span 
+								.woman-ico
+				.tags-add-container
+					.tags-container
+						h3 Цели:
+						a.tag(href="#")  
+							span Бокал в лобби
+							em
+						a.tag(href="#")  
+							span Бассейн или море
+							em
+						a.tag(href="#")  
+							span Свидание в номере
+							em
+						a.tag(href="#")  
+							span Поход в ресторан
+							em
+					.tags-add-input 
+						.tags-add-hint 
+							h3 Добавьте ваши цели.
+							.tags-add-hint-text. 
+								Данные цели будут использоваться,
+								как приглашения, для большего
+								совпадения пар.
+						.input-box
+							+inputText('Text','require')
+						a.btn.btn--blue-border(href="#") Добавить
+
+
+				.user-location 
+					h3 Текущее расположение
+					.input-box
+						+inputText('Text','require')
+					.user-location-map
+			.col-4 
+				.input-box
+					.dragdrop-container   
+						span Выбрать фото
+			.col-12 
+				.border-delimetr.border-account
+			.col-8
+				.tags-add-container
+					.tags-container
+						h3 Интересы:
+						each val in ['Рестораны','Театр','Фитнес','Юмор','Цветы','Астрология','Кино','Спорткары','Танцы']
+							a.tag(href="#")  
+								span 
+									= val
+								em
+					.tags-add-input 
+						.tags-add-hint 
+							h3 Добавьте ваши цели.
+							.tags-add-hint-text. 
+								Данные цели будут использоваться,
+								как приглашения, для большего
+								совпадения пар.
+						.input-box
+							+inputText('Text','require')
+						a.btn.btn--blue-border(href="#") Добавить
+			.col-4
+				h3
+				.personal-info
+					ul.ln
+						li
+							.personal-info-name
+								i.portfel-ico
+								b Работа:
+							.personal-info-value
+								+inputSelect('Выберете', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+						li
+							.personal-info-name
+								i.zodiak-ico
+								b Зодиак:
+							.personal-info-value
+								+inputSelect('Выберете', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+						li
+							.personal-info-name
+								i.celi-ico
+								b Цель поездки:
+							.personal-info-value
+								+inputSelect('Выберете', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+						li
+							.personal-info-name
+								i.orientacia-ico
+								b Ориентация:
+							.personal-info-value
+								+inputSelect('Выберете', ['селект 1','селект 2','селект 3','селект 4','селект 5',])
+			.col-12
+					.user-description
+						h3 О себе:
+						.input-box
+							textarea.input-decorate(placeholder="Расскажите о себе ...")
+						.btn-container 
+							a(href="#").btn.btn--blue-border Сохранить
+.stub
+include ../../blocks/footer

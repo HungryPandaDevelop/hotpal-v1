@@ -1,0 +1,76 @@
+.like-item
+  text-align: center
+  position: relative
+  h3
+    text-align: center
+    font-size: $standartSize
+    color: $blackColor
+  .btn-container
+    // margin-top: 15px
+.like-img
+  width: 100px
+  height: 100px
+  position: relative
+  overflow: hidden
+  border-radius: 100%
+  display: inline-block
+  .img-cover
+    @include positionElement(100%,100%)
+.status-like
+  font-size: $smallSize
+  padding: 2px 6px
+  background-color: $grayColor
+  border-radius: 6px
+  font-weight: 700
+  display: inline-block
+  color: $whiteColor
+  vertical-align: middle
+  margin-right: 15px
+.status--see
+  background-color: $blueColor
+.status--agree
+  background-color: $greenColor
+.status--disagree
+  background-color: $redColor
+.like-status-btn
+  display: inline-block
+  width: 30px
+  height: 30px
+  border: 1px solid $blueColor
+  border-radius: 100%
+  cursor: pointer
+  vertical-align: middle
+  margin: 0 8px
+  &:hover,
+  &.active
+    background-color: $blueColor
+.see-like-btn
+  @include bgImageEl("../images/icons/view-blue.svg")
+  &:hover,
+  &.active
+    background-image: url("../images/icons/view-fill-white.svg")
+.agree-like-btn
+  @include bgImageEl("../images/icons-app/like-blue.svg")
+  &:hover,
+  &.active
+    background-image: url("../images/icons-app/like-fill-white.svg")
+.disagree-like-btn
+  @include bgImageEl("../images/icons-app/dislike-blue.svg", 24px)
+  &:hover,
+  &.active
+    background-image: url("../images/icons-app/dislike-fill-white.svg")
+.trash-like-btn
+  @include bgImageEl("../images/icons/trash-blue.svg", 24px)
+  &:hover
+    background-image: url("../images/icons/trash-white.svg")
+.like-hint
+  font-size: $smallSize
+  color: $grayColor
+  margin: 0 0 8px
+.status-new
+  @include positionElement(auto,auto, 0,0, left,top,2)
+  background-color: $orangeColor
+  font-weight: 700
+  padding: 2px 12px
+  border-radius: 4px
+  font-size: $smallSize

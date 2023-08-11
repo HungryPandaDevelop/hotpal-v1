@@ -1,0 +1,13 @@
+mixin roomItem(name, online, count, active)
+	.rooms-item(class=active)
+		.rooms-item-face.img-use-bg
+			if count
+				.rooms-item-count 3
+		.rooms-item-info
+			.rooms-item-name= name
+			if online
+				span.rooms-item-date= online
+			else 
+				span.rooms-item-online В сети
+			.room-item-message Привет, тебе нравятся кошки?
+		.btn-trash

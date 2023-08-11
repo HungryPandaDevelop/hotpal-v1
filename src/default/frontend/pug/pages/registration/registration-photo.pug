@@ -1,0 +1,23 @@
+include ../../default/build-header
+	.main-full
+		| header
+	.main-full
+		h1 Popup
+	+popup-template(1,'reg-popup') 
+		.form
+			.link--back
+				i 
+				span Назад
+			h3 Загрузите ваши фотографии
+			h4 Вы можете загрузить до 10 фотографий 
+			.form.main-grid
+				.input-box.col-12
+					.dragdrop-container
+						span Нажмите и загрузите фотографии, либо же  перетяните в это окно
+					.dragdrop-uploaded
+						.dragdrop-file-item
+							.dragdrop-file-img
+								img(src="https://zoo-base.sait.website/wp-content/uploads/2023/06/2.jpg")
+							i
+				.col-12
+					+inputSubmit('Делее', 'btn--blue') 

@@ -1,0 +1,57 @@
+.tag
+  border: 1px solid $blueColorSecond
+  font-weight: 400
+  border-radius: 30px
+  display: inline-block
+  padding: 3px 14px
+  margin: 0 8px 15px 0
+  text-decoration: none
+  font-size: $smallSize
+  position: relative
+  font-style: normal
+  em
+    @include positionElement(20px,20px,0,0,right)
+    background-color: $blueColor
+    margin: -8px
+    @include bgImageEl("../images/icons/close-white.svg", 14px)
+    border-radius: 100%
+    cursor: pointer
+    &:hover
+      background-color: $blueColorSecond
+      color: $whiteColor
+.tag--link
+  cursor: pointer
+  &:hover,
+  &.active
+    color: $whiteColor
+    background-color: $blueColorSecond
+.link
+  font-weight: 700
+  font-size: $standartSize
+  color: $greenColor
+  &:hover
+    color: $orangeColor
+.phone-ico
+  @include icoEl(18px, 22px, '../images/icons/phone-black.svg')
+.mail-ico
+  @include icoEl(18px, 20px, '../images/icons/mail-black.svg')
+.marker-ico
+  @include icoEl(20px, 16px, '../images/icons/marker-black.svg')
+
+.man-ico
+  @include icoEl(20px, 16px, '../images/icons-app/man-black.svg')
+.woman-ico
+  @include icoEl(20px, 16px, '../images/icons-app/woman-black.svg')
+
+.bokal-ico
+  @include icoEl(20px, 16px, '../images/icons-app/tags/bokal.svg')
+.padushka-ico
+  @include icoEl(20px, 16px, '../images/icons-app/tags/padushka.svg')
+.plag-ico
+  @include icoEl(20px, 16px, '../images/icons-app/tags/plag.svg')
+.pribor-ico
+  @include icoEl(20px, 16px, '../images/icons-app/tags/pribor.svg')
+.calendar-ico
+  @include icoEl(24px, 24px, '../images/icons-app/calendar-black.svg')
+.marker-ico
+  @include icoEl(24px, 24px, '../images/icons-app/marker-black.svg')

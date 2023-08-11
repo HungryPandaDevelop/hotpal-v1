@@ -1,0 +1,41 @@
+include ../../default/build-header
+	.main-full
+		| header
+	.main-full
+		h1 Popup
+	+popup-template(1,) 
+		.form 
+			h3 Заполните анкету
+			.form.main-grid
+				.input-box.col-6
+					label Имя
+					+inputText('Text','require')
+				.input-box.col-6
+					label Email
+					+inputText('Text','require')
+				.input-box.col-6
+					label Дата рождения
+					+inputPhone('date', 'require')
+				.input-box.col-6
+					label Город
+					+inputPhone('Phone', 'require')
+				.input-box.col-12
+					label Пароль
+					+inputPhone('Phone', 'require')
+				.input-box.col-12
+					label Пол
+					.btn-container.gender-btns
+						a(href="#").btn.man-btn.active
+							i
+							span Мужчина
+						a(href="#").btn.woman-btn
+							i
+							span Женщина
+				.input-box.col-12
+					.checkbox.agreement
+						label Согласен (на) на обработку 
+							a(href="#") персональных данных 
+							input(type="checkbox" checked)
+							span
+				.btn-reg-container.col-12
+					+inputSubmit('отправить', 'btn--blue')

@@ -1,0 +1,23 @@
+include ../default/build-header
+	.main-full
+		| header
+	.main-full
+		h1 Popup
+	+popup-template(1,) 
+		.form-default
+			h3 ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+			h4 Оставьте заявку, и мы свяжемся с вами в ближайшее время
+			.form
+				.input-box
+					label Text 
+					+inputText('Text','require')
+				.input-box
+					label Phone
+					+inputPhone('Phone', 'require')
+				.input-box
+					.checkbox.agreement
+						label Согласен (на) на обработку 
+							a(href="#") персональных данных 
+							input(type="checkbox" checked)
+							span
+				+inputSubmit('отправить', 'btn--blue')

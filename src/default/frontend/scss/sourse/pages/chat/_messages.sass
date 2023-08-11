@@ -1,0 +1,33 @@
+.chat-messages
+
+.messages-container
+	padding: 15px
+	border: 1px solid $grayColor
+	border-radius: 15px
+	position: relative
+	min-height: 400px
+	height: 100%
+	overflow-y: auto
+	// background-color: $whiteColorSecond
+.messages-item
+	word-break: break-all
+.messages-item--answer
+	text-align: right
+
+.messages--noanswer
+	background-color: rgba($blueColor , 0.1 )
+.messages-box
+	display: inline-block
+	padding: 8px 15px
+	background-color: $blueColor
+	color: $whiteColor
+	border-radius: 15px 15px 15px 0
+.messages-box--answer
+	display: inline-block
+	padding: 8px 15px
+	background-color: $blueColorSecond
+	color: $whiteColor
+	border-radius: 15px 15px 0px 15px
+.messages-date
+	font-size: $smallSize
+	padding: 5px
