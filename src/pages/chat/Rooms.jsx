@@ -5,7 +5,7 @@ import RoomItem from 'pages/chat/RoomItem';
 import { connect } from 'react-redux';
 
 const RoomList = ({ uid, roomId, setChoiseRoom, setCurrentUser, type, rooms }) => {
-  console.log('rooms', rooms)
+  // console.log('rooms', rooms)
 
 
   const onDeleteRoom = (id) => {
@@ -29,7 +29,7 @@ const RoomList = ({ uid, roomId, setChoiseRoom, setCurrentUser, type, rooms }) =
 };
 
 const mapStateToProps = (state) => {
-  console.log('state', state)
+  // console.log('state', state)
   return {
     rooms: state.globalState.rooms,
   }

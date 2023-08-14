@@ -3,10 +3,59 @@
 .chat-form
 	padding: 15px 0 0
 	textarea
-		height: 90px
+		height: 115px
 		border-radius: 15px
 		font-size: $standartSize
 	.form-container
 		font-size: 0
+		position: relative
+	textarea
+		padding-right: 50px
 	.btn
 		width: 100%
+	.add-file
+		@include positionElement(30px,30px, 0, 0, right, bottom, 2)
+		cursor: pointer
+		margin: 15px
+		@include bgImageEl("../images/icons-app/add-photo.svg")
+		&:hover
+			opacity: 0.8
+	.invite-container
+		margin: 0 0 15px
+		text-align: right
+		h3
+			font-size: $smallSize
+			font-weight: 400
+			margin: 0 0 8px
+		.invite-ico
+			display: inline-block
+			width: 30px
+			height: 30px
+			border-radius: 100%
+			border: 1px solid $grayColor
+			text-align: center
+			display: inline-flex
+			cursor: pointer
+			margin-left: 8px
+			i
+				margin: auto
+			&.active,
+			&:hover
+				border-color: $blueColor
+				background-color: rgba($blueColor , 0.3 )
+	.file-decorate
+		border: 0
+		@include positionElement(30px,30px, 0, -55px, right, top, 2)
+		cursor: pointer
+		margin: 0 15px
+		border-radius: 0
+		left: auto
+		@include bgImageEl("../images/icons-app/add-photo.svg")
+		&:hover
+			opacity: 0.8
+		i,span
+			display: none
+	.file-input-container
+		margin-top: 15px
+	.input-file
+		display: none

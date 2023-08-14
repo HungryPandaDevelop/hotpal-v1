@@ -4,7 +4,18 @@ export const chatFields = {
     name: "message", 
     placeholder: "Напишите сообщение... ", 
     type:"message",
-    wrapClass: "col-8",
     validate: ['required'],
-  }
+  },
+  fileMessage: {
+    type: "file", 
+    name: "fileMessage", 
+    typeUpload:".png, .jpg, .jpeg", 
+    maxSize: 5242880, 
+    textEmpty: "На данный момент фоно не выбрано",
+    wrapClass: "chat-files",
+  },
+  invite: { 
+    type: "invite", 
+    name: "invite", 
+  },
 }

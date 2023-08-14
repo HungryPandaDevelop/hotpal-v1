@@ -6,8 +6,11 @@ import { Field } from 'redux-form';
 
 import storeImage from 'services/storeImage';
 
+import { useRef } from 'react';
 
 const TemplateFile = (props) => {
+
+  const inputRef = useRef(null);
 
   const storage = getStorage();
 
@@ -32,8 +35,11 @@ const TemplateFile = (props) => {
     setNameFile(input.value);
 
   }, [input]);
-
+  const onCallFileInput = () => {
+    inputRef.current.click();
+  }
   const onChange = async (acceptedFiles) => {
+
     let fileUrls;
     // 
     const files = [...acceptedFiles.target.files];
@@ -84,13 +90,14 @@ const TemplateFile = (props) => {
         className="file-input-container"
       >
         {loadingFile === true && <div className="preloader"></div>}
-        {!nameFile && <div className="file-decorate"><span>{textEmpty}</span><i></i></div>}
+        <div className="file-decorate" onClick={onCallFileInput} ><span>{textEmpty}</span><i></i></div>
         {/* <input ref={elRef} type="text" {...input} value={nameFile} className="input-file-second" /> */}
         <input
           type="file"
           onChange={onChange}
           className="input-file"
           accept=".jpg, .jpeg, .png, .svg"
+          ref={inputRef}
           multiple
         />
         {nameFile && nameFile.map((item, index) => (

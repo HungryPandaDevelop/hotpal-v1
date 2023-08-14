@@ -16,163 +16,96 @@
   </head>
   <body> 
     <!-- popup-menu end -->
-    <div class="controls-panel-popup">
-      <div class="controls-panel-head">Симпатии</div>
-      <div class="panel-deg panel-deg--active-1"></div>
-      <div class="panel-close"></div>
-      <div class="main-grid likes-popup">
-        <div class="col-4">
-            <div class="like-item-mini">
-              <div class="img-cover-info">
-                <div class="like-img img-use-bg like-mini-img--agree"></div>
+    <div class="main-full">header</div>
+    <div class="main-full">
+      <h1>Form</h1>
+    </div>
+    <div class="main-full">
+      <div class="form">
+        <div class="input-box">
+          <label>Text </label>
+            <input class="input-decorate require" type="text" placeholder="Text">
+        </div>
+        <div class="input-box input-animate">
+            <input class="input-decorate undefined" type="text" placeholder="Text animate">
+          <label>Text animate</label>
+        </div>
+        <div class="input-box">
+          <label>Phone</label>
+            <input class="input-decorate phone-mask require" type="text" placeholder="Phone">
+        </div>
+        <div class="input-box input-animate">
+            <input class="input-decorate phone-mask undefined" type="text" placeholder="Phone">
+          <label>Phone</label>
+        </div>
+        <div class="input-box">
+          <label>Email</label>
+            <input class="input-decorate check-mail undefined" type="email" placeholder="Email">
+        </div>
+        <div class="input-box">
+          <label>Checkbox</label>
+            <div class="checkbox-container">
+              <div class="checkbox">
+                <label>Опция 1
+                  <input type="checkbox"><span></span>
+                </label>
               </div>
-              <div class="btn-container">
-                <div class="status-new">new</div>
-                <div class="like-status-btn see-like-btn" title="Еще посмотрю"></div>
-                <div class="like-status-btn agree-like-btn" title="Ниче так"></div>
-                <div class="like-status-btn disagree-like-btn" title="Неее"></div>
-                <div class="like-status-btn trash-like-btn" title="С глаз долой"> </div>
+              <div class="checkbox">
+                <label>Опция 2
+                  <input type="checkbox"><span></span>
+                </label>
               </div>
-              <h3>Максим </h3>
             </div>
         </div>
-        <div class="col-4">
-            <div class="like-item-mini">
-              <div class="img-cover-info">
-                <div class="like-img img-use-bg like-mini-img--agree"></div>
+        <div class="input-box">
+          <label>Radio</label>
+            <div class="checkbox-container">
+              <div class="checkbox">
+                <label>Опция 1
+                  <input type="radio" name="name" value="Опция 1"><span></span>
+                </label>
               </div>
-              <div class="btn-container">
-                <div class="status-new">new</div>
-                <div class="like-status-btn see-like-btn" title="Еще посмотрю"></div>
-                <div class="like-status-btn agree-like-btn" title="Ниче так"></div>
-                <div class="like-status-btn disagree-like-btn" title="Неее"></div>
-                <div class="like-status-btn trash-like-btn" title="С глаз долой"> </div>
+              <div class="checkbox">
+                <label>Опция 2
+                  <input type="radio" name="name" value="Опция 2"><span></span>
+                </label>
               </div>
-              <h3>Максим </h3>
             </div>
         </div>
-        <div class="col-4">
-            <div class="like-item-mini">
-              <div class="img-cover-info">
-                <div class="like-img img-use-bg like-mini-img--agree"></div>
-              </div>
-              <div class="btn-container">
-                <div class="status-new">new</div>
-                <div class="like-status-btn see-like-btn" title="Еще посмотрю"></div>
-                <div class="like-status-btn agree-like-btn" title="Ниче так"></div>
-                <div class="like-status-btn disagree-like-btn" title="Неее"></div>
-                <div class="like-status-btn trash-like-btn" title="С глаз долой"> </div>
-              </div>
-              <h3>Максим </h3>
+        <div class="input-box">
+          <label>File</label>
+            <div class="input-file-container">
+              <input class="input-file" type="file" data-multy="0" data-textchoise="Выбрать файл" accept="image/jpeg,image/png,image/gif">
             </div>
         </div>
-        <div class="col-4"> 
-            <div class="like-item-mini">
-              <div class="img-cover-info">
-                <div class="like-img img-use-bg like-mini-img--agree"></div>
-              </div>
-              <div class="btn-container">
-                <div class="status-new">new</div>
-                <div class="like-status-btn see-like-btn" title="Еще посмотрю"></div>
-                <div class="like-status-btn agree-like-btn" title="Ниче так"></div>
-                <div class="like-status-btn disagree-like-btn" title="Неее"></div>
-                <div class="like-status-btn trash-like-btn" title="С глаз долой"> </div>
-              </div>
-              <h3>Максим </h3>
+        <div class="input-box">
+          <label>File</label>
+            <div class="input-file-container">
+              <input class="input-file" type="file" data-multy="1" data-textchoise="Нужные файлы" data-hint="не большие" accept="image/jpeg,image/png,image/gif">
             </div>
-          <div class="main-full">header</div>
-          <div class="main-full">
-            <h1>Form</h1>
+        </div>
+        <div class="input-box">
+          <label>Photo</label>
+          <div class="input-photo">
+              <div class="input-file-container">
+                <input class="input-file" type="file" data-multy="0" data-textchoise="Выбрать фото" accept="image/jpeg,image/png,image/gif">
+              </div>
+            <div class="input-file-user"></div>
           </div>
-          <div class="main-full">
-            <div class="form">
-              <div class="input-box">
-                <label>Text </label>
-                  <input class="input-decorate require" type="text" placeholder="Text">
-              </div>
-              <div class="input-box input-animate">
-                  <input class="input-decorate undefined" type="text" placeholder="Text animate">
-                <label>Text animate</label>
-              </div>
-              <div class="input-box">
-                <label>Phone</label>
-                  <input class="input-decorate phone-mask require" type="text" placeholder="Phone">
-              </div>
-              <div class="input-box input-animate">
-                  <input class="input-decorate phone-mask undefined" type="text" placeholder="Phone">
-                <label>Phone</label>
-              </div>
-              <div class="input-box">
-                <label>Email</label>
-                  <input class="input-decorate check-mail undefined" type="email" placeholder="Email">
-              </div>
-              <div class="input-box">
-                <label>Checkbox</label>
-                  <div class="checkbox-container">
-                    <div class="checkbox">
-                      <label>Опция 1
-                        <input type="checkbox"><span></span>
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>Опция 2
-                        <input type="checkbox"><span></span>
-                      </label>
-                    </div>
-                  </div>
-              </div>
-              <div class="input-box">
-                <label>Radio</label>
-                  <div class="checkbox-container">
-                    <div class="checkbox">
-                      <label>Опция 1
-                        <input type="radio" name="name" value="Опция 1"><span></span>
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>Опция 2
-                        <input type="radio" name="name" value="Опция 2"><span></span>
-                      </label>
-                    </div>
-                  </div>
-              </div>
-              <div class="input-box">
-                <label>File</label>
-                  <div class="input-file-container">
-                    <input class="input-file" type="file" data-multy="0" data-textchoise="Выбрать файл" accept="image/jpeg,image/png,image/gif">
-                  </div>
-              </div>
-              <div class="input-box">
-                <label>File</label>
-                  <div class="input-file-container">
-                    <input class="input-file" type="file" data-multy="1" data-textchoise="Нужные файлы" data-hint="не большие" accept="image/jpeg,image/png,image/gif">
-                  </div>
-              </div>
-              <div class="input-box">
-                <label>Photo</label>
-                <div class="input-photo">
-                    <div class="input-file-container">
-                      <input class="input-file" type="file" data-multy="0" data-textchoise="Выбрать фото" accept="image/jpeg,image/png,image/gif">
-                    </div>
-                  <div class="input-file-user"></div>
-                </div>
-              </div>
-              <div class="input-box">
-                  <select class="style-select" data-text="Выбрать селект">
-                    <option>селект 1</option>
-                    <option>селект 2</option>
-                    <option>селект 3</option>
-                    <option>селект 4</option>
-                    <option>селект 5</option>
-                  </select>
-              </div>
-              <div class="input-box">
-                  <div class="form-btn-container">
-                    <input class="btn btn--blue btn-send" type="submit" value="Отправить">
-                  </div>
-              </div>
+        </div>
+        <div class="input-box">
+            <select class="style-select" data-text="Выбрать селект">
+              <option>селект 1</option>
+              <option>селект 2</option>
+              <option>селект 3</option>
+              <option>селект 4</option>
+              <option>селект 5</option>
+            </select>
+        </div>
+        <div class="input-box">
+            <div class="form-btn-container">
+              <input class="btn btn--blue btn-send" type="submit" value="Отправить">
             </div>
-          </div>
         </div>
       </div>
     </div>

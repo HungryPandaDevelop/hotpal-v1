@@ -5,6 +5,7 @@ import React from 'react';
 import RangeSlider from 'components/forms/fields/RangeSlider';
 import ChoiseTags from 'components/forms/fields/ChoiseTags';
 import EditionTags from 'components/forms/fields/EditionTags';
+import Invite from 'components/forms/filedsSpecial/Invite';
 
 import RenderTitle from 'components/forms/fields/RenderTitle';
 
@@ -25,7 +26,7 @@ import RenderInputRadio from './fields/RenderInputRadio';  // radio
 
 import RenderInputSelect from './fields/RenderInputSelect'; // селект
 
-import RenderInputFile from './fields/RenderInputFile'; // файл
+import RenderInputFile from './fields/RenderInputFileChat'; // файл
 
 import RenderInputFileDropZone from './fields/RenderInputFileDropZone'; // зона файлов
 
@@ -72,6 +73,14 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type, onSubmit })
         return (
           <>
             <RenderTitle
+              obj={obj}
+            />
+          </>
+        )
+      case 'invite':
+        return (
+          <>
+            <Invite
               obj={obj}
             />
           </>

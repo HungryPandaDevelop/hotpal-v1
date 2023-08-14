@@ -12,7 +12,7 @@ const ControlsPanel = () => {
   const arrNames = [
     ['chat', 'Чат'],
     ['like', 'Симпатии'],
-    ['invite', 'Приглашения'],
+    // ['invite', 'Приглашения'],
   ];
 
   const arrLinks = [

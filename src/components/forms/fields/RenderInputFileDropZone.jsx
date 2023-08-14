@@ -38,7 +38,7 @@ const TemplateFile = (props) => {
 
   const onDrop = async (acceptedFiles) => {
     let fileUrls;
-    // console.log(acceptedFiles)
+    console.log(acceptedFiles)
     if (acceptedFiles.length < 10) {
       fileUrls = await Promise.all( // загрузили получили урлы
         acceptedFiles.map((file) => storeImage(file, setLoadingFile, 'users'))

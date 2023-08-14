@@ -20,7 +20,7 @@ const Btns = ({ user, uid }) => {
 
   useEffect(() => {
     getListing('white-list', 'userRef', uid).then((res) => {
-      console.log('r', res, uid)
+      // console.log('r', res, uid)
       setWhitList(res);
       setWhiteListLoad(false)
     });

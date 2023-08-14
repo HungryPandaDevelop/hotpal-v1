@@ -14,8 +14,8 @@ const TemplateFile = (props) => {
     label,
     labelSecond,
     maxSize,
-    num,
-    className
+    textEmpty,
+    nameFolder,
   } = props;
 
   const [nameFile, setNameFile] = useState('');
@@ -35,7 +35,7 @@ const TemplateFile = (props) => {
     elRef.current.focus();
 
     const files = e.target.files; // выделили фотки
-
+    console.log(files)
     if (e.target.files[0].size > maxSize) {
       e.target.value = '';
       alert('Файл слишком большой')
@@ -60,7 +60,7 @@ const TemplateFile = (props) => {
   }
 
   return (
-    <div className={className}>
+    <div>
       {label && <label><b>{label}</b>{labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}</label>}
 
 
@@ -86,11 +86,11 @@ const TemplateFile = (props) => {
 }
 
 
-const RenderInputFileNew = (props) => {
+const RenderInputFileNew = ({ obj }) => {
 
   return <Field
-    name={props.name}
-    props={props}
+    name={obj.name}
+    obj={obj}
     component={TemplateFile}
   />
 

@@ -47,7 +47,7 @@ let TemplateForm = (props) => {
 
   return (
     <form
-      className="form form-color main-grid"
+      className="form main-grid"
     >
       <RenderFields
         fields={fields}

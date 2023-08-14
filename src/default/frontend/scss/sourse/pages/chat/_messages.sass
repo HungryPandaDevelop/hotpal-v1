@@ -31,3 +31,47 @@
 .messages-date
 	font-size: $smallSize
 	padding: 5px
+.messages-img
+	width: 50%
+.messages-ico
+	display: inline-block
+	width: 30px
+	height: 30px
+	border-radius: 100%
+	border: 1px solid $whiteColor
+	text-align: center
+	display: inline-flex
+	cursor: pointer
+	margin-right: 8px
+	i
+		margin: auto
+.messages-invite-btns
+	padding: 8px
+.btn-invite
+	margin-right: 15px
+	i
+		margin-right: 8px
+.btn-apply
+	display: inline-block
+	cursor: pointer
+	i
+		border: 1px solid
+		border-radius: 100%
+		@include icoEl($icoSizePopup, $icoSizePopup, "../images/icons/agree-lite-black.svg", middle, $icoSizeBgPopup)
+	&:hover
+		color: $blueColor
+		i
+			border-color: $blueColor
+			background-image: url("../images/icons/agree-lite-blue.svg")
+.btn-dismiss
+	display: inline-block
+	cursor: pointer
+	i
+		border: 1px solid $grayColor
+		border-radius: 100%
+		@include icoEl($icoSizePopup, $icoSizePopup, "../images/icons/close-black.svg", middle, $icoSizeBgPopup)
+	&:hover
+		color: $redColor
+		i
+			border-color: $redColor
+			background-image: url("../images/icons/close-red.svg")

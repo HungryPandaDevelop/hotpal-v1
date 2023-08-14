@@ -20,7 +20,7 @@ const BtnFavorites = ({
 
 
   useEffect(() => {
-    console.log('collections', collections)
+    // console.log('collections', collections)
     collections && collections.map((collection) => {
       if (user.uid === collection.likeUserRef) {
         setStatus(collection.id);

@@ -144,7 +144,7 @@ export const getMyLikesOnline = async (setElementOut, uid) =>{
   );
 
   const updateSnap = (listing)=>{
-    console.log('listing',listing)
+    // console.log('listing',listing)
     setElementOut(listing)
   }
   
@@ -174,13 +174,20 @@ export const getMyRoomMessages = (setMessages, roomId) => {
 
 
 
-export const sendMessage = async (roomId, text,  uid) => {
+export const sendMessage = async (roomId, uid, text, imgs, invite ) => {
   
   const getDocRoomInfo =  await getDoc(doc(db, 'rooms', roomId));
   const getRoomInfo = getDocRoomInfo.data();
 
+  const inviteObj = {
+    type: invite ? invite: '',
+    status: ''
+  }
+
   getRoomInfo.messages.push({
     text: text,
+    imgs: imgs ? imgs : [],
+    invite: inviteObj,
     uid: uid,
     read: false,
     timestamp: new Date()
@@ -206,6 +213,6 @@ export const updateRead = async (roomId, room, uid)=>{
   });
   
   room.data.messages = changeRead
-  console.log(room)
+  // console.log(room)
   await updateDoc(doc(db, 'rooms', roomId), room.data);
 }
