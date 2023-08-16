@@ -16,9 +16,9 @@ const CheckAuth = ({
     // const user = false;
 
     onAuthStateChanged(auth, (user) => {
-      console.log('state change 1')
+
       if (user) {
-        console.log('state change 2', user)
+
         const userInfo = {
           // name: user.displayName,
           email: user.email,

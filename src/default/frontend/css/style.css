@@ -508,6 +508,15 @@ section {
   background-image: url("../images/icons-app/marker-black.svg");
 }
 
+.goals-ico {
+  border-radius: 100%;
+  border: 1px solid;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  display: inline-block;
+}
+
 .btn {
   background: none;
   text-decoration: none;
@@ -594,6 +603,17 @@ section {
   background: #0B132B;
   border-color: #0B132B;
   color: #ffffff;
+}
+
+.btn--white-border {
+  background: none;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.btn--white-border:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #0B132B;
 }
 
 /*pagination page start*/
@@ -3489,7 +3509,7 @@ footer .nav li {
 }
 
 /*-----home-end----*/ 
-/*-----users-start----*/ 
+/*-----cabinbet-start----*/ 
 .user-top-info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3841,6 +3861,8 @@ footer .nav li {
   font-size: 14px;
 }
 
+/*-----cabinbet-end----*/ 
+/*-----users-start----*/ 
 .users-item {
   width: 100%;
   padding-bottom: 100%;
@@ -4398,6 +4420,132 @@ footer .nav li {
 }
 
 /*-----users-end----*/ 
+/*-----hotels-start----*/ 
+.hotels-img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../images/stub-ico.svg");
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #00AEEF;
+}
+
+.hotels-gradient {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../images/gradient.svg");
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.3;
+}
+
+.hotels-img-container {
+  position: relative;
+  border-radius: 30px;
+  height: 300px;
+  overflow: hidden;
+  margin: 0 0 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.hotels-raiting-container {
+  margin-top: auto;
+  width: 100%;
+  position: relative;
+  padding: 15px 30px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.hotels-raiting-container .btn-container {
+  margin-top: auto;
+}
+
+.hotels-raiting-num {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 700;
+  background-color: #00AEEF;
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.hotels-name {
+  color: #0B132B;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.hotels-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.hotels-name-container,
+.hotels-price-container {
+  width: 50%;
+}
+
+.hotels-price-container {
+  text-align: right;
+}
+
+.hotels-stars {
+  text-align: left;
+  width: 100%;
+  margin-top: auto;
+  padding-left: 15px;
+}
+.hotels-stars .star {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/icons/star-fill-gray.svg");
+}
+.hotels-stars .star.active {
+  background-image: url("../images/icons/star-fill-yellow.svg");
+}
+
+.hotels-goals h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0B132B;
+  margin: 0 0 8px;
+}
+
+.hotels-guest {
+  font-size: 32px;
+  font-weight: 700;
+  color: #00AEEF;
+  margin: 0 0 15px;
+}
+
+.hotels-price {
+  margin-top: 15px;
+}
+
+/*-----hotels-end----*/ 
 /*-----chat-start----*/
 .chat-form {
   padding: 15px 0 0;
@@ -4434,35 +4582,6 @@ footer .nav li {
 .chat-form .add-file:hover {
   opacity: 0.8;
 }
-.chat-form .invite-container {
-  margin: 0 0 15px;
-  text-align: right;
-}
-.chat-form .invite-container h3 {
-  font-size: 14px;
-  font-weight: 400;
-  margin: 0 0 8px;
-}
-.chat-form .invite-container .invite-ico {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  border: 1px solid #98A1A7;
-  text-align: center;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  cursor: pointer;
-  margin-left: 8px;
-}
-.chat-form .invite-container .invite-ico i {
-  margin: auto;
-}
-.chat-form .invite-container .invite-ico.active, .chat-form .invite-container .invite-ico:hover {
-  border-color: #00AEEF;
-  background-color: rgba(0, 174, 239, 0.3);
-}
 .chat-form .file-decorate {
   border: 0;
   width: 30px;
@@ -4491,6 +4610,56 @@ footer .nav li {
 }
 .chat-form .input-file {
   display: none;
+}
+
+.chat-invite-container {
+  margin: 0 0 15px;
+  text-align: right;
+}
+.chat-invite-container h3 {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 8px;
+}
+
+.invite-ico {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 1px solid #98A1A7;
+  text-align: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
+  margin-left: 8px;
+  position: relative;
+}
+.invite-ico i {
+  margin: auto;
+}
+.invite-ico:hover {
+  border-color: #00AEEF;
+  background-color: rgba(0, 174, 239, 0.3);
+}
+.invite-ico:hover span {
+  visibility: visible;
+  opacity: 1;
+}
+.invite-ico span {
+  position: absolute;
+  background-color: rgba(11, 19, 43, 0.9);
+  padding: 1px 3px;
+  color: #ffffff;
+  right: calc(100% + 4px);
+  top: 0;
+  font-size: 14px;
+  width: 180px;
+  text-align: center;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .chat-rooms {
@@ -4592,6 +4761,9 @@ footer .nav li {
 .messages-item {
   word-break: break-all;
 }
+.messages-item span {
+  vertical-align: middle;
+}
 
 .messages-item--answer {
   text-align: right;
@@ -4638,6 +4810,7 @@ footer .nav li {
   display: inline-flex;
   cursor: pointer;
   margin-right: 8px;
+  vertical-align: middle;
 }
 .messages-ico i {
   margin: auto;
@@ -4700,6 +4873,25 @@ footer .nav li {
 .btn-dismiss:hover i {
   border-color: #ed1834;
   background-image: url("../images/icons/close-red.svg");
+}
+
+.invite-status {
+  padding: 3px 8px;
+  background-color: #98A1A7;
+  font-size: 14px;
+  color: #ffffff;
+  display: inline-block;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+.invite-status--agree {
+  background-color: #00F35B;
+  color: #0B132B;
+}
+
+.invite-status--disagree {
+  background-color: #ed1834;
 }
 
 /*-----chat-end----*/

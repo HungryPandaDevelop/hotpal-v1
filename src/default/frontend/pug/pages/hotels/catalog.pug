@@ -1,0 +1,13 @@
+include ../../default/build-header
+include ../../blocks/header
+.stub
+include hotels-search-panel.pug
+.main-grid
+	-for(var a=0;a<=3;a++)
+		.col-6
+			+hotelItem()
+.main-full 
+	.btn-container-section 
+		.btn.btn--blue Загрузить ещё
+.stub
+include ../../blocks/footer

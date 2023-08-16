@@ -20,6 +20,7 @@ const TempateInput = (props) => {
 
 
   useEffect(() => {
+
     if (setErrCheck) {
       if (error) {
         setErrCheck(false);

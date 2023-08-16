@@ -11,6 +11,8 @@
 	// background-color: $whiteColorSecond
 .messages-item
 	word-break: break-all
+	span
+		vertical-align: middle
 .messages-item--answer
 	text-align: right
 
@@ -43,6 +45,7 @@
 	display: inline-flex
 	cursor: pointer
 	margin-right: 8px
+	vertical-align: middle
 	i
 		margin: auto
 .messages-invite-btns
@@ -75,3 +78,16 @@
 		i
 			border-color: $redColor
 			background-image: url("../images/icons/close-red.svg")
+.invite-status
+	padding: 3px 8px
+	background-color: $grayColor
+	font-size: $smallSize
+	color: $whiteColor
+	display: inline-block
+	margin: 4px
+	border-radius: 4px
+.invite-status--agree
+	background-color: $greenColor
+	color: $blackColor
+.invite-status--disagree
+	background-color: $redColor

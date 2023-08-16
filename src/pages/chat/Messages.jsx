@@ -30,6 +30,8 @@ const Messages = ({ uid, roomId }) => {
       key={index}
       message={message}
       uid={uid}
+      roomId={roomId}
+      index={index}
     />)
   }
 
@@ -47,6 +49,7 @@ const mapStateToProps = (state) => {
 
   return {
     uid: state.account.uid,
+    rooms: state.account.uid,
   }
 }
 

@@ -174,20 +174,15 @@ export const getMyRoomMessages = (setMessages, roomId) => {
 
 
 
-export const sendMessage = async (roomId, uid, text, imgs, invite ) => {
+export const sendMessage = async (roomId, uid, message ) => {
   
   const getDocRoomInfo =  await getDoc(doc(db, 'rooms', roomId));
   const getRoomInfo = getDocRoomInfo.data();
 
-  const inviteObj = {
-    type: invite ? invite: '',
-    status: ''
-  }
+
 
   getRoomInfo.messages.push({
-    text: text,
-    imgs: imgs ? imgs : [],
-    invite: inviteObj,
+    ...message,
     uid: uid,
     read: false,
     timestamp: new Date()
@@ -215,4 +210,22 @@ export const updateRead = async (roomId, room, uid)=>{
   room.data.messages = changeRead
   // console.log(room)
   await updateDoc(doc(db, 'rooms', roomId), room.data);
+}
+
+export const updateInvite = async (roomId, status, index)=>{
+
+  const getDocRoomInfo =  await getDoc(doc(db, 'rooms', roomId));
+  const getRoomInfo = getDocRoomInfo.data();
+  console.log(getRoomInfo, status, index)
+  getRoomInfo.messages[index].invite.status = status;
+
+  try {
+    await setDoc(doc(db, 'rooms', roomId), getRoomInfo);
+    toast.success('Сообщение отправлено');
+    
+  } catch (error) {
+      console.error(error);
+      toast.error(error)
+  }
+
 }

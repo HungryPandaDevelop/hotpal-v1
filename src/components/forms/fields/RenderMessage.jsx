@@ -21,23 +21,23 @@ const TempateInput = (props) => {
 
 
   useEffect(() => {
-    console.log('send')
-    if (setErrCheck) {
-      if (error) {
-        setErrCheck(false);
-      }
-      else {
-        setErrCheck(true);
-      }
+    // console.log('error', error)
+    if (error) {
+      // console.log(1)
+      setErrCheck(false);
     }
-  }, [error]);
+    else {
+      // console.log(2)
+      setErrCheck(true);
+    }
+  }, [input]);
 
 
   const handleOnChange = (e) => {
 
     if (e.nativeEvent.inputType === 'insertLineBreak') {
       onSubmit(e);
-      input.onChange('');
+      // input.onChange('');
     } else {
       input.onChange(e.target.value); // call the onChange function passed to you by `Field` this will update pristine, dirty values. 
     }

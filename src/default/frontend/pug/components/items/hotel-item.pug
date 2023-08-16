@@ -1,0 +1,35 @@
+mixin hotelItem()
+	.hotels-item
+		.hotels-img-container
+			.hotels-img(style="background-image: url('/images/temp/hotel.jpg')")
+			.hotels-gradient
+			.hotels-raiting-container 
+				div
+					.hotels-raiting-num 8.9
+				.hotels-stars 
+					.star.active
+					.star.active
+					.star.active
+					.star.active
+					.star 
+				.btn-container 
+					.btn.btn--white-border Забронировать
+		.hotels-info
+			.hotels-name-container 
+				.hotels-name Mercure 
+					br
+					|Москва, м. Павелецкая
+				.hotels-goals 
+					h3 Развлечения:
+					.goals-ico
+						i.bokal-ico
+					.goals-ico
+						i.pribor-ico
+					.goals-ico
+						i.plag-ico
+					.goals-ico
+						i.padushka-ico
+			.hotels-price-container 
+				.hotels-guest 1560 гостей
+				.btn.btn--blue-border Посмотреть всех
+				.hotels-price от 8000 р.

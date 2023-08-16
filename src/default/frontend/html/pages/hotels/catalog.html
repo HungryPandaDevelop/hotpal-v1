@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/owl.carousel.css" type="text/css" rel="stylesheet">
+    <link href="/css/air-datepicker.css" type="text/css" rel="stylesheet">
+    <link href="/css/ion.rangeSlider.css" type="text/css" rel="stylesheet">
+    <link href="/css/style.css" type="text/css" rel="stylesheet">
+    <script src="/js/sourse/other-js/jquery-3.6.0.min.js" defer></script>
+    <script src="/js/sourse/other-js/air-datepicker.js" defer></script>
+    <script src="/js/sourse/other-js/jquery.mask.js" defer></script>
+    <script src="/js/sourse/other-js/owl.carousel.js" defer></script>
+    <script src="/js/sourse/other-js/ion.rangeSlider.js" defer></script>
+    <script src="/js/common-dist.js" defer> </script>
+  </head>
+  <body> 
+    <!-- popup-menu end -->
+  </body>
+</html>
+<header>
+  <div class="main-grid">
+    <div class="col-4 vertical-align">
+      <nav class="nav-header">
+        <ul class="ln">
+          <li> <a href="#">Поиск по людям</a></li>
+          <li> <a href="#">Поиск по отелям</a></li>
+          <li> <a href="#">О Нас</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-2 logo-container"><a class="logo" href="#"> <img src="/images/logo.svg" alt=""></a></div>
+    <div class="col-5 vertical-align">
+      <div class="btn-container"> <a class="btn btn-out btn--white" href="#">Войти</a></div>
+    </div>
+  </div>
+</header>
+<div class="stub"></div>
+<div class="main-full border-search-outer">
+  <div class="border-tabs-container">
+    <div class="border-tab active">Поиск по людям</div>
+    <div class="border-tab">Поиск по отелям</div>
+  </div>
+  <div class="border-container border-null-left border-container-search">
+    <div class="main-grid">
+      <div class="input-box col-3"> 
+        <label>Город</label>
+          <select class="style-select" data-text="Выбрать селект">
+            <option>селект 1</option>
+            <option>селект 2</option>
+            <option>селект 3</option>
+            <option>селект 4</option>
+            <option>селект 5</option>
+          </select>
+      </div>
+      <div class="input-box col-2"> 
+        <label>Дата заезда</label>
+          <input class="input-decorate undefined" type="text" placeholder="От">
+      </div>
+      <div class="input-box col-2"> 
+        <label>Дата выезда</label>
+          <input class="input-decorate undefined" type="text" placeholder="До">
+      </div>
+      <div class="input-box col-2">
+        <label>Персон</label>
+          <input class="input-decorate undefined" type="text" placeholder="Количество">
+      </div>
+      <div class="col-3"> 
+        <div class="btn-container"> 
+          <div class="btn btn--blue-border">Еще фильтры</div>
+          <div class="btn btn--blue">Найти</div>
+        </div>
+      </div>
+      <div class="input-box col-3"> 
+        <label>Тип Места</label>
+          <select class="style-select" data-text="Выбрать селект">
+            <option>селект 1</option>
+            <option>селект 2</option>
+            <option>селект 3</option>
+            <option>селект 4</option>
+            <option>селект 5</option>
+          </select>
+      </div>
+      <div class="input-box col-2">
+        <label>Комнат</label>
+          <input class="input-decorate undefined" type="text" placeholder="Количество">
+      </div>
+      <div class="input-box col-2"> 
+        <label>Рейтинг места</label>
+          <input class="input-decorate undefined" type="text" placeholder="Количество">
+      </div>
+      <div class="input-box col-5">
+        <label>Искать</label>
+        <div class="switch-container"><span>По работе</span>
+          <div class="switch-input"><i></i></div><span>Для отдыха</span>
+        </div>
+      </div>
+      <div class="col-3 col-offset-10">
+        <div class="btn-container btn-container--bottom">
+          <div class="btn btn--blue-border">Свернуть</div>
+          <div class="btn btn--blue">Найти</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main-grid">
+  <div class="col-6">
+      <div class="hotels-item">
+        <div class="hotels-img-container">
+          <div class="hotels-img" style="background-image: url('/images/temp/hotel.jpg')"></div>
+          <div class="hotels-gradient"></div>
+          <div class="hotels-raiting-container"> 
+            <div>
+              <div class="hotels-raiting-num">8.9</div>
+            </div>
+            <div class="hotels-stars"> 
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star"> </div>
+            </div>
+            <div class="btn-container"> 
+              <div class="btn btn--white-border">Забронировать</div>
+            </div>
+          </div>
+        </div>
+        <div class="hotels-info">
+          <div class="hotels-name-container"> 
+            <div class="hotels-name">Mercure <br>Москва, м. Павелецкая</div>
+            <div class="hotels-goals"> 
+              <h3>Развлечения:</h3>
+              <div class="goals-ico"><i class="bokal-ico"></i></div>
+              <div class="goals-ico"><i class="pribor-ico"></i></div>
+              <div class="goals-ico"><i class="plag-ico"></i></div>
+              <div class="goals-ico"><i class="padushka-ico"></i></div>
+            </div>
+          </div>
+          <div class="hotels-price-container"> 
+            <div class="hotels-guest">1560 гостей</div>
+            <div class="btn btn--blue-border">Посмотреть всех</div>
+            <div class="hotels-price">от 8000 р.</div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="col-6">
+      <div class="hotels-item">
+        <div class="hotels-img-container">
+          <div class="hotels-img" style="background-image: url('/images/temp/hotel.jpg')"></div>
+          <div class="hotels-gradient"></div>
+          <div class="hotels-raiting-container"> 
+            <div>
+              <div class="hotels-raiting-num">8.9</div>
+            </div>
+            <div class="hotels-stars"> 
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star"> </div>
+            </div>
+            <div class="btn-container"> 
+              <div class="btn btn--white-border">Забронировать</div>
+            </div>
+          </div>
+        </div>
+        <div class="hotels-info">
+          <div class="hotels-name-container"> 
+            <div class="hotels-name">Mercure <br>Москва, м. Павелецкая</div>
+            <div class="hotels-goals"> 
+              <h3>Развлечения:</h3>
+              <div class="goals-ico"><i class="bokal-ico"></i></div>
+              <div class="goals-ico"><i class="pribor-ico"></i></div>
+              <div class="goals-ico"><i class="plag-ico"></i></div>
+              <div class="goals-ico"><i class="padushka-ico"></i></div>
+            </div>
+          </div>
+          <div class="hotels-price-container"> 
+            <div class="hotels-guest">1560 гостей</div>
+            <div class="btn btn--blue-border">Посмотреть всех</div>
+            <div class="hotels-price">от 8000 р.</div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="col-6">
+      <div class="hotels-item">
+        <div class="hotels-img-container">
+          <div class="hotels-img" style="background-image: url('/images/temp/hotel.jpg')"></div>
+          <div class="hotels-gradient"></div>
+          <div class="hotels-raiting-container"> 
+            <div>
+              <div class="hotels-raiting-num">8.9</div>
+            </div>
+            <div class="hotels-stars"> 
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star"> </div>
+            </div>
+            <div class="btn-container"> 
+              <div class="btn btn--white-border">Забронировать</div>
+            </div>
+          </div>
+        </div>
+        <div class="hotels-info">
+          <div class="hotels-name-container"> 
+            <div class="hotels-name">Mercure <br>Москва, м. Павелецкая</div>
+            <div class="hotels-goals"> 
+              <h3>Развлечения:</h3>
+              <div class="goals-ico"><i class="bokal-ico"></i></div>
+              <div class="goals-ico"><i class="pribor-ico"></i></div>
+              <div class="goals-ico"><i class="plag-ico"></i></div>
+              <div class="goals-ico"><i class="padushka-ico"></i></div>
+            </div>
+          </div>
+          <div class="hotels-price-container"> 
+            <div class="hotels-guest">1560 гостей</div>
+            <div class="btn btn--blue-border">Посмотреть всех</div>
+            <div class="hotels-price">от 8000 р.</div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="col-6">
+      <div class="hotels-item">
+        <div class="hotels-img-container">
+          <div class="hotels-img" style="background-image: url('/images/temp/hotel.jpg')"></div>
+          <div class="hotels-gradient"></div>
+          <div class="hotels-raiting-container"> 
+            <div>
+              <div class="hotels-raiting-num">8.9</div>
+            </div>
+            <div class="hotels-stars"> 
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star active"></div>
+              <div class="star"> </div>
+            </div>
+            <div class="btn-container"> 
+              <div class="btn btn--white-border">Забронировать</div>
+            </div>
+          </div>
+        </div>
+        <div class="hotels-info">
+          <div class="hotels-name-container"> 
+            <div class="hotels-name">Mercure <br>Москва, м. Павелецкая</div>
+            <div class="hotels-goals"> 
+              <h3>Развлечения:</h3>
+              <div class="goals-ico"><i class="bokal-ico"></i></div>
+              <div class="goals-ico"><i class="pribor-ico"></i></div>
+              <div class="goals-ico"><i class="plag-ico"></i></div>
+              <div class="goals-ico"><i class="padushka-ico"></i></div>
+            </div>
+          </div>
+          <div class="hotels-price-container"> 
+            <div class="hotels-guest">1560 гостей</div>
+            <div class="btn btn--blue-border">Посмотреть всех</div>
+            <div class="hotels-price">от 8000 р.</div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="main-full"> 
+  <div class="btn-container-section"> 
+    <div class="btn btn--blue">Загрузить ещё</div>
+  </div>
+</div>
+<div class="stub"></div>
+<footer>
+  <div class="main-grid">
+    <div class="col-3">
+      <div class="nav">
+        <h3> <a href="#">Юридическая информация</a></h3>
+        <ul>
+          <li> <a href="#"> Конфиденциальность</a></li>
+          <li> <a href="#"> Условия</a></li>
+          <li> <a href="#"> Политика в отношении</a></li>
+          <li> <a href="#"> файлов Cookie</a></li>
+          <li> <a href="#"> Интеллектуальная собственность</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="nav">
+        <h3> <a href="#">Дополнительная информация</a></h3>
+        <ul>
+          <li><a href="#">Кайтеринг на яхте</a></li>
+          <li><a href="#">Оформление яхты для торжественного события</a></li>
+          <li><a href="#">Аренда катера для рыбалки</a></li>
+          <li><a href="#">Водные активности</a></li>
+          <li><a href="#">Трансфер</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-6 footer-text">
+      <p>
+        Внимание всем одиноким людям — на самом деле вы не одиноки! 
+        Если ты хочешь найти любовь, отношения или новых друзей, то тебе надо в Tinder. 
+        Здесь уже образовано более 55 миллиардов пар, а значит ты точно найдешь тех, кто тебе близок. 
+        Посмотрим правде в глаза — сейчас все знакомятся онлайн. 
+        Tinder — это самое популярное приложение, которым пользуются миллионы парней и девушек для знакомства и общения рядом. 
+        К тому же в Tinder рады всем, независимо от сексуальной ориентации и гендерной идентичности.
+      </p>
+      <p>
+        В Tinder ты точно найдешь то, что ищешь. Хочешь новых отношений? 
+        Пожалуйста. Ищешь новых друзей? Без проблем. Ты учишься в универе и мечтаешь получить максимум от студенческой жизни? 
+        Для этого есть Tinder U. 
+        Tinder — это не просто сайт знакомств, а целая соцсеть, где самые разные люди со всего мира встречаются, 
+        заводят новых друзей и находят свою любовь.
+      </p>
+      <p>*Представленные фото являются моделями и используются для демонстрации.</p>
+    </div>
+  </div>
+  <div class="main-grid footer-bottom">
+    <div class="col-9">
+      <ul>
+        <li> <a href="#"> Конфиденциальность</a></li>
+        <li> <a href="#"> Условия</a></li>
+        <li> <a href="#"> Политика в отношении</a></li>
+        <li> <a href="#"> файлов Cookie</a></li>
+        <li> <a href="#"> Интеллектуальная собственность</a></li>
+      </ul>
+    </div>
+    <div class="col-3 footer-copyright">© 2023 HotPal. Все права защищены.</div>
+  </div>
+</footer>

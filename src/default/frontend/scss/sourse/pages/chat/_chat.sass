@@ -20,29 +20,7 @@
 		@include bgImageEl("../images/icons-app/add-photo.svg")
 		&:hover
 			opacity: 0.8
-	.invite-container
-		margin: 0 0 15px
-		text-align: right
-		h3
-			font-size: $smallSize
-			font-weight: 400
-			margin: 0 0 8px
-		.invite-ico
-			display: inline-block
-			width: 30px
-			height: 30px
-			border-radius: 100%
-			border: 1px solid $grayColor
-			text-align: center
-			display: inline-flex
-			cursor: pointer
-			margin-left: 8px
-			i
-				margin: auto
-			&.active,
-			&:hover
-				border-color: $blueColor
-				background-color: rgba($blueColor , 0.3 )
+
 	.file-decorate
 		border: 0
 		@include positionElement(30px,30px, 0, -55px, right, top, 2)
@@ -59,3 +37,45 @@
 		margin-top: 15px
 	.input-file
 		display: none
+
+.chat-invite-container
+	margin: 0 0 15px
+	text-align: right
+	h3
+		font-size: $smallSize
+		font-weight: 400
+		margin: 0 0 8px
+
+.invite-ico
+	display: inline-block
+	width: 30px
+	height: 30px
+	border-radius: 100%
+	border: 1px solid $grayColor
+	text-align: center
+	display: inline-flex
+	cursor: pointer
+	margin-left: 8px
+	position: relative
+	i
+		margin: auto
+
+	&:hover
+		border-color: $blueColor
+		background-color: rgba($blueColor , 0.3 )
+		span
+			visibility: visible
+			opacity: 1
+	span
+		position: absolute
+		background-color: rgba($blackColor , 0.9 )
+		padding: 1px 3px
+		color: $whiteColor
+		right: calc(100% + 4px)
+		top: 0
+		font-size: $smallSize
+		width: 180px
+		text-align: center
+		border-radius: 4px
+		opacity: 0
+		visibility: hidden

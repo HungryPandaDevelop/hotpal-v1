@@ -1,72 +1,86 @@
 
 import axios from 'axios';
 
-const Hotels = () => {
+// const Hotels = () => {
+
+//   const getApi = () => {
+
+
+//   }
+// }
 
 
 
+import { useState, useEffect } from 'react'
+
+import { getListing } from 'services/getListings';
+
+import { connect } from 'react-redux';
+
+import HotelSearchPanel from 'pages/hotels/catalog/HotelSearchPanel';
+import HotelsItem from 'pages/hotels/catalog/HotelsItem';
+
+const HotelsCatalog = ({ uid }) => {
+
+  const [listings, setListings] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
+
+  const [searchListing, setSearchListing] = useState();
+
+  useEffect(() => {
+
+
+    getListing('users', 'noUserRef', uid).then((res) => {
+
+      setSearchListing(res);
+      setListings(res);
+      setLoading(false);
+    });
+
+  }, []);
 
 
   const getApi = () => {
-
-    // axios.get("/api").then(res => {
-    //   console.log('res', res.data.getData)
-    // });
     axios.get("http://hotpal.sait.website/api.php").then(res => {
       console.log('res', res.data.data)
     });
-
-    // fetch("/api")
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //   });
-
-
-
-    // trash
-    // axios.get({
-    //   method: 'POST',
-    //   url: "http://hotpal.sait.website/api.php",
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-
-    //   },
-    // }).then(res => {
-    //   console.log('res', res)
-    // });
-
-
-    // fetch('http://hotpal.sait.website/api.php', {
-    //   method: "POST",
-    //   header: {
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-    //   body: JSON.stringify({ action: 1 })
-    // }).then(res => res.text())
-    //   .then(res => {
-    //     console.log('res', res)
-    //   })
   }
+
+  if (loading) { return 'Loading...' }
 
 
   return (
-    <div>
-      HotelsCatalog
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="btn"
-        onClick={getApi}
-      >GET</div>
-
-    </div>
+    <>
+      <div className="stub"></div>
+      <div className="btn" onClick={getApi}>getApi</div>
+      {/* <HotelSearchPanel
+        listings={listings}
+        searchListing={searchListing}
+        setSearchListing={setSearchListing}
+      /> */}
+      <div className="catalog-grid main-grid">
+        {/* {searchListing.map((user, index) => ( */}
+        <div
+          // key={index} 
+          className="col-6">
+          <HotelsItem
+          // user={user}
+          // uid={uid}
+          />
+        </div>
+        {/* ))} */}
+      </div>
+    </>
   )
 }
 
-export default Hotels
+
+const mapStateToProps = (state) => {
+  return {
+    uid: state.account.uid
+  }
+}
+
+export default connect(mapStateToProps)(HotelsCatalog);

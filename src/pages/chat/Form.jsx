@@ -1,5 +1,7 @@
 import RenderForm from 'components/forms/RenderForm';
 import RenderFormChat from 'components/forms/RenderFormChat';
+
+import { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { chatFields } from 'base/forms/chatFields';
@@ -10,12 +12,20 @@ import { sendMessage } from 'services/chatEvents';
 
 const Form = ({ formData, uid, roomId, type }) => {
 
-  const submitSuccess = () => {
-    console.log(formData.values)
 
-    sendMessage(roomId, uid, formData.values.message, formData.values.fileMessage, formData.values.invite,);
-    formData.values.message = '';
-    formData.values.fileMessage = [];
+
+  const submitSuccess = () => {
+
+    let message = {
+      text: formData?.values.message ? formData.values.message : '',
+      invite: formData?.values.invite ? formData.values.invite : '',
+      imgs: formData?.values.fileMessage ? formData.values.fileMessage : ''
+    }
+
+    console.log('formData', message)
+
+    sendMessage(roomId, uid, message);
+
   }
 
 
