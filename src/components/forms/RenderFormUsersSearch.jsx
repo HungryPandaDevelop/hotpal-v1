@@ -1,5 +1,6 @@
 import RenderFields from 'components/forms/RenderFields';
-import RenderBtnContainer from 'components/forms/formUserSearch/RenderBtnContainer';
+import RenderBtnContainer from 'components/forms/formSearch/RenderBtnContainer';
+import Tabs from 'components/forms/formSearch/Tabs';
 
 import { reduxForm } from 'redux-form';
 
@@ -37,10 +38,7 @@ const UsersSearchPanel = (props) => {
 
   return (
     <div className="main-full border-search-outer">
-      <div className="border-tabs-container">
-        <div className="border-tab active">Поиск по людям</div>
-        <div className="border-tab">Поиск по отелям</div>
-      </div>
+      <Tabs active="users" />
       <div className="border-container border-null-left border-container-search">
         <div className="main-grid">
           <RenderFields

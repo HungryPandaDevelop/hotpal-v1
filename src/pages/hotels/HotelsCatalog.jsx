@@ -29,17 +29,18 @@ const HotelsCatalog = ({ uid }) => {
 
   const [searchListing, setSearchListing] = useState();
 
-  useEffect(() => {
+  // useEffect(() => {
 
+  //   // console.log(region)
 
-    getListing('users', 'noUserRef', uid).then((res) => {
+  //   getListing('users', 'noUserRef', uid).then((res) => {
 
-      setSearchListing(res);
-      setListings(res);
-      setLoading(false);
-    });
+  //     setSearchListing(res);
+  //     setListings(res);
+  //     setLoading(false);
+  //   });
 
-  }, []);
+  // }, []);
 
 
   const getApi = () => {
@@ -48,18 +49,18 @@ const HotelsCatalog = ({ uid }) => {
     });
   }
 
-  if (loading) { return 'Loading...' }
+  // if (loading) { return 'Loading...' }
 
 
   return (
     <>
       <div className="stub"></div>
       <div className="btn" onClick={getApi}>getApi</div>
-      {/* <HotelSearchPanel
-        listings={listings}
-        searchListing={searchListing}
-        setSearchListing={setSearchListing}
-      /> */}
+      <HotelSearchPanel
+      // listings={listings}
+      // searchListing={searchListing}
+      // setSearchListing={setSearchListing}
+      />
       <div className="catalog-grid main-grid">
         {/* {searchListing.map((user, index) => ( */}
         <div
