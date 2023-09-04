@@ -1,61 +1,24 @@
-const express = require('express');
-const app = express();
-  
+const fs = require('fs');
+const ZstdCodec = require('zstd-codec').ZstdCodec;
 
-// app.listen(3000, function(req, res) {
-//   console.log("Server is running at port 3000");
-// });
-const axios = require('axios');
+const inputFileName = './data/partner_feed_en.json.zst'; // Замените на имя вашего файла .zst
 
-const searchParams = JSON.stringify({
-  "checkin": "2023-09-01",
-  "checkout": "2023-09-26",
-  // "residency": "gb",
-  "language": "ru",
-  "guests": [
-      {
-          "adults": 2,
-          "children": []
-      }
-  ],
-  "longitude": 37.778002,
-  "latitude": 55.717396,
-  "radius": 1000,
-  // "currency": "EUR"
-});
+// Чтение данных из файла .zst
+const compressedData = fs.readFileSync(inputFileName);
 
-let config = {
-  method: 'post',
-  maxBodyLength: Infinity,
-  url: 'https://api.worldota.net/api/b2b/v3/search/serp/geo/',
-  headers: { 
-    'Content-Type': 'application/json', 
-    'Authorization': 'Basic NTg5NzphNWE0OGQyYi0yZTI1LTQ1MDEtOTE1YS1jNDdkNWQzMjkyZTA=', 
-    'Cookie': 'uid=TfTb5mTOTN6RwwqhjuQSAg=='
+// Распаковка данных
+ZstdCodec.run(zstd => {
+    const streaming = new zstd.Streaming();
     
-  },
-  data: searchParams
-};
-
-let getData;
-
-axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-  getData = response.data;
-})
-.catch((error) => {
-  console.log(error);
-});
-
-
-app.get('/api', function(req, res) {
-  res.json({
-    getData
-  });
-});
-
-
-app.listen(5000, function(req, res) {
-    console.log("Server is running at port 5000");
+    const decompressedData = streaming.decompress(compressedData);
+    
+    try {
+        // Разбор JSON
+        const jsonData = JSON.parse(decompressedData.toString());
+        
+        // Теперь у вас есть доступ к данным из JSON
+        console.log(jsonData);
+    } catch (parseError) {
+        console.error('Ошибка разбора JSON:', parseError);
+    }
 });

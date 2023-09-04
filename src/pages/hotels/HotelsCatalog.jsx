@@ -1,6 +1,7 @@
 
 import axios from 'axios';
-
+// 5897
+// a5a48d2b-2e25-4501-915a-c47d5d3292e0
 // const Hotels = () => {
 
 //   const getApi = () => {
@@ -9,7 +10,8 @@ import axios from 'axios';
 //   }
 // }
 
-
+// import { decompress } from 'simple-zstd';
+import { init, compress, decompress } from '@bokuweb/zstd-wasm';
 
 import { useState, useEffect } from 'react'
 
@@ -19,6 +21,9 @@ import { connect } from 'react-redux';
 
 import HotelSearchPanel from 'pages/hotels/catalog/HotelSearchPanel';
 import HotelsItem from 'pages/hotels/catalog/HotelsItem';
+
+
+// import zsTfile from 'data/test.json';
 
 const HotelsCatalog = ({ uid }) => {
 
@@ -42,34 +47,101 @@ const HotelsCatalog = ({ uid }) => {
 
   // }, []);
 
+  const [regionList, setRegionList] = useState([]);
+  const [hotelList, setHotelList] = useState([]);
 
-  const getApi = () => {
-    axios.get("http://hotpal.sait.website/api.php").then(res => {
-      console.log('res', res.data.data)
+  const getRegion = (term) => {
+    axios.get("http://hotpal.sait.website/api/api-region.php", {
+      params: {
+        query: term
+      }
+    }).then(res => {
+
+      console.log('res', res)
+      const response = res.data.data.regions;
+      setRegionList(response)
+    });
+  }
+  const getHotels = (id) => {
+    console.log('loading....')
+    axios.get("http://hotpal.sait.website/api/api-hotels.php", {
+      params: {
+        regionId: id
+      }
+    }).then(res => {
+
+      console.log('hotel', res)
+
     });
   }
 
   // if (loading) { return 'Loading...' }
 
+  let searchTimeId = null;
+  let [regionId, setRegionId] = useState(0);
 
+  const onTempVal = (e) => {
+
+    if (searchTimeId) { clearTimeout(searchTimeId) };
+    searchTimeId = setTimeout(() => {
+
+      getRegion(e.target.value)
+    }, 1000)
+
+  }
+  let onChoiseRegion = (id) => {
+    setRegionId(id)
+    getHotels(id)
+  }
+
+  // const onSearch = (term) => {
+
+  //   console.log('get', sVal)
+  // }
+
+  const [downloading, setDownloading] = useState(false);
+
+
+
+  const [jsonData, setJsonData] = useState(null);
+  const getBaseInner = () => {
+
+
+
+
+  }
   return (
     <>
       <div className="stub"></div>
-      <div className="btn" onClick={getApi}>getApi</div>
-      <HotelSearchPanel
+      <div className="btn" onClick={getRegion}>getApi</div>
+      <input type='text' onKeyUp={onTempVal} />
+      {
+        regionList.map(item => (
+          <div
+            key={item.id}
+            onClick={() => { onChoiseRegion(item.id) }}
+          >{item.name}</div>
+        ))
+      }
+      <h3>regiond id</h3>
+      {regionId}
+      {/* <div className="btn btn--blue" onClick={getBaseInner}>{downloading ? 'Скачивается...' : 'Скачать файл'}</div> */}
+      <div className="btn btn--blue" onClick={getBaseInner}>Посмотреть</div>
+      {/* <div className="btn btn--blue">search</div> */}
+      {/* <HotelSearchPanel
       // listings={listings}
       // searchListing={searchListing}
       // setSearchListing={setSearchListing}
-      />
+      /> */}
       <div className="catalog-grid main-grid">
         {/* {searchListing.map((user, index) => ( */}
         <div
           // key={index} 
           className="col-6">
-          <HotelsItem
+          {/* <HotelsItem
           // user={user}
           // uid={uid}
-          />
+          /> */}
         </div>
         {/* ))} */}
       </div>
