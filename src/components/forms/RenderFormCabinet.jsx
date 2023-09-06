@@ -1,4 +1,5 @@
 import RenderFields from 'components/forms/RenderFields';
+import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainer'
 
 import { reduxForm } from 'redux-form';
 
@@ -146,13 +147,11 @@ const TemplateForm = (props) => {
               checkErrorSubmit={checkErrorSubmit}
               setErrCheck={setErrCheck}
             />
-            <div className="btn-container">
-              <button className="btn btn--blue" onClick={(e) => { onSubmit(e) }} >
-                {waitAnsw ? (<>Loading...</>) : (
-                  <><i></i><span>{btnSubmiText}</span></>
-                )}
-              </button>
-            </div>
+            <RenderBtnContainer
+              btnSubmitText={btnSubmiText}
+              waitAnsw={waitAnsw}
+              onSubmit={onSubmit}
+            />
           </div>
 
         </div>

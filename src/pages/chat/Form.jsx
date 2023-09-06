@@ -34,14 +34,14 @@ const Form = ({ formData, uid, roomId, type }) => {
       {type === 'page' ? (
         <RenderFormChat
           fields={chatFields}
-          btnSubmiText="Отправить"
+          btnSubmitText="Отправить"
           submitSuccess={submitSuccess}
           colBtn="col-4"
         />
       ) : (
         <RenderForm
           fields={chatPopupFields}
-          btnSubmiText="Отправить"
+          btnSubmitText="Отправить"
           submitSuccess={submitSuccess}
           colBtn="col-12"
         />

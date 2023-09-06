@@ -30,6 +30,8 @@ import UsersCatalog from 'pages/users/UserCatalog';
 import UsersDetail from 'pages/users/UserDetail';
 
 import HotelsCatalog from 'pages/hotels/HotelsCatalog';
+import HotelsDetail from 'pages/hotels/HotelsDetail';
+import HotelsBooking from 'pages/hotels/HotelsBooking';
 
 import Chat from 'pages/chat/Chat';
 import GetRooms from 'pages/chat/getRooms';
@@ -64,6 +66,8 @@ const App = ()=> {
             <Route path='/users-catalog/:userId' element={<UsersDetail/>}></Route>
 
             <Route path='/hotels-catalog' element={<HotelsCatalog/>}></Route>
+            <Route path='/hotels-catalog/:hotelId' element={<HotelsDetail/>}></Route>
+            <Route path='/hotels-booking/:hotelId' element={<HotelsBooking/>}></Route>
 
             <Route path='/cabinet' element={<PrivatRoute/>} >
               <Route index element={<Cabinet/>} ></Route>

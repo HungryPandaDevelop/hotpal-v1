@@ -1,7 +1,6 @@
 
 import RenderForm from 'components/forms/RenderFormHotelsSearch';
 
-
 import { hotelsSearchFields } from 'base/forms/hotelsSearchFields';
 
 import { connect } from 'react-redux';
@@ -27,7 +26,6 @@ const HotelsSearchPanel = ({
     <>
       <RenderForm
         fields={hotelsSearchFields}
-        btnSubmiText="Найти"
         submitSuccess={submitSuccess}
         resetForm={resetForm}
       // resetAll={resetAll}

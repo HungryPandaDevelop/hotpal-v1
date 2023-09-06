@@ -128,20 +128,20 @@ const HotelsCatalog = ({ uid }) => {
       {/* <div className="btn btn--blue" onClick={getBaseInner}>{downloading ? 'Скачивается...' : 'Скачать файл'}</div> */}
       <div className="btn btn--blue" onClick={getBaseInner}>Посмотреть</div>
       {/* <div className="btn btn--blue">search</div> */}
-      {/* <HotelSearchPanel
+      <HotelSearchPanel
       // listings={listings}
       // searchListing={searchListing}
       // setSearchListing={setSearchListing}
-      /> */}
+      />
       <div className="catalog-grid main-grid">
         {/* {searchListing.map((user, index) => ( */}
         <div
           // key={index} 
           className="col-6">
-          {/* <HotelsItem
+          <HotelsItem
           // user={user}
           // uid={uid}
-          /> */}
+          />
         </div>
         {/* ))} */}
       </div>

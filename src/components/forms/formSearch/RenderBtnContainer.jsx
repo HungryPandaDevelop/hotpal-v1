@@ -6,24 +6,24 @@ const RenderBtnContainer = (props) => {
     wrapClass,
     changeStatePanel,
     waitAnsw,
-    btnText,
     onSubmit,
-    btnSubmiText,
+    btnMoreText,
+    btnSubmitText,
     reset,
     resetForm
   } = props;
 
 
   const resetAll = () => {
-    reset()
-    resetForm()
+    reset();
+    resetForm();
   }
 
   return (
     <div className={wrapClass}>
       <div className="btn-container">
-        <div className="btn btn--blue-border" onClick={changeStatePanel}>{waitAnsw ? (<>Loading...</>) : btnText}</div>
-        <div className="btn btn--blue" onClick={(e) => { onSubmit(e) }}>{btnSubmiText}</div>
+        {btnMoreText && (<div className="btn btn--blue-border" onClick={changeStatePanel}>{btnMoreText}</div>)}
+        <div className="btn btn--blue" onClick={(e) => { onSubmit(e) }}>{waitAnsw ? (<>Loading...</>) : btnSubmitText}</div>
         <div className="btn btn--blue-border" onClick={(e) => { resetAll() }}>Сбросить</div>
       </div>
     </div>

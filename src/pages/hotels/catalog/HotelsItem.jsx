@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom"
 
 const UserItem = () => {
   return (
-    <div className="hotels-item">
+    <Link to="/hotels-catalog/test" className="hotels-item">
       <div className="hotels-img-container">
         <div className="hotels-img"
         // style="background-image: url('/images/temp/hotel.jpg')"
@@ -40,7 +41,7 @@ const UserItem = () => {
           <div className="hotels-price">от 8000 р.</div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

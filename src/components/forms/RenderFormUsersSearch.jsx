@@ -12,7 +12,6 @@ const UsersSearchPanel = (props) => {
 
   const {
     fields,
-    btnSubmiText,
     waitAnsw,
     submitSuccess,
     reset,
@@ -57,11 +56,11 @@ const UsersSearchPanel = (props) => {
           {fullPanel ?
             <RenderBtnContainer
               wrapClass="col-4"
-              btnText="Еще фильтры"
+              btnMoreText="Еще фильтры"
               changeStatePanel={changeStatePanel}
               waitAnsw={waitAnsw}
               onSubmit={onSubmit}
-              btnSubmiText={btnSubmiText}
+              btnSubmitText="Найти"
               reset={reset}
               resetForm={resetForm}
 
@@ -90,11 +89,11 @@ const UsersSearchPanel = (props) => {
                 />
                 <RenderBtnContainer
                   wrapClass="col-offset-9 col-4"
-                  btnText="Свернуть"
+                  btnMoreText="Свернуть"
                   changeStatePanel={changeStatePanel}
                   waitAnsw={waitAnsw}
                   onSubmit={onSubmit}
-                  btnSubmiText={btnSubmiText}
+                  btnSubmitText="Найти"
                   reset={reset}
                   resetForm={resetForm}
 

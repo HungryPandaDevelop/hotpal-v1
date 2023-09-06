@@ -1,5 +1,5 @@
 import RenderFields from 'components/forms/RenderFields';
-
+import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainer'
 import { reduxForm } from 'redux-form';
 
 import { useState } from 'react';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 let TemplateForm = (props) => {
   const {
     fields,
-    btnSubmiText,
+    btnSubmitText,
     waitAnsw,
     submitSuccess,
     colBtn
@@ -55,13 +55,13 @@ let TemplateForm = (props) => {
         setErrCheck={setErrCheck}
         onSubmit={onSubmit}
       />
-      <div className={`${colBtn ? colBtn : 'col-12'} btn-container`}>
-        <button className="btn btn--blue" onClick={(e) => { onSubmit(e) }} >
-          {waitAnsw ? (<>Loading...</>) : (
-            <><i></i><span>{btnSubmiText}</span></>
-          )}
-        </button>
-      </div>
+      <RenderBtnContainer
+        colBtn={colBtn}
+        btnSubmitText={btnSubmitText}
+        waitAnsw={waitAnsw}
+        onSubmit={onSubmit}
+      />
+
     </form >
   )
 }

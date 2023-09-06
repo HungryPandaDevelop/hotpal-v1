@@ -28,7 +28,6 @@ const UsersSearchPanel = ({
     <>
       <RenderForm
         fields={usersSearchFields}
-        btnSubmiText="Найти"
         submitSuccess={submitSuccess}
         resetForm={resetForm}
       // resetAll={resetAll}

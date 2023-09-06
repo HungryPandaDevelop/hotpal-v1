@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import Tabs from 'components/forms/formSearch/Tabs';
 
-const UsersSearchPanel = (props) => {
+const HotelsSearchPanel = (props) => {
 
   const {
     fields,
@@ -70,12 +70,10 @@ const UsersSearchPanel = (props) => {
             fields={fields.raiting}
           />
           <RenderBtnContainer
-            wrapClass="col-offset-9 col-4"
-            btnText="Свернуть"
-            changeStatePanel={changeStatePanel}
+            wrapClass="col-3"
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
-            btnSubmiText={btnSubmiText}
+            btnSubmitText="Найти"
             reset={reset}
             resetForm={resetForm}
 
@@ -95,4 +93,4 @@ const UsersSearchPanel = (props) => {
 export default reduxForm({
   form: 'usersSearch',
   enableReinitialize: true,
-})(UsersSearchPanel);
+})(HotelsSearchPanel);
