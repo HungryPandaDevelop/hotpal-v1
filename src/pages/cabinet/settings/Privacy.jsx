@@ -13,7 +13,7 @@ const Privacy = ({ formData, uid, listings }) => {
   return (
     <RenderForm
       fields={settingsPrivacy}
-      btnSubmiText="Сохранить"
+      btnSubmitText="Сохранить"
       initialValues={listings}
       submitSuccess={submitSuccess}
     />

@@ -46,7 +46,7 @@ const TemplateForm = (props) => {
     <form>
       <div className="border-container border-null-left account-main">
         <div className="main-grid">
-          <div className="col-8">
+          <div className="col-8 col-xs-12">
             <div className="user-top-info">
               <RenderFields
                 type="single"
@@ -74,7 +74,7 @@ const TemplateForm = (props) => {
               fields={fields.currentLocation}
             />
           </div>
-          <div className="col-4">
+          <div className="col-4 col-xs-12">
             <RenderFields
               type="single"
               fields={fields.imgsAccount}
@@ -83,14 +83,14 @@ const TemplateForm = (props) => {
           <div className="col-12">
             <div className="border-delimetr border-account"></div>
           </div>
-          <div className="col-8">
+          <div className="col-8 col-xs-12">
             <RenderFields
               type="single"
               fields={fields.interests}
             />
 
           </div>
-          <div className="col-4">
+          <div className="col-4 col-xs-12">
             <div className="personal-info">
               <ul className="ln">
                 <li>

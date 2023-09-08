@@ -7,6 +7,7 @@ import PrivatRoute from 'blocks/PrivatRoute.jsx';
 import Header from 'blocks/Header';
 import Footer from 'blocks/footer/Footer';
 
+
 import ControlsPanel from 'blocks/ControlsPanel';
 
 import CheckAuth from 'blocks/header/CheckAuth';
@@ -49,6 +50,7 @@ const App = ()=> {
           <CheckAuth />
           <GetRooms />
           <Header />
+          
           <ControlsPanel />
           
           

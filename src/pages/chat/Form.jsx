@@ -36,7 +36,7 @@ const Form = ({ formData, uid, roomId, type }) => {
           fields={chatFields}
           btnSubmitText="Отправить"
           submitSuccess={submitSuccess}
-          colBtn="col-4"
+          colBtn="col-4 col-xs-12"
         />
       ) : (
         <RenderForm

@@ -12,7 +12,7 @@ const Passwords = () => {
   return (
     <RenderForm
       fields={settingsPassword}
-      btnSubmiText="Поменять пароль"
+      btnSubmitText="Поменять пароль"
       submitSuccess={submitSuccess}
     />
   )

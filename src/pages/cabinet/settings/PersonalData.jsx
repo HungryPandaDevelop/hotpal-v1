@@ -15,7 +15,7 @@ const PersonalData = ({ formData, uid, listings }) => {
   return (
     <RenderForm
       fields={settingsPrivateData}
-      btnSubmiText="Сохранить"
+      btnSubmitText="Сохранить"
       initialValues={listings}
       submitSuccess={submitSuccess}
     />

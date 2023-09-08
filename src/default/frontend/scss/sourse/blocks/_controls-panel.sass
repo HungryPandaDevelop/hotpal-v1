@@ -95,3 +95,21 @@
 
 .likes-popup
   padding: 0
+
+@media (max-width: 576px)
+  .controls-panel
+    width: 100%
+    top: calc(100% - 60px)
+    height: 60px
+    padding: 0
+  .controls-btn
+    display: inline-block
+    width: 24%
+  .controls-panel-popup
+    position: fixed
+    top: 40px
+    width: calc(100% - 30px)
+    right: 15px
+    height: calc(100vh - 120px)
+    .panel-deg
+      display: none

@@ -28,7 +28,7 @@ const FavoritesItem = ({ list, listing, setListing, type }) => {
   };
 
   return (
-    <div className="col-4">
+    <div className="col-4 col-xs-12">
       <div className="favorites-item">
         <div className="img-cover-info">
           <div className="favorites-img img-use-bg" style={userImg(user)}></div>

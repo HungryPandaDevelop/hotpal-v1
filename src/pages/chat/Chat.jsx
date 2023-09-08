@@ -22,14 +22,14 @@ const Chat = ({ uid }) => {
 
         <div className="border-container border-null-left chat">
           <div className='main-grid'>
-            <div className="col-4">
+            <div className="col-4 col-xs-12">
               <Rooms
                 uid={uid}
                 roomId={params.roomId}
                 type='page'
               />
             </div>
-            <div className="col-8">
+            <div className="col-8 col-xs-12">
               <div className="chat-messages">
                 {params.roomId ? (<>
                   <Messages

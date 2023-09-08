@@ -16,8 +16,8 @@ const InfoAccount = ({ account }) => {
 
       {account.uid ? (
         <>
-          <Link to="/cabinet/chat" className="btn btn-out btn--white">Чат</Link>
-          <Link to="/cabinet" className="btn btn-out btn--white">Кабинет</Link>
+          <Link to="/cabinet/chat" className="btn btn-chat btn--white">Чат</Link>
+          <Link to="/cabinet" className="btn btn-cabinet btn--white">Кабинет</Link>
           <div
             className="btn btn--white"
             onClick={onLogOut}

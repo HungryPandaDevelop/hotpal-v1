@@ -15,9 +15,11 @@ header
   .btn
     padding: 2px 5px
     font-size: inherit
+    margin: 0 8px
   .btn-container
     margin-left: auto
-  .hamburger-btn
+
+  .mobile-container
     display: none
 .logo
   img
@@ -29,7 +31,7 @@ header
   width: 100%
   ul
     display: flex
-    justify-content: space-between
+    justify-content: space-around
     width: 100%
     font-weight: 600
     list-style: none
@@ -47,3 +49,19 @@ header
 .feedback-header
   margin-left: auto
   gap: 30px
+
+@media (max-width: 576px)
+  .logo
+    img
+      width: 100px
+      top: 15px
+  header
+    .main-grid
+      gap: 0
+    .mobile-container
+      display: flex
+      text-align: right
+    .btn-hamburger
+      margin-left: auto
+  .stub
+    height: 70px
