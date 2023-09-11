@@ -1,4 +1,5 @@
 .hotels-item
+  text-decoration: none
 .hotels-img
   @include bgImageEl("../images/stub-ico.svg", cover)
   @include positionElement(100%,100%,0,0)
@@ -69,3 +70,14 @@
   margin: 0 0 15px
 .hotels-price
   margin-top: 15px
+@media (max-width: 576px)
+  .hotels-item
+  .hotels-raiting-container
+    padding: 15px
+  .hotels-stars .star
+    width: 10px
+    height: 10px
+  .hotels-name
+    font-size: 18px
+  .hotels-guest
+    font-size: 21px

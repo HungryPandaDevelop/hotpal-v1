@@ -34,11 +34,21 @@ const UsersSearchPanel = (props) => {
 
   };
 
+  const [showMobile, setShowMobile] = useState(false);
+
+
 
   return (
     <div className="main-full border-search-outer">
+
       <Tabs active="users" />
-      <div className="border-container border-null-left border-container-search">
+      <div className="show-filter-mobile-container">
+        <div className="show-filter-mobile" onClick={() => { setShowMobile(!showMobile) }}>
+          <span>Показать фильтр</span>
+          <i></i>
+        </div>
+      </div>
+      <div className={`border-container border-null-left border-container-search ${showMobile ? 'active' : ''}`}>
         <div className="main-grid">
           <RenderFields
             type="single"
@@ -55,7 +65,7 @@ const UsersSearchPanel = (props) => {
           />
           {fullPanel ?
             <RenderBtnContainer
-              wrapClass="col-4"
+              wrapClass="col-4 col-12"
               btnMoreText="Еще фильтры"
               changeStatePanel={changeStatePanel}
               waitAnsw={waitAnsw}
@@ -88,7 +98,7 @@ const UsersSearchPanel = (props) => {
                   fields={fields.orientation}
                 />
                 <RenderBtnContainer
-                  wrapClass="col-offset-9 col-4"
+                  wrapClass="col-offset-9 col-4 col-xs-12 col-xs-offset-1"
                   btnMoreText="Свернуть"
                   changeStatePanel={changeStatePanel}
                   waitAnsw={waitAnsw}

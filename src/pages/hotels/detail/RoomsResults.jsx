@@ -4,12 +4,12 @@ const RoomsResults = () => {
   return (
     <div className="rooms-results">
       <div className="main-grid">
-        <div className="col-9">
+        <div className="col-9 col-xs-12">
           <RoomItem />
           <RoomItem />
 
         </div>
-        <div className="col-3">
+        <div className="col-3 col-xs-12">
           <div className="rooms-total">
             <span>Всего:</span>
             <ul className="ln">

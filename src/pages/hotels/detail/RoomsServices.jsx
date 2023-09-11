@@ -8,7 +8,7 @@ const RoomsServices = () => {
         <h3>Все услуги и удобства</h3>
       </div>
       <div className="main-grid">
-        <div className="col-4">
+        <div className="col-4 col-xs-12">
           <div className="rooms-services-item">
             <img src={tempIco} className='rooms-services-ico' alt="" />
             <div className="rooms-services-text">
@@ -16,7 +16,7 @@ const RoomsServices = () => {
             </div>
           </div>
         </div>
-        <div className="col-4">
+        <div className="col-4 col-xs-12">
           <div className="rooms-services-item">
             <img src={tempIco} className='rooms-services-ico' alt="" />
             <div className="rooms-services-text">
@@ -24,7 +24,7 @@ const RoomsServices = () => {
             </div>
           </div>
         </div>
-        <div className="col-4">
+        <div className="col-4 col-xs-12">
           <div className="rooms-services-item">
             <img src={tempIco} className='rooms-services-ico' alt="" />
             <div className="rooms-services-text">

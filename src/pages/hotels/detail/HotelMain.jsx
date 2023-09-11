@@ -25,7 +25,7 @@ const HotelMain = () => {
       <div className="hotel-main">
         <div className="hotel-main-top">
           <div className="main-grid">
-            <div className="col-6">
+            <div className="col-6 col-xs-12">
               <div className="hotels-raiting-num">8.9</div>
               <h1>
                 Mercure
@@ -39,7 +39,7 @@ const HotelMain = () => {
                 <div className="star"></div>
               </div>
             </div>
-            <div className="col-6">
+            <div className="col-6 col-xs-12">
               <div className="hotel-address">
                 <i className="marker-ico"></i>
                 <span>
@@ -95,7 +95,7 @@ const HotelMain = () => {
         </div>
         <div className="hotel-main-bottom">
           <div className="main-grid">
-            <div className="col-6">
+            <div className="col-6 col-xs-12">
               <div className="hotel-services">
                 <h3>Главные удобства отеля:</h3>
                 <ul className='ln'>
@@ -119,7 +119,7 @@ const HotelMain = () => {
               </div>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 col-xs-12">
               <div className="hotel-contacts">
                 <h3>Бронирование:</h3>
                 <div>
@@ -127,7 +127,7 @@ const HotelMain = () => {
                 </div>
               </div>
             </div>
-            <div className="col-3">
+            <div className="col-3 col-xs-12">
               <div className="hotel-contacts">
                 <h3>Контактные данные:</h3>
                 <ul className="ln">

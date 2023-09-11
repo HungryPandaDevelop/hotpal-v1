@@ -35,7 +35,11 @@ const UserDetail = ({ uid, sympathys }) => {
       <div className="main-full">
         <div className="border-container">
           <div className="main-grid">
-            <div className="col-8">
+            <div className="col-4 col-xs-12 photos-mobile">
+              {user.imgsAccount && <Photos user={user} />}
+            </div>
+            <div className="col-8 col-xs-12">
+
               <UserTop user={user} />
               <div className="user-middle-info">
                 <GoalsUsers user={user} />
@@ -46,16 +50,16 @@ const UserDetail = ({ uid, sympathys }) => {
               </div>
               {user.currentLocation && <Location user={user} />}
             </div>
-            <div className="col-4">
+            <div className="col-4 hidden-xs">
               {user.imgsAccount && <Photos user={user} />}
             </div>
             <div className="col-12">
               <div className="border-delimetr border-account"></div>
             </div>
-            <div className="col-8">
+            <div className="col-8 col-xs-12">
               <InterestsUsers user={user} />
             </div>
-            <div className="col-4">
+            <div className="col-4 col-xs-12">
               <PersonalInfo user={user} />
             </div>
             <div className="col-12">

@@ -33,12 +33,21 @@ const HotelsSearchPanel = (props) => {
     submitSuccess();
 
   };
+  const [showMobile, setShowMobile] = useState(false);
+
 
 
   return (
     <div className="main-full border-search-outer">
       <Tabs active="hotels" />
-      <div className="border-container border-null-left border-container-search">
+      <div className="show-filter-mobile-container">
+        <div className="show-filter-mobile" onClick={() => { setShowMobile(!showMobile) }}>
+          <span>Показать фильтр</span>
+          <i></i>
+        </div>
+      </div>
+      <div className={`border-container border-null-left border-container-search ${showMobile ? 'active' : ''}`}>
+
         <div className="main-grid">
           <RenderFields
             type="single"
@@ -70,7 +79,7 @@ const HotelsSearchPanel = (props) => {
             fields={fields.raiting}
           />
           <RenderBtnContainer
-            wrapClass="col-3"
+            wrapClass="col-3 col-xs-12"
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
             btnSubmitText="Найти"

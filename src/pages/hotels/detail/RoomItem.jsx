@@ -31,7 +31,7 @@ const RoomItem = () => {
       </div>
       <div className="room-item-variant">
         <div className="main-grid">
-          <div className="col-4">
+          <div className="col-4 col-xs-12">
             <ul className="room-variant-services ln">
               <li>
                 <img src={tempIco} alt="" />
@@ -47,7 +47,7 @@ const RoomItem = () => {
               </li>
             </ul>
           </div>
-          <div className="col-4">
+          <div className="col-4 col-xs-12">
             <ul className="room-variant-services ln">
               <li>
                 <img src={tempIco} alt="" />
@@ -59,10 +59,10 @@ const RoomItem = () => {
               </li>
             </ul>
           </div>
-          <div className="col-2">
+          <div className="col-2 col-xs-12">
             <input type="text" className='input-decorate' />
           </div>
-          <div className="col-2">
+          <div className="col-2 col-xs-12">
             <div className="room-variant-price">
               10 000 руб.
             </div>
