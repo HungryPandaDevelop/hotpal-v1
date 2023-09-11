@@ -4,6 +4,10 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
+
+import { getSingleListing } from 'services/getSingleListing';
+
+
 import { saveListing } from 'services/saveListing';
 
 const CheckAuth = ({
@@ -12,21 +16,33 @@ const CheckAuth = ({
 
   const auth = getAuth();
 
+
   useEffect(() => {
     // const user = false;
 
     onAuthStateChanged(auth, (user) => {
 
       if (user) {
+        // console.log(user)
 
-        const userInfo = {
-          // name: user.displayName,
-          email: user.email,
-          uid: user.uid,
-        }
-        saveListing(userInfo, user.uid, 'users');
-        localStorage.setItem('account', JSON.stringify(userInfo));
-        ActionFn('SET_INFO_ACCOUNT', userInfo);
+
+        getSingleListing('users', user.uid).then(res => {
+          // console.log('userInfo', res, userInfo)
+          let userInfo = {
+            // name: user.displayName,
+            email: user.email,
+            uid: user.uid,
+            ...res
+          };
+
+          saveListing(userInfo, user.uid, 'users');
+
+          localStorage.setItem('account', JSON.stringify(userInfo));
+
+          ActionFn('SET_INFO_ACCOUNT', userInfo);
+        })
+
+
       }
       else {
         localStorage.removeItem('account');

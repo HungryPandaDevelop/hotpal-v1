@@ -6,7 +6,7 @@ import ClearYaMap from 'components/partInputCoords/ClearYaMap'
 const TempateInput = (props) => {
 
   const [currentLocation, setCurrentLocation] = useState([0, 0]);
-  const [firstLoad, setFirstLoad] = useState(0);
+
   const {
     input,
     meta: { error }
@@ -21,7 +21,7 @@ const TempateInput = (props) => {
 
   useEffect(() => {
     setCurrentLocation(input.value.coords);
-
+    console.log('input.value.coords', input.value.coords)
     const { ymaps } = window;
 
     const suggest = new ymaps.SuggestView('coords-ya');

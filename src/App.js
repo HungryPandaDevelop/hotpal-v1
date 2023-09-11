@@ -15,6 +15,9 @@ import CheckAuth from 'blocks/header/CheckAuth';
 
 
 import Main from 'pages/Main' ;
+
+import NoVerification from 'pages/cabinet/NoVerification';
+
 import Cabinet from 'pages/cabinet/Cabinet';
 import Settings from 'pages/cabinet/Settings';
 import Favorites from 'pages/cabinet/Favorites';
@@ -63,6 +66,7 @@ const App = ({uid})=> {
           <Routes> 
             <Route path='/' exept element={<Main/>} ></Route>
 
+           
             <Route path='/auth-start' element={<AuthStart/>} ></Route>
             <Route path='/reg-start' element={<RegStart/>} ></Route>
             <Route path='/reg-mail' element={<RegMail/>} ></Route>
@@ -77,8 +81,10 @@ const App = ({uid})=> {
             <Route path='/hotels-catalog' element={<HotelsCatalog/>}></Route>
             <Route path='/hotels-catalog/:hotelId' element={<HotelsDetail/>}></Route>
             <Route path='/hotels-booking/:hotelId' element={<HotelsBooking/>}></Route>
-
+            
+            <Route path='/no-verification' element={<NoVerification/>} ></Route>
             <Route path='/cabinet' element={<PrivatRoute/>} >
+              
               <Route index element={<Cabinet/>} ></Route>
               <Route path='/cabinet/settings' element={<Settings/>} ></Route>
               <Route path='/cabinet/chat' element={<Chat/>} ></Route>

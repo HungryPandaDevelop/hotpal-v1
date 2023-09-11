@@ -12,13 +12,16 @@ import { connect } from 'react-redux';
 
 import Tabs from 'pages/cabinet/parts/Tabs';
 
-const Cabinet = ({ uid, formData }) => {
+const Cabinet = ({ uid, formData, account }) => {
 
 
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+
+    // console.log('account', account)
+
     getSingleListing('users', uid).then(res => {
       setListings(res);
       setLoading(false);
@@ -40,6 +43,7 @@ const Cabinet = ({ uid, formData }) => {
           fields={accountFields}
           btnSubmiText="Сохранить"
           initialValues={listings}
+          // initialValues={account}
           submitSuccess={submitSuccess}
         />
       </div>
@@ -50,6 +54,7 @@ const Cabinet = ({ uid, formData }) => {
 const mapStateToProps = (state) => {
 
   return {
+    account: state.account,
     uid: state.account.uid,
     formData: state.form.singleInput,
   }
