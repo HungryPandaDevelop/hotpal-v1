@@ -2,14 +2,13 @@
 	.popup-container
 		padding: 30px 15px
 .popup-nav
-	margin-bottom: 45px
 
 	a
 		font-size: $largeSize
-		color: $blueColor
+		color: $blackColor
 		text-decoration: none
 		&:hover
-			color: $goldColor
+			color: $blueColor
 
 	a,.btn
 		font-size: 16px
@@ -20,3 +19,23 @@
 		display: block
 		margin: 0 0 15px
 		font-weight: 700
+@media (max-width: 576px)
+	.menu-hamburger
+
+		.popup-nav
+			a
+				text-align: right
+				font-size: 20px
+				font-weight: 700
+		.popup-container
+			margin-top: 45px
+			padding: 25px 25px 0
+			width: 230px
+			margin-left: auto
+			margin-right: 0
+			height: auto
+			min-height: auto
+		.change-style
+			display: block
+			width: 90px
+			height: 90px

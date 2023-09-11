@@ -32,7 +32,7 @@ const AuthMail = ({ formData }) => {
         <h3>Заполните анкету</h3>
         <RenderForm
           fields={authFields}
-          btnSubmiText="Авторизация"
+          btnSubmitText="Авторизация"
           submitSuccess={submitSuccess}
         />
       </Popup>

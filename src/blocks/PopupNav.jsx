@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 const PopupNav = ({ setShowMenu }) => {
   return (
     <div className="popup menu-hamburger">
-
+      <div className="popup-overlay" onClick={() => setShowMenu(false)}></div>
       <div className='popup-container'>
-        <div className="btn-close close-btn--popup" onClick={() => setShowMenu(false)}></div>
+        <div className="change-style" ></div>
+        {/* <div className="btn-close close-btn--popup" onClick={() => setShowMenu(false)}></div> */}
         <nav className="popup-nav">
           <ul className="ln">
             <li>
@@ -18,7 +19,7 @@ const PopupNav = ({ setShowMenu }) => {
           <InfoAccount />
         </nav>
       </div>
-    </div>
+    </div >
   )
 }
 

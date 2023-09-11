@@ -20,6 +20,7 @@ const Section = ({ account }) => {
             {!account.uid && (
               <div className="btn-container">
                 <Link className="element-btn btn btn--black" to="/reg-start">Создать аккаунт</Link>
+                <Link className="element-btn btn btn--white btn-in-mobile" to="/auth-start">Войти</Link>
               </div>
             )}
 

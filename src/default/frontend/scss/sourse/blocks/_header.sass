@@ -12,6 +12,8 @@ header
 
     &:hover
       color: $goldColor
+  .logo-container
+    text-align: center
   .btn
     padding: 2px 5px
     font-size: inherit
@@ -21,12 +23,31 @@ header
 
   .mobile-container
     display: none
+
+  &.main-page-header
+    background-color: $blueColor
+    color: $whiteColor
+    .btn-out
+      background-color: $whiteColor
+      border-color: $whiteColor
+      color: $blackColor
+    .nav-header a
+      color: $blackColor
+      &:hover
+
+        color: $whiteColor
+    .btn-hamburger
+      background-image: url("../images/icons/hamburger-white.svg")
 .logo
   img
     width: 170px
     top: 21px
     position: relative
-
+.change-style
+  @include positionElement(137px, 137px, 0, 0, left, top, 6)
+  // outline: 1px solid red
+  @include bgImageEl("../images/icons-app/change-style.png", cover)
+  cursor: pointer
 .nav-header
   width: 100%
   ul
@@ -53,7 +74,7 @@ header
 @media (max-width: 576px)
   .logo
     img
-      width: 100px
+      width: 146px
       top: 15px
   header
     .main-grid
@@ -65,3 +86,5 @@ header
       margin-left: auto
   .stub
     height: 70px
+  .change-style
+    display: none

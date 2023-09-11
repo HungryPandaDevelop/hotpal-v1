@@ -5,6 +5,7 @@
 .controls-chat
   i
     @include icoEl(40px,40px, '../images/icons-app/chat-black.svg')
+    background-size: 30px
   &.active,
   &:hover
     i
@@ -12,6 +13,7 @@
 .controls-like
   i
     @include icoEl(40px,40px, '../images/icons-app/like-black.svg')
+    background-size: 28px
   &.active,
   &:hover
     i
@@ -59,7 +61,7 @@
     font-size: $smallSize
     font-weight: 700
 .controls-panel-popup
-  @include positionElement(360px, 600px, 90px, 130px, right, top, 3)
+  @include positionElement(360px, 600px, 90px, 130px, right, top, 4)
   background-color: $whiteColor
   border-radius: 0 0 15px 15px
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
@@ -103,8 +105,12 @@
     height: 60px
     padding: 0
   .controls-btn
-    display: inline-block
+    display: inline-flex
     width: 24%
+    height: 100%
+    vertical-align: top
+    i
+      margin: auto
   .controls-panel-popup
     position: fixed
     top: 40px

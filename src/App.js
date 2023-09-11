@@ -1,4 +1,5 @@
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,7 +25,9 @@ import AuthStart from 'pages/auth/AuthStart';
 import RegStart from 'pages/auth/RegStart';
 import RegPhone from 'pages/auth/RegPhone';
 import RegMail from 'pages/auth/RegMail';
+
 import AuthMail from 'pages/auth/AuthMail';
+import RegEndPopup from 'pages/auth/RegEndPopup';
 
 
 import UsersCatalog from 'pages/users/UserCatalog';
@@ -43,7 +46,8 @@ import GetRooms from 'pages/chat/getRooms';
 // import VKauth from 'pages/VKauth';
 
 
-const App = ()=> {
+const App = ({uid})=> {
+  console.log('uid', uid)
   return (
       <>
         <BrowserRouter>
@@ -51,7 +55,8 @@ const App = ()=> {
           <GetRooms />
           <Header />
           
-          <ControlsPanel />
+          {(uid ? <ControlsPanel /> : '')}
+
           
           
           <div className="content">
@@ -63,6 +68,8 @@ const App = ()=> {
             <Route path='/reg-mail' element={<RegMail/>} ></Route>
             <Route path='/auth-mail' element={<AuthMail/>} ></Route>
             <Route path='/reg-phone' element={<RegPhone/>} ></Route> 
+
+            <Route path='/reg-end' element={<RegEndPopup/>} ></Route> 
 
             <Route path='/users-catalog' element={<UsersCatalog/>}></Route>
             <Route path='/users-catalog/:userId' element={<UsersDetail/>}></Route>
@@ -103,4 +110,11 @@ const App = ()=> {
 }
 
 
-export default App;
+
+const mapStateToProps = (state) => {
+  return {
+    uid: state.account.uid,
+  }
+};
+
+export default connect(mapStateToProps)(App);

@@ -38,15 +38,13 @@ const HotelsSearchPanel = (props) => {
 
 
   return (
-    <div className="main-full border-search-outer">
+    <div className={`main-full border-search-outer search-all ${showMobile ? 'active' : ''}`}>
       <Tabs active="hotels" />
       <div className="show-filter-mobile-container">
-        <div className="show-filter-mobile" onClick={() => { setShowMobile(!showMobile) }}>
-          <span>Показать фильтр</span>
-          <i></i>
+        <div className={`show-filter-mobile ${showMobile ? 'active' : ''}`} onClick={() => { setShowMobile(!showMobile) }}>
         </div>
       </div>
-      <div className={`border-container border-null-left border-container-search ${showMobile ? 'active' : ''}`}>
+      <div className={`border-container border-null-left border-container-search`}>
 
         <div className="main-grid">
           <RenderFields

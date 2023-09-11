@@ -48,7 +48,7 @@ const RoomsSearchPanel = (props) => {
             btnSubmitText={btnSubmitText}
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
-            colBtn="col-3"
+            colBtn="col-3 col-xs-12"
           />
 
 

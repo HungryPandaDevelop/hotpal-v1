@@ -14,10 +14,11 @@ const TempateInput = (props) => {
   const {
     label,
     labelSecond,
+    placeholder,
     wrapClass,
   } = props.obj;
 
-  const [сhoiseName, setСhoiseName] = useState('Выбрать город');
+  const [сhoiseName, setСhoiseName] = useState(placeholder ? placeholder : 'Выбрать город');
 
   const [filterVal, setFilterVal] = useState('');
 
@@ -32,7 +33,7 @@ const TempateInput = (props) => {
 
 
     if (!input.value) {
-      setСhoiseName('Выбрать город')
+      setСhoiseName(placeholder ? placeholder : 'Выбрать город')
     }
 
 
@@ -78,7 +79,7 @@ const TempateInput = (props) => {
 
   const clearFilterVal = () => {
     setFilterVal('');
-    setСhoiseName('Выбрать город');
+    setСhoiseName(placeholder ? placeholder : 'Выбрать город');
     setRussianCities(russianCities);
     // setOpen(false);
   }

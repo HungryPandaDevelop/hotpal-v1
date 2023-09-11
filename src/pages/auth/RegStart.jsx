@@ -15,7 +15,7 @@ const RegStart = () => {
         <h4>Создайте аккаунт с помощью:</h4>
         <div className="btn-container">
           <GoogleAuth btnText="Создать через Gmail" />
-          <Link to="/reg-phone" className="btn btn-reg btn-phone"><i></i><span>Создать через номер телефона</span></Link>
+          {/* <Link to="/reg-phone" className="btn btn-reg btn-phone"><i></i><span>Создать через номер телефона</span></Link> */}
           <Link to="/reg-mail" className="btn btn-reg btn-mail"><i></i><span>Создать через почту</span></Link>
         </div>
       </Popup>

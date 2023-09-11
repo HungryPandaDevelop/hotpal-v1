@@ -38,7 +38,7 @@ const RegMail = ({ formData }) => {
             <h3>Заполните анкету</h3>
             <RenderForm
               fields={regFields}
-              btnSubmiText={loading ? 'Loading..' : "Регистрация"}
+              btnSubmitText={loading ? 'Loading..' : "Регистрация"}
               submitSuccess={submitSuccess}
             />
           </>}

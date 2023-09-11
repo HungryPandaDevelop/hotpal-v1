@@ -7,18 +7,25 @@
     text-align: center
   h3
     margin: 0 0 15px
+    line-height: 41px
+    font-size: 36px
   h4
     font-size: $standartSize
     font-weight: 500
     color: $blueColorSecond
   .btn
     width: 100%
+
   .main-grid,
   .main-full
     padding: 0
+
+  // .btn
+  //   color: $blueColorSecond
+
 .popup-overlay
   @include positionElement(100%, 100%, 0, 0)
-  background-color: $blueColor
+  background-color: $whiteColor
   opacity: 0.3
 
 .close-btn--popup
@@ -38,4 +45,14 @@
   transition: ease-out 0.5s
   overflow-y: auto
   max-height: 100%
-  border-radius: 30px
+  border-radius: 20px
+  box-shadow: 0 0 30px rgba($blackColor , 0.3)
+
+@media (max-width: 576px)
+  .popup-container
+    padding: 45px 15px
+
+  .popup
+    h3
+      font-size: 24px
+      line-height: 29px

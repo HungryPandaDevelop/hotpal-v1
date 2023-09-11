@@ -39,16 +39,14 @@ const UsersSearchPanel = (props) => {
 
 
   return (
-    <div className="main-full border-search-outer">
+    <div className={`main-full border-search-outer search-all ${showMobile ? 'active' : ''}`}>
 
       <Tabs active="users" />
       <div className="show-filter-mobile-container">
-        <div className="show-filter-mobile" onClick={() => { setShowMobile(!showMobile) }}>
-          <span>Показать фильтр</span>
-          <i></i>
+        <div className={`show-filter-mobile ${showMobile ? 'active' : ''}`} onClick={() => { setShowMobile(!showMobile) }}>
         </div>
       </div>
-      <div className={`border-container border-null-left border-container-search ${showMobile ? 'active' : ''}`}>
+      <div className={`border-container border-null-left border-container-search `}>
         <div className="main-grid">
           <RenderFields
             type="single"
@@ -65,7 +63,7 @@ const UsersSearchPanel = (props) => {
           />
           {fullPanel ?
             <RenderBtnContainer
-              wrapClass="col-4 col-12"
+              wrapClass="col-4 col-xs-12"
               btnMoreText="Еще фильтры"
               changeStatePanel={changeStatePanel}
               waitAnsw={waitAnsw}

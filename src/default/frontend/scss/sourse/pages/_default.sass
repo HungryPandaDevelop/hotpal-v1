@@ -65,45 +65,70 @@
       gap: 0
   .border-tab
     width: 100%
-    border-radius: 0
+    border-radius: 1px
     &:first-child
-      border-radius: 15px 15px 0 0
+      border-radius: 8px 8px 0 0
     &.active
-      border-radius: 15px 15px 0 0
-  .border-search-outer
-    border-left-top-radius: 0px
+      border-radius: 8px 8px 0 0
+
   .border-container-search
     border-radius: 30px
+    .input-box
+      margin-bottom: 8px
     .btn-container
       display: block
+      padding-top: 8px
       .btn
         width: 100%
         margin-bottom: 15px
   .show-filter-mobile-container
     display: block
-    border-top: 1px solid $grayColor
     margin-bottom: 15px
+    font-size: 0
+    text-align: right
+
   .show-filter-mobile
     background-color: $whiteColor
-    border: 1px solid $blueColor
-    padding: 4px 8px
-    font-size: 14px
-    font-weight: 700
-    border-radius: 0 0 12px 12px
     max-width: 200px
-    text-align: center
     margin: 0 auto
-    i
-      width: 20px
-      height: 20px
-      display: inline-block
-      margin-left: 8px
-      @include bgImageEl("../images/arrows/carret-down-black.svg", 30px)
-    span,i
-      vertical-align: middle
-  .border-container-search
-    display: none
+    width: 40px
+    height: 40px
+    display: inline-block
+    @include bgImageEl("../images/icons-app/filter.svg", 24px)
+    border-radius: 100%
+    border: 1px solid $blueColorSecond
+    &.active
+      background-color: $blueColor
+      border-color: $blueColor
+      background-image: url("../images/icons/close-white.svg")
+  .search-all
+
+    .border-tabs-container
+      display: flex
+      gap: 15px
+      margin-bottom: 15px
+
+    .border-tab
+      border-radius: 30px
+      width: 50%
+      margin: 0
+      text-align: center
+      border: 1px solid
+    .border-container-search
+      display: none
+      padding: 0
+
     &.active
       display: block
-    .input-box
-      margin-bottom: 15px
+      position: fixed
+      top: 0
+      z-index: 5
+      background: #fff
+      width: 100%
+      height: 100vh
+      overflow-y: auto
+      .border-tab
+        display: none
+      .border-container-search
+        display: block
+        border: 0

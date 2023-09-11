@@ -37,7 +37,7 @@ const LikesItemMini = ({
   if (loading) { return 'Loading...' }
 
   return (
-    <div className="col-4">
+    <div className="col-4 col-xs-6">
       <div
         className="like-item-mini"
         onMouseEnter={() => { onRead(like, uid) }}

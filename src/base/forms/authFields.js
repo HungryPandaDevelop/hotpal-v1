@@ -3,7 +3,7 @@ export const regFields = {
   name: { 
     name: "name", 
     label: "Имя", 
-    placeholder: "Имя", 
+    placeholder: "Введите имя", 
     type:"text" , 
     wrapClass: "input-box col-6",
   },
@@ -15,6 +15,7 @@ export const regFields = {
     validate: ['required','minLength','mailCheck'],
     wrapClass:"input-box  col-6",
   },
+
   dateBerth: { 
     name: "dateBerth", 
     label: "Дата рождения", 
@@ -25,8 +26,18 @@ export const regFields = {
   city: { 
     name: "city", 
     label: "Город", 
-    placeholder: "Город", 
+    placeholder: "Выбрать город", 
     type:"city" , 
+    wrapClass:"input-box  col-6",
+  },
+  gender: { 
+    type:"switch" ,
+    name: "gender", 
+    label: "Пол", 
+    options: [
+      {name:'<div class="man-ico"></div>',value:"man"},
+      {name:'<div class="woman-ico"></div>', value:"woman"},
+    ],
     wrapClass:"input-box  col-6",
   },
   password: { 
@@ -35,7 +46,7 @@ export const regFields = {
     placeholder: "Пароль",
     type:"password", 
     validate: ['required','minLength'],
-    wrapClass: "input-box  col-12",
+    wrapClass: "input-box  col-6",
   },
 };
 
@@ -60,10 +71,10 @@ export const authFields = {
   email: { 
     name: "email", 
     label: "Почта", 
-    placeholder: "Почта", 
+    placeholder: "Введите почту", 
     type:"text" , 
     validate: ['required','minLength','mailCheck'],
-    wrapClass: "account-item  col-12 input-animate-label",
+    wrapClass: "input-box  col-12",
   },
   password: { 
     name: "password", 
@@ -71,6 +82,6 @@ export const authFields = {
     placeholder: "Пароль",
     type:"password", 
     validate: ['required','minLength','checkRus'],
-    wrapClass: "account-item  col-12 input-animate-label",
+    wrapClass: "input-box  col-12",
   },
 };

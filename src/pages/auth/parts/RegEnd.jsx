@@ -1,7 +1,30 @@
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+import { saveListing } from 'services/saveListing';
+import { connect } from 'react-redux';
 
-import { Link } from 'react-router-dom';
+const RegEnd = ({ successMail, uid }) => {
 
-const RegEnd = ({ successMail }) => {
+  const sendEmail = () => {
+    const generateId = uuidv4();
+
+
+
+    saveListing({ vertCheck: generateId }, uid, 'users');
+
+
+    axios.get("http://hotpal.sait.website/api/mail.php", {
+      params: {
+        mailVert: successMail
+      }
+    }).then(res => {
+
+      console.log('res', res)
+
+    });
+
+
+  }
 
   return (
     <>
@@ -11,11 +34,21 @@ const RegEnd = ({ successMail }) => {
         <h3>Пожалуйста, проверьте ящик {successMail}.</h3>
         <div><i className="reg-end-ico"></i></div>
       </div>
-      <div className="form-btn-container">
+      <div className="btn btn--blue-border" onClick={sendEmail}>Отправить</div>
+      {/* <div className="form-btn-container">
         <Link className="btn btn--blue" to="/cabinet">В кабинет</Link>
-      </div>
+      </div> */}
     </>
   )
 }
 
-export default RegEnd;
+
+const mapStateToProps = (state) => {
+
+  return {
+    uid: state.account.uid,
+    formData: state.form.singleInput,
+  }
+}
+
+export default connect(mapStateToProps)(RegEnd);
