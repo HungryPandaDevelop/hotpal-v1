@@ -306,6 +306,9 @@ section {
   position: relative;
   font-style: normal;
 }
+.tag i {
+  font-style: normal;
+}
 .tag em {
   width: 20px;
   position: absolute;
@@ -2660,7 +2663,7 @@ header.main-page-header .btn-hamburger {
     margin-left: auto;
   }
   .stub {
-    height: 70px;
+    height: 100px;
   }
   .change-style {
     display: none;
@@ -3427,6 +3430,7 @@ button[data-controls=next]:hover {
   color: #00AEEF;
   font-size: 16px;
   margin: 30px 0 15px;
+  line-height: 1.3;
 }
 
 .reg-end-ico {
@@ -3476,7 +3480,8 @@ button[data-controls=next]:hover {
 }
 
 @media (max-width: 576px) {
-  .menu-hamburger .popup-nav a {
+  .menu-hamburger .popup-nav a,
+  .menu-hamburger .popup-nav .btn {
     text-align: right;
     font-size: 20px;
     font-weight: 700;
@@ -3568,6 +3573,8 @@ button[data-controls=next]:hover {
 }
 .border-container-search .btn {
   width: 50%;
+  font-size: 12px;
+  padding: 9px 12px;
 }
 .border-container-search .input-box {
   margin: 0;
@@ -3590,7 +3597,6 @@ button[data-controls=next]:hover {
   }
   .border-tab {
     width: 100%;
-    border-radius: 1px;
   }
   .border-tab:first-child {
     border-radius: 8px 8px 0 0;
@@ -3850,6 +3856,15 @@ button[data-controls=next]:hover {
 .tags-add-container .tags-add-hint {
   margin-bottom: 8px;
 }
+.tags-add-container.special h3 {
+  color: #00AEEF;
+}
+.tags-add-container.special .tags-search i {
+  display: none;
+}
+.tags-add-container .btn {
+  width: 240px;
+}
 
 .tags-container h3 {
   margin-bottom: 8px;
@@ -3878,6 +3893,10 @@ button[data-controls=next]:hover {
           transform: translateY(-50%) rotate(180deg);
 }
 
+.tags-addted i i {
+  vertical-align: text-bottom;
+}
+
 .tags-popup {
   overflow-y: auto;
   background-color: #ffffff;
@@ -3897,6 +3916,9 @@ button[data-controls=next]:hover {
   z-index: 2;
   left: 0;
   top: 100%;
+}
+.tags-popup i {
+  display: none;
 }
 .tags-popup li {
   cursor: pointer;
@@ -4012,6 +4034,26 @@ button[data-controls=next]:hover {
   }
   .tags-add-hint h3 {
     font-size: 18px;
+  }
+  .cabinet-page {
+    padding: 0;
+  }
+  .cabinet-page .border-container {
+    border: 0;
+  }
+  .border-tabs-container-outer {
+    position: relative;
+    overflow-y: auto;
+  }
+  .border-tabs-container-outer .border-tabs-container {
+    width: 780px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-bottom: 1px solid #98A1A7;
+  }
+  .border-tabs-container-outer .border-tab {
+    display: inline-block;
+    width: auto;
   }
 }
 .settings-tabs-container {
@@ -4646,6 +4688,10 @@ button[data-controls=next]:hover {
   margin-top: auto;
   font-size: 24px;
   color: #ffffff;
+  line-height: 1.2;
+}
+.users-item-info .name-users h3::first-letter {
+  text-transform: uppercase;
 }
 .users-item-info .name-users h3:hover {
   color: #00AEEF;
@@ -4695,6 +4741,9 @@ button[data-controls=next]:hover {
 }
 .user-top-info--view h2 {
   color: #0B132B;
+}
+.user-top-info--view h2::first-letter {
+  text-transform: uppercase;
 }
 
 .user-info-gender {
@@ -4756,6 +4805,12 @@ button[data-controls=next]:hover {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.special-tags .tag {
+  background-color: #3A506B;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 .user-photo {

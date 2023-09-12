@@ -50,11 +50,6 @@ const RoomsSearchPanel = (props) => {
             onSubmit={onSubmit}
             colBtn="col-3 col-xs-12"
           />
-
-
-
-
-
         </div>
       </div>
     </div>

@@ -12,14 +12,14 @@ const Tabs = ({ active }) => {
   ];
 
   return (
-    <div className="border-tabs-container">
-      {allTabs.map((item, index) => (<Link
-        key={index}
-        className={`border-tab ${(index === active) ? 'active' : ''}`}
-        to={item[1]}
-      >{item[0]}</Link>))}
-
-
+    <div className="border-tabs-container-outer">
+      <div className="border-tabs-container">
+        {allTabs.map((item, index) => (<Link
+          key={index}
+          className={`border-tab ${(index === active) ? 'active' : ''}`}
+          to={item[1]}
+        >{item[0]}</Link>))}
+      </div>
     </div>
   )
 }

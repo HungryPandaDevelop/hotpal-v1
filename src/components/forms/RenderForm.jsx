@@ -23,7 +23,7 @@ let TemplateForm = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log('sub form')
+    // console.log('sub form')
 
     setCheckErrorSubmit(true);
 

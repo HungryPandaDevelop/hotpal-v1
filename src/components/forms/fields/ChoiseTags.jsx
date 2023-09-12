@@ -11,7 +11,8 @@ const TempateInput = (props) => {
   const {
     label,
     options,
-    wrapClass
+    wrapClass,
+    subType
   } = props.obj;
 
   const [choisesTags, setChoisesTags] = useState([]);

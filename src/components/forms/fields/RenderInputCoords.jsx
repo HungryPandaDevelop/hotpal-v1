@@ -21,26 +21,32 @@ const TempateInput = (props) => {
 
   useEffect(() => {
     setCurrentLocation(input.value.coords);
-    console.log('input.value.coords', input.value.coords)
+    // console.log('input.value.coords', input.value.coords)
     const { ymaps } = window;
 
-    const suggest = new ymaps.SuggestView('coords-ya');
+    // setTimeout(() => {
+    // console.log('ymaps', typeof ymaps.SuggestView)
+    if (ymaps.SuggestView) {
+      const suggest = new ymaps.SuggestView('coords-ya');
 
-    suggest.events.add('select', (e) => {
+      suggest.events.add('select', (e) => {
 
-      const val = String(e.get('item').value.trim());
+        const val = String(e.get('item').value.trim());
 
-      const myGeocoder = ymaps.geocode(val);
+        const myGeocoder = ymaps.geocode(val);
 
-      myGeocoder
-        .then(res => {
-          const coords = [res.geoObjects.get(0).geometry._coordinates[0], res.geoObjects.get(0).geometry._coordinates[1]]
-          const currentValue = { 'address': val, 'coords': coords };
+        myGeocoder
+          .then(res => {
+            const coords = [res.geoObjects.get(0).geometry._coordinates[0], res.geoObjects.get(0).geometry._coordinates[1]]
+            const currentValue = { 'address': val, 'coords': coords };
 
-          input.onChange(currentValue);
-          setCurrentLocation(coords);
-        });
-    });
+            input.onChange(currentValue);
+            setCurrentLocation(coords);
+          });
+      });
+    }
+
+    // }, 500)
 
   }, []);
 

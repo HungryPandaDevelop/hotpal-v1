@@ -43,22 +43,24 @@ import HotelsBooking from 'pages/hotels/HotelsBooking';
 import Chat from 'pages/chat/Chat';
 import GetRooms from 'pages/chat/getRooms';
 
+import NotFound from 'pages/NotFound';
+
 
 
 
 // import VKauth from 'pages/VKauth';
 
 
-const App = ({uid})=> {
-  console.log('uid', uid)
+const App = ({account})=> {
+  // console.log('uid', account)
   return (
       <>
         <BrowserRouter>
           <CheckAuth />
           <GetRooms />
           <Header />
-          
-          {(uid ? <ControlsPanel /> : '')}
+          {/* <div className="stub"></div> */}
+          {(account.uid ? <ControlsPanel /> : '')}
 
           
           
@@ -66,7 +68,7 @@ const App = ({uid})=> {
           <Routes> 
             <Route path='/' exept element={<Main/>} ></Route>
 
-           
+
             <Route path='/auth-start' element={<AuthStart/>} ></Route>
             <Route path='/reg-start' element={<RegStart/>} ></Route>
             <Route path='/reg-mail' element={<RegMail/>} ></Route>
@@ -83,16 +85,24 @@ const App = ({uid})=> {
             <Route path='/hotels-booking/:hotelId' element={<HotelsBooking/>}></Route>
             
             <Route path='/no-verification' element={<NoVerification/>} ></Route>
-            <Route path='/cabinet' element={<PrivatRoute/>} >
-              
-              <Route index element={<Cabinet/>} ></Route>
-              <Route path='/cabinet/settings' element={<Settings/>} ></Route>
-              <Route path='/cabinet/chat' element={<Chat/>} ></Route>
-              <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
-              <Route path='/cabinet/favorites'   element={<Favorites type='white-list'/>} ></Route>
-              <Route path='/cabinet/dislikes'  element={<Favorites type='black-list' />} ></Route>
-              <Route path='/cabinet/likes'  element={<Likes  />} ></Route>
-            </Route>
+            <Route path='*' element={<NotFound />}/>
+            {/* {account.loaded === true ? 'Load...' : ( */}
+              <Route path='/cabinet' 
+              element={<PrivatRoute/>} 
+              >
+
+                <Route index element={<Cabinet/>} ></Route>
+
+                <Route path='/cabinet/settings' element={<Settings/>} ></Route>
+                <Route path='/cabinet/chat' element={<Chat/>} ></Route>
+                <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
+                <Route path='/cabinet/favorites'   element={<Favorites type='white-list'/>} ></Route>
+                <Route path='/cabinet/dislikes'  element={<Favorites type='black-list' />} ></Route>
+                <Route path='/cabinet/likes'  element={<Likes  />} ></Route>
+                
+              </Route>
+            {/* )} */}
+            
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>
           </div>
@@ -119,7 +129,7 @@ const App = ({uid})=> {
 
 const mapStateToProps = (state) => {
   return {
-    uid: state.account.uid,
+    account: state.account,
   }
 };
 

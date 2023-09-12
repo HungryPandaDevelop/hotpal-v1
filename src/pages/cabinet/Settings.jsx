@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import SettingTabs from 'pages/cabinet/settings/SettingTabs';
 
 
-import { getSingleListing } from 'services/getSingleListing';
+// import { getSingleListing } from 'services/getSingleListing';
 
 
 
@@ -20,20 +20,20 @@ import PrivacyTabs from 'pages/cabinet/settings/Privacy';
 
 import Tabs from 'pages/cabinet/parts/Tabs';
 
-const Cabinet = ({ uid, formData }) => {
+const Cabinet = ({ account, formData }) => {
 
   const [currentTab, setCurrentTab] = useState(0);
 
-  const [listings, setListings] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [listings, setListings] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    getSingleListing('users', uid).then(res => {
-      setListings(res);
-      setLoading(false);
-    })
-  }, []);
+  //   getSingleListing('users', uid).then(res => {
+  //     setListings(res);
+  //     setLoading(false);
+  //   })
+  // }, []);
 
 
   const renderTabs = (num) => {
@@ -48,23 +48,23 @@ const Cabinet = ({ uid, formData }) => {
         return (
           <PersonalDataTabs
             formData={formData}
-            uid={uid}
-            listings={listings}
+            uid={account.uid}
+            listings={account}
           />
         )
       case 2:
         return (
           <PrivacyTabs
             formData={formData}
-            uid={uid}
-            listings={listings}
+            uid={account.uid}
+            listings={account}
           />
         )
       default:
     }
   }
 
-  if (loading) { return 'Loading...' }
+  if (account.loaded) { return 'Loading...' }
 
   return (
     <>
@@ -90,7 +90,7 @@ const Cabinet = ({ uid, formData }) => {
 const mapStateToProps = (state) => {
 
   return {
-    uid: state.account.uid,
+    account: state.account,
     formData: state.form.singleInput,
   }
 }

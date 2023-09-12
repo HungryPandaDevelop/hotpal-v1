@@ -6,6 +6,7 @@ export const regFields = {
     placeholder: "Введите имя", 
     type:"text" , 
     wrapClass: "input-box col-6",
+    validate: ['required','minLength'],
   },
   email: { 
     name: "email", 

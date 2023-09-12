@@ -47,12 +47,14 @@ export const accountFields = {
   },
   interests: { 
     type:"tags" ,
+    subType: "lite",
     name: "interests", 
     label: "Интересы", 
     placeholder: "Интересы", 
     options: interests,
     text: "Добавьте ваши интересы.", 
-    textSecond: "Введите ваши интересы вручную, либо же воспользуйтесь популярными вариантами ниже.", 
+    textSecond: "Введите ваши интересы вручную.",
+    className: "special" 
   },
   work: { 
     type:"select", 

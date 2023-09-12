@@ -15,7 +15,7 @@ const Header = () => {
 
 
   useEffect(() => {
-    console.log('location', location.pathname)
+    // console.log('location', location.pathname)
     setShowMenu(false);
 
   }, [location]);

@@ -3,18 +3,23 @@ import ActionFn from 'store/actions';
 import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 
-const InfoAccount = ({ account }) => {
+import { useNavigate } from 'react-router-dom';
+
+const InfoAccount = ({ uid, ActionFn }) => {
 
   const auth = getAuth();
+  const navigate = useNavigate();
 
   const onLogOut = () => {
     auth.signOut();
+    ActionFn('EXIT_ACCOUNT', null);
+    // navigate('/auth-start');
   };
   return (
     <>
       {/* <h3>uid: {account.uid}</h3> */}
 
-      {account.uid ? (
+      {uid ? (
         <>
           {/* <Link to="/cabinet/chat" className="btn btn-chat btn--white">Чат</Link> */}
           <Link to="/cabinet" className="btn btn-cabinet btn--white">Мой кабинет</Link>
@@ -32,7 +37,7 @@ const InfoAccount = ({ account }) => {
 const mapStateToProps = (state) => {
 
   return {
-    account: state.account
+    uid: state.account.uid
   }
 }
 

@@ -11,6 +11,7 @@ import {
   doc, 
   setDoc, 
   getDoc, 
+  updateDoc,
   serverTimestamp 
 } from 'firebase/firestore';
 
@@ -20,13 +21,13 @@ import { toast } from 'react-toastify';
 
 
 
-export const googleAuth = async () => {
+export const googleAuth = async (account) => {
 
   try {
 
     const auth = getAuth();
 
-    console.log('step 0')
+    // console.log('step 0')
     const provider = new GoogleAuthProvider();
 
     provider.setCustomParameters({
@@ -51,20 +52,29 @@ export const googleAuth = async () => {
 
     if (!docSnap.exists()) {
       // console.log('step 4')
-
-
       toast.success('Rегистрация успешна');
-    }else{
 
+      await setDoc(doc(db, 'users', user.uid), {
+        name: user.displayName,
+        email: user.email,
+        uid: user.uid,
+        timestamp: serverTimestamp(),
+      });
+    }else{
       toast.success('Авторизация успешна');
+
+      const cardsRef = doc(db, 'users', user.uid);
+      const dataForm = {
+        name: user.displayName,
+        email: user.email,
+        uid: user.uid,
+        timestamp: serverTimestamp(),
+      }
+      await updateDoc(cardsRef, dataForm);
+
     }
-   
-    await setDoc(doc(db, 'users', user.uid), {
-      name: user.displayName,
-      email: user.email,
-      uid: user.uid,
-      timestamp: serverTimestamp()
-    });
+
+
 
 
     return  user.uid;

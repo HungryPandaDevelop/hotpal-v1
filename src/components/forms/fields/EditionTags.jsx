@@ -13,7 +13,9 @@ const TempateInput = (props) => {
     placeholder,
     text,
     textSecond,
-    options
+    options,
+    className,
+    subType
   } = props.obj;
 
   const [tags, setTags] = useState([]);
@@ -34,7 +36,18 @@ const TempateInput = (props) => {
     setFilterList(filterList.filter(origin => origin !== item))
   };
 
+  const addOwn = () => {
+
+    setTags([...tags, term]);
+
+    setTerm('');
+
+    setFilterList(originList);
+  }
+
+
   const onRemoveTags = (el) => {
+
     setTags(tags.filter(item => item !== el));
 
     setFilterList([...filterList, el]) // такое себе
@@ -76,17 +89,20 @@ const TempateInput = (props) => {
   };
   const renderOptions = () => {
 
+    if (subType) return false;
+
     return (
       <ul className="tags-popup ln">
         {filterList.length === 0 ? 'Список пуст' : filterList.map((item, index) => (
-          <li key={index} onClick={() => { onTagsAd(item) }}>{item}</li>
+          <li key={index} onClick={() => { onTagsAd(item) }} dangerouslySetInnerHTML={{ __html: item }}></li>
         ))}
       </ul>)
   }
 
 
+
   return (
-    <div className="tags-add-container">
+    <div className={`tags-add-container ${className}`}>
       <div className="tags-container">
         <h3>{label}:</h3>
         <div className="tags-addted">
@@ -95,7 +111,7 @@ const TempateInput = (props) => {
               key={index}
               className="tag"
               onClick={() => { onRemoveTags(item) }}
-            >{item}<em></em></span>))}
+            ><i dangerouslySetInnerHTML={{ __html: item }}></i><em></em></span>))}
         </div>
       </div>
       <div className="tags-add-input">
@@ -118,9 +134,8 @@ const TempateInput = (props) => {
           />
           <i></i>
           {renderOptions()}
-
         </div>
-
+        {subType && <div className='btn btn--blue' onClick={addOwn}>Добавить интерес</div>}
       </div>
     </div>
   )

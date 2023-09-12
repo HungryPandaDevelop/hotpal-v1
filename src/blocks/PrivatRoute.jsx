@@ -6,40 +6,40 @@ import { saveListing } from 'services/saveListing';
 
 import { connect } from 'react-redux';
 
+
 const PrivateRoute = ({ account }) => {
 
-  let [searchParams] = useSearchParams()
-  const [loading, setLoading] = useState(true);
+  // let [searchParams] = useSearchParams()
+  // const [loading, setLoading] = useState(true);
+  // const [verificationCheck, setVerificationCheck] = useState(account.verificationCheck);
+  // useEffect(() => {
+  //   // console.log('account', account)vertificationId
+  //   const verificationIdUrl = searchParams.get('vertificationId');
+  //   const verificationIdAccount = account.vertificationId;
 
-  useEffect(() => {
-    console.log('account', account)
-    const verificationIdUrl = searchParams.get('verid');
+  //   console.log(verificationIdUrl, verificationIdAccount, account)
 
-    const verificationIdAccount = account.verificationCheck;
-
-    console.log(verificationIdUrl, verificationIdAccount)
-    if (verificationIdUrl === verificationIdAccount) {
-      console.log('send ')
-
-      saveListing({ vertCheck: true }, account.uid, 'users').then(() => {
-        setLoading(false)
-      });
-    } else {
-      setLoading(false)
-    }
-
-
-
-  }, []);
-
-  const verificationCheck = account.vertCheck;
+  //   if (verificationIdUrl) {
+  //     if (verificationIdUrl === verificationIdAccount) {
+  //       // console.log('send ')
+  //       setVerificationCheck(true);
+  //       saveListing({ verificationCheck: true }, account.uid, 'users').then(res => {
+  //         setLoading(false)
+  //       });
+  //     }
+  //   } else {
+  //     setLoading(false)
+  //   }
+  // }, []);
 
 
-  if (loading) { return 'Loading...' }
+  console.log('account.loaded', account)
 
   return (
     <>
-      {(account.uid ? ((verificationCheck) ? <Outlet /> : <Navigate to="/no-verification" />) : <Navigate to="/authorization" />)}
+      {/* {(account.uid ? (verificationCheck ? <Outlet /> : <Navigate to="/no-verification" />) : <Navigate to="/auth-start" />)} */}
+      {(account.loaded ? 'Loading...' : (account.uid ? (<Outlet />) : <Navigate to="/auth-start" />))}
+      {/* <Outlet /> */}
     </>
   )
 

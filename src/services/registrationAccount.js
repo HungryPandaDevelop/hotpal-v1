@@ -56,15 +56,15 @@ export const registrationAccount = async (formData) => {
     
 
 
-    await sendEmailVerification(auth.currentUser).then(function() {
-      // Verification email sent.
-      console.log('Verification email sent.')
-      toast.success('Verification sent');
-    })
-    .catch(function(error) {
-      console.log('Error occurred. Inspect error.code.')
-      // Error occurred. Inspect error.code.
-    });
+    // await sendEmailVerification(auth.currentUser).then(function() {
+    //   // Verification email sent.
+    //   console.log('Verification email sent.')
+    //   toast.success('Verification sent');
+    // })
+    // .catch(function(error) {
+    //   console.log('Error occurred. Inspect error.code.')
+    //   // Error occurred. Inspect error.code.
+    // });
 
 
     return user;
@@ -72,6 +72,8 @@ export const registrationAccount = async (formData) => {
   } catch (error) {
     if( error.code === 'auth/email-already-in-use'){
       toast.error('Такой Email уже есть');
+    }else{
+      toast.error('Ошибка регистрации');
     }
 
     return false;

@@ -22,8 +22,10 @@ const CheckAuth = ({
 
     onAuthStateChanged(auth, (user) => {
 
+      ActionFn('SET_INFO_ACCOUNT', { loaded: true, });
+
       if (user) {
-        // console.log(user)
+        console.log('in')
 
 
         getSingleListing('users', user.uid).then(res => {
@@ -32,21 +34,23 @@ const CheckAuth = ({
             // name: user.displayName,
             email: user.email,
             uid: user.uid,
+            loaded: false,
             ...res
           };
 
-          saveListing(userInfo, user.uid, 'users');
+          // saveListing(userInfo, user.uid, 'users'); обновить время заходу, убрать всплывашку
 
-          localStorage.setItem('account', JSON.stringify(userInfo));
+          // localStorage.setItem('account', JSON.stringify(userInfo));
 
           ActionFn('SET_INFO_ACCOUNT', userInfo);
-        })
+        });
 
 
       }
       else {
-        localStorage.removeItem('account');
-        ActionFn('SET_INFO_ACCOUNT', { uid: false, email: '', });
+        // localStorage.removeItem('account');
+        ActionFn('SET_INFO_ACCOUNT', { loaded: false, });
+
       };
     });
 

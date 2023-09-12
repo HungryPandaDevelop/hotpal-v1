@@ -57,7 +57,7 @@ const UserDetail = ({ uid, sympathys }) => {
               <div className="border-delimetr border-account"></div>
             </div>
             <div className="col-8 col-xs-12">
-              <InterestsUsers user={user} />
+              <InterestsUsers special="special-tags" user={user} />
             </div>
             <div className="col-4 col-xs-12">
               <PersonalInfo user={user} />

@@ -9,9 +9,11 @@ import { authFields } from 'base/forms/authFields';
 import Section from "pages/main/Section"
 
 import { authorizationAccount } from 'services/authorizationAccount';
+
 const AuthMail = ({ formData }) => {
 
   const navigate = useNavigate();
+  // const history = useHistory();
 
   const submitSuccess = () => {
 
@@ -19,7 +21,9 @@ const AuthMail = ({ formData }) => {
     authorizationAccount(formData.values).then((res) => {
 
       if (!res) { return false };
-      navigate('/cabinet/', { replace: true });
+      console.log('nav')
+      navigate('/cabinet');
+      // history.push('/cabinet')
     });
 
 

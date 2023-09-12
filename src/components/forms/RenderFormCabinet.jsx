@@ -44,7 +44,7 @@ const TemplateForm = (props) => {
 
   return (
     <form>
-      <div className="border-container border-null-left account-main">
+      <div className="border-container border-null-left">
         <div className="main-grid">
           <div className="col-8 col-xs-12">
             <div className="user-top-info">

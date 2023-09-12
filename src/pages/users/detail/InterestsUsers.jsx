@@ -1,5 +1,5 @@
 
-const InterestsUsers = ({ user }) => {
+const InterestsUsers = ({ user, special }) => {
 
   const { interests } = user;
 
@@ -7,7 +7,7 @@ const InterestsUsers = ({ user }) => {
 
 
   return (
-    <div className="tags-container">
+    <div className={`tags-container ${special}`}>
       <h3>Интересы:</h3>
       {interests.map((interest, index) => (
         <div className="tag" key={index}>{interest} </div>
