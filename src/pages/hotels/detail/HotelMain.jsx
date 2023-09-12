@@ -15,8 +15,6 @@ const settings = {
   loop: false,
   items: 2,
   gutter: 15,
-
-
 };
 
 const HotelMain = () => {

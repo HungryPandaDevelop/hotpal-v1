@@ -3,7 +3,7 @@ import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainer'
 
 import { reduxForm } from 'redux-form';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 // --------------------------------------------------------------------
 
@@ -15,11 +15,12 @@ const TemplateForm = (props) => {
     submitSuccess
   } = props;
 
+  const windowSize = useRef(window.innerWidth).current;
 
   const [checkErrorSubmit, setCheckErrorSubmit] = useState(false);
   const [errCheck, setErrCheck] = useState(true);
 
-
+  // console.log('windowSize', windowSize)
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -46,6 +47,14 @@ const TemplateForm = (props) => {
     <form>
       <div className="border-container border-null-left">
         <div className="main-grid">
+          {windowSize < 576 && (
+            <div className="col-xs-12">
+              <RenderFields
+                type="single"
+                fields={fields.imgsAccount}
+              />
+            </div>
+          )}
           <div className="col-8 col-xs-12">
             <div className="user-top-info">
               <RenderFields
@@ -74,12 +83,15 @@ const TemplateForm = (props) => {
               fields={fields.currentLocation}
             />
           </div>
-          <div className="col-4 col-xs-12">
-            <RenderFields
-              type="single"
-              fields={fields.imgsAccount}
-            />
-          </div>
+          {windowSize > 576 && (
+            <div className="col-4 col-xs-12">
+              <RenderFields
+                type="single"
+                fields={fields.imgsAccount}
+              />
+            </div>
+          )}
+
           <div className="col-12">
             <div className="border-delimetr border-account"></div>
           </div>

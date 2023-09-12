@@ -94,7 +94,7 @@ export const accountFields = {
   },
 
   imgsAccount: {
-    type: "dropzone", 
+    type: "dropzoneAccount", 
     name: "imgsAccount", 
     label:"Фото профиля", 
     labelSecond:"(Изображение формата jpg,png не менее 150x150 px, не более 8Мб)", 

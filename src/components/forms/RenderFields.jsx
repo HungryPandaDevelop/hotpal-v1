@@ -29,6 +29,7 @@ import RenderInputSelect from './fields/RenderInputSelect'; // селект
 import RenderInputFile from './fields/RenderInputFileChat'; // файл
 
 import RenderInputFileDropZone from './fields/RenderInputFileDropZone'; // зона файлов
+import RenderInputFileDropZoneAccount from './fields/RenderInputFileDropZoneAccount'; // зона файлов
 
 import RenderInputFilePhoto from './fields/RenderInputFilePhoto'; // фото
 
@@ -180,6 +181,12 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
       case 'dropzone':
         return (
           <RenderInputFileDropZone
+            obj={obj}
+          />
+        );
+      case 'dropzoneAccount':
+        return (
+          <RenderInputFileDropZoneAccount
             obj={obj}
           />
         );
