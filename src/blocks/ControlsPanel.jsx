@@ -4,6 +4,7 @@ import ControlsBtn from "blocks/controls-panel/ControlsBtn";
 import ControlsLink from "blocks/controls-panel/ControlsLink";
 import TotalCount from "blocks/controls-panel/parts/TotalCount";
 import { fn } from "moment";
+import $ from 'jquery';
 
 const ControlsPanel = () => {
 
@@ -12,33 +13,39 @@ const ControlsPanel = () => {
 
   useEffect(() => {
 
-    document.addEventListener("click", handleClick);
+    // document.addEventListener("click", handleClick);
 
     document.body.addEventListener('click', bodyClick);
 
     return () => {
-      document.removeEventListener("click", handleClick)
+      // document.removeEventListener("click", handleClick)
       document.removeEventListener("click", bodyClick)
     };
 
 
 
     function bodyClick(e) {
-      console.log('cl body', e.target)
-    }
-
-    function handleClick(e) {
-      console.log('s')
-      if ((popupRef && popupRef.current)) {
-        const ref = popupRef.current;
-        if (!ref.contains(e.target)) {
-
-          setPopupActive(false);
-          setIdActive('');
-        }
-
+      if (!$(e.target).is('.controls-panel-popup, .controls-panel-popup > *, .controls-btn, .controls-btn > *')) {
+        setPopupActive(false);
+        setIdActive('');
       }
     }
+
+    // function handleClick(e) {
+    //   console.log('s')
+    //   if ((popupRef && popupRef.current)) {
+    //     const ref = popupRef.current;
+
+    //     if (!btnRef.current.classList.contains('controls-btn')) {
+
+    //       if (!ref.contains(e.target)) {
+
+    //         setPopupActive(false);
+    //         setIdActive('');
+    //       }
+    //     }
+    //   }
+    // }
 
   }, []);
 
@@ -85,17 +92,15 @@ const ControlsPanel = () => {
       <div className="controls-panel">
         {renderBtn(arrNames)}
         {renderLink(arrLinks)}
-
-        {popupActive && <Popup
-          setPopupActive={setPopupActive}
-          nameActive={nameActive}
-          idActive={idActive}
-          setIdActive={setIdActive}
-          popupRef={popupRef}
-
-        />}
       </div>
+      {popupActive && <Popup
+        setPopupActive={setPopupActive}
+        nameActive={nameActive}
+        idActive={idActive}
+        setIdActive={setIdActive}
+        popupRef={popupRef}
 
+      />}
     </div>
   )
 }
