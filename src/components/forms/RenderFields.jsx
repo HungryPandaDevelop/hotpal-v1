@@ -51,7 +51,7 @@ import RenderInputCity from './fields/RenderInputCity'; // выбор город
 
 import { required, minLength, mailCheck } from 'components/forms/validator';
 
-const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
+const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type, onSubmit }) => {
 
   const setValidate = (validate) => {
     let validateArr = [];
@@ -246,7 +246,7 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
         <React.Fragment >
           {
             (
-              choiseFieldType({ ...fields, checkErrorSubmit, setErrCheck, 'validate': setValidate(fields.validate) })
+              choiseFieldType({ ...fields, checkErrorSubmit, setErrCheck, 'validate': setValidate(fields.validate), onSubmit })
             )
           }
         </React.Fragment>

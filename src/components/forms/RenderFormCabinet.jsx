@@ -17,7 +17,9 @@ const TemplateForm = (props) => {
     waitAnsw,
     submitSuccess,
     user,
-    newValue
+    dirty,
+    newValue,
+    initialize
   } = props;
 
 
@@ -29,8 +31,10 @@ const TemplateForm = (props) => {
   // console.log('windowSize', windowSize)
   const onSubmit = (e) => {
     e.preventDefault();
+    // console.log('sub form', newValue)
+    initialize(newValue.values)
+    // reset()
 
-    console.log('sub form')
 
     setCheckErrorSubmit(true);
 
@@ -50,7 +54,7 @@ const TemplateForm = (props) => {
 
 
   return (
-    <form>
+    <form >
       <div className="border-container border-null-left mobile-user-container">
         <div className="main-grid">
           {windowSize < 576 && (
@@ -62,7 +66,7 @@ const TemplateForm = (props) => {
               btnSubmiText={btnSubmiText}
               waitAnsw={waitAnsw}
               onSubmit={onSubmit}
-              newValue={newValue}
+              dirty={dirty}
             />
           )}
           {windowSize > 576 && (
@@ -74,7 +78,8 @@ const TemplateForm = (props) => {
               btnSubmiText={btnSubmiText}
               waitAnsw={waitAnsw}
               onSubmit={onSubmit}
-              newValue={newValue}
+              dirty={dirty}
+
             />
           )}
 

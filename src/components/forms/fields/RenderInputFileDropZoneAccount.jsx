@@ -45,7 +45,10 @@ const TemplateFile = (props) => {
     label,
     labelSecond,
     wrapClass,
+    onSubmit
   } = props.obj;
+
+  // console.log('onSubmit', onSubmit)
 
   const [nameFile, setNameFile] = useState([]);
 
@@ -89,7 +92,7 @@ const TemplateFile = (props) => {
   });
 
 
-  const deleteFile = (deleteItem) => {
+  const deleteFile = (deleteItem, e) => {
     setNameFile(nameFile.filter(item => item !== deleteItem))
 
     input.onChange(nameFile.filter(item => item !== deleteItem))
@@ -98,6 +101,7 @@ const TemplateFile = (props) => {
 
     deleteObject(desertRef).then(() => {
       console.log('file delete')
+      // onSubmit(e)
     }).catch((error) => {
       console.log('file delete err', error)
     });
@@ -150,7 +154,7 @@ const TemplateFile = (props) => {
                 <div className="dragdrop-file-img">
                   <img src={item} alt={item} />
                 </div>
-                <i className="delete-img-dragdrop" onClick={() => { deleteFile(item) }}></i>
+                <i className="delete-img-dragdrop" onClick={(e) => { deleteFile(item, e) }}></i>
               </div>
             ))}
           </TinySlider>

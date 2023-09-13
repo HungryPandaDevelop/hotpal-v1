@@ -14,15 +14,20 @@ import Tabs from 'pages/cabinet/parts/Tabs';
 
 const Cabinet = ({ formData, account }) => {
   const [newValue, setNewValue] = useState(false);
-  const [oldValue, setOldValue] = useState(formData);
+  const [oldValue, setOldValue] = useState({});
   const [countChange, setCountChange] = useState(0);
   // useEffect(() => {
+  //   console.log('oldValue')
+  //   // if (formData) {
 
-  //   if (oldValue && oldValue.values !== formData.values && countChange > 1) {
-  //     setNewValue(true)
-  //   }
-  //   setOldValue(formData);
-  //   setCountChange(countChange + 1)
+
+  //   //   if (oldValue.values !== formData.values) {
+  //   //     setOldValue(formData);
+  //   //     setNewValue(true)
+  //   //   }
+
+  //   // }
+  //   // setOldValue('formData');
 
   // }, [formData]);
 
@@ -34,6 +39,7 @@ const Cabinet = ({ formData, account }) => {
     // setOldValue(formData);
     // setCountChange(0)
   };
+
 
 
   if (account.loaded) { return 'Loading...' }
@@ -50,7 +56,7 @@ const Cabinet = ({ formData, account }) => {
           initialValues={account}
           user={account}
           submitSuccess={submitSuccess}
-          newValue={newValue}
+          newValue={formData}
         />
       </div>
     </>

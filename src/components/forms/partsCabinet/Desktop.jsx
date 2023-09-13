@@ -1,6 +1,7 @@
 import UserTop from 'pages/users/detail/UserTop';
 import RenderFields from 'components/forms/RenderFields';
 import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainerCabinet'
+import { calculateAge } from 'pages/users/hooks/calculateAge';
 
 
 const Desktop = ({
@@ -11,14 +12,30 @@ const Desktop = ({
   btnSubmiText,
   waitAnsw,
   onSubmit,
-  newValue
+  dirty,
 
 }) => {
   return (
     <>
       <div className="col-8 col-xs-12">
-        <UserTop user={user} />
 
+        <div className="user-top-info--view">
+          <h2>{user.name}, {calculateAge(user.dateBerth)}</h2>
+          <RenderFields
+            type="single"
+            fields={fields.dateBerth}
+          />
+          <div className="user-info-gender">
+            {user.gender && user.gender === 'man' ? (
+              <div><span>Пол:</span><b>M</b>
+                <div className="man-ico"></div>
+              </div>) : (
+              <div><span>Пол:</span><b>Ж</b>
+                <div className="woman-ico"></div>
+              </div>
+            )}
+          </div>
+        </div>
         <RenderFields
           type="single"
           fields={fields.goals}
@@ -33,6 +50,7 @@ const Desktop = ({
         <RenderFields
           type="single"
           fields={fields.imgsAccount}
+          onSubmit={onSubmit}
         />
       </div>
 
@@ -104,12 +122,12 @@ const Desktop = ({
           checkErrorSubmit={checkErrorSubmit}
           setErrCheck={setErrCheck}
         />
-        <div className={`btn-save-outer ${newValue ? 'active' : ''}`}>
+        <div className={`btn-save-outer ${dirty ? 'active' : ''}`}>
           <RenderBtnContainer
             btnSubmitText={btnSubmiText}
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
-            newValue={newValue}
+
           />
         </div>
       </div>
