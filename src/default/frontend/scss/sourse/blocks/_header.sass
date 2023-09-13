@@ -25,12 +25,21 @@ header
     display: none
 
   &.main-page-header
-    background-color: $blueColor
+    // background-color: $blueColor
+    background: none
     color: $whiteColor
-    .btn-out
+    .btn-in
       background-color: $whiteColor
       border-color: $whiteColor
       color: $blackColor
+      &:hover
+        background-color: $blackColor
+        border-color: $blackColor
+        color: $whiteColor
+    .btn--exit
+      background-color: $blueColor
+      border-color: $blueColor
+      color: $whiteColor
     .nav-header a
       color: $blackColor
       &:hover
@@ -45,9 +54,10 @@ header
     position: relative
 .change-style
   @include positionElement(137px, 137px, 0, 0, left, top, 6)
-  // outline: 1px solid red
   @include bgImageEl("../images/icons-app/change-style.png", cover)
   cursor: pointer
+  &.active
+    @include bgImageEl("../images/icons-app/change-style-white.png", cover)
 .nav-header
   width: 100%
   ul
@@ -86,5 +96,3 @@ header
       margin-left: auto
   .stub
     height: 100px
-  .change-style
-    display: none

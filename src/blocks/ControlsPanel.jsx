@@ -1,16 +1,55 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Popup from "blocks/controls-panel/Popup";
 import ControlsBtn from "blocks/controls-panel/ControlsBtn";
 import ControlsLink from "blocks/controls-panel/ControlsLink";
+import TotalCount from "blocks/controls-panel/parts/TotalCount";
+import { fn } from "moment";
 
 const ControlsPanel = () => {
+
+  const popupRef = useRef(null);
+  const btnRef = useRef(null);
+
+  useEffect(() => {
+
+    document.addEventListener("click", handleClick);
+
+    document.body.addEventListener('click', bodyClick);
+
+    return () => {
+      document.removeEventListener("click", handleClick)
+      document.removeEventListener("click", bodyClick)
+    };
+
+
+
+    function bodyClick(e) {
+      console.log('cl body', e.target)
+    }
+
+    function handleClick(e) {
+      console.log('s')
+      if ((popupRef && popupRef.current)) {
+        const ref = popupRef.current;
+        if (!ref.contains(e.target)) {
+
+          setPopupActive(false);
+          setIdActive('');
+        }
+
+      }
+    }
+
+  }, []);
+
+
 
   const [popupActive, setPopupActive] = useState(false);
   const [nameActive, setNameActive] = useState('');
   const [idActive, setIdActive] = useState(0);
 
   const arrNames = [
-    ['chat', 'Чат'],
+    ['chat', 'Личные сообщения (1)'],
     ['like', 'Симпатии'],
     // ['invite', 'Приглашения'],
   ];
@@ -27,6 +66,7 @@ const ControlsPanel = () => {
       setPopupActive={setPopupActive}
       setNameActive={setNameActive}
       setIdActive={setIdActive}
+      btnRef={btnRef}
     />)
   }
   const renderLink = (arrNames) => {
@@ -45,14 +85,17 @@ const ControlsPanel = () => {
       <div className="controls-panel">
         {renderBtn(arrNames)}
         {renderLink(arrLinks)}
-      </div>
-      {popupActive && <Popup
-        setPopupActive={setPopupActive}
-        nameActive={nameActive}
-        idActive={idActive}
-        setIdActive={setIdActive}
 
-      />}
+        {popupActive && <Popup
+          setPopupActive={setPopupActive}
+          nameActive={nameActive}
+          idActive={idActive}
+          setIdActive={setIdActive}
+          popupRef={popupRef}
+
+        />}
+      </div>
+
     </div>
   )
 }

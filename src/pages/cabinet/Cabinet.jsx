@@ -13,26 +13,29 @@ import { connect } from 'react-redux';
 import Tabs from 'pages/cabinet/parts/Tabs';
 
 const Cabinet = ({ formData, account }) => {
-
-
-  // const [listings, setListings] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
+  const [newValue, setNewValue] = useState(false);
+  const [oldValue, setOldValue] = useState(formData);
+  const [countChange, setCountChange] = useState(0);
   // useEffect(() => {
 
-  //   // console.log('account', account)
+  //   if (oldValue && oldValue.values !== formData.values && countChange > 1) {
+  //     setNewValue(true)
+  //   }
+  //   setOldValue(formData);
+  //   setCountChange(countChange + 1)
 
-  //   getSingleListing('users', uid).then(res => {
-  //     setListings(res);
-  //     setLoading(false);
-  //   })
-  // }, []);
+  // }, [formData]);
+
 
   const submitSuccess = () => {
     saveListing(formData.values, account.uid, 'users');
+
+    // setNewValue(false)
+    // setOldValue(formData);
+    // setCountChange(0)
   };
 
-  // console.log('account.loaded', account.loaded, account)
+
   if (account.loaded) { return 'Loading...' }
 
   return (
@@ -45,7 +48,9 @@ const Cabinet = ({ formData, account }) => {
           btnSubmiText="Сохранить"
           // initialValues={listings}
           initialValues={account}
+          user={account}
           submitSuccess={submitSuccess}
+          newValue={newValue}
         />
       </div>
     </>

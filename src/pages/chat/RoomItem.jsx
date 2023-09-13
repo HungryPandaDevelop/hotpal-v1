@@ -54,8 +54,24 @@ const RoomItem = ({
 
 
 
+  // console.log(room.data.messages)
+
+  let setLastMessage = () => {
+    let myMessages = [];
+    let lastMessage = '';
+
+    if (room.data.messages) {
+      myMessages = room.data.messages.filter(el => el.uid !== uid);
+    }
+    // console.log('myMessages', myMessages)
+    if (room.data.messages.length > 0) {
+      lastMessage = myMessages[myMessages.length - 1].text
+      // console.log('lastMessage', myMessages[myMessages.length - 1])
+    }
 
 
+    return lastMessage;
+  }
 
   if (loading) { return 'Loading...' }
 
@@ -81,9 +97,12 @@ const RoomItem = ({
             <div className="rooms-item-name">
               {roomUserInfo.name}
             </div>
-            <span className="rooms-item-date">
+            <div className="rooms-item-message">
+              {setLastMessage()}
+            </div>
+            {/* <span className="rooms-item-date">
               {getCurrentTime(roomUserInfo)}
-            </span>
+            </span> */}
           </div></>
       </LinkWrap>
 

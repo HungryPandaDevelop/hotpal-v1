@@ -52,9 +52,10 @@ const TemplateFile = (props) => {
   const [loadingFile, setLoadingFile] = useState(false);
 
   useEffect(() => {
-
-    setNameFile(input.value);
-
+    // console.log('input.value', input.value)
+    if (input.value) {
+      setNameFile(input.value);
+    }
   }, [input]);
 
 

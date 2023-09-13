@@ -3,7 +3,10 @@ import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainer'
 
 import { reduxForm } from 'redux-form';
 
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import UserTop from 'pages/users/detail/UserTop';
+import Mobile from './partsCabinet/Mobile';
+import Desktop from './partsCabinet/Desktop';
 
 // --------------------------------------------------------------------
 
@@ -12,8 +15,11 @@ const TemplateForm = (props) => {
     fields,
     btnSubmiText,
     waitAnsw,
-    submitSuccess
+    submitSuccess,
+    user,
+    newValue
   } = props;
+
 
   const windowSize = useRef(window.innerWidth).current;
 
@@ -45,126 +51,32 @@ const TemplateForm = (props) => {
 
   return (
     <form>
-      <div className="border-container border-null-left">
+      <div className="border-container border-null-left mobile-user-container">
         <div className="main-grid">
           {windowSize < 576 && (
-            <div className="col-xs-12">
-              <RenderFields
-                type="single"
-                fields={fields.imgsAccount}
-              />
-            </div>
-          )}
-          <div className="col-8 col-xs-12">
-            <div className="user-top-info">
-              <RenderFields
-                type="single"
-                fields={fields.name}
-                checkErrorSubmit={checkErrorSubmit}
-                setErrCheck={setErrCheck}
-              />
-              <RenderFields
-                type="single"
-                fields={fields.dateBerth}
-                checkErrorSubmit={checkErrorSubmit}
-                setErrCheck={setErrCheck}
-              />
-              <RenderFields
-                type="single"
-                fields={fields.gender}
-              />
-            </div>
-            <RenderFields
-              type="single"
-              fields={fields.goals}
-            />
-            <RenderFields
-              type="single"
-              fields={fields.currentLocation}
-            />
-          </div>
-          {windowSize > 576 && (
-            <div className="col-4 col-xs-12">
-              <RenderFields
-                type="single"
-                fields={fields.imgsAccount}
-              />
-            </div>
-          )}
-
-          <div className="col-12">
-            <div className="border-delimetr border-account"></div>
-          </div>
-          <div className="col-8 col-xs-12">
-            <RenderFields
-              type="single"
-              fields={fields.interests}
-            />
-
-          </div>
-          <div className="col-4 col-xs-12">
-            <div className="personal-info">
-              <ul className="ln">
-                <li>
-                  <div className="personal-info-name"><i className="portfel-ico"></i><b>Работа:</b></div>
-                  <div className="personal-info-value">
-                    <RenderFields
-                      type="single"
-                      fields={fields.work}
-                      checkErrorSubmit={checkErrorSubmit}
-                      setErrCheck={setErrCheck}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div className="personal-info-name"><i className="zodiak-ico"></i><b>Зодиак:</b></div>
-                  <div className="personal-info-value">
-                    <RenderFields
-                      type="single"
-                      fields={fields.zodiac}
-                      checkErrorSubmit={checkErrorSubmit}
-                      setErrCheck={setErrCheck}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div className="personal-info-name"><i className="celi-ico"></i><b>Цель поездки:</b></div>
-                  <div className="personal-info-value">
-                    <RenderFields
-                      type="single"
-                      fields={fields.tripPoint}
-                      checkErrorSubmit={checkErrorSubmit}
-                      setErrCheck={setErrCheck}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div className="personal-info-name"><i className="orientacia-ico"></i><b>Ориентация:</b></div>
-                  <div className="personal-info-value">
-                    <RenderFields
-                      type="single"
-                      fields={fields.orientation}
-                      checkErrorSubmit={checkErrorSubmit}
-                      setErrCheck={setErrCheck}
-                    />
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-12 user-description">
-            <RenderFields
-              type="single"
-              fields={fields.description}
+            <Mobile
+              user={user}
+              fields={fields}
               checkErrorSubmit={checkErrorSubmit}
               setErrCheck={setErrCheck}
-            />
-            <RenderBtnContainer
-              btnSubmitText={btnSubmiText}
+              btnSubmiText={btnSubmiText}
               waitAnsw={waitAnsw}
               onSubmit={onSubmit}
+              newValue={newValue}
             />
-          </div>
+          )}
+          {windowSize > 576 && (
+            <Desktop
+              user={user}
+              fields={fields}
+              checkErrorSubmit={checkErrorSubmit}
+              setErrCheck={setErrCheck}
+              btnSubmiText={btnSubmiText}
+              waitAnsw={waitAnsw}
+              onSubmit={onSubmit}
+              newValue={newValue}
+            />
+          )}
 
         </div>
       </div>

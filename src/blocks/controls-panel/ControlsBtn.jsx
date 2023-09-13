@@ -5,7 +5,8 @@ const ControlsBtn = ({
   setPopupActive,
   setNameActive,
   setIdActive,
-  idActive
+  idActive,
+  btnRef
 }) => {
 
   const activeEl = (name) => {
@@ -20,6 +21,7 @@ const ControlsBtn = ({
     <div
       className={`controls-btn controls-${name[0]} ${name[0] === idActive && 'active'}`}
       onClick={() => activeEl(name)}
+      ref={btnRef}
     ><i></i>
       {name[0] === 'chat' && <TotalCount type="rooms" />}
       {name[0] === 'like' && <TotalCount type="likes" />}

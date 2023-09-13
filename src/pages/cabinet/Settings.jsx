@@ -24,16 +24,6 @@ const Cabinet = ({ account, formData }) => {
 
   const [currentTab, setCurrentTab] = useState(0);
 
-  // const [listings, setListings] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-
-  //   getSingleListing('users', uid).then(res => {
-  //     setListings(res);
-  //     setLoading(false);
-  //   })
-  // }, []);
 
 
   const renderTabs = (num) => {

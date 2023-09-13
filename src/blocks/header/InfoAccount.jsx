@@ -22,12 +22,12 @@ const InfoAccount = ({ uid, ActionFn }) => {
       {uid ? (
         <>
           {/* <Link to="/cabinet/chat" className="btn btn-chat btn--white">Чат</Link> */}
-          <Link to="/cabinet" className="btn btn-cabinet btn--white">Мой кабинет</Link>
+          <Link to="/cabinet" className="btn btn-cabinet btn-in btn--blue">Мой кабинет</Link>
           <div
-            className="btn btn--white"
+            className="btn btn--exit"
             onClick={onLogOut}
           >Выйти</div>
-        </>) : (<><Link to="/auth-start" className="btn btn-out btn--white">Войти</Link></>)}
+        </>) : (<><Link to="/auth-start" className="btn btn-in btn--blue">Войти</Link></>)}
 
     </>
   )

@@ -57,9 +57,10 @@ const App = ({account})=> {
       <>
         <BrowserRouter>
           <CheckAuth />
-          <GetRooms />
+          
           <Header />
           {/* <div className="stub"></div> */}
+          {(account.uid ? <GetRooms /> : '')}
           {(account.uid ? <ControlsPanel /> : '')}
 
           
@@ -101,7 +102,7 @@ const App = ({account})=> {
                 <Route path='/cabinet/likes'  element={<Likes  />} ></Route>
                 
               </Route>
-            {/* )} */}
+             {/* )}  */}
             
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>

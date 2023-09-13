@@ -6,13 +6,15 @@ import { Link } from 'react-router-dom'
 import Nav from 'blocks/header/Nav';
 import InfoAccount from 'blocks/header/InfoAccount';
 import PopupNav from 'blocks/PopupNav';
-import { getElementError } from '@testing-library/react';
+// import { getElementError } from '@testing-library/react';
+
+import ChangeTheme from 'blocks/ChangeTheme';
+
 
 const Header = () => {
   const location = useLocation();
+
   const [shopMenu, setShowMenu] = useState(false);
-
-
 
   useEffect(() => {
     // console.log('location', location.pathname)
@@ -21,15 +23,10 @@ const Header = () => {
   }, [location]);
 
 
-  const changeStyleSite = () => {
-    document.getElementsByTagName('body')[0].classList.add("dark-theme")
-  }
-
-
   return (
     <>
-      <div className="change-style" onClick={changeStyleSite}></div>
-      <header className={`${location.pathname === '/' || location.pathname === '/auth-start' ? 'main-page-header' : ''}`}>
+      <ChangeTheme />
+      <header className={`${location.pathname === '/' || location.pathname === '/auth-start' || location.pathname === '/auth-mail' || location.pathname === '/reg-end' || location.pathname === '/reg-start' || location.pathname === '/reg-mail' ? 'main-page-header' : ''}`}>
         <div className="main-grid line-header line-header-nav">
           <div className="col-4 hidden-xs vertical-align">
             <nav className="nav-header">

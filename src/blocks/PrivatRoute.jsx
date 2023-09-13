@@ -33,7 +33,7 @@ const PrivateRoute = ({ account }) => {
   // }, []);
 
 
-  console.log('account.loaded', account)
+  // console.log('account.loaded', account)
 
   return (
     <>

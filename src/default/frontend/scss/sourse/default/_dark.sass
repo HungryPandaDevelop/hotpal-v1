@@ -1,9 +1,19 @@
 .dark-theme
   background-color: #0B132B
   header
-    background-color: #0B132B
-  .nav-header a
-    color: #fff
+    .nav-header
+      a
+        color: $whiteColor
+        &:hover
+          color: $blueColor
+    .btn-in
+      background-color: $blueColor
+      border-color: $blueColor
+      color: $whiteColor
+      &:hover
+        background-color: $whiteColor
+        color: $blueColor
+        border-color: $whiteColor
   .logo-dark
     display: none
   .logo-white
@@ -11,20 +21,43 @@
   .btn--white
     background-color: $blueColor
     color: $whiteColor
-    border-color: $whiteColor
+    border-color: $blueColor
   .border-container,
   .border-tab
     border-color: $whiteColor
     background-color: #0B132B
     color: $whiteColor
-  .input-box label,
-  .input-decorate,
-  .custom-select,
-  .file-decorate
-    color: #fff
+  // .input-box label,
+  // .input-decorate,
+  // .custom-select,
+  // .file-decorate
+  //   color: #fff
   .switch-input
     border-color: 1px solid $whiteColor
   .tags-popup
     background-color: $blackColor
+  .main-home
+    .main-home-img
+      background-image: url("../images/main-bg-black.jpg")
+    .btn--black
+      background-color: $blueColor
+      color: $whiteColor
+      border-color: $blueColor
+      &:hover
+        background-color: $whiteColor
+        border-color: $whiteColor
+        color: $blueColor
+  .home-simple-text
+    background-color: $blackColor
+  .partners-home
+    background-color: $blackColor
+    .partners-item
 .logo-white
   display: none
+@media (max-width: 576px)
+  .dark-theme
+    .main-home
+      .main-home-img
+        background-image: url("../images/main-bg-mobile-black.jpg")
+
+        color: $blueColor

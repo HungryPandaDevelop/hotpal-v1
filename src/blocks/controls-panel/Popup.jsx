@@ -5,7 +5,8 @@ const Popup = ({
   setPopupActive,
   nameActive,
   idActive,
-  setIdActive
+  setIdActive,
+  popupRef
 }) => {
 
   const closePopup = () => {
@@ -14,10 +15,10 @@ const Popup = ({
   }
 
   return (
-    <div className="controls-panel-popup">
+    <div className="controls-panel-popup" ref={popupRef}>
       <div className="controls-panel-head">{nameActive}</div>
       <div className={`panel-deg panel-deg--${idActive}`}></div>
-      <div className="panel-close" onClick={closePopup}></div>
+      {/* <div className="panel-close" onClick={closePopup}></div> */}
       {idActive === 'chat' && <Chat />}
       {idActive === 'like' && <Likes />}
     </div>

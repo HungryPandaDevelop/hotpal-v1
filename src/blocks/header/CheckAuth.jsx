@@ -25,7 +25,7 @@ const CheckAuth = ({
       ActionFn('SET_INFO_ACCOUNT', { loaded: true, });
 
       if (user) {
-        console.log('in')
+        // console.log('in')
 
 
         getSingleListing('users', user.uid).then(res => {

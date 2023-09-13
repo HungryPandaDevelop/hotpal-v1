@@ -36,10 +36,11 @@ const TempateInput = (props) => {
       if (selectRef && selectRef.current) {
         const ref = selectRef.current
         if (!ref.contains(e.target)) {
-          setOpen(false)
+          setOpen(false);
         }
       }
     }
+
   }, []);
 
 
