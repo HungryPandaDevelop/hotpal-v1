@@ -13,7 +13,9 @@ const BtnFavorites = ({
   uid,
   collections,
   base,
-  btnClass
+  btnClass,
+  showPopup,
+  setIdPoup
 }) => {
 
   const [status, setStatus] = useState(false);
@@ -36,11 +38,14 @@ const BtnFavorites = ({
         'likeUserRef': userInfo.uid
       }, base).then(res => {
         setStatus(res)
+        setIdPoup('favorites')
+        showPopup(true)
       });
   };
 
   const onDelete = () => {
     deleteListing(base, status)
+    showPopup(false)
   };
 
   const onStatusChange = (userInfo) => {

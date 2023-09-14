@@ -6,6 +6,7 @@
   position: relative
   overflow-y: auto
   border-right: 1px solid $grayColor
+.custom-scroll
   &::-webkit-scrollbar
     width: 7px
     border-radius: 30px
@@ -54,6 +55,16 @@
   display: block
 .rooms-item-message
   // color: $blueColor
+  i
+    margin-right: 8px
+  .bokal-ico--white
+    background-image: url("../images/icons-app/tags/bokal.svg")
+  .padushka-ico--white
+    background-image: url("../images/icons-app/tags/padushka.svg")
+  .plag-ico--white
+    background-image: url("../images/icons-app/tags/plag.svg")
+  .pribor-ico--white
+    background-image: url("../images/icons-app/tags/pribor.svg")
 .rooms-item-info
   // text-align: right
   padding-left: 15px
@@ -61,15 +72,18 @@
   display: inline-block
   vertical-align: middle
 
-.rooms-item-date,
-.rooms-item-online,
 .rooms-item-count
   display: inline-block
   margin-left: 15px
-.rooms-item-date
+
+.rooms-item-date,
+.rooms-item-online
   font-size: $smallSize
+  margin: 0
+  display: inline-block
+
 .rooms-item-count
-  @include positionElement(18px, 18px, -20px, 3px)
+  @include positionElement(18px, 18px, -15px, 3px)
   text-align: center
   color: $whiteColor
   background-color: $blueColor
@@ -81,9 +95,30 @@
 .rooms-item-online
   font-weight: 700
   color: $blueColor
-.room-item-message
-  font-size: $smallSize
-  color: $grayColor
+// .room-item-message
+//   font-size: $smallSize
+//   color: $grayColor
+.message-head
+  padding: 0 0 10px
+  &:hover
+    background: none
+  &::after
+    background-color: rgba(58, 80, 107, 0.2)
+    width: 100%
+.empty-room
+  text-align: center
+  height: 585px
+  display: flex
+  h3
+    font-weight: 400
+    font-size: 18px
+    margin: 0 0 26px
+    color: $blackColor
+  .empty-room-container
+    margin: auto
+    max-width: 290px
+  .btn
+    width: 260px
 
 @media (max-width: 576px)
   .chat-rooms

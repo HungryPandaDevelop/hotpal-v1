@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getMyRoomMessages, stopWatch } from 'services/chatEvents';
 
 import MessagesItem from './MessagesItem';
+import MessagesHead from './MessagesHead';
 
 const Messages = ({ uid, roomId }) => {
 
@@ -24,7 +25,7 @@ const Messages = ({ uid, roomId }) => {
 
   const renderMessages = () => {
     if (allMessages.length <= 0) {
-      return 'Список сообщений пукст';
+      return 'Список сообщений пуст';
     }
     return allMessages.map((message, index) => <MessagesItem
       key={index}
@@ -36,12 +37,13 @@ const Messages = ({ uid, roomId }) => {
   }
 
   return (
-    <div className="chat-messages">
-      <div className="messages-container">
+    <>
+      {uid && <MessagesHead />}
+      <div className="messages-container custom-scroll">
 
         {renderMessages()}
       </div>
-    </div>
+    </>
   )
 }
 

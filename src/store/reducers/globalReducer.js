@@ -1,7 +1,8 @@
 
 let globalState = {
   likes: [],
-  rooms: []
+  rooms: [],
+  roomUserInfo: {}
 };
 
 export const globalReducer = (state=globalState, action) => {
@@ -9,6 +10,8 @@ export const globalReducer = (state=globalState, action) => {
     case 'SET_LIKES':
       return {...state, ...action.payload,}
     case 'SET_ROOMS':
+      return {...state, ...action.payload,}
+    case 'SET_CURRENT_ROOM':
       return {...state, ...action.payload,}
     default: 
       return state

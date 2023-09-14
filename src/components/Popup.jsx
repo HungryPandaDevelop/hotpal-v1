@@ -1,11 +1,21 @@
-import { Link } from "react-router-dom"
+import { useState } from "react"
 
-const Popup = ({ children }) => {
+const Popup = ({ children, showStart, showPopup }) => {
+
+
+
+  const closePopup = () => {
+    showPopup(false)
+  }
+
   return (
-    <div className="popup element-show show" >
+    <div className={`popup element-show ${(showStart) ? 'show' : ''}`} >
       <div className="popup-overlay"></div>
       <div className="popup-container">
-        <Link to="/" className="btn-close close-btn--popup "></Link>
+
+        <i className="btn-close close-btn--popup" onClick={closePopup}></i>
+
+
         {children}
       </div>
     </div>

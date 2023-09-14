@@ -1,4 +1,4 @@
-import TotalCount from "./parts/TotalCount";
+import totalCountMessage from "./parts/totalCountMessage";
 
 const ControlsBtn = ({
   name,
@@ -6,7 +6,10 @@ const ControlsBtn = ({
   setNameActive,
   setIdActive,
   idActive,
-  btnRef
+  btnRef,
+  uid,
+  rooms,
+  likes,
 }) => {
 
   const activeEl = (name) => {
@@ -17,14 +20,21 @@ const ControlsBtn = ({
     setIdActive(name[0]);
   }
 
+  const renderCount = (id, base) => {
+    if (name[0] === id && totalCountMessage(base, uid, rooms, likes) > 0) {
+      return <span>{totalCountMessage(base, uid, rooms, likes)} </span>
+    }
+  }
+
+
   return (
     <div
       className={`controls-btn controls-${name[0]} ${name[0] === idActive && 'active'}`}
       onClick={() => activeEl(name)}
       ref={btnRef}
     ><i></i>
-      {name[0] === 'chat' && <TotalCount type="rooms" />}
-      {name[0] === 'like' && <TotalCount type="likes" />}
+      {renderCount('chat', 'rooms')}
+      {renderCount('like', 'likes')}
 
     </div>
   )

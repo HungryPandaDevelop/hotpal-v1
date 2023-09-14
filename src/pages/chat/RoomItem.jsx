@@ -11,6 +11,9 @@ import { getSingleListing } from 'services/getSingleListing';
 
 import LinkWrap from 'pages/chat/RoomItem/LinkWrap';
 
+import ActionFn from 'store/actions';
+import { connect } from 'react-redux';
+
 const RoomItem = ({
   room,
   roomUrl,
@@ -18,7 +21,8 @@ const RoomItem = ({
   onDeleteRoom,
   setChoiseRoom,
   setCurrentUser,
-  type
+  type,
+  ActionFn
 }) => {
 
   const invite = room.data.connectUsersUid[0] === uid ? room.data.connectUsersUid[1] : room.data.connectUsersUid[0];
@@ -34,6 +38,9 @@ const RoomItem = ({
 
       setLoading(false);
       setRoomUserInfo(res);
+
+      ActionFn('SET_CURRENT_ROOM', { roomUserInfo: res });
+
     });
 
     let count = 0;
@@ -44,12 +51,20 @@ const RoomItem = ({
     });
     setCountUnread(count);
 
-  }, [room]);
+
+
+
+  }, []);
 
   useEffect(() => {
     if (roomUrl === room.id) {
       updateRead(roomUrl, room, uid);
-    }
+
+      ActionFn('SET_CURRENT_ROOM', { roomUserInfo: roomUserInfo });
+    };
+
+
+
   }, [roomUrl]);
 
 
@@ -57,15 +72,16 @@ const RoomItem = ({
   // console.log(room.data.messages)
 
   let setLastMessage = () => {
-    let myMessages = [];
+    let myMessages = room.data.messages && room.data.messages;
     let lastMessage = '';
 
-    if (room.data.messages) {
-      myMessages = room.data.messages.filter(el => el.uid !== uid);
-    }
+    // if (room.data.messages) {
+    // myMessages = room.data.messages.filter(el => el.uid !== uid);
+    // }
     // console.log('myMessages', myMessages)
-    if (room.data.messages.length > 0) {
-      lastMessage = myMessages[myMessages.length - 1].text
+    if (myMessages.length > 0) {
+      let tempLastMessage = myMessages[myMessages.length - 1];
+      lastMessage = (tempLastMessage.text.length !== 0) ? tempLastMessage.text : tempLastMessage.invite.text
       // console.log('lastMessage', myMessages[myMessages.length - 1])
     }
 
@@ -98,7 +114,7 @@ const RoomItem = ({
               {roomUserInfo.name}
             </div>
             <div className="rooms-item-message">
-              {setLastMessage()}
+              <span dangerouslySetInnerHTML={{ __html: setLastMessage() }}></span>
             </div>
             {/* <span className="rooms-item-date">
               {getCurrentTime(roomUserInfo)}
@@ -116,4 +132,9 @@ const RoomItem = ({
   )
 }
 
-export default RoomItem
+
+
+export default connect(null,
+  {
+    ActionFn
+  })(RoomItem);

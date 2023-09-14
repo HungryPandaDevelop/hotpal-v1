@@ -31,21 +31,16 @@ const Form = ({ formData, uid, roomId, type }) => {
 
   return (
     <div className="chat-form">
-      {type === 'page' ? (
-        <RenderFormChat
-          fields={chatFields}
-          btnSubmitText="Отправить"
-          submitSuccess={submitSuccess}
-          colBtn="col-4 col-xs-12"
-        />
-      ) : (
-        <RenderForm
-          fields={chatPopupFields}
-          btnSubmitText="Отправить"
-          submitSuccess={submitSuccess}
-          colBtn="col-12"
-        />
-      )}
+
+      <RenderFormChat
+        fields={chatFields}
+        btnSubmitText="Отправить"
+        submitSuccess={submitSuccess}
+        colText={type === 'page' ? "col-8 " : "col-7"}
+        colBtn={type === 'page' ? "col-4 " : "col-5"}
+
+      />
+
 
     </div>
   )

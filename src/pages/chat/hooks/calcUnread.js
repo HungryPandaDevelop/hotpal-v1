@@ -15,7 +15,7 @@ export const calcUnreadMessage = (rooms, uid) => {
 export const calcUnread = (listing, uid) => {
  
   let count = 0;
-  listing.map(list => {
+  listing && listing.map(list => {
     // console.log('uid', list)
     if (!list.data.read && list.data.interlocutors[0] !== uid) {
       count++;

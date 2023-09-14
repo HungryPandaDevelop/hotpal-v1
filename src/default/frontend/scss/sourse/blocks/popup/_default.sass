@@ -1,11 +1,19 @@
 
 .popup
   @include positionElement(100%, 100%, 0, 0, left, top, 4, fixed, flex)
-  padding: 15px
+  transition: ease-out 0.5s
+
+  visibility: hidden
+  opacity: 0
+  &.show
+    visibility: visible
+    opacity: 1
+    padding: 15px
   h3,h4
     color: $blackColor
     text-align: center
-  h3
+  h3,
+  h3.popup-topic
     margin: 0 0 15px
     line-height: 41px
     font-size: 36px
@@ -15,7 +23,12 @@
     color: $blueColorSecond
   .btn
     width: 100%
-
+  .popup-text
+    text-align: center
+    a
+      text-decoration: none
+      color: $blueColor
+      font-weight: 700
   .main-grid,
   .main-full
     padding: 0
@@ -42,7 +55,7 @@
   height: auto
   margin: auto
   padding: 45px
-  transition: ease-out 0.5s
+
   overflow-y: auto
   max-height: 100%
   border-radius: 20px

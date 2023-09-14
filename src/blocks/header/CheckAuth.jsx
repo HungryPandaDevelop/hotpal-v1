@@ -38,7 +38,7 @@ const CheckAuth = ({
             ...res
           };
 
-          // saveListing(userInfo, user.uid, 'users'); обновить время заходу, убрать всплывашку
+          // saveListing(userInfo, user.uid, 'users'); // обновить время заходу, убрать всплывашку
 
           // localStorage.setItem('account', JSON.stringify(userInfo));
 

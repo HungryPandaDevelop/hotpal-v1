@@ -1,6 +1,8 @@
 
 import { deleteListing } from 'services/getListings';
 
+import EmptyRoom from 'pages/chat/EmptyRoom';
+
 import RoomItem from 'pages/chat/RoomItem';
 import { connect } from 'react-redux';
 
@@ -16,7 +18,7 @@ const RoomList = ({ uid, roomId, setChoiseRoom, setCurrentUser, type, rooms }) =
 
   return (
     <div className='chat-rooms'>
-      {rooms.map((room) => <RoomItem
+      {rooms.length ? rooms.map((room) => <RoomItem
         room={room}
         key={room.id}
         roomUrl={roomId}
@@ -25,7 +27,7 @@ const RoomList = ({ uid, roomId, setChoiseRoom, setCurrentUser, type, rooms }) =
         onDeleteRoom={onDeleteRoom}
         setChoiseRoom={setChoiseRoom}
         setCurrentUser={setCurrentUser}
-      />)}
+      />) : <EmptyRoom />}
     </div>
   )
 };

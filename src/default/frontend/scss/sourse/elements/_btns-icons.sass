@@ -2,13 +2,17 @@ $icoSize: 24px
 $icoOffset: 8px
 
 .btn-close
-	@include icoEl($icoSize, $icoSize, "../images/icons/close-black.svg")
+	@include icoEl(20px, 20px, "../images/icons/close-gray.svg")
+	background-size: 8px
+	border: 1px solid $grayColor
+	border-radius: 100%
 	cursor: pointer
 	&:hover
+		border-color: $blueColor
 		background-image: url("../images/icons/close-blue.svg")
 .btn-trash
 	// @include icoEl($icoSize, $icoSize, "../images/icons/trash-gray.svg", middle, 18px)
-	@include icoEl(20px, 20px, "../images/icons/close-gray.svg", middle, 14px)
+	@include icoEl(20px, 20px, "../images/icons/close-gray.svg", middle, 9px)
 	cursor: pointer
 	border: 2px solid $grayColor
 	// border: 2px solid rgba(58, 80, 107, 0.6)
@@ -111,7 +115,7 @@ $icoBtnSize: 50px
 			background-image: url("../images/icons/star-fill-white.svg")
 
 .btn-ico--like
-	@include icoEl($icoBtnSize, $icoBtnSize, "../images/icons-app/like-blue.svg", middle, 40px, center )
+	@include icoEl($icoBtnSize, $icoBtnSize, "../images/icons-app/like-blue.svg", middle, 40px, center 11px )
 	background-size: 30px
 	&:hover
 		background-image: url("../images/icons-app/like-white.svg")

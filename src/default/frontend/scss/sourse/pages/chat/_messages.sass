@@ -1,38 +1,70 @@
 .chat-messages
-
+	margin-top: 15px
+	margin-right: 15px
 .messages-container
 	padding: 15px
-	border: 1px solid $grayColor
+	padding-left: 0
 	border-radius: 15px
 	position: relative
-	max-height: 400px
-	height: 100%
+	height: 400px
+
 	overflow-y: auto
 	// background-color: $whiteColorSecond
 .messages-item
 	word-break: break-all
+	padding: 8px 8px 0 0
+
+	em
+		display: inline-block
+		width: 30px
+		height: 30px
+		border: 1px solid $whiteColor
+		border-radius: 100%
+		display: inline-flex
+		margin-right: 8px
+		vertical-align: middle
 	span
 		vertical-align: middle
-.messages-item--answer
-	text-align: right
+	i
+		margin: auto
 
+		display: inline-block
+	.invite-status
+		border-radius: 10px 10px 10px 0
+.messages-item--answer
+	padding: 8px 8px 0 0
+	text-align: right
+	.invite-status
+		border-radius: 10px 10px 0 10px
 .messages--noanswer
 	background-color: rgba($blueColor , 0.1 )
 .messages-box
-	display: inline-block
+	// display: inline-block
 	padding: 8px 15px
 	background-color: $blueColor
 	color: $whiteColor
 	border-radius: 15px 15px 15px 0
+
 .messages-box--answer
-	display: inline-block
+	// display: inline-block
 	padding: 8px 15px
-	background-color: $blueColorSecond
-	color: $whiteColor
+	background-color: rgba(58, 80, 107, 0.1)
+	color: $blackColor
 	border-radius: 15px 15px 0px 15px
+	.bokal-ico--white
+		background-image: url("../images/icons-app/tags/bokal.svg")
+	.padushka-ico--white
+		background-image: url("../images/icons-app/tags/padushka.svg")
+	.plag-ico--white
+		background-image: url("../images/icons-app/tags/plag.svg")
+	.pribor-ico--white
+		background-image: url("../images/icons-app/tags/pribor.svg")
+	em
+		border-color: $grayColor
 .messages-date
-	font-size: $smallSize
+	font-size: 12px
 	padding: 5px
+	color: $grayColor
 .messages-img
 	width: 50%
 .messages-ico
@@ -52,27 +84,31 @@
 	padding: 8px
 .btn-invite
 	margin-right: 15px
+	font-size: 12px
 	i
 		margin-right: 8px
+$icoSizePopup: 20px
+$icoSizeBgPopup: 9px
 .btn-apply
 	display: inline-block
 	cursor: pointer
+	color: $blueColor
 	i
-		border: 1px solid
 		border-radius: 100%
-		@include icoEl($icoSizePopup, $icoSizePopup, "../images/icons/agree-lite-black.svg", middle, $icoSizeBgPopup)
+		border: 2px solid $blueColor
+		@include icoEl($icoSizePopup, $icoSizePopup, "../images/icons/agree-lite-blue.svg", middle, $icoSizeBgPopup)
 	&:hover
-		color: $blueColor
+		color: $grayColor
 		i
-			border-color: $blueColor
-			background-image: url("../images/icons/agree-lite-blue.svg")
+			border-color: $grayColor
+			background-image: url("../images/icons/agree-lite-gray.svg")
 .btn-dismiss
 	display: inline-block
 	cursor: pointer
 	i
-		border: 1px solid $grayColor
+		border: 2px solid $blueColorSecond
 		border-radius: 100%
-		@include icoEl($icoSizePopup, $icoSizePopup, "../images/icons/close-black.svg", middle, $icoSizeBgPopup)
+		@include icoEl($icoSizePopup, $icoSizePopup, "../images/icons/close-blueSecond.svg", middle, $icoSizeBgPopup)
 	&:hover
 		color: $redColor
 		i
@@ -81,16 +117,16 @@
 .invite-status
 	padding: 3px 8px
 	background-color: $grayColor
-	font-size: $smallSize
 	color: $whiteColor
 	display: inline-block
-	margin: 4px
-	border-radius: 4px
+	width: 160px
+	text-align: center
+	border: 1px solid $blackColor
 .invite-status--agree
-	background-color: $greenColor
+	background: none
 	color: $blackColor
 .invite-status--disagree
-	background-color: $redColor
+	background-color: $blackColor
 @media (max-width: 576px)
 	.chat-messages
 		margin-top: 15px

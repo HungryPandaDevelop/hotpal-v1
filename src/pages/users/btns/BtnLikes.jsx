@@ -10,7 +10,9 @@ import { connect } from 'react-redux';
 const BtnLikes = ({
   user,
   uid,
-  likes
+  likes,
+  showPopup,
+  setIdPoup
 }) => {
 
   const base = 'likes';
@@ -29,18 +31,22 @@ const BtnLikes = ({
   }, []);
 
   const onAdd = (userInfo) => {
+
     addCardsDefault({
       'interlocutors': [uid, userInfo.uid],
       'status': 'see',
       'read': false,
       'userRef': uid,
     }, base).then(res => {
-      setStatus(res)
+      setIdPoup('likes');
+      showPopup(true);
+      setStatus(res);
     });
   };
 
   const onDelete = () => {
     deleteListing(base, status)
+    showPopup(false);
   };
 
   const onStatusChange = (userInfo) => {

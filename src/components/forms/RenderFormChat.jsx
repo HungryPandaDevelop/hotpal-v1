@@ -1,5 +1,5 @@
 import RenderFields from 'components/forms/RenderFields';
-import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainer'
+import RederBtnChatContainer from 'components/forms/formParts/RederBtnChatContainer'
 
 import { reduxForm } from 'redux-form';
 
@@ -15,7 +15,9 @@ const TemplateForm = (props) => {
     submitSuccess,
     setInviteMessage,
     reset,
-    dispatch
+    dispatch,
+    colText,
+    colBtn
   } = props;
 
 
@@ -80,7 +82,7 @@ const TemplateForm = (props) => {
     <form>
 
       <div className="main-grid">
-        <div className="col-8 col-xs-12">
+        <div className={`${colText ? colText : 'col-8'} col-xs-12`}>
           <div className="form-container">
             <RenderFields
               type="single"
@@ -96,16 +98,16 @@ const TemplateForm = (props) => {
             />
           </div>
         </div>
-        <div className="col-4 col-xs-12">
+        <div className={`${colBtn ? colBtn : 'col-4'} col-xs-12`}>
           <RenderFields
             type="single"
             fields={customFieldsInv}
-
-
           />
-          <RenderBtnContainer
+
+          <RederBtnChatContainer
             btnSubmitText={btnSubmitText}
             waitAnsw={waitAnsw}
+            btnClass="btn--blue-border"
             onSubmit={onSubmit}
           />
         </div>

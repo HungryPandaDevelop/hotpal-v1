@@ -2,30 +2,32 @@ import { useState, useEffect, useRef } from "react";
 import Popup from "blocks/controls-panel/Popup";
 import ControlsBtn from "blocks/controls-panel/ControlsBtn";
 import ControlsLink from "blocks/controls-panel/ControlsLink";
-import TotalCount from "blocks/controls-panel/parts/TotalCount";
+import totalCountMessage from "blocks/controls-panel/parts/totalCountMessage";
 import { fn } from "moment";
 import $ from 'jquery';
+import { connect } from 'react-redux';
 
-const ControlsPanel = () => {
+const ControlsPanel = ({
+  uid,
+  rooms,
+  likes,
+}) => {
 
   const popupRef = useRef(null);
   const btnRef = useRef(null);
 
   useEffect(() => {
 
-    // document.addEventListener("click", handleClick);
-
     document.body.addEventListener('click', bodyClick);
 
     return () => {
-      // document.removeEventListener("click", handleClick)
       document.removeEventListener("click", bodyClick)
     };
 
 
 
     function bodyClick(e) {
-      if (!$(e.target).is('.controls-panel-popup, .controls-panel-popup > *, .controls-btn, .controls-btn > *')) {
+      if (!$(e.target).is('.link-back, .link-back *, .controls-panel-popup, .controls-panel-popup  *, .controls-btn, .controls-btn  *, .rooms-item, .rooms-item  *')) {
         setPopupActive(false);
         setIdActive('');
       }
@@ -54,9 +56,9 @@ const ControlsPanel = () => {
   const [popupActive, setPopupActive] = useState(false);
   const [nameActive, setNameActive] = useState('');
   const [idActive, setIdActive] = useState(0);
-
+  const countTotalMessage = totalCountMessage('rooms', uid, rooms);
   const arrNames = [
-    ['chat', 'Личные сообщения (1)'],
+    ['chat', 'Личные сообщения (' + countTotalMessage + ')'],
     ['like', 'Симпатии'],
     // ['invite', 'Приглашения'],
   ];
@@ -74,6 +76,9 @@ const ControlsPanel = () => {
       setNameActive={setNameActive}
       setIdActive={setIdActive}
       btnRef={btnRef}
+      uid={uid}
+      rooms={rooms}
+      likes={likes}
     />)
   }
   const renderLink = (arrNames) => {
@@ -105,4 +110,14 @@ const ControlsPanel = () => {
   )
 }
 
-export default ControlsPanel
+
+const mapStateToProps = (state) => {
+
+  return {
+    uid: state.account.uid,
+    rooms: state.globalState.rooms,
+    likes: state.globalState.likes,
+  }
+}
+
+export default connect(mapStateToProps)(ControlsPanel);

@@ -1,18 +1,22 @@
 .chat
 	padding: 0
+	.main-grid
+		gap: 15px
 .chat-form
-	padding: 15px 0 0
+	padding: 15px 30px 0 0
 	textarea
-		height: 115px
+		height: 140px
 		border-radius: 15px
 		font-size: $standartSize
+		padding-right: 50px
 	.form-container
 		font-size: 0
 		position: relative
-	textarea
-		padding-right: 50px
+		text-align: center
 	.btn
-		width: 100%
+		width: 180px
+	.btn-container
+		text-align: center
 	.add-file
 		@include positionElement(30px,30px, 0, 0, right, bottom, 2)
 		cursor: pointer
@@ -29,8 +33,9 @@
 		border-radius: 0
 		left: auto
 		@include bgImageEl("../images/icons-app/add-photo.svg")
+		opacity: 0.6
 		&:hover
-			opacity: 0.8
+			opacity: 1
 		i,span
 			display: none
 	.file-input-container
@@ -39,36 +44,41 @@
 		display: none
 
 .chat-invite-container
-	margin: 0 0 15px
-	text-align: right
+	margin: 0px 0 15px
+	text-align: center
 	h3
-		font-size: $smallSize
+		font-size: 16px
 		font-weight: 400
 		margin: 0 0 8px
-
+		color: $grayColor
+	.btn
+		font-size: 16px
+	i
+		width: 28px
+		height: 28px
 .invite-ico
 	display: inline-block
-	width: 30px
-	height: 30px
+	width: 50px
+	height: 50px
 	border-radius: 100%
 	border: 1px solid $grayColor
 	text-align: center
 	display: inline-flex
 	cursor: pointer
-	margin-left: 8px
 	position: relative
+	margin: 0 4px
 	i
 		margin: auto
+		opacity: 0.6
 
 	&:hover
-		border-color: $blueColor
-		background-color: rgba($blueColor , 0.3 )
+		opacity: 0.6
 		span
 			visibility: visible
 			opacity: 1
 	span
 		position: absolute
-		background-color: rgba($blackColor , 0.9 )
+		background-color: $blackColor
 		padding: 1px 3px
 		color: $whiteColor
 		right: calc(100% + 4px)
@@ -79,3 +89,5 @@
 		border-radius: 4px
 		opacity: 0
 		visibility: hidden
+		i
+			display: none

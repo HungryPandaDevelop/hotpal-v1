@@ -12,7 +12,7 @@ const GoalsUsers = ({ user }) => {
     <div className="tags-container">
       <h3>Цели:</h3>
       {goals.map((goal, index) => (
-        <div className="tag" key={index}>{renderGoals(goal)} <span>{goal}</span> </div>
+        <div className="tag" key={index}><span dangerouslySetInnerHTML={{ __html: goal }}></span> </div>
       ))
       }
     </div>

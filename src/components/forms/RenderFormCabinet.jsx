@@ -19,7 +19,10 @@ const TemplateForm = (props) => {
     user,
     dirty,
     newValue,
-    initialize
+    initialize,
+    reset,
+    dispatch,
+    change
   } = props;
 
 
@@ -32,8 +35,13 @@ const TemplateForm = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     // console.log('sub form', newValue)
-    initialize(newValue.values)
-    // reset()
+    // reset();
+    // dispatch(change(newValue.values))
+    // console.log('initialize', dispatch)
+    // initialize(newValue.values)
+    // setTimeout(() => {
+
+    // }, 500)
 
 
     setCheckErrorSubmit(true);

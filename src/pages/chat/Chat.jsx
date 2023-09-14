@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+
+import { useParams } from 'react-router-dom';
+
 
 import { connect } from 'react-redux';
 
@@ -10,7 +11,7 @@ import Rooms from 'pages/chat/Rooms';
 import Tabs from 'pages/cabinet/parts/Tabs';
 
 
-const Chat = ({ account }) => {
+const Chat = ({ account, rooms }) => {
 
   const params = useParams();
 
@@ -18,7 +19,9 @@ const Chat = ({ account }) => {
     <>
       <div className='main-full'>
         <div className="stub"></div>
-        <Tabs active={2} />
+        <Tabs
+          active={2}
+        />
 
         <div className="border-container border-null-left chat">
           <div className='main-grid'>
@@ -30,17 +33,17 @@ const Chat = ({ account }) => {
               />
             </div>
             <div className="col-8 col-xs-12">
-              <div className="chat-messages">
-                {params.roomId ? (<>
-                  <Messages
-                    roomId={params.roomId}
-                  />
-                  <ChatForm
-                    roomId={params.roomId}
-                    type='page'
-                  />
-                </>) : ('Выбрать комнату')}
-              </div>
+
+              {params.roomId ? (<div className="chat-messages">
+                <Messages
+                  roomId={params.roomId}
+                />
+                <ChatForm
+                  roomId={params.roomId}
+                  type='page'
+                />
+              </div>) : ''}
+
             </div>
 
 

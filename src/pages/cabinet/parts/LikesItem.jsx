@@ -36,9 +36,9 @@ const LikesItem = ({
     <div className="col-4 col-xs-12">
       <div
         className="like-item"
-        onMouseEnter={() => { onRead(like, uid) }}
+      // onMouseEnter={() => { onRead(like, uid) }}
       >
-        <RenderRead like={like} uid={uid} />
+        {/* <RenderRead like={like} uid={uid} /> */}
         <div className="img-cover-info">
           <RemderImg user={user} />
           <h3>{user.name}</h3>

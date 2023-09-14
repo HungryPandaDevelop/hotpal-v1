@@ -61,11 +61,14 @@
     font-size: $smallSize
     font-weight: 700
 .controls-panel-popup
+
   @include positionElement(592px, 620px, 90px, 130px, right, top, 4)
   background-color: $whiteColor
   border-radius: 0 15px 15px 15px
   box-shadow: 0px 0px 40px rgba(58, 80, 107, 0.50)
   padding: 15px 15px 15px 15px
+  .btn-full
+    display: none
   .panel-deg
     @include positionElement(26px,26px,-13px, 40px, right)
     background-color: $whiteColor
@@ -81,34 +84,38 @@
     border-right: 0
 .controls-panel-head
   background-color: $blueColor
+
   color: $whiteColor
   border-radius: 25px 25px 0 0
   position: absolute
   bottom: 100%
   left: 0
-  padding: 8px 15px
+  padding: 3px 15px
   font-weight: 700
   text-transform: uppercase
   width: 290px
   text-align: center
 .panel-close
-  @include bgImageEl("../images/icons/close-white.svg", 21px)
-  @include positionElement(28px, 28px, 0, 100%, right, bottom)
-  background-color: $blueColor
+  @include bgImageEl("../images/icons/close-gray.svg", 12px)
+  @include positionElement(22px, 22px, 15px, 100%, right, bottom)
+  background-color: $whiteColor
   cursor: pointer
   border-radius: 8px 8px 0 0
+  border: 1px solid $grayColor
   &:hover
     background-color: $blueColorSecond
 
 .likes-popup
   padding: 0
-
+.panel-close
+  display: none
 @media (max-width: 576px)
   .controls-panel
     width: 100%
     top: calc(100% - 60px)
     height: 60px
     padding: 0
+
   .controls-btn
     display: inline-flex
     width: 24%
@@ -116,12 +123,22 @@
     vertical-align: top
     i
       margin: auto
+  .controls-panel-head
+    font-size: 12px
+    padding: 2px 15px
   .controls-panel-popup
     position: fixed
-    top: 40px
-    width: calc(100% - 30px)
-    right: 15px
-    height: calc(100vh - 120px)
-
+    top: 100px
+    width: 100%
+    right: 0
+    height: calc(100vh - 160px)
+    border-radius: 0
+    box-shadow: none
+    padding: 0
+    border-top: 1px solid $grayColor
     .panel-deg
       display: none
+  .chat-popup-header
+    padding: 15px
+  .panel-close
+    display: block

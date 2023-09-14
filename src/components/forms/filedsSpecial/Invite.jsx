@@ -45,17 +45,17 @@ const TempateInput = (props) => {
         onMouseEnter={() => { changeInvite(type, text) }}
         onMouseLeave={() => { resetInvite() }}
       >
-        <i className={`${type}-ico`}></i><span>{text}</span></div>
+        <i className={`${type}-ico`}></i><span dangerouslySetInnerHTML={{ __html: text }}></span></div>
     )
   }
 
   return (
     <div className='chat-invite-container'>
       <h3>Приглашения:</h3>
-      {renderBtn('bokal', 'бокал в лобби')}
-      {renderBtn('padushka', 'бассейн или море')}
-      {renderBtn('plag', 'свидание в номере')}
-      {renderBtn('pribor', 'поход в ресторан')}
+      {renderBtn('bokal', '<em><i class="bokal-ico--white"></i></em>бокал в лобби')}
+      {renderBtn('padushka', '<em><i class="padushka-ico--white"></i></em>свидание в номере')}
+      {renderBtn('plag', '<em><i class="plag-ico--white"></i></em>бассейн или море')}
+      {renderBtn('pribor', '<em><i class="pribor-ico--white"></i></em>поход в ресторан')}
     </div>
   );
 }
