@@ -6,7 +6,7 @@ const MessagesPopup = ({ uid, roomId, currentUser, setChoiseRoom }) => {
   return (
     <>
       <ChatHead currentUser={currentUser} roomId={roomId} setChoiseRoom={setChoiseRoom} />
-      <Messages uid={uid} roomId={roomId} />
+      <Messages uid={uid} roomId={roomId} type='popup' />
       <ChatForm roomId={roomId} type='popup' />
     </>
   )

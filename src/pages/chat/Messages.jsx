@@ -7,7 +7,7 @@ import { getMyRoomMessages, stopWatch } from 'services/chatEvents';
 import MessagesItem from './MessagesItem';
 import MessagesHead from './MessagesHead';
 
-const Messages = ({ uid, roomId }) => {
+const Messages = ({ uid, roomId, type }) => {
 
   const [allMessages, setAllMessages] = useState([]);
 
@@ -38,7 +38,7 @@ const Messages = ({ uid, roomId }) => {
 
   return (
     <>
-      {uid && <MessagesHead />}
+      {type !== 'popup' && <MessagesHead />}
       <div className="messages-container custom-scroll">
 
         {renderMessages()}

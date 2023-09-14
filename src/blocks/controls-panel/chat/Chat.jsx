@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import Rooms from 'pages/chat/Rooms';
-import MessagesPopup from "./Messages";
+import MessagesPopup from "blocks/controls-panel/chat/Messages";
 
 const Chat = ({ uid }) => {
 
   const [choiseRoom, setChoiseRoom] = useState(0);
   const [currentUser, setCurrentUser] = useState([]);
+
   return (
     <>
       {choiseRoom === 0 ? (
