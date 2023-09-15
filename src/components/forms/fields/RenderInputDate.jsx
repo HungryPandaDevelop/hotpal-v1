@@ -19,8 +19,22 @@ const TempateInput = (props) => {
     labelSecond,
     placeholder,
     wrapClass,
+    checkErrorSubmit,
+    setErrCheck,
   } = props.obj;
 
+  useEffect(() => {
+    // console.log('input.name', input.value)
+    if (setErrCheck) {
+      if (error) {
+        setErrCheck(false);
+      }
+      else {
+        setErrCheck(true);
+      }
+    }
+
+  }, [error]);
 
   useEffect(() => {
     // Save instance for the further update
@@ -43,10 +57,11 @@ const TempateInput = (props) => {
           placeholder={placeholder}
           id={input.name}
           ref={$input}
-          className="input-decorate input-date"
+          className={`input-date input-decorate ${checkErrorSubmit && error && 'input-error'}`}
         />
-      </div>
 
+      </div>
+      {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}
     </div>
   );
 }
@@ -60,7 +75,7 @@ const RenderInputDate = ({ obj }) => {
     name={obj.name}
     obj={obj}
     component={TempateInput}
-
+    validate={obj.validate}
   />;
 }
 

@@ -10,7 +10,10 @@ const RegEndPopup = () => {
 
   return (
     <>
-      <Popup>
+      <Popup
+        showStart={true}
+        linkBack={true}
+      >
         <RegEnd successMail={successMail} />
 
       </Popup>

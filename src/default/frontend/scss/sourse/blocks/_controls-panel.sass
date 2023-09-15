@@ -9,7 +9,7 @@
   &.active,
   &:hover
     i
-      background-image: url('../images/icons-app/chat-white.svg')
+      background-image: url('../images/icons-app/chat-blue.svg')
 .controls-like
   i
     @include icoEl(40px,40px, '../images/icons-app/like-black.svg')
@@ -17,28 +17,28 @@
   &.active,
   &:hover
     i
-      background-image: url('../images/icons-app/like-white.svg')
-.controls-invite
-  i
-    @include icoEl(30px,30px, '../images/icons-app/invite-black.svg', middle, 28px)
-  &.active,
-  &:hover
-    i
-      background-image: url('../images/icons-app/invite-white.svg')
+      background-image: url('../images/icons-app/like-blue.svg')
+// .controls-invite
+//   i
+//     @include icoEl(30px,30px, '../images/icons-app/invite-black.svg', middle, 28px)
+//   &.active,
+//   &:hover
+//     i
+//       background-image: url('../images/icons-app/invite-blue.svg')
 .controls-search
   i
     @include icoEl(30px,30px, '../images/icons-app/loop-black.svg', middle, 24px)
   &.active,
   &:hover
     i
-      background-image: url('../images/icons-app/loop-white.svg')
+      background-image: url('../images/icons-app/loop-blue.svg')
 .controls-settings
   i
     @include icoEl(40px,40px, '../images/icons-app/settings-black.svg', middle, 28px)
   &.active,
   &:hover
     i
-      background-image: url('../images/icons-app/settings-white.svg')
+      background-image: url('../images/icons-app/settings-blue.svg')
 .controls-btn
   padding: 10px 5px
   width: 100%
@@ -47,10 +47,10 @@
   position: relative
   &.active,
   &:hover
-    background-color: $blueColor
+    // background-color: $blueColor
     span
-      background-color: $whiteColor
-      color: $blackColor
+      // background-color: $whiteColor
+      // color: $blackColor
   i
     display: inline-block
   span
@@ -86,27 +86,30 @@
   background-color: $blueColor
 
   color: $whiteColor
-  border-radius: 25px 25px 0 0
+
   position: absolute
   bottom: 100%
   left: 0
-  padding: 3px 15px
+  padding: 9px 15px 7px
+  border-radius: 20px 20px 0 0
   font-weight: 700
   text-transform: uppercase
   width: 290px
   text-align: center
 .panel-close
   @include bgImageEl("../images/icons/close-gray.svg", 12px)
-  @include positionElement(22px, 22px, 15px, 100%, right, bottom)
+  @include positionElement(25px, 25px, 15px, 100%, right, bottom)
   background-color: $whiteColor
   cursor: pointer
-  border-radius: 8px 8px 0 0
+  border-radius: 10px 10px 0 0
   border: 1px solid $grayColor
-  &:hover
-    background-color: $blueColorSecond
 
 .likes-popup
   padding: 0
+  position: relative
+  overflow-y: auto
+  height: 100%
+
 .panel-close
   display: none
 @media (max-width: 576px)
@@ -125,20 +128,29 @@
       margin: auto
   .controls-panel-head
     font-size: 12px
-    padding: 2px 15px
+    padding: 4px 15px 3px
+    border-radius: 18px 18px 0 0
+    width: 220px
+    left: 20px
+
   .controls-panel-popup
     position: fixed
-    top: 100px
+    top: 116px
     width: 100%
     right: 0
-    height: calc(100vh - 160px)
+    height: calc(100vh - 174px)
     border-radius: 0
     box-shadow: none
     padding: 0
     border-top: 1px solid $grayColor
+
     .panel-deg
       display: none
-  .chat-popup-header
-    padding: 15px
+  .controls-btn
+    span
+      left: 56px
+      top: 6px
   .panel-close
     display: block
+  .likes-popup
+    padding: 15px

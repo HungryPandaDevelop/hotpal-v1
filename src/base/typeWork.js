@@ -8,9 +8,4 @@ export const typeWork = [
     {label:"Властелин мира", value:"Властелин мира"}, 
     {label:"Ищу себя", value:"Ищу себя"}, 
     {label:"Предпочитаю не отвечать", value:"Предпочитаю не отвечать"}, 
-    {label:"Стрелец", value:"type9"}, 
-    {label:"Козерог", value:"type10"}, 
-    {label:"Водолей", value:"type11"}, 
-    {label:"Рыбы", value:"type12"}, 
-  
 ]

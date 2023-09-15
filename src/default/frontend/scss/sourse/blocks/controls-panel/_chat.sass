@@ -17,7 +17,7 @@
     .btn-container
       margin-top: 12px
   .messages-container
-    height: 370px
+    height: 350px
   .chat-invite-container
     margin: 14px 0 15px
   .invite-ico
@@ -45,7 +45,7 @@
   margin-right: 15px
 
 .chat-popup-info
-  width: calc( 100% - 95px )
+  width: calc( 100% - 135px )
   vertical-align: middle
   font-size: $smallSize
   display: inline-flex
@@ -61,7 +61,39 @@
 @media (max-width: 576px)
   .controls-panel-popup
     .messages-container
-      max-height: 280px
-  .chat-popup-face
-    width: 40px
-    width: 40px
+      height: calc(100vh - 400px)
+      padding: 15px
+
+    .chat-form
+      padding: 15px
+      .main-grid
+        gap: 0
+      textarea
+        height: 41px
+      .btn-container
+        width: 60px
+        margin: auto
+      .btn
+        width: 50px
+        height: 50px
+        font-size: 0
+        background-color: $blueColor
+        @include bgImageEl("../images/arrows/arrow-right-white.svg", 30px)
+      .chat-btns-outer
+        display: flex
+      .file-decorate
+        top: -50px
+    .chat-invite-container
+      margin: auto 0
+      display: flex
+      justify-content: space-between
+      width: calc(100% - 70px)
+      h3
+        margin: 0
+        padding: 7px 0 0
+      .invite-ico
+        span
+          display: none
+
+  .chat-popup-header
+    padding: 10px 0 15px

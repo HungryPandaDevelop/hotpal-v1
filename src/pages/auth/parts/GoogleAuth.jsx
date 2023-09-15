@@ -14,7 +14,8 @@ const GoogleAuth = ({ btnText, ActionFn, account }) => {
       setTimeout(() => {
         ActionFn('SET_INFO_ACCOUNT', { uid: uid });
         console.log('account', account)
-        if (account.verificationCheck) {
+        console.log('ss', uid)
+        if (uid === 'auth') {
           navigate('/cabinet/', { replace: true });
         } else {
           navigate('/reg-end', { replace: true });

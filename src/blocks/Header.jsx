@@ -11,7 +11,7 @@ import PopupNav from 'blocks/PopupNav';
 import ChangeTheme from 'blocks/ChangeTheme';
 
 
-const Header = () => {
+const Header = ({ uid }) => {
   const location = useLocation();
 
   const [shopMenu, setShowMenu] = useState(false);
@@ -33,7 +33,7 @@ const Header = () => {
               <Nav />
             </nav>
           </div>
-          <div className="col-4 col-xs-3 logo-container">
+          <div className="col-4 col-xs-5 logo-container">
             <Link className="logo logo-dark" to="/"> <img src={logo} alt={logo} /></Link>
             <Link className="logo logo-white" to="/"> <img src={logoWhite} alt={logoWhite} /></Link>
           </div>
@@ -42,7 +42,10 @@ const Header = () => {
               <InfoAccount />
             </div>
           </div>
-          <div className="col-9 mobile-container vertical-align">
+          <div className="col-9 col-xs-7 mobile-container vertical-align">
+            <div>
+              {uid && <Link to="/" className='btn btn--blue'>Мой акканут</Link>}
+            </div>
             <div className="btn-hamburger" onClick={() => setShowMenu(true)}></div>
           </div>
         </div>

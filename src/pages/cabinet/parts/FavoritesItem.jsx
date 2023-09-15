@@ -17,7 +17,7 @@ const FavoritesItem = ({ list, listing, setListing, type }) => {
 
   }, [listing]);
 
-  if (loading) { return 'Loading...' }
+  if (loading) { return '' }
 
   const onDelete = (id) => {
     deleteListing(type + '-list', id).then(() => {

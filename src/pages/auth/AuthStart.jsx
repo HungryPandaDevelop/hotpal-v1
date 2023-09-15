@@ -7,9 +7,15 @@ import GoogleAuth from 'pages/auth/parts/GoogleAuth';
 
 const RegEnd = () => {
 
+
+
+
   return (
     <>
-      <Popup>
+      <Popup
+        showStart={true}
+        linkBack={true}
+      >
         <h3>С возвращением!</h3>
         <h4>Нажимая "Войти", вы принимаете наши <a href="#">Условия.</a>Чтобы узнать, как мы обрабатываем ваши данные, ознакомьтесь с нашей <a href="#">Политика конфиденциальности</a>и <a href="#">Политика в отношении файлов Cookie.</a></h4>
         <h4>Выберете способ входа:</h4>

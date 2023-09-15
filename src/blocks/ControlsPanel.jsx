@@ -27,7 +27,7 @@ const ControlsPanel = ({
 
 
     function bodyClick(e) {
-      if (!$(e.target).is('.link-back, .link-back *, .controls-panel-popup, .controls-panel-popup  *, .controls-btn, .controls-btn  *, .rooms-item, .rooms-item  *')) {
+      if (!$(e.target).is('.link-back, .link-back *, .controls-panel-popup, .controls-panel-popup  *, div.controls-btn, div.controls-btn  *, .rooms-item, .rooms-item  *')) {
         setPopupActive(false);
         setIdActive('');
       }
@@ -56,10 +56,13 @@ const ControlsPanel = ({
   const [popupActive, setPopupActive] = useState(false);
   const [nameActive, setNameActive] = useState('');
   const [idActive, setIdActive] = useState(0);
+
   const countTotalMessage = totalCountMessage('rooms', uid, rooms);
+  const countTotalLikes = totalCountMessage('likes', uid, rooms, likes);
+
   const arrNames = [
     ['chat', 'Личные сообщения (' + countTotalMessage + ')'],
-    ['like', 'Симпатии'],
+    ['like', 'Симпатии (' + countTotalLikes + ')'],
     // ['invite', 'Приглашения'],
   ];
 

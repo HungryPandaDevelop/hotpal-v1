@@ -21,7 +21,7 @@ const RegEnd = ({ account }) => {
 
 
     if (!account.verificationCheck) {
-      axios.get("http://hotpal.sait.website/api/mail.php", {
+      axios.get("http://hotpal.ru/api/mail.php", {
         params: {
           mail: account.email,
           name: account.name,

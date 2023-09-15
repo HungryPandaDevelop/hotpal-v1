@@ -28,6 +28,7 @@ const RoomList = ({ uid, roomId, setChoiseRoom, setCurrentUser, type, rooms }) =
         setChoiseRoom={setChoiseRoom}
         setCurrentUser={setCurrentUser}
       />) : <EmptyRoom />}
+
     </div>
   )
 };

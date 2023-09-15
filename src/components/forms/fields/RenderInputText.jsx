@@ -24,7 +24,7 @@ const TempateInput = (props) => {
   const [firstLoad, setFirstLoad] = useState(0);
 
   useEffect(() => {
-    // console.log('input.name', input.value)
+    console.log(error)
     if (setErrCheck) {
       if (error) {
         setErrCheck(false);

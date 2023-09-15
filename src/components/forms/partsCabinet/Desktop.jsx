@@ -20,10 +20,18 @@ const Desktop = ({
       <div className="col-8 col-xs-12">
 
         <div className="user-top-info--view">
-          <h2>{user.name}, {calculateAge(user.dateBerth)}</h2>
+          <h2>
+            {user.name}, {calculateAge(user.dateBerth)}
+            {!user.verificationCheck && <div className="verification-hint">Вы не верифицированы</div>}
+          </h2>
+
           <RenderFields
             type="single"
             fields={fields.dateBerth}
+          />
+          <RenderFields
+            type="single"
+            fields={fields.gender}
           />
           <div className="user-info-gender">
             {user.gender && user.gender === 'man' ? (

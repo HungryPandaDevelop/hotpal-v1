@@ -111,7 +111,10 @@ const RegPhone = ({ formData }) => {
 
   return (
     <>
-      <Popup>
+      <Popup
+        showStart={true}
+        linkBack={true}
+      >
 
         <div id="recaptcha-container" ></div>
         {showOTP ? (

@@ -19,38 +19,38 @@ export const usersSearchFields = {
   rangeBerth: { 
     type:"range" ,
     name: "rangeBerth", 
-    label: "Дата рождения", 
+    label: "Выберите возраст", 
     range: [18, 75],
-    wrapClass: "input-box col-3 col-xs-6" ,
+    wrapClass: "input-box box-range col-2 col-xs-6" ,
   },
   city: { 
     type:"city", 
     name: "city", 
     label:"Город", 
     placeholder:"Выбрать город",
-    wrapClass: "col-3 input-box col-xs-12",
+    wrapClass: "col-3 search-select-box input-box col-xs-12",
   },
 
   goals: { 
     type:"choiseTags" ,
     name: "goals", 
-    label: "Цели", 
+    label: "Выберите Цели", 
     options: goals,
-    wrapClass: "col-6 input-box col-xs-12",
+    wrapClass: "col-8 input-box col-xs-12",
   },
   interests: { 
     type:"choiseTags" ,
     name: "interests", 
     label: "Интересы", 
     options: interests,
-    wrapClass: "col-6 input-box col-xs-12",
+    wrapClass: "col-3 input-box col-xs-12",
   },
   zodiac: { 
     type:"select", 
     name: "zodiac",  
     label: "Зодиак",
     placeholder:"Выбрать зодиак",
-    wrapClass: "col-4 input-box col-xs-12",
+    wrapClass: "col-3 search-select-box input-box col-xs-12",
     options: zodiac
   },
   work: { 
@@ -58,15 +58,15 @@ export const usersSearchFields = {
     name: "work",  
     label: "Работа",
     placeholder:"Выбрать работу",
-    wrapClass: "col-4 input-box col-xs-12",
+    wrapClass: "col-3 search-select-box input-box col-xs-12",
     options: typeWork
   },
   orientation: { 
     type:"select", 
     name: "orientation",  
     placeholder:"Выбрать ориентацию",
-    label: "Ориентацию",
-    wrapClass: "col-4 input-box col-xs-12",
+    label: "Ориентация",
+    wrapClass: "col-3 search-select-box input-box col-xs-12",
     options: orientation
   },
 

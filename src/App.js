@@ -58,7 +58,7 @@ const App = ({account})=> {
         <BrowserRouter>
           <CheckAuth />
           
-          <Header />
+          <Header uid={account.uid} />
           {/* <div className="stub"></div> */}
           {(account.uid ? <GetRooms /> : '')}
           {(account.uid ? <ControlsPanel /> : '')}

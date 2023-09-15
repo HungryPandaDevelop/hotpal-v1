@@ -51,6 +51,7 @@ const Chat = ({ account, rooms }) => {
           </div>
         </div>
       </div>
+      <div className="stub"></div>
     </>
   )
 }

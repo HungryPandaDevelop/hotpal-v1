@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useSearchParams } from 'react-router-dom';
-
+import ActionFn from 'store/actions';
 import { useState, useEffect } from 'react';
 
 import { saveListing } from 'services/saveListing';
@@ -7,30 +7,31 @@ import { saveListing } from 'services/saveListing';
 import { connect } from 'react-redux';
 
 
-const PrivateRoute = ({ account }) => {
+const PrivateRoute = ({ account, ActionFn }) => {
 
-  // let [searchParams] = useSearchParams()
+  let [searchParams] = useSearchParams()
   // const [loading, setLoading] = useState(true);
   // const [verificationCheck, setVerificationCheck] = useState(account.verificationCheck);
-  // useEffect(() => {
-  //   // console.log('account', account)vertificationId
-  //   const verificationIdUrl = searchParams.get('vertificationId');
-  //   const verificationIdAccount = account.vertificationId;
+  useEffect(() => {
+    console.log('account', account)
+    if (!account.loaded && !account.verificationCheck) {
+      const verificationIdUrl = searchParams.get('vertificationId');
+      const verificationIdAccount = account.vertificationId;
 
-  //   console.log(verificationIdUrl, verificationIdAccount, account)
+      // console.log('check', verificationIdUrl, verificationIdAccount, account)
 
-  //   if (verificationIdUrl) {
-  //     if (verificationIdUrl === verificationIdAccount) {
-  //       // console.log('send ')
-  //       setVerificationCheck(true);
-  //       saveListing({ verificationCheck: true }, account.uid, 'users').then(res => {
-  //         setLoading(false)
-  //       });
-  //     }
-  //   } else {
-  //     setLoading(false)
-  //   }
-  // }, []);
+      if (verificationIdUrl) {
+        if (verificationIdUrl === verificationIdAccount) {
+          // console.log('send ')
+          // setVerificationCheck(true);
+          saveListing({ verificationCheck: true }, account.uid, 'users');
+          ActionFn('SET_INFO_ACCOUNT', { verificationCheck: true });
+        }
+      } else {
+        // setLoading(false)
+      }
+    }
+  }, [account]);
 
 
   // console.log('account.loaded', account)
@@ -52,4 +53,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(PrivateRoute);
+export default connect(mapStateToProps, { ActionFn })(PrivateRoute);

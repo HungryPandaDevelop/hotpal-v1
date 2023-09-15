@@ -23,6 +23,7 @@ const Mobile = ({
         />
       </div>
       <div className="col-xs-6">
+        {!user.verificationCheck && <div className="verification-hint">Вы не верифицированы</div>}
         <UserTop user={user} />
         {/* <RenderFields
         type="single"

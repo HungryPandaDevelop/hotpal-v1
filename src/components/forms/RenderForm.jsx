@@ -12,7 +12,9 @@ let TemplateForm = (props) => {
     btnSubmitText,
     waitAnsw,
     submitSuccess,
-    colBtn
+    colBtn,
+    setSuccessSend,
+    invalid
   } = props;
 
 
@@ -23,19 +25,21 @@ let TemplateForm = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // console.log('sub form')
+    console.log('sub form', invalid)
 
     setCheckErrorSubmit(true);
 
     setTimeout(() => {
       setCheckErrorSubmit(false);
+      setSuccessSend(true)
     }, 10000);
 
-
-    if (errCheck) {
+    if (!invalid) {
       submitSuccess();
+
     } else {
-      console.log('Ошибка полей')
+      setSuccessSend(false)
+      // console.log('Ошибка полей')
     }
 
 

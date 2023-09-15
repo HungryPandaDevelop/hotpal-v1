@@ -1,6 +1,6 @@
 import { getSingleListing } from 'services/getSingleListing';
 import { useState, useEffect } from 'react'
-import { renderStatus } from './LikesItem/renderStatus';
+import { renderStatus } from 'pages/cabinet/parts/LikesItem/renderStatus';
 
 import RenderUserBtn from 'pages/cabinet/parts/LikesItem/RenderUserBtn';
 import RenderRead from 'pages/cabinet/parts/LikesItem/RenderRead';
@@ -30,10 +30,10 @@ const LikesItem = ({
 
   }, [like]);
 
-  if (loading) { return 'Loading...' }
+  if (loading) { return '' }
 
   return (
-    <div className="col-4 col-xs-12">
+    <div className="col-4 col-xs-6">
       <div
         className="like-item"
       // onMouseEnter={() => { onRead(like, uid) }}

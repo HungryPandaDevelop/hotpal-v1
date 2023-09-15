@@ -31,7 +31,7 @@ const UsersSearchPanel = (props) => {
     e.preventDefault();
 
     submitSuccess();
-
+    setShowMobile(false);
   };
 
   const [showMobile, setShowMobile] = useState(false);
@@ -43,8 +43,14 @@ const UsersSearchPanel = (props) => {
 
       <Tabs active="users" />
       <div className="show-filter-mobile-container">
-        <div className={`show-filter-mobile ${showMobile ? 'active' : ''}`} onClick={() => { setShowMobile(!showMobile) }}>
+        <div className={`show-filter-mobile ${showMobile ? 'active' : ''}`} onClick={() => { setShowMobile(true) }}>
         </div>
+        {showMobile && (
+          <div className='close-container'>
+            <div className="btn-close" onClick={() => { setShowMobile(false) }}></div>
+          </div>
+        )}
+
       </div>
       <div className={`border-container border-null-left border-container-search `}>
         <div className="main-grid">
@@ -59,55 +65,49 @@ const UsersSearchPanel = (props) => {
           />
           <RenderFields
             type="single"
+            fields={fields.goals}
+          />
+          <RenderFields
+            type="single"
             fields={fields.city}
           />
-          {fullPanel ?
+          <RenderFields
+            type="single"
+            fields={fields.zodiac}
+          />
+
+          {/* : ( */}
+          <>
+
+            {/* <RenderFields
+                  type="single"
+                  fields={fields.interests}
+                /> */}
+
+
+            <RenderFields
+              type="single"
+              fields={fields.work}
+            />
+            <RenderFields
+              type="single"
+              fields={fields.orientation}
+            />
             <RenderBtnContainer
-              wrapClass="col-4 col-xs-12"
-              btnMoreText="Еще фильтры"
+              colBtn="col-12"
+              // btnMoreText="Свернуть"
               changeStatePanel={changeStatePanel}
               waitAnsw={waitAnsw}
               onSubmit={onSubmit}
-              btnSubmitText="Найти"
+              btnSubmitText="Начать поиск"
               reset={reset}
               resetForm={resetForm}
 
-            /> : (
-              <>
-                <RenderFields
-                  type="single"
-                  fields={fields.goals}
-                />
-                <RenderFields
-                  type="single"
-                  fields={fields.interests}
-                />
-                <RenderFields
-                  type="single"
-                  fields={fields.zodiac}
-                />
-
-                <RenderFields
-                  type="single"
-                  fields={fields.work}
-                />
-                <RenderFields
-                  type="single"
-                  fields={fields.orientation}
-                />
-                <RenderBtnContainer
-                  wrapClass="col-offset-9 col-4 col-xs-12 col-xs-offset-1"
-                  btnMoreText="Свернуть"
-                  changeStatePanel={changeStatePanel}
-                  waitAnsw={waitAnsw}
-                  onSubmit={onSubmit}
-                  btnSubmitText="Найти"
-                  reset={reset}
-                  resetForm={resetForm}
-
-                />
-              </>
-            )}
+            />
+          </>
+          {/* {fullPanel ?
+            
+            )} */}
 
 
 

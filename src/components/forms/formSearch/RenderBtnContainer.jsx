@@ -3,7 +3,7 @@
 const RenderBtnContainer = (props) => {
 
   const {
-    wrapClass,
+    colBtn,
     changeStatePanel,
     waitAnsw,
     onSubmit,
@@ -20,7 +20,7 @@ const RenderBtnContainer = (props) => {
   }
 
   return (
-    <div className={wrapClass}>
+    <div className={colBtn}>
       <div className="btn-container">
         {btnMoreText && (<div className="btn btn--blue-border" onClick={changeStatePanel}>{btnMoreText}</div>)}
         <div className="btn btn--blue" onClick={(e) => { onSubmit(e) }}>{waitAnsw ? (<>Loading...</>) : btnSubmitText}</div>

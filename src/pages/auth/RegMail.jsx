@@ -14,35 +14,44 @@ const RegMail = ({ formData }) => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
-  // const [successSend, setSuccessSend] = useState(false);
+  const [successSend, setSuccessSend] = useState(false);
   // const [successMail, setSuccessMail] = useState(false);
 
   const submitSuccess = () => {
-    setLoading(true);
 
-    registrationAccount(formData.values).then((res) => {
-      setLoading(false)
-      if (!res) { return false };
-      // console.log('res.email', res.email)
 
-      // setSuccessSend(true)
-      // setSuccessMail(res.email)
-      navigate('/reg-end', { replace: true });
-    });
 
+
+    if (successSend) {
+      // console.log('load')
+      setLoading(true);
+      registrationAccount(formData.values).then((res) => {
+        setLoading(false)
+        if (!res) { return false };
+        // console.log('res.email', res.email)
+
+        // setSuccessSend(true)
+        // setSuccessMail(res.email)
+        navigate('/reg-end', { replace: true });
+      });
+    }
 
   }
 
 
   return (
     <>
-      <Popup>
+      <Popup
+        showStart={true}
+        linkBack={true}
+      >
         <h3>Заполните анкету</h3>
         <RenderForm
           fields={regFields}
           // btnSubmitText={"Регистрация"}
           btnSubmitText={loading ? 'Loading..' : "Регистрация"}
           submitSuccess={submitSuccess}
+          setSuccessSend={setSuccessSend}
         />
       </Popup>
       <Section />

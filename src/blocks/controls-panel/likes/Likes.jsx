@@ -1,15 +1,15 @@
-import LikesItemMini from "./LikesItemMini"
-
+// import LikesItemMini from "./LikesItemMini"
+import LikesItem from 'pages/cabinet/parts/LikesItem'
 import { connect } from 'react-redux';
 
 const Likes = ({ uid, likes }) => {
   return (
-    <div className="main-grid likes-popup">
+    <div className="main-grid likes-popup custom-scroll">
 
       {likes.map((like, index) => {
         if (like) {
           return (
-            <LikesItemMini
+            <LikesItem
               key={index}
               uid={uid}
               like={like.data}

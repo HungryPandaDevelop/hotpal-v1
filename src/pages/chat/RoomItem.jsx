@@ -38,8 +38,10 @@ const RoomItem = ({
 
       setLoading(false);
       setRoomUserInfo(res);
+      if (type !== 'popup') {
 
-      ActionFn('SET_CURRENT_ROOM', { roomUserInfo: res });
+        ActionFn('SET_CURRENT_ROOM', { roomUserInfo: res });
+      }
 
     });
 
@@ -59,8 +61,10 @@ const RoomItem = ({
   useEffect(() => {
     if (roomUrl === room.id) {
       updateRead(roomUrl, room, uid);
+      if (type !== 'popup') {
+        ActionFn('SET_CURRENT_ROOM', { roomUserInfo: roomUserInfo });
 
-      ActionFn('SET_CURRENT_ROOM', { roomUserInfo: roomUserInfo });
+      }
     };
 
 
@@ -89,7 +93,7 @@ const RoomItem = ({
     return lastMessage;
   }
 
-  if (loading) { return 'Loading...' }
+  if (loading) { return '' }
 
   return (
     <div

@@ -73,10 +73,10 @@ export const accountFields = {
     name: "tripPoint",  
     placeholder:"Выбрать цель",
     options: [
-      {label:"тип 1", value:"type1"}, 
-      {label:"тип 2", value:"type2"}, 
-      {label:"тип 3", value:"type3"}, 
-      {label:"тип 4", value:"type4"}, 
+      {label:"Отдых", value:"type1"}, 
+      {label:"Командировка", value:"type2"}, 
+      {label:"Загар", value:"type3"}, 
+      {label:"Кураж", value:"type4"}, 
     ]
   },
   orientation: { 

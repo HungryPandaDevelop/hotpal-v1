@@ -23,6 +23,7 @@ export const regFields = {
     placeholder: "Дата рождения", 
     type:"date" , 
     wrapClass:"input-box col-6",
+    validate: ['required'],
   },
   city: { 
     name: "city", 

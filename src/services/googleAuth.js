@@ -60,6 +60,8 @@ export const googleAuth = async (account) => {
         uid: user.uid,
         timestamp: serverTimestamp(),
       });
+      return 'reg';
+      
     }else{
       toast.success('Авторизация успешна');
 
@@ -71,7 +73,8 @@ export const googleAuth = async (account) => {
         timestamp: serverTimestamp(),
       }
       await updateDoc(cardsRef, dataForm);
-
+      return 'auth';
+      
     }
 
 

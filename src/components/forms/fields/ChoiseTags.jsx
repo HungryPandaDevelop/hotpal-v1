@@ -55,14 +55,15 @@ const TempateInput = (props) => {
 
   return (
     <div className={wrapClass}>
-      {label && (<label>{label}:</label>)}
+      {label && (<label>{label}</label>)}
       <div className="tags-container">
         {options.map((item, index) => (
           <span
             key={index}
             className={`tag tag--link ${choisesTags.includes(item) ? 'active' : ''}`}
             onClick={() => { onActiveTags(item) }}
-          >{item}</span>))}
+            dangerouslySetInnerHTML={{ __html: item }}
+          ></span>))}
       </div>
     </div>
   )

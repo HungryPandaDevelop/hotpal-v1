@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 
 
-export const saveListing = async (dataForm, cardsId, baseName) => {
+export const saveListing = async (dataForm, cardsId, baseName, notShow) => {
   
     try {
       
@@ -19,8 +19,12 @@ export const saveListing = async (dataForm, cardsId, baseName) => {
       dataForm.timestamp = serverTimestamp();
       // console.log(dataForm);
       await updateDoc(cardsRef, dataForm);
+        if(notShow){
 
-      toast.success('Данные обновлены')
+        }else{
+          toast.success('Данные обновлены')
+        }
+
 
       return true;
     } catch (error) {

@@ -98,7 +98,7 @@ const TemplateForm = (props) => {
             />
           </div>
         </div>
-        <div className={`${colBtn ? colBtn : 'col-4'} col-xs-12`}>
+        <div className={`${colBtn ? colBtn : 'col-4'} col-xs-12 chat-btns-outer`}>
           <RenderFields
             type="single"
             fields={customFieldsInv}

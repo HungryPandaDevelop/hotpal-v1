@@ -21,7 +21,7 @@ const AuthMail = ({ formData }) => {
     authorizationAccount(formData.values).then((res) => {
 
       if (!res) { return false };
-      console.log('nav')
+      // console.log('nav')
       navigate('/cabinet');
       // history.push('/cabinet')
     });
@@ -32,7 +32,10 @@ const AuthMail = ({ formData }) => {
 
   return (
     <>
-      <Popup>
+      <Popup
+        showStart={true}
+        linkBack={true}
+      >
         <h3>Заполните анкету</h3>
         <RenderForm
           fields={authFields}

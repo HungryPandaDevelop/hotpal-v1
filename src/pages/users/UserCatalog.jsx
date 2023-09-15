@@ -38,6 +38,9 @@ const UserCatalog = ({ uid }) => {
         searchListing={searchListing}
         setSearchListing={setSearchListing}
       />
+      <div className="main-full">
+        <h1 className='mobile-topic'>Поиск по людям</h1>
+      </div>
       <div className="catalog-grid main-grid">
         {searchListing.map((user, index) => (
           <div key={index} className="col-4 col-xs-12">
@@ -48,6 +51,7 @@ const UserCatalog = ({ uid }) => {
           </div>
         ))}
       </div>
+      <div className="stub"></div>
     </>
   )
 }
