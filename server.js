@@ -1,24 +1,45 @@
-const fs = require('fs');
-const ZstdCodec = require('zstd-codec').ZstdCodec;
+require('dotenv').config()
 
-const inputFileName = './data/partner_feed_en.json.zst'; // Замените на имя вашего файла .zst
+const express = require('express')
+const app = express()
 
-// Чтение данных из файла .zst
-const compressedData = fs.readFileSync(inputFileName);
+const mongoose = require('mongoose')
 
-// Распаковка данных
-ZstdCodec.run(zstd => {
-    const streaming = new zstd.Streaming();
-    
-    const decompressedData = streaming.decompress(compressedData);
-    
-    try {
-        // Разбор JSON
-        const jsonData = JSON.parse(decompressedData.toString());
-        
-        // Теперь у вас есть доступ к данным из JSON
-        console.log(jsonData);
-    } catch (parseError) {
-        console.error('Ошибка разбора JSON:', parseError);
-    }
-});
+
+
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
+
+const db = mongoose.connection
+
+db.on('error', (error)=>{console.error(error)})
+db.once('open', ()=>{console.log('connect mongo')})
+
+app.use(express.json())
+
+const subscribersRouter = require('./routes/subscribers')
+
+app.use('/main', subscribersRouter)
+
+
+// КАКОЙ ТО ИНДУС
+//mongoose.connect(mongodb://localhost:27017/test_base)
+// const UserSchema = new mongoose.Schema({
+//     name: String
+// })
+
+// const UserModel = mongoose.model("users", UserSchema)
+
+// app.get('/getUsers', (req,res)=>{
+//     UserModel.find({}).then((users)=>{
+//         res.json(users)
+//     }).catch((err)=>{
+//         console.log('err', err)
+//     })
+// })
+// КАКОЙ ТО ИНДУС
+
+
+
+app.listen(8000, ()=>{
+    console.log('server start')
+})
