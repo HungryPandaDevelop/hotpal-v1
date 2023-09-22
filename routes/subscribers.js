@@ -11,7 +11,7 @@ router.get('/', async (req,res)=>{
     // const subscribers = await Subscriber.find({'region.id': '965850015'})
     // const subscribers = await Subscriber.find({'id': {$in: ['holiday_inn_express_moscow_paveletskaya']}})
     // const subscribers = await Subscriber.findById('64e88304f53d2e02e2afd227')
-    const subscribers = await Subscriber.find({'_id':{$in:['64e88304f53d2e02e2afd227','64e88304f53d2e02e2afd22b']}})
+    const subscribers = await Subscriber.find({'id':{$in:['redawning_ivy_bear_grand']}})
 
     // const subscribers = await Subscriber.find().limit(2)
     res.json(subscribers)

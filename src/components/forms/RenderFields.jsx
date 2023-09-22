@@ -12,6 +12,7 @@ import RenderTitle from 'components/forms/fields/RenderTitle';
 import RenderInputText from 'components/forms/fields/RenderInputText'; // поле стандартное
 
 import RenderInputDate from './fields/RenderInputDate'; // дата
+import RenderInputDateRange from './fields/RenderInputDateRange'; // дата
 
 import RenderInputPhone from './fields/RenderInputPhone'; // телефон
 
@@ -47,6 +48,7 @@ import RenderInputComplex from './fields/RenderInputComplex'; // комлекс
 import RenderInputCoords from './fields/RenderInputCoords'; // координаты
 
 import RenderInputCity from './fields/RenderInputCity'; // выбор города
+import RenderInputRegion from './filedsSpecial/RegionHotel'; // выбор города
 
 
 import { required, minLength, mailCheck } from 'components/forms/validator';
@@ -148,6 +150,12 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
             obj={obj}
           />
         );
+      case 'dateRange':
+        return (
+          <RenderInputDateRange
+            obj={obj}
+          />
+        );
       case 'password':
         return (
           <RenderInputPassword
@@ -214,6 +222,14 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
         return (
           <>
             <RenderInputCity
+              obj={obj}
+            />
+          </>
+        );
+      case 'region':
+        return (
+          <>
+            <RenderInputRegion
               obj={obj}
             />
           </>

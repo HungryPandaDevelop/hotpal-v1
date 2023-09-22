@@ -37,7 +37,7 @@ const TempateInput = (props) => {
   };
 
   const addOwn = () => {
-
+    // console.log('t', [...tags, term])
     setTags([...tags, term]);
 
     setTerm('');
@@ -58,9 +58,11 @@ const TempateInput = (props) => {
   useEffect(() => {
     if (input.value && firstLoad === 0) {
       setFirstLoad(1)
-      setTags(input.value);
+      // console.log('in')
+
 
       if (input.value && input.value.length > 0) {
+        setTags(input.value);
         let tempArr = options;
         input.value.map(el => tempArr = tempArr.filter(item => el !== item));
         setOriginList(tempArr);
@@ -106,6 +108,7 @@ const TempateInput = (props) => {
       <div className="tags-container">
         <h3>{label}:</h3>
         <div className="tags-addted">
+
           {tags.map((item, index) => (
             <span
               key={index}

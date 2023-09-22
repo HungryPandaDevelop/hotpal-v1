@@ -33,16 +33,7 @@ const Desktop = ({
             type="single"
             fields={fields.gender}
           />
-          <div className="user-info-gender">
-            {user.gender && user.gender === 'man' ? (
-              <div><span>Пол:</span><b>M</b>
-                <div className="man-ico"></div>
-              </div>) : (
-              <div><span>Пол:</span><b>Ж</b>
-                <div className="woman-ico"></div>
-              </div>
-            )}
-          </div>
+
         </div>
         <RenderFields
           type="single"

@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import { russianCities } from 'base/russianCities';
 
+import { getRegion } from 'pages/hotels/hooks/searchHotels';
 
 const TempateInput = (props) => {
 
@@ -18,11 +19,13 @@ const TempateInput = (props) => {
     wrapClass,
   } = props.obj;
 
+  const [idTime, setIdTime] = useState(null)
+
   const [сhoiseName, setСhoiseName] = useState(placeholder ? placeholder : 'Выбрать город');
 
   const [filterVal, setFilterVal] = useState('');
 
-  const [russianCitiesList, setRussianCities] = useState(russianCities);
+  const [russianCitiesList, setRussianCities] = useState([]);
 
   const selectRef = useRef(null);
   const inputRef = useRef(null);
@@ -33,21 +36,16 @@ const TempateInput = (props) => {
   useEffect(() => {
 
 
-    if (!input.value) {
-      setСhoiseName(placeholder ? placeholder : 'Выбрать город')
-    }
-
+    // if (!input.value) {
+    //   setСhoiseName(placeholder ? placeholder : 'Выбрать город')
+    // }
 
     inputRef.current.addEventListener("focus", selectOpen);
-    // inputRef.current.addEventListener("blur", selectClose);
 
     document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-    // return () => {
-    //   inputRef.current.removeEventListener("focus", changeOpen);
-    //   inputRef.current.removeEventListener("blur", changeOpen);
-
-    // };
+    return () => {
+      document.removeEventListener("click", handleClick)
+    };
 
 
     function handleClick(e) {
@@ -60,13 +58,9 @@ const TempateInput = (props) => {
     }
 
     function selectOpen() {
-      console.log('ch')
       setOpen(true)
     }
-    function selectClose() {
-      console.log('ch')
-      setOpen(false)
-    }
+
 
 
   }, [input]);
@@ -75,29 +69,46 @@ const TempateInput = (props) => {
 
     setFilterVal('');
 
-    setRussianCities(russianCities);
+    setRussianCities('');
 
     setFilterVal(e.currentTarget.getAttribute('namecity'));
     setOpen(false);
 
     setСhoiseName(e.currentTarget.getAttribute('namecity'));
-    input.onChange(e.currentTarget.getAttribute('namecity'));
+    input.onChange(e.currentTarget.getAttribute('id'));
   }
 
+
+
+  // let searchTimeId = null;
+  // console.log('1', searchTimeId)
   const onSearchCity = (e) => {
+
+    // console.log('2', searchTimeId)
+    clearTimeout(idTime)
+
+    setIdTime(setTimeout(() => {
+
+      getRegion(e.target.value).then(res => {
+        console.log('res', res)
+        setRussianCities(res)
+      })
+
+    }, 1000))
+    // console.log('3', searchTimeId)
 
     setFilterVal(e.target.value);
 
-    const dataSearch = russianCities.filter(item => (item.name.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0));
+    // const dataSearch = russianCities.filter(item => (item.name.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0));
 
-    setRussianCities(dataSearch)
+    // setRussianCities(dataSearch)
 
   }
 
   const clearFilterVal = () => {
     setFilterVal('');
-    setСhoiseName(placeholder ? placeholder : 'Выбрать город');
-    setRussianCities(russianCities);
+    // setСhoiseName(placeholder ? placeholder : 'Выбрать город');
+    setRussianCities('');
     // setOpen(false);
   }
 
@@ -106,18 +117,20 @@ const TempateInput = (props) => {
     return (russianCitiesListParam.length > 0) ? russianCitiesListParam.map((item, index) => (
       <li
         key={index}
-        coords={[item.coords.lat, item.coords.lon]}
+        // coords={[item.coords.lat, item.coords.lon]}
         namecity={item.name}
         onClick={choiseCity}
+        id={item.id}
 
       >
         {item.name}</li>
-    )) : (<li>Список пуст</li>);
+    )) : (<></>);
   }
 
 
   return (
     <div className={wrapClass}>
+
       {label && <label><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       <div
         ref={selectRef}
@@ -137,13 +150,13 @@ const TempateInput = (props) => {
             placeholder="Введите название города"
           />
         </div>
-        {/* {open && ( */}
-        <ul
-          className='ln'
-        >
-          {renderCityList(russianCitiesList)}
-        </ul>
-        {/* )} */}
+        {open && (
+          <ul
+            className='ln'
+          >
+            {renderCityList(russianCitiesList)}
+          </ul>
+        )}
       </div>
     </div>
 

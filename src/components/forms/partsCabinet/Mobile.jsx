@@ -65,7 +65,7 @@ const Mobile = ({
                 />
               </div>
             </li>
-            <li>
+            <li> 
               <div className="personal-info-name"><i className="celi-ico"></i><b>Цель поездки:</b></div>
               <div className="personal-info-value">
                 <RenderFields

@@ -62,7 +62,7 @@ const UserItem = ({ hotel }) => {
         <div className="hotels-price-container">
           <div className="hotels-guest">1560 гостей</div>
           <div className="btn btn--blue-border">Посмотреть всех</div>
-          <div className="hotels-price">от 8000 р.</div>
+          <div className="hotels-price">от {hotel.price} р.</div>
         </div>
       </div>
     </Link >

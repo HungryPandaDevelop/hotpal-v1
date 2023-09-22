@@ -9,9 +9,11 @@ import RemderImg from 'pages/cabinet/parts/LikesItem/RemderImg';
 import { onDelete } from 'pages/cabinet/parts/LikesItem/likesActions'
 import { onRead } from 'pages/cabinet/parts/LikesItem/likesActions'
 
+import { Link } from 'react-router-dom';
 const LikesItem = ({
   like,
-  uid
+  uid,
+  typeLike
 }) => {
 
   const [loading, setLoading] = useState(true);
@@ -32,9 +34,14 @@ const LikesItem = ({
 
   if (loading) { return '' }
 
+
+  if ((typeLike === 'out' && !userSide) || (typeLike === 'in' && userSide)) { return false }
+
+
   return (
     <div className="col-4 col-xs-6">
-      <div
+      <Link
+        to={`/users-catalog/${userLoadId}`}
         className="like-item"
       // onMouseEnter={() => { onRead(like, uid) }}
       >
@@ -73,7 +80,7 @@ const LikesItem = ({
             title="С глаз долой"
           ></div>
         </div>
-      </div>
+      </Link>
     </div>
   )
 }

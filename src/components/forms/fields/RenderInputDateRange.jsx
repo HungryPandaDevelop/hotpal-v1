@@ -40,7 +40,9 @@ const TempateInput = (props) => {
     // Save instance for the further update
 
     dp.current = new AirDatepicker($input.current, {
-      dateFormat: 'yyyy-MM-dd'
+      range: true,
+      multipleDatesSeparator: ' - ',
+      dateFormat: 'dd.MM.yyyy'
     });
   }, []);
 
@@ -67,7 +69,7 @@ const TempateInput = (props) => {
 }
 
 
-const RenderInputDate = ({ obj }) => {
+const RenderInputDateRange = ({ obj }) => {
 
 
 
@@ -81,4 +83,4 @@ const RenderInputDate = ({ obj }) => {
 
 
 
-export default RenderInputDate;
+export default RenderInputDateRange;

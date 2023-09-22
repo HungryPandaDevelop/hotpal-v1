@@ -17,7 +17,7 @@ const MessagesItem = ({ message, uid, roomId, index }) => {
     <div
       className={`${!message.read ? 'messages--noanswer' : ''} ${whose ? 'messages-item' : 'messages-item--answer'}`}
     >
-      <div className={`messages-item ${whose ? 'messages-box' : 'messages-box--answer'}`}>
+      <div className={`${whose ? 'messages-box' : 'messages-box--answer'}`}>
         {message.invite.type ? (<span dangerouslySetInnerHTML={{ __html: message.invite.text }}></span>) : message.text}
         {message.imgs && (<div>
           {message.imgs.map((img, index) => (

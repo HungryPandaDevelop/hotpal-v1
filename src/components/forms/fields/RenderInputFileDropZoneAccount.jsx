@@ -117,7 +117,7 @@ const TemplateFile = (props) => {
         {nameFile.length === 0 ? (
 
           <div className="tiny-account-stub">
-            <span>Здесь могла бы красоваться Ваша фотография</span>
+            <span>Добавить, своё фото</span>
             <i></i>
           </div>
 

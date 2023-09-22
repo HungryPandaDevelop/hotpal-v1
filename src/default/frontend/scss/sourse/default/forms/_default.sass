@@ -27,8 +27,7 @@ input:disabled
 		border-color: $blueColor
 	&::placeholder
 		color: $blackColor
-.input-date
-	padding: 9px 15px
+
 .file-decorate-error span,
 .input-error
 	border-color: $redColor
@@ -47,9 +46,12 @@ input:disabled
 		margin: 0 0 8px
 		display: inline-block
 		text-transform: uppercase
+.input-date
+	padding: 10px 15px
 .data-input-container
 	position: relative
 	&::after
 		content: ""
-		@include positionElement(40px, 100%,0,0,right)
+		@include positionElement(38px, 38px,0,0, right)
+		@include bgImageEl("../images/icons/calendar-gray.svg", 21px, center)
 		// outline: 1px solid red

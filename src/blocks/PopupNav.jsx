@@ -11,10 +11,10 @@ const PopupNav = ({ setShowMenu }) => {
         <nav className="popup-nav">
           <ul className="ln">
             <li>
-              <Link to="/users-catalog">Поиск людей</Link>
+              <Link to="/users-catalog">Все пользователи</Link>
             </li>
             <li>
-              <Link to="/hotels-catalog">Поиск отелей</Link>
+              <Link to="/hotels-catalog">Все отели</Link>
             </li>
           </ul>
           <InfoAccount />

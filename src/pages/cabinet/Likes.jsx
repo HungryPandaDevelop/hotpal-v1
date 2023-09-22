@@ -15,7 +15,11 @@ const Sympathy = ({ uid, likes }) => {
         />
         <div className="border-container border-null-top account-main" >
           <div className="main-grid">
+            <div className="col-12">
+              <h3>Входящие</h3>
+            </div>
             {likes.map((like, index) => {
+
               if (like) {
                 return (
                   <LikesItem
@@ -23,7 +27,25 @@ const Sympathy = ({ uid, likes }) => {
                     uid={uid}
                     like={like.data}
                     likes={likes}
+                    typeLike="in"
+                  />
+                )
+              }
+            }
+            )}
+            <div className="col-12">
+              <h3>Отправленные</h3>
+            </div>
+            {likes.map((like, index) => {
 
+              if (like) {
+                return (
+                  <LikesItem
+                    key={index}
+                    uid={uid}
+                    like={like.data}
+                    likes={likes}
+                    typeLike="out"
                   />
                 )
               }

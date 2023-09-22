@@ -18,10 +18,10 @@ export const renderStatus = (like) => {
       return tagSimp('see', 'Рассматриваю')
 
     case 'agree':
-      return tagSimp('agree', 'Симпатия')
+      return tagSimp('agree', 'Взаимно')
 
     case 'disagree':
-      return tagSimp('disagree', 'Нету симпатии')
+      return tagSimp('disagree', 'Не взаимно')
 
     default:
   }
