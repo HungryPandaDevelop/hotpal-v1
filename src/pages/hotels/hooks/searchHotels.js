@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const getRegion = (term) => {
   // console.log('search start')
-  return axios.get("http://localhost:5000/regions", {
+  return axios.get("https://8124-37-204-10-198.ngrok-free.app/regions", {
     params: {
       query: term
     }
@@ -17,7 +17,7 @@ export const getRegion = (term) => {
 }
 
 export const getDetailHotels = (array, tempArrayPrices) => {
-  return axios.get("http://localhost:5000/hotels", {
+  return axios.get("https://8124-37-204-10-198.ngrok-free.app/hotels", {
     params: {
       arrayHotels: array
     }
