@@ -22,6 +22,7 @@ import Cabinet from 'pages/cabinet/Cabinet';
 import Settings from 'pages/cabinet/Settings';
 import Favorites from 'pages/cabinet/Favorites';
 import Likes from 'pages/cabinet/Likes';
+import Travel from 'pages/cabinet/Travel';
 
 
 import AuthStart from 'pages/auth/AuthStart';
@@ -45,7 +46,8 @@ import GetRooms from 'pages/chat/getRooms';
 
 import NotFound from 'pages/NotFound';
 
-
+// admin
+import PageList from 'pages/admin/PageList';
 
 
 // import VKauth from 'pages/VKauth';
@@ -86,8 +88,10 @@ const App = ({account})=> {
             {/* <Route path='/hotels-booking/:hotelId' element={<HotelsBooking/>}></Route> */}
             
             <Route path='/no-verification' element={<NoVerification/>} ></Route>
+
+            <Route path='/page-list' element={<PageList/>} ></Route>
             <Route path='*' element={<NotFound />}/>
-            {/* {account.loaded === true ? 'Load...' : ( */}
+
               <Route path='/cabinet' 
               element={<PrivatRoute/>} 
               >
@@ -100,12 +104,13 @@ const App = ({account})=> {
                 <Route path='/cabinet/favorites'   element={<Favorites type='white-list'/>} ></Route>
                 <Route path='/cabinet/dislikes'  element={<Favorites type='black-list' />} ></Route>
                 <Route path='/cabinet/likes'  element={<Likes  />} ></Route>
+                <Route path='/cabinet/travel'  element={<Travel  />} ></Route>
                 
               </Route>
-             {/* )}  */}
             
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>
+
           </div>
           <Footer />
           

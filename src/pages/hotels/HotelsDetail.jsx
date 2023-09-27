@@ -1,11 +1,12 @@
 import HotelMain from "./detail/HotelMain"
-import RoomsSearchPanel from "./detail/RoomsSearchPanel"
+import TravelAddPanel from "./detail/TravelAddPanel"
+// import RoomsSearchPanel from "./detail/RoomsSearchPanel"
 import RoomsResults from "./detail/RoomsResults"
-import HotelRewievs from "./detail/HotelRewievs"
+// import HotelRewievs from "./detail/HotelRewievs"
 import HotelWarning from "./detail/HotelWarning"
 import RoomsDescription from "./detail/RoomsDescription"
 import RoomsServices from "./detail/RoomsServices"
-import HotelTabs from "./detail/HotelTabs"
+// import HotelTabs from "./detail/HotelTabs"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { hotelPage, hotelsData } from 'pages/hotels/hooks/searchHotels';
@@ -23,15 +24,15 @@ const HotelsDetail = () => {
 
     let dateFrom = moment().format('YYYY-MM-DD');
     let dateTo = moment().add(2, 'days').format('YYYY-MM-DD');
-    console.log('pageId', pageId)
+    // console.log('pageId', pageId)
     hotelPage(pageId, dateFrom, dateTo, 2).then(res => {
-      console.log('get res', res)
+      // console.log('get res', res)
       hotelsData(res[0], res[1]).then(response => {
 
         setLoading(false)
         setListings(response[0])
 
-        console.log('get detail hotels', response)
+        // console.log('get detail hotels', response)
       })
     })
 
@@ -46,8 +47,9 @@ const HotelsDetail = () => {
       <div className="stub"></div>
 
       <HotelMain listing={listing} />
+      <TravelAddPanel listing={listing} />
       {/* <HotelTabs listing={listing} /> */}
-      <RoomsSearchPanel listing={listing} />
+      {/* <RoomsSearchPanel listing={listing} /> */}
 
       <RoomsResults listing={listing} />
 

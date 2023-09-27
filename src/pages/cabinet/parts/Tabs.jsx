@@ -12,8 +12,8 @@ const Tabs = ({ active, account, rooms, likes }) => {
     ['Настройки', '/cabinet/settings'],
     ['Личные сообщения (' + countTotalMessage + ')', '/cabinet/chat'],
     ['Симпатии (' + countTotalLikes + ')', '/cabinet/likes'],
-    // ['Избранное', '/cabinet/favorites'],
     ['Черный список', '/cabinet/dislikes'],
+    ['Путешествия', '/cabinet/travel'],
   ];
 
   return (

@@ -4663,6 +4663,33 @@ button[data-controls=next]:hover {
     margin-bottom: 30px;
   }
 }
+.travel-item .btn {
+  width: 50%;
+}
+.travel-item .btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 15px;
+}
+
+.travel-img {
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../images/stub-ico.svg");
+  border-radius: 20px;
+  margin: 0 0 15px;
+}
+
+.travel-date {
+  margin-bottom: 15px;
+}
+
 /*-----cabinbet-end----*/ 
 /*-----users-start----*/ 
 .users-item {
@@ -5539,6 +5566,13 @@ button[data-controls=next]:hover {
   height: 300px;
   border-radius: 30px;
   margin-top: 30px;
+}
+
+.travel-add-panel .btn-container {
+  padding-top: 30px;
+}
+.travel-add-panel .btn {
+  width: 100%;
 }
 
 @media (max-width: 576px) {

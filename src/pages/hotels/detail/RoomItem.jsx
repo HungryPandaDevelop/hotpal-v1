@@ -2,7 +2,7 @@ import tempIco from 'default/frontend/images/icons-app/calendar-black.svg'
 import img1 from "default/frontend/images/hotels/1.jpeg"
 
 const RoomItem = ({ item }) => {
-  console.log('item', item)
+  // console.log('item', item)
   const changeSize = (string) => {
 
     let regex = /[{}]/g;

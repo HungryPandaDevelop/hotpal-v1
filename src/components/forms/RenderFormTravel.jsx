@@ -26,26 +26,18 @@ const RoomsSearchPanel = (props) => {
 
 
   return (
-    <div className="main-full rooms-search-panel">
+    <div className="main-full travel-add-panel">
       <div className="border-container border-container-search">
         <div className="main-grid">
           <RenderFields
             type="single"
-            fields={fields.dateIn}
-          />
-          <RenderFields
-            type="single"
-            fields={fields.dateOut}
-          />
-          <RenderFields
-            type="single"
-            fields={fields.personCount}
+            fields={fields.dateTravelRange}
           />
           <RenderBtnContainer
             btnSubmitText={btnSubmitText}
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
-            colBtn="col-3 col-xs-12"
+            colBtn="col-6 col-xs-12"
           />
         </div>
       </div>

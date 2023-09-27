@@ -1,46 +1,44 @@
 import Tabs from 'pages/cabinet/parts/Tabs';
-import FavoritesItem from 'pages/cabinet/parts/FavoritesItem'
-
-import { useState, useEffect } from 'react'
-import { connect } from 'react-redux';
+import TravelItem from 'pages/cabinet/parts/TravelItem';
 import { getListing } from 'services/getListings';
+import { useState, useEffect } from 'react'
 
+import { connect } from 'react-redux';
 
-const Favorites = ({ account, type }) => {
+const Travel = ({ uid }) => {
 
   const [loading, setLoading] = useState(true);
   const [listing, setListing] = useState([]);
 
-
   useEffect(() => {
 
     setLoading(true);
-    getListing(type, 'userRef', account.uid).then((res) => {
+    getListing('travel', 'userRef', uid).then((res) => {
       setListing(res);
+      console.log(res)
       setLoading(false);
     });
 
-  }, [type]);
+  }, []);
 
   if (loading) { return 'Loading...' };
+
 
   return (
     <>
       <div className="stub"></div>
       <div className="main-full">
         <Tabs
-          active={type === 'white-list' ? 3 : 4}
+          active={6}
         />
         <div className="border-container border-null-top account-main" >
           <div className="main-grid">
-            {listing.map((list, index) => (
-              <FavoritesItem
-                key={index}
-                list={list}
-                listing={listing}
-                setListing={setListing}
-                type={type}
-              />))}
+            {listing.map(item => (
+              <div key={item.id} className="col-4">
+                <TravelItem item={item} />
+              </div>
+            ))}
+
           </div>
 
         </div>
@@ -49,12 +47,12 @@ const Favorites = ({ account, type }) => {
   )
 }
 
-
 const mapStateToProps = (state) => {
 
   return {
-    account: state.account,
+    uid: state.account.uid,
   }
 }
 
-export default connect(mapStateToProps)(Favorites);
+export default connect(mapStateToProps)(Travel);
+

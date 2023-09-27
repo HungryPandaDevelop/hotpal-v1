@@ -34,7 +34,7 @@ const HotelsSearchPanel = ({
     // console.log(currentDate[1], dateTo)
 
     regionSearch(regionId, dateFrom, dateTo, personCount).then(res => {
-      console.log('getHotels', regionId)
+      console.log('getHotels', regionId, res[0], res[1])
       hotelsData(res[0], res[1]).then(response => {
 
         setLoading(false)
