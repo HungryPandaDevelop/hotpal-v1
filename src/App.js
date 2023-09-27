@@ -38,7 +38,7 @@ import UsersDetail from 'pages/users/UserDetail';
 
 import HotelsCatalog from 'pages/hotels/HotelsCatalog';
 import HotelsDetail from 'pages/hotels/HotelsDetail';
-import HotelsBooking from 'pages/hotels/HotelsBooking';
+// import HotelsBooking from 'pages/hotels/HotelsBooking';
 
 import Chat from 'pages/chat/Chat';
 import GetRooms from 'pages/chat/getRooms';
@@ -83,7 +83,7 @@ const App = ({account})=> {
 
             <Route path='/hotels-catalog' element={<HotelsCatalog/>}></Route>
             <Route path='/hotels-catalog/:hotelId' element={<HotelsDetail/>}></Route>
-            <Route path='/hotels-booking/:hotelId' element={<HotelsBooking/>}></Route>
+            {/* <Route path='/hotels-booking/:hotelId' element={<HotelsBooking/>}></Route> */}
             
             <Route path='/no-verification' element={<NoVerification/>} ></Route>
             <Route path='*' element={<NotFound />}/>

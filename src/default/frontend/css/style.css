@@ -1862,6 +1862,20 @@ input:disabled {
   background-image: url("../images/icons/calendar-gray.svg");
 }
 
+.preloader-input {
+  width: 38px;
+  position: absolute;
+  height: 38px;
+  right: 0px;
+  top: 0;
+}
+.preloader-input .preloader {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
 .input-animate {
   position: relative;
   padding-top: 30px;
@@ -1908,7 +1922,7 @@ input:disabled {
 .custom-select {
   cursor: pointer;
   position: relative;
-  padding: 8px 15px 7px;
+  padding: 7px 15px;
 }
 .custom-select input {
   width: 0;
@@ -1989,13 +2003,13 @@ input:disabled {
 
 .search-field-container {
   position: relative;
-  padding-top: 32px;
+  height: 36px;
 }
 .search-field-container input {
   width: 100%;
   background-color: #ffffff;
   border: 0;
-  padding: 16px 15px;
+  height: 100%;
   padding-right: 35px;
 }
 .search-field-container em {
@@ -2004,7 +2018,7 @@ input:disabled {
   height: 24px;
   z-index: 2;
   right: 5px;
-  top: 5px;
+  top: 7px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -2388,7 +2402,16 @@ input:disabled {
 
 .preloader-container {
   position: relative;
-  height: 120px;
+  height: 60px;
+}
+
+.preloader-catalog {
+  text-align: center;
+  max-width: 540px;
+}
+.preloader-catalog h2 {
+  color: #0B132B;
+  font-size: 20px;
 }
 
 .preloader {
@@ -2399,11 +2422,14 @@ input:disabled {
   background: linear-gradient(to right, #00AEEF 10%, rgba(101, 171, 248, 0) 42%);
   -webkit-animation: loadAnimate 1.4s infinite linear;
           animation: loadAnimate 1.4s infinite linear;
-  width: 30px;
+  width: 40px;
   position: absolute;
-  height: 30px;
-  left: 40%;
-  top: 40%;
+  height: 40px;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
   -webkit-transform: translateX(0%) translateY(0%) translateZ(0);
           transform: translateX(0%) translateY(0%) translateZ(0);
 }
@@ -5527,6 +5553,10 @@ button[data-controls=next]:hover {
     width: 100%;
   }
 }
+#tns1-iw {
+  margin: 0 !important;
+}
+
 .hotel-images {
   position: relative;
   height: auto;
@@ -5537,6 +5567,9 @@ button[data-controls=next]:hover {
 }
 .hotel-images .tns-outer {
   position: relative;
+}
+.hotel-images .tns-controls {
+  bottom: 60px;
 }
 
 .images-item-container,
@@ -5587,9 +5620,6 @@ button[data-controls=next]:hover {
 .hotel-main-top h1 {
   padding: 0;
   font-size: 48px;
-}
-.hotel-main-top .hotels-stars {
-  padding-left: 85px;
 }
 .hotel-main-top .star.active {
   background-image: url("../images/icons/star-fill-blue.svg");

@@ -1,29 +1,29 @@
 import { Field } from 'redux-form';
 import { useState, useEffect, useRef } from 'react';
 
-import { russianCities } from 'base/russianCities';
+// import { russianCities } from 'base/russianCities';
 
-import { getRegion } from 'pages/hotels/hooks/searchHotels';
+import { autocompleteSearch } from 'pages/hotels/hooks/searchHotels';
 
 const TempateInput = (props) => {
 
   const {
     input,
-    meta: { error }
+    // meta: { error }
   } = props;
 
   const {
     label,
     labelSecond,
-    placeholder,
+    // placeholder,
     wrapClass,
   } = props.obj;
 
   const [idTime, setIdTime] = useState(null)
 
-  const [сhoiseName, setСhoiseName] = useState(placeholder ? placeholder : 'Выбрать город');
-
-  const [filterVal, setFilterVal] = useState('');
+  // const [сhoiseName, setСhoiseName] = useState(placeholder ? placeholder : 'Выбрать город');
+  const [loading, setLoading] = useState(false);
+  const [filterVal, setFilterVal] = useState('Москва');
 
   const [russianCitiesList, setRussianCities] = useState([]);
 
@@ -34,11 +34,6 @@ const TempateInput = (props) => {
 
 
   useEffect(() => {
-
-
-    // if (!input.value) {
-    //   setСhoiseName(placeholder ? placeholder : 'Выбрать город')
-    // }
 
     inputRef.current.addEventListener("focus", selectOpen);
 
@@ -57,8 +52,10 @@ const TempateInput = (props) => {
       }
     }
 
-    function selectOpen() {
+    function selectOpen(e) {
       setOpen(true)
+      inputRef.current.select()
+      onSearchCity(e)
     }
 
 
@@ -74,34 +71,28 @@ const TempateInput = (props) => {
     setFilterVal(e.currentTarget.getAttribute('namecity'));
     setOpen(false);
 
-    setСhoiseName(e.currentTarget.getAttribute('namecity'));
+    // setСhoiseName(e.currentTarget.getAttribute('namecity'));
     input.onChange(e.currentTarget.getAttribute('id'));
   }
 
 
-
-  // let searchTimeId = null;
-  // console.log('1', searchTimeId)
   const onSearchCity = (e) => {
+    setLoading(true)
 
-    // console.log('2', searchTimeId)
     clearTimeout(idTime)
 
     setIdTime(setTimeout(() => {
 
-      getRegion(e.target.value).then(res => {
-        console.log('res', res)
-        setRussianCities(res)
+      autocompleteSearch(e.target.value).then(res => {
+        console.log('regions get', res)
+        setLoading(false)
+        setRussianCities(res.data)
       })
 
     }, 1000))
-    // console.log('3', searchTimeId)
 
     setFilterVal(e.target.value);
 
-    // const dataSearch = russianCities.filter(item => (item.name.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0));
-
-    // setRussianCities(dataSearch)
 
   }
 
@@ -138,9 +129,7 @@ const TempateInput = (props) => {
 
       >
         <div className={`search-field-container ${filterVal.length > 0 ? 'search-choises' : ''}`}>
-          <em
-            onClick={clearFilterVal}
-          ></em>
+
           <input
             type="text"
             value={filterVal}
@@ -149,6 +138,14 @@ const TempateInput = (props) => {
             onChange={onSearchCity}
             placeholder="Введите название города"
           />
+          {loading ? (<>
+            <div className="preloader-input">
+              <div className="preloader"></div>
+            </div>
+
+          </>) : (<em
+            onClick={clearFilterVal}
+          ></em>)}
         </div>
         {open && (
           <ul

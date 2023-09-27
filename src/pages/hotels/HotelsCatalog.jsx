@@ -3,19 +3,19 @@
 // a5a48d2b-2e25-4501-915a-c47d5d3292e0
 
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 
 import { connect } from 'react-redux';
 
 import HotelSearchPanel from 'pages/hotels/catalog/HotelSearchPanel';
 import HotelsItem from 'pages/hotels/catalog/HotelsItem';
-
+import Preloader from 'components/Preloader';
 
 
 const HotelsCatalog = ({ uid }) => {
   const [listings, setListings] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
 
 
@@ -29,7 +29,7 @@ const HotelsCatalog = ({ uid }) => {
         setLoading={setLoading}
       />
 
-      {loading ? 'Load...' : (
+      {loading ? <Preloader /> : (
         <div className="catalog-grid main-grid">
           {listings.map((hotel, index) => (
             <div
@@ -43,7 +43,7 @@ const HotelsCatalog = ({ uid }) => {
           ))}</div>
       )}
 
-
+      <div className="stub"></div>
     </>
   )
 }

@@ -33,12 +33,12 @@ export const hotelsSearchFields = {
     placeholder:"Выбрать количество",
     wrapClass: "input-box col-3 col-xs-12" ,
     options: [
-      {label:"1 гость", value:"1"}, 
-      {label:"2 гостя", value:"2"}, 
-      {label:"3 гостя", value:"3"}, 
-      {label:"4 гость", value:"4"}, 
-      {label:"5 гостей", value:"5"}, 
-      {label:"6 гостей", value:"6"}, 
+      {label:"1 гость", value: 1}, 
+      {label:"2 гостя", value: 2}, 
+      {label:"3 гостя", value: 3}, 
+      {label:"4 гость", value: 4}, 
+      {label:"5 гостей", value: 5}, 
+      {label:"6 гостей", value: 6}, 
     ]
   },
 

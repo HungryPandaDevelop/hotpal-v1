@@ -6,7 +6,7 @@ const TempateInput = (props) => {
   // console.log('hi', props)
   const {
     input,
-    meta: { error }
+    // meta: { error }
   } = props;
 
   const {
@@ -15,8 +15,8 @@ const TempateInput = (props) => {
     placeholder,
     options,
     wrapClass,
-    checkErrorSubmit,
-    setErrCheck,
+    // checkErrorSubmit,
+    // setErrCheck,
   } = props.obj;
 
   // создание селекта
@@ -52,7 +52,7 @@ const TempateInput = (props) => {
       const findEl = (options.filter((fl) => fl.value === input.value));
       if (findEl.length > 0) {
         setSelect(findEl[0].label);
-        input.onChange(findEl[0].label);
+        input.onChange(findEl[0].value);
       };
 
     }

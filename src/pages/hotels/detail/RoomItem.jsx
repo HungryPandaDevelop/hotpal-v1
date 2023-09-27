@@ -1,16 +1,27 @@
 import tempIco from 'default/frontend/images/icons-app/calendar-black.svg'
 import img1 from "default/frontend/images/hotels/1.jpeg"
 
-const RoomItem = () => {
+const RoomItem = ({ item }) => {
+  console.log('item', item)
+  const changeSize = (string) => {
+
+    let regex = /[{}]/g;
+    let img = string.replace(regex, "");
+    return img = img.replace(/size/g, "1024x768");
+
+  }
+
+
   return (
     <div className="room-item">
       <div className="room-item-head">
         <div className="room-head-img">
-          <img src={img1} alt="" />
+          {item.images[0] && (<img src={changeSize(item.images[0])} alt="" />)}
+
         </div>
         <div className="room-head-info">
           <h3>
-            <b>Двухместный номер Standard</b>
+            {item.name}
             <span>двуспальная кровать</span>
           </h3>
           <div className="room-head-adv">
@@ -59,10 +70,10 @@ const RoomItem = () => {
               </li>
             </ul>
           </div>
-          <div className="col-2 col-xs-12">
+          {/* <div className="col-2 col-xs-12">
             <input type="text" className='input-decorate' />
-          </div>
-          <div className="col-2 col-xs-12">
+          </div> */}
+          <div className="col-4 col-xs-12">
             <div className="room-variant-price">
               10 000 руб.
             </div>

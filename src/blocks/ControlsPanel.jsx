@@ -3,7 +3,7 @@ import Popup from "blocks/controls-panel/Popup";
 import ControlsBtn from "blocks/controls-panel/ControlsBtn";
 import ControlsLink from "blocks/controls-panel/ControlsLink";
 import totalCountMessage from "blocks/controls-panel/parts/totalCountMessage";
-import { fn } from "moment";
+// import { fn } from "moment";
 import $ from 'jquery';
 import { connect } from 'react-redux';
 

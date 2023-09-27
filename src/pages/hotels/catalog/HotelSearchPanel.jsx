@@ -1,6 +1,8 @@
 
 import RenderForm from 'components/forms/RenderFormHotelsSearch';
-import { getHotels, getDetailHotels } from 'pages/hotels/hooks/searchHotels'
+import { regionSearch, hotelsData } from 'pages/hotels/hooks/searchHotels';
+
+import moment from "moment";
 
 import { hotelsSearchFields } from 'base/forms/hotelsSearchFields';
 
@@ -15,17 +17,29 @@ const HotelsSearchPanel = ({
 
 
   const submitSuccess = () => {
-
+    // console.log('formData.values', moment().format('YYYY-MM-DD'))
+    console.log('formData.values', moment().add(2, 'days').format('YYYY-MM-DD'))
     setLoading(true)
-    let cityId = formData?.values?.city ? formData.values.city : '2395'
+    let regionId = formData.values.city;
+    let personCount = formData.values.personCount;
+    let currentDate = formData.values.dateRange.split(' - ');
+    // let dateFrom = moment(currentDate[0]).format('YYYY-MM-DD');
 
-    getHotels(cityId).then(res => {
-      console.log('res', res)
-      getDetailHotels(res[0], res[1]).then(response => {
+
+    let dateTo = currentDate[1].split(".").reverse().join("-");
+    let dateFrom = currentDate[0].split(".").reverse().join("-");
+
+
+    // console.log(currentDate[0], dateFrom)
+    // console.log(currentDate[1], dateTo)
+
+    regionSearch(regionId, dateFrom, dateTo, personCount).then(res => {
+      console.log('getHotels', regionId)
+      hotelsData(res[0], res[1]).then(response => {
 
         setLoading(false)
         setListings(response)
-        console.log('ressss', response)
+        console.log('get detail hotels', response)
       })
     })
   }
@@ -40,6 +54,7 @@ const HotelsSearchPanel = ({
         fields={hotelsSearchFields}
         submitSuccess={submitSuccess}
         resetForm={resetForm}
+        initialValues={{ city: 2395, personCount: 2, dateRange: moment().format('DD.MM.YYYY') + ' - ' + moment().add(2, 'days').format('DD.MM.YYYY') }}
       // resetAll={resetAll}
       />
     </>
