@@ -4,6 +4,7 @@ import HotelsStars from 'pages/hotels/catalog/HotelsStars'
 import tempIco from 'default/frontend/images/icons-app/calendar-black.svg'
 
 import HotelImages from './HotelImages'
+import HotelServices from './HotelServices'
 
 
 
@@ -28,11 +29,11 @@ const HotelMain = ({ listing }) => {
                   {listing.address}
                 </span>
 
-                <a href="/" className="tag tag--link">Показать на карте</a>
+                {/* <a href="/" className="tag tag--link">Показать на карте</a> */}
               </div>
               <div className="hotel-from-price">
                 <span>от {listing.price[0].daily_prices[0]} ₽</span>
-                <a href="/" className="tag tag--link">Посмотреть цены</a>
+                {/* <a href="/" className="tag tag--link">Посмотреть цены</a> */}
               </div>
             </div>
           </div>
@@ -40,31 +41,12 @@ const HotelMain = ({ listing }) => {
 
         <HotelImages allImages={listing.images} />
 
-
+        {console.log(listing)}
         <div className="hotel-main-bottom">
           <div className="main-grid">
             <div className="col-6 col-xs-12">
-              <div className="hotel-services">
-                <h3>Главные удобства отеля:</h3>
-                <ul className='ln'>
-                  <li>
-                    <img src={tempIco} alt="" />
-                    <span>Бесплатный интернет</span>
-                  </li>
-                  <li><img src={tempIco} alt="" />
-                    <span>Подходит для детей</span>
-                  </li>
-                  <li><img src={tempIco} alt="" />
-                    <span>Трансфер</span>
-                  </li>
-                  <li><img src={tempIco} alt="" />
-                    <span>Бассейн</span>
-                  </li>
-                  <li><img src={tempIco} alt="" />
-                    <span>Парковка</span>
-                  </li>
-                </ul>
-              </div>
+              <HotelServices listing={listing} />
+
             </div>
 
 

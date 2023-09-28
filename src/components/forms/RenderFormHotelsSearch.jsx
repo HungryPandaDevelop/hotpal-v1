@@ -93,6 +93,6 @@ const HotelsSearchPanel = (props) => {
 
 
 export default reduxForm({
-  form: 'usersSearch',
+  form: 'hotelsSearch',
   enableReinitialize: true,
 })(HotelsSearchPanel);

@@ -130,6 +130,6 @@ export const settingsTrave = {
     type:"dateRange" ,
     name: "dateTravelRange", 
     label: "Даты нахождения", 
-    wrapClass: "input-box col-6 col-xs-12" ,
+    wrapClass: "input-box col-4 col-xs-12" ,
   },
 }

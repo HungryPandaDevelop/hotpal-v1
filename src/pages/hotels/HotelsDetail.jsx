@@ -1,18 +1,18 @@
-import HotelMain from "./detail/HotelMain"
-import TravelAddPanel from "./detail/TravelAddPanel"
-// import RoomsSearchPanel from "./detail/RoomsSearchPanel"
-import RoomsResults from "./detail/RoomsResults"
-// import HotelRewievs from "./detail/HotelRewievs"
-import HotelWarning from "./detail/HotelWarning"
-import RoomsDescription from "./detail/RoomsDescription"
-import RoomsServices from "./detail/RoomsServices"
-// import HotelTabs from "./detail/HotelTabs"
-import { useParams } from "react-router-dom"
+import HotelMain from "./detail/HotelMain";
+import TravelAddPanel from "./detail/TravelAddPanel";
+
+
+import HotelWarning from "./detail/HotelWarning";
+import RoomsDescription from "./detail/RoomsDescription";
+import HotelPlace from "./detail/HotelPlace";
+
+
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react"
 import { hotelPage, hotelsData } from 'pages/hotels/hooks/searchHotels';
 import moment from "moment";
 
-const HotelsDetail = () => {
+const HotelsDetail = ({ uid }) => {
 
   const params = useParams();
   const pageId = params.hotelId;
@@ -40,32 +40,24 @@ const HotelsDetail = () => {
 
 
 
-  return loading ? (<div className="main-full">
-    Loading...
-  </div>) : (
+  return loading ? (<>
+    <div className="stub"></div>
+    <div className="main-full">
+      Loading...
+    </div>
+  </>) : (
     <div className='hotel-detail'>
       <div className="stub"></div>
 
       <HotelMain listing={listing} />
-      <TravelAddPanel listing={listing} />
-      {/* <HotelTabs listing={listing} /> */}
-      {/* <RoomsSearchPanel listing={listing} /> */}
 
-      <RoomsResults listing={listing} />
-
-
+      {uid && <TravelAddPanel listing={listing} />}
       <RoomsDescription listing={listing} />
 
-      <RoomsServices listing={listing} />
-
       <HotelWarning listing={listing} />
-      {/* <HotelRewievs /> */}
 
-      <div className="main-full">
-        <div className="hotel-place-map">
-
-        </div>
-      </div>
+      <HotelPlace listing={listing} />
+      <div className="stub"></div>
     </div>
   )
 }

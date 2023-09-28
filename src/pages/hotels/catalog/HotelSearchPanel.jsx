@@ -64,7 +64,7 @@ const HotelsSearchPanel = ({
 const mapStateToProps = (state) => {
 
   return {
-    formData: state.form.usersSearch,
+    formData: state.form.hotelsSearch,
   }
 }
 

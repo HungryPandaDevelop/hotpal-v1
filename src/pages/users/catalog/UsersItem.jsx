@@ -4,7 +4,7 @@
 import { Link } from 'react-router-dom';
 
 import { userImg } from 'pages/users/catalog/UsersItem/userImg';
-import HotelUser from 'pages/users/catalog/UsersItem/HotelUser';
+// import HotelUser from 'pages/users/catalog/UsersItem/HotelUser';
 import GoalsUsers from 'pages/users/catalog/UsersItem/GoalsUsers';
 import NameUsers from 'pages/users/catalog/UsersItem/NameUsers';
 import Btns from 'pages/users/catalog/UsersItem/Btns';

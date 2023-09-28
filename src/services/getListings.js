@@ -43,6 +43,19 @@ export const getListing = async (baseName,  type, uid ) => {
       where('interlocutors', 'array-contains', uid),
     );
   }
+  else if(type==='travel'){
+    q = query(
+      listingsRef,
+      where('idHotel', '==',uid),
+    );
+  }
+  else if(type==='usersArray'){
+    console.log('uid',uid)
+    q = query(
+      listingsRef,
+      where('uid', 'in', uid[1])
+    );
+  }
   else{
     q = query(
       listingsRef,

@@ -17,8 +17,8 @@ import { getListing } from 'services/getListings';
 const Btns = ({ user, uid }) => {
 
 
-  const [whiteList, setWhitList] = useState([]);
-  const [whiteListLoas, setWhiteListLoad] = useState(true);
+  // const [whiteList, setWhitList] = useState([]);
+  // const [whiteListLoas, setWhiteListLoad] = useState(true);
   const [blackList, setBlackList] = useState([]);
   const [blackListLoad, setBlackListLoad] = useState(true);
 

@@ -3,11 +3,8 @@
   .btn
     width: 100%
 
-.rooms-description,
-.rooms-services,
-.hotel-warning,
-.hotel-rewievs
-  margin-top: 30px
+.hotel-detail
+  // margin-top: 30px
   h3
     margin-bottom: 15px
     font-size: $largeSize
@@ -65,17 +62,26 @@
 .hotel-rewievs-bad
   &::before
     @include bgImageEl('../images/icons/close-red.svg')
-
+.hotel-place
+  margin-top: 45px
 .hotel-place-map
-  border: 1px solid $grayColor
-  height: 300px
-  border-radius: 30px
-  margin-top: 30px
+  .user-location-map
+    margin: 0
+  // border: 1px solid $grayColor
+  // height: 300px
+  // border-radius: 30px
 .travel-add-panel
   .btn-container
     padding-top: 30px
   .btn
     width: 100%
+    margin: 0
+.travel-info-date
+  padding: 8px
+.travel-info-panel
+  h3
+    margin: 0
+  // display: flex
 @media (max-width: 576px)
   .hotel-warning-item
     display: block
