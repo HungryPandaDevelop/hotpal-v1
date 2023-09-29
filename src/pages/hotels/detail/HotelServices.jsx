@@ -18,7 +18,7 @@ const HotelServices = ({ listing }) => {
     'has_internet': ['internet', 'Бесплатный интернет'],
     'air_conditioning': ['air-conditioning', 'Кондиционер'],
     'has_parking': ['parking', 'Парковка'],
-    // { 'has_kitchen': ['meal', 'Кухня'] },
+    'kitchen': ['meal', 'Кухня'],
     'has_meal': ['meal', 'Бар или ресторан'],
     'has_airport_transfer': ['shuttle', 'Трансфер'],
     'beach': ['beach', 'Пляж рядом'],
@@ -27,6 +27,7 @@ const HotelServices = ({ listing }) => {
     'has_business': ['busyness', 'Конференц-зал'],
     'has_disabled_support': ['disabled-support', 'Для гостей с ограниченными возможностями'],
     'has_spa': ['barber-shop', 'Спа-услуги'],
+    'has_smoking': ['barber-shop', 'Спа-услуги'],
     'has_kids': ['kids', 'Подходит для детей'],
   }
 

@@ -9,7 +9,7 @@ import GoalsUsers from 'pages/users/catalog/UsersItem/GoalsUsers';
 import NameUsers from 'pages/users/catalog/UsersItem/NameUsers';
 import Btns from 'pages/users/catalog/UsersItem/Btns';
 
-const UserItem = ({ user }) => {
+const UserItem = ({ user, dateTravel }) => {
 
 
 
@@ -22,6 +22,7 @@ const UserItem = ({ user }) => {
         {/* <HotelUser
           user={user}
         /> */}
+
         <GoalsUsers
           user={user}
         />
@@ -33,9 +34,9 @@ const UserItem = ({ user }) => {
         />
 
       </div>
-
-
+      {dateTravel && <div className='user-date-travel'><div>Даты нахождения в отеле:</div> {dateTravel}</div>}
     </div>
+
   )
 }
 

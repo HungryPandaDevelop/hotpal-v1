@@ -24,7 +24,7 @@ const RoomsSearchPanel = ({
 
     getListing('travel', 'userRef', listing.id).then((res) => {
       res.map(el => {
-        if (el.uid === uid) {
+        if (el.uid === uid && el.idHotel === listing.id) {
           setTravelStateForm(false)
           setMyTravel(el);
         }
@@ -49,6 +49,7 @@ const RoomsSearchPanel = ({
       'dateTravel': formData.values.dateTravelRange,
       'uid': uid,
       'idHotel': listing.id,
+      'nameHotel': listing.name,
       'imgHotel': listing.images[0]
     }
 

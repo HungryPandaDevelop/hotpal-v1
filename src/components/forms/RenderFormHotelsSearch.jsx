@@ -1,7 +1,5 @@
 import RenderFields from 'components/forms/RenderFields';
-import RenderBtnContainer from 'components/forms/formSearch/RenderBtnContainer';
-
-import { getHotels } from 'pages/hotels/hooks/searchHotels'
+import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainer';
 
 import { reduxForm } from 'redux-form';
 
@@ -24,7 +22,6 @@ const HotelsSearchPanel = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // getHotels()
     submitSuccess();
 
   };

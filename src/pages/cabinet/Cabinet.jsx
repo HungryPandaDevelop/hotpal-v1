@@ -68,7 +68,7 @@ const mapStateToProps = (state) => {
 
   return {
     account: state.account,
-    formData: state.form.singleInput,
+    formData: state.form.formCabinet,
   }
 }
 

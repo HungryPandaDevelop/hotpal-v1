@@ -2,7 +2,7 @@ import Tabs from 'pages/cabinet/parts/Tabs';
 import TravelItem from 'pages/cabinet/parts/TravelItem';
 import { getListing } from 'services/getListings';
 import { useState, useEffect } from 'react'
-
+import { deleteListing } from 'services/getListings';
 import { connect } from 'react-redux';
 
 const Travel = ({ uid }) => {
@@ -21,6 +21,14 @@ const Travel = ({ uid }) => {
 
   }, []);
 
+  const onDelete = (id) => {
+    deleteListing('travel', id).then(res => {
+      setListing(listing.filter(el => el.id !== id))
+    })
+
+
+  };
+
   if (loading) { return 'Loading...' };
 
 
@@ -35,7 +43,7 @@ const Travel = ({ uid }) => {
           <div className="main-grid">
             {listing.map(item => (
               <div key={item.id} className="col-4">
-                <TravelItem item={item} />
+                <TravelItem item={item} onDelete={onDelete} />
               </div>
             ))}
 

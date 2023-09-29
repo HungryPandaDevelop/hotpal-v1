@@ -105,17 +105,22 @@ const TempateInput = (props) => {
 
   const renderCityList = (russianCitiesListParam) => {
 
-    return (russianCitiesListParam.length > 0) ? russianCitiesListParam.map((item, index) => (
-      <li
-        key={index}
-        // coords={[item.coords.lat, item.coords.lon]}
-        namecity={item.name}
-        onClick={choiseCity}
-        id={item.id}
+    return (russianCitiesListParam.length > 0) ? russianCitiesListParam.map((item, index) => {
+      if (item.type === 'City') {
+        return (
+          <li
+            key={index}
+            // coords={[item.coords.lat, item.coords.lon]}
+            namecity={item.name}
+            onClick={choiseCity}
+            id={item.id}
 
-      >
-        {item.name}</li>
-    )) : (<></>);
+          >
+            {item.name}</li>
+        )
+      }
+
+    }) : (<></>);
   }
 
 

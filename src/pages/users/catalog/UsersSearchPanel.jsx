@@ -10,7 +10,8 @@ import { connect } from 'react-redux';
 const UsersSearchPanel = ({
   formData,
   listings,
-  setSearchListing
+  setSearchListing,
+  disableTabs
 }) => {
 
   const startValue = {}
@@ -30,6 +31,7 @@ const UsersSearchPanel = ({
         fields={usersSearchFields}
         submitSuccess={submitSuccess}
         resetForm={resetForm}
+        disableTabs={disableTabs}
       // resetAll={resetAll}
       />
     </>

@@ -3,7 +3,7 @@
 // a5a48d2b-2e25-4501-915a-c47d5d3292e0
 
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 import { connect } from 'react-redux';
@@ -12,12 +12,22 @@ import HotelSearchPanel from 'pages/hotels/catalog/HotelSearchPanel';
 import HotelsItem from 'pages/hotels/catalog/HotelsItem';
 import Preloader from 'components/Preloader';
 
+import { getListing } from 'services/getListings';
 
 const HotelsCatalog = ({ uid }) => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [travelList, setTravelList] = useState([]);
 
+  useEffect(() => {
+    getListing('travel', 'travelAll', uid).then((res) => {
+
+
+      setTravelList(res);
+
+    });
+  }, [])
 
   return (
     <>
@@ -27,6 +37,7 @@ const HotelsCatalog = ({ uid }) => {
       <HotelSearchPanel
         setListings={setListings}
         setLoading={setLoading}
+
       />
 
       {loading ? <Preloader /> : (
@@ -38,6 +49,7 @@ const HotelsCatalog = ({ uid }) => {
               <HotelsItem
                 hotel={hotel}
                 uid={uid}
+                travelList={travelList}
               />
             </div>
           ))}</div>

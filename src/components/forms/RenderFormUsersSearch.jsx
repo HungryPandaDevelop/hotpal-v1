@@ -15,7 +15,8 @@ const UsersSearchPanel = (props) => {
     waitAnsw,
     submitSuccess,
     reset,
-    resetForm
+    resetForm,
+    disableTabs
   } = props;
 
 
@@ -41,7 +42,7 @@ const UsersSearchPanel = (props) => {
   return (
     <div className={`main-full border-search-outer search-all ${showMobile ? 'active' : ''}`}>
 
-      <Tabs active="users" />
+      {!disableTabs && (<Tabs active="users" />)}
       <div className="show-filter-mobile-container">
         <div className={`show-filter-mobile ${showMobile ? 'active' : ''}`} onClick={() => { setShowMobile(true) }}>
         </div>
@@ -52,7 +53,7 @@ const UsersSearchPanel = (props) => {
         )}
 
       </div>
-      <div className={`border-container border-null-left border-container-search `}>
+      <div className={`border-container ${!disableTabs ? 'border-null-left' : ''} border-container-search `}>
         <div className="main-grid">
           <RenderFields
             type="single"

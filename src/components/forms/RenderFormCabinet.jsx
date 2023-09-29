@@ -100,7 +100,7 @@ const TemplateForm = (props) => {
 
 
 export default reduxForm({
-  form: 'singleInput',
+  form: 'formCabinet',
   enableReinitialize: true,
 })(TemplateForm);
 

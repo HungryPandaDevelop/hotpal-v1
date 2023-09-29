@@ -26,7 +26,7 @@ const HotelsDetail = ({ uid }) => {
     let dateTo = moment().add(2, 'days').format('YYYY-MM-DD');
     // console.log('pageId', pageId)
     hotelPage(pageId, dateFrom, dateTo, 2).then(res => {
-      // console.log('get res', res)
+      console.log('get res', res)
       hotelsData(res[0], res[1]).then(response => {
 
         setLoading(false)

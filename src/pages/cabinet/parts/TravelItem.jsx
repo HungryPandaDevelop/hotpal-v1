@@ -1,18 +1,19 @@
-import img from 'default/frontend/images/temp/1.jpg'
+import { Link } from 'react-router-dom'
 
-const TravelItem = ({ item }) => {
+
+const TravelItem = ({ item, onDelete }) => {
   return (
     <div className='travel-item'>
       <div className="travel-img">
 
       </div>
-      <h3>{item.idHotel}</h3>
+      <h3>{item.nameHotel}</h3>
       <div className="travel-date">
         {item.dateTravel}
       </div>
       <div className="btn-container">
-        <div className="btn btn--blue">Удалить</div>
-        <div className="btn btn--black">Изменить</div>
+        <div className="btn btn--blue" onClick={() => onDelete(item.id)}>Удалить</div>
+        <Link to={`/hotels-catalog/${item.idHotel}`} className="btn btn--black">Изменить</Link>
       </div>
     </div>
   )

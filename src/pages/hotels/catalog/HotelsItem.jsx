@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom"
 import HotelsStars from 'pages/hotels/catalog/HotelsStars'
-const UserItem = ({ hotel }) => {
-  console.log('hotel', hotel.star_rating)
-  // let startImg = hotel.images[0]
-
-  // console.log('img', startImg)
+const UserItem = ({
+  hotel,
+  travelList,
+  uid
+}) => {
 
   const renderImg = (hotelSingle) => {
-    // console.log('1111', hotelSingle.images.length)
 
     let startImg = hotelSingle.images.length > 0 && hotelSingle.images[0]
     if (startImg) {
@@ -25,7 +24,19 @@ const UserItem = ({ hotel }) => {
     }
 
   }
-  // let start = 3;
+
+  const renderCountTravel = () => {
+    let count = 0;
+    travelList.map(item => {
+      // console.log(item.idHotel, hotel.id)
+      if (item.idHotel === hotel.id && item.uid !== uid) {
+        count++
+      }
+    })
+
+    return count;
+  }
+
   return (
     <Link to={`/hotels-catalog/${hotel.id}`} className="hotels-item">
       {/* {startImg} */}
@@ -33,14 +44,9 @@ const UserItem = ({ hotel }) => {
         {renderImg(hotel)}
         <div className="hotels-gradient"></div>
         <div className="hotels-raiting-container">
-          {/* <div>
-            <div className="hotels-raiting-num">8.9</div>
-          </div> */}
+
           <HotelsStars starRating={hotel.star_rating} />
 
-          {/* <div className="btn-container">
-            <div className="btn btn--white-border">Забронировать</div>
-          </div> */}
         </div>
       </div>
       <div className="hotels-info">
@@ -56,7 +62,8 @@ const UserItem = ({ hotel }) => {
         </div>
         <div className="hotels-price-container">
           {/* <div className="hotels-guest">1560 гостей</div> */}
-          {/* <div className="btn btn--blue-border">Посмотреть всех</div> */}
+          {renderCountTravel() > 0 && <Link to={`/hotels-users/${hotel.id}`} className="btn btn--blue-border">Гости отеля {renderCountTravel()}</Link>}
+
           <div className="hotels-price">от {hotel.price[0].daily_prices[0]} р.</div>
         </div>
       </div>

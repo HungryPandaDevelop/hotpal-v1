@@ -5161,6 +5161,18 @@ button[data-controls=next]:hover {
   background-image: url("../images/logo.svg");
 }
 
+.user-date-travel {
+  width: calc(100% - 90px);
+  position: absolute;
+  height: auto;
+  left: 0;
+  top: 0;
+  color: #ffffff;
+  padding: 15px 30px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
 .user-top-info--view {
   display: -webkit-box;
   display: -ms-flexbox;

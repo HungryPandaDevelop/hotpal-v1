@@ -39,6 +39,7 @@ import UsersDetail from 'pages/users/UserDetail';
 
 import HotelsCatalog from 'pages/hotels/HotelsCatalog';
 import HotelsDetail from 'pages/hotels/HotelsDetail';
+import HotelsUsersCatalog from 'pages/hotels/HotelsUsersCatalog';
 
 import Chat from 'pages/chat/Chat';
 import GetRooms from 'pages/chat/getRooms';
@@ -84,6 +85,7 @@ const App = ({account})=> {
 
             <Route path='/hotels-catalog' element={<HotelsCatalog uid={account.uid}/>} ></Route>
             <Route path='/hotels-catalog/:hotelId' element={<HotelsDetail uid={account.uid}/>} ></Route>
+            {account.uid && <Route path='/hotels-users/:hotelId' element={<HotelsUsersCatalog uid={account.uid}/>} ></Route>}
   
             <Route path='/no-verification' element={<NoVerification/>} ></Route>
 

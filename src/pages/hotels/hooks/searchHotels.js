@@ -21,7 +21,7 @@ export const autocompleteSearch = (term) => {
 }
 
 export const hotelsData = (array, tempArrayPrices) => {
-  console.log('start hotelsData', array)
+  // console.log('start hotelsData', array)
   return axios.get(url+"/hotels-data", {
     headers: {
       'ngrok-skip-browser-warning': true
@@ -48,7 +48,7 @@ export const hotelsData = (array, tempArrayPrices) => {
 }
 
 export const regionSearch = (id,dateFrom,dateTo,personCount) => {
-  console.log('loading....')
+  console.log('loading....', dateFrom,dateTo)
 
   let tempArrayHotels = [];
   let tempArrayPrices = [];
@@ -88,7 +88,7 @@ export const regionSearch = (id,dateFrom,dateTo,personCount) => {
 }
 
 export const hotelPage = (id,dateFrom,dateTo,personCount) => {
-  console.log('loading....')
+  console.log('loading....', dateFrom,dateTo)
 
   let tempArrayHotels = [];
   let tempArrayPrices = [];
