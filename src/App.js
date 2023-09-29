@@ -48,6 +48,9 @@ import NotFound from 'pages/NotFound';
 
 // admin
 import PageList from 'pages/admin/PageList';
+import PageListEdit from 'pages/admin/PageListEdit';
+import PageListNew from 'pages/admin/PageListNew';
+import PageStandart from 'pages/admin/PageStandart';
 
 
 // import VKauth from 'pages/VKauth';
@@ -90,6 +93,9 @@ const App = ({account})=> {
             <Route path='/no-verification' element={<NoVerification/>} ></Route>
 
             <Route path='/page-list' element={<PageList/>} ></Route>
+            <Route path='/page-list/:pageId' element={<PageListEdit/>} ></Route>
+            <Route path='/page-list-new/' element={<PageListNew/>} ></Route>
+            <Route path='/page/:pageId' element={<PageStandart/>} ></Route>
             <Route path='*' element={<NotFound />}/>
 
               <Route path='/cabinet' 

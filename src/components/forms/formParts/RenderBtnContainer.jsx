@@ -6,7 +6,7 @@ const RenderBtnContainer = (props) => {
     colBtn,
     waitAnsw,
     onSubmit,
-    btnSubmitText,
+    btnSaveText,
 
   } = props;
 
@@ -15,7 +15,7 @@ const RenderBtnContainer = (props) => {
     <div className={`${colBtn ? colBtn : 'col-12'} btn-container`}>
       <button className="btn btn--blue" onClick={(e) => { onSubmit(e) }} >
         {waitAnsw ? (<>Loading...</>) : (
-          <><i></i><span>{btnSubmitText}</span></>
+          <><i></i><span>{btnSaveText}</span></>
         )}
       </button>
     </div>

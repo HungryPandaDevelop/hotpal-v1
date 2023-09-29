@@ -9,7 +9,7 @@ import { useState } from 'react';
 let TemplateForm = (props) => {
   const {
     fields,
-    btnSubmitText,
+    btnSaveText,
     waitAnsw,
     submitSuccess,
     colBtn,
@@ -61,7 +61,7 @@ let TemplateForm = (props) => {
       />
       <RenderBtnContainer
         colBtn={colBtn}
-        btnSubmitText={btnSubmitText}
+        btnSaveText={btnSaveText}
         waitAnsw={waitAnsw}
         onSubmit={onSubmit}
       />

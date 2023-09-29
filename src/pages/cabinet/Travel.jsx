@@ -25,8 +25,6 @@ const Travel = ({ uid }) => {
     deleteListing('travel', id).then(res => {
       setListing(listing.filter(el => el.id !== id))
     })
-
-
   };
 
   if (loading) { return 'Loading...' };
