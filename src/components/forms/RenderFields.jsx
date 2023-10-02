@@ -19,6 +19,7 @@ import RenderInputPhone from './fields/RenderInputPhone'; // телефон
 import RenderInputPassword from './fields/RenderInputPassword'; // пароля
 
 import RenderInputTextarea from './fields/RenderInputTextarea'; // область текста
+import RenderInputEditor from './fields/RenderInputEditor'; // область текста
 import RenderMessage from './fields/RenderMessage'; // область текста
 
 import RenderInputCheckbox from './fields/RenderInputCheckbox';  // чекбокс
@@ -49,11 +50,13 @@ import RenderInputCoords from './fields/RenderInputCoords'; // координа�
 
 import RenderInputCity from './fields/RenderInputCity'; // выбор города
 import RenderInputRegion from './filedsSpecial/RegionHotel'; // выбор города
+import RenderInputGeoHotels from './filedsSpecial/GeoHotels'; // выбор точки
+import RenderInputYaString from './filedsSpecial/SearchYaString'; // выбор точки
 
 
 import { required, minLength, mailCheck } from 'components/forms/validator';
 
-const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
+const RenderFields = ({ fields, checkErrorSubmit, type }) => {
 
   const setValidate = (validate) => {
     let validateArr = [];
@@ -123,6 +126,12 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
       case 'textarea':
         return (
           <RenderInputTextarea
+            obj={obj}
+          />
+        );
+      case 'editor':
+        return (
+          <RenderInputEditor
             obj={obj}
           />
         );
@@ -234,6 +243,22 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
             />
           </>
         );
+      case 'yaString':
+        return (
+          <>
+            <RenderInputYaString
+              obj={obj}
+            />
+          </>
+        );
+      case 'geo':
+        return (
+          <>
+            <RenderInputGeoHotels
+              obj={obj}
+            />
+          </>
+        );
       case 'star':
         return (
           <RenderInputStar
@@ -253,7 +278,7 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
             key={index} >
             {
               (
-                choiseFieldType({ ...fields[item], checkErrorSubmit, setErrCheck, 'validate': setValidate(fields[item].validate) })
+                choiseFieldType({ ...fields[item], checkErrorSubmit, 'validate': setValidate(fields[item].validate) })
               )
             }
           </React.Fragment>
@@ -262,7 +287,7 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
         <React.Fragment >
           {
             (
-              choiseFieldType({ ...fields, checkErrorSubmit, setErrCheck, 'validate': setValidate(fields.validate) })
+              choiseFieldType({ ...fields, checkErrorSubmit, 'validate': setValidate(fields.validate) })
             )
           }
         </React.Fragment>

@@ -20,6 +20,8 @@ const HotelsCatalog = ({ uid }) => {
 
   const [travelList, setTravelList] = useState([]);
 
+
+
   useEffect(() => {
     getListing('travel', 'travelAll', uid).then((res) => {
 
@@ -34,27 +36,32 @@ const HotelsCatalog = ({ uid }) => {
       <div className="stub"></div>
 
 
-      <HotelSearchPanel
-        setListings={setListings}
-        setLoading={setLoading}
 
-      />
 
-      {loading ? <Preloader /> : (
-        <div className="catalog-grid main-grid">
-          {listings.map((hotel, index) => (
-            <div
-              key={index}
-              className="col-6 col-xs-12">
-              <HotelsItem
+
+      <div className="catalog-grid main-grid">
+        <div className="col-6">
+          <HotelSearchPanel
+            setListings={setListings}
+            setLoading={setLoading}
+            loading={loading}
+            listingsCoords={listings}
+          />
+        </div>
+        {loading ? <div className='col-6'><Preloader /></div> : (
+          <div
+            className="col-6">
+            {listings ? listings.map((hotel, index) => (
+              hotel.id && (<HotelsItem
+                key={index}
                 hotel={hotel}
                 uid={uid}
                 travelList={travelList}
-              />
-            </div>
-          ))}</div>
-      )}
-
+              />)
+            )) : <><h3>0 Отелей</h3></>}
+          </div>
+        )}
+      </div>
       <div className="stub"></div>
     </>
   )

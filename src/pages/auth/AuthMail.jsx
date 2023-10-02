@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useState } from 'react';
 
 import RenderForm from 'components/forms/RenderForm';
 import Popup from 'components/Popup';
@@ -13,17 +14,17 @@ import { authorizationAccount } from 'services/authorizationAccount';
 const AuthMail = ({ formData }) => {
 
   const navigate = useNavigate();
-  // const history = useHistory();
+
+  const [loading, setLoading] = useState(false);
 
   const submitSuccess = () => {
 
 
+    setLoading(true);
     authorizationAccount(formData.values).then((res) => {
-
+      setLoading(false)
       if (!res) { return false };
-      // console.log('nav')
-      navigate('/cabinet');
-      // history.push('/cabinet')
+      navigate('/cabinet', { replace: true });
     });
 
 
@@ -39,7 +40,7 @@ const AuthMail = ({ formData }) => {
         <h3>Заполните анкету</h3>
         <RenderForm
           fields={authFields}
-          btnSubmitText="Авторизация"
+          btnSubmitText={loading ? 'Loading..' : "Авторизация"}
           submitSuccess={submitSuccess}
         />
       </Popup>

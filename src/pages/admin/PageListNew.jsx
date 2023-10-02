@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { pagesFields } from 'base/forms/pagesFields';
 import RenderForm from 'components/forms/RenderForm';
@@ -8,14 +8,21 @@ import { addCardsDefault } from 'services/addListing';
 import { connect } from 'react-redux';
 
 
-const PageList = ({ formData }) => {
+const PageList = ({ formData, account }) => {
 
 
 
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (account.admin === true) {
 
+    } else {
+      navigate('/')
+    }
+
+  }, [account])
 
 
   const submitSuccess = () => {

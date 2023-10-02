@@ -3,7 +3,6 @@
 const RenderBtnContainer = (props) => {
 
   const {
-    colBtn,
     waitAnsw,
     onSubmit,
     btnSubmitText,

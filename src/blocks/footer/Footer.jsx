@@ -26,11 +26,10 @@ const Footer = () => {
           <div className="nav">
             <h3> <a href="#">Юридическая информация</a></h3>
             <ul>
-              <li> <a href="#"> Конфиденциальность</a></li>
-              <li> <a href="#"> Условия</a></li>
-              <li> <a href="#"> Политика в отношении</a></li>
-              <li> <a href="#"> файлов Cookie</a></li>
-              <li> <a href="#"> Интеллектуальная собственность</a></li>
+              <li> <a href="/konf"> Конфиденциальность</a></li>
+              <li> <a href="/yslovia"> Условия</a></li>
+              <li> <a href="/politic"> Политика в отношении</a></li>
+              <li> <a href="/intelect"> Интеллектуальная собственность</a></li>
             </ul>
           </div>
         </div>
@@ -68,7 +67,7 @@ const Footer = () => {
       <div className="main-grid footer-bottom">
         <div className="col-9 col-xs-12">
           <ul>
-            <li> <a href="#"> Настройки конфиденциальности</a></li>
+            <li> <a href="#"> Конфиденциальность</a></li>
             <li> <a href="#"> Условия</a></li>
             <li> <a href="#"> Политика в отношении файлов Cookie</a></li>
             <li> <a href="#"> Интеллектуальная собственность</a></li>

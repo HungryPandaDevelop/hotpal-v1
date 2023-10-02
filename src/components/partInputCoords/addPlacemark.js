@@ -10,7 +10,8 @@ const addPlacemark = (myMap, myMapRef, coords, setOptions, itemId) => {
   let itemMarkerOptions = {
     preset: "islands#blueStretchyIcon",
   }
-  let setMarkerStyle = setOptions === 'myMarker' ? myMarkerOptions : itemMarkerOptions;
+  // let setMarkerStyle = setOptions === 'myMarker' ? myMarkerOptions : itemMarkerOptions;
+  let setMarkerStyle = myMarkerOptions;
   // console.log(myMap, myMapRef, coords, setOptions, itemId);
 
   

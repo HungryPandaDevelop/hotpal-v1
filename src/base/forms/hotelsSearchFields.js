@@ -6,7 +6,7 @@ export const hotelsSearchFields = {
     name: "city", 
     label:"Город", 
     placeholder:"Выбрать город",
-    wrapClass: "col-3 col-xs-12 input-box",
+    wrapClass: "input-box",
   },
   // dateIn: { 
   //   type:"date" ,
@@ -24,14 +24,14 @@ export const hotelsSearchFields = {
     type:"dateRange" ,
     name: "dateRange", 
     label: "Даты", 
-    wrapClass: "input-box col-3 col-xs-12" ,
+    wrapClass: "input-box" ,
   },
   personCount: { 
     type:"select" ,
     name: "personCount", 
     label: "Количество персон", 
     placeholder:"Выбрать количество",
-    wrapClass: "input-box col-3 col-xs-12" ,
+    wrapClass: "input-box" ,
     options: [
       {label:"1 гость", value: 1}, 
       {label:"2 гостя", value: 2}, 
@@ -41,7 +41,18 @@ export const hotelsSearchFields = {
       {label:"6 гостей", value: 6}, 
     ]
   },
-
+  yaString: { 
+    type:"yaString" ,
+    name: "yaString", 
+    label: "Поиск места", 
+    wrapClass: "input-box" ,
+  },
+  geoHotels: { 
+    type:"geo" ,
+    name: "geoHotels", 
+    label: "На карте", 
+    wrapClass: "input-box" ,
+  },
   // raiting: { 
   //   type:"text" ,
   //   name: "raiting", 

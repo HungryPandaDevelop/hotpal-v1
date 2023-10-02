@@ -1,8 +1,5 @@
 import HotelsStars from 'pages/hotels/catalog/HotelsStars'
 
-
-import tempIco from 'default/frontend/images/icons-app/calendar-black.svg'
-
 import HotelImages from './HotelImages'
 import HotelServices from './HotelServices'
 

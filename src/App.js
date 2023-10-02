@@ -55,6 +55,10 @@ import PageStandart from 'pages/admin/PageStandart';
 
 // import VKauth from 'pages/VKauth';
 
+import Yslovia from 'pages/default/Yslovia'
+import Konf from 'pages/default/Konf'
+import Politic from 'pages/default/Politic'
+import Intelect from 'pages/default/Intelect'
 
 const App = ({account})=> {
   // console.log('uid', account)
@@ -92,10 +96,11 @@ const App = ({account})=> {
   
             <Route path='/no-verification' element={<NoVerification/>} ></Route>
 
-            <Route path='/page-list' element={<PageList/>} ></Route>
-            <Route path='/page-list/:pageId' element={<PageListEdit/>} ></Route>
-            <Route path='/page-list-new/' element={<PageListNew/>} ></Route>
-            <Route path='/page/:pageId' element={<PageStandart/>} ></Route>
+            {account.uid && (<Route path='/page-list' element={<PageList  account={account}/>} ></Route>)}
+            {account.uid && (<Route path='/page-list/:pageId' element={<PageListEdit  account={account}/> } ></Route>)}
+            {account.uid && (<Route path='/page-list-new/' element={<PageListNew  account={account}/>} ></Route>)}
+            
+            <Route path='/page/:pageId' element={<PageStandart  account={account}/>} ></Route>
             <Route path='*' element={<NotFound />}/>
 
               <Route path='/cabinet' 
@@ -114,6 +119,11 @@ const App = ({account})=> {
                 
               </Route>
             
+              <Route path='/konf'  element={<Konf  />} ></Route>
+              <Route path='/intelect'  element={<Intelect  />} ></Route>
+              <Route path='/politic'  element={<Politic  />} ></Route>
+              <Route path='/yslovia'  element={<Yslovia  />} ></Route>
+
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>
 

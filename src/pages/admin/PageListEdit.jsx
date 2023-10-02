@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getSingleListing } from "services/getSingleListing"
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
@@ -9,8 +9,10 @@ import { saveListing } from 'services/saveListing';
 import { connect } from 'react-redux';
 
 
-const PageList = ({ formData }) => {
+const PageList = ({ formData, account }) => {
 
+
+  const navigate = useNavigate();
 
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,15 +22,25 @@ const PageList = ({ formData }) => {
 
 
   useEffect(() => {
+    if (account.admin === true) {
+
+    } else {
+      navigate('/')
+    }
+
     getSingleListing('pages', params.pageId).then((res) => {
 
       setListings(res);
       setLoading(false);
     })
-  }, []);
+
+
+  }, [account]);
 
   const submitSuccess = () => {
-    saveListing(formData.values, params.pageId, 'pages');
+    saveListing(formData.values, params.pageId, 'pages').then(res => {
+      navigate('/page-list')
+    });
 
   };
 

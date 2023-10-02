@@ -9,40 +9,32 @@ import { useState } from 'react';
 let TemplateForm = (props) => {
   const {
     fields,
-    btnSaveText,
+    btnSubmitText,
     waitAnsw,
     submitSuccess,
     colBtn,
-    setSuccessSend,
     invalid
   } = props;
 
 
   const [checkErrorSubmit, setCheckErrorSubmit] = useState(false);
-  const [errCheck, setErrCheck] = useState(true);
-
 
   const onSubmit = (e) => {
+    let idTimeCheck;
     e.preventDefault();
 
-    console.log('sub form', invalid)
+    if (invalid) {
 
-    setCheckErrorSubmit(true);
 
-    setTimeout(() => {
-      setCheckErrorSubmit(false);
-      setSuccessSend(true)
-    }, 10000);
-
-    if (!invalid) {
-      submitSuccess();
-
+      setCheckErrorSubmit(true);
+      clearTimeout(idTimeCheck);
+      idTimeCheck = setTimeout(() => {
+        setCheckErrorSubmit(false);
+      }, 10000);
     } else {
-      setSuccessSend(false)
-      // console.log('Ошибка полей')
+
+      submitSuccess();
     }
-
-
   };
 
   if (!fields) {
@@ -56,12 +48,11 @@ let TemplateForm = (props) => {
       <RenderFields
         fields={fields}
         checkErrorSubmit={checkErrorSubmit}
-        setErrCheck={setErrCheck}
         onSubmit={onSubmit}
       />
       <RenderBtnContainer
         colBtn={colBtn}
-        btnSaveText={btnSaveText}
+        btnSubmitText={btnSubmitText}
         waitAnsw={waitAnsw}
         onSubmit={onSubmit}
       />

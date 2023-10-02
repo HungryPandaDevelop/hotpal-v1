@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 import addPlacemark from 'components/partInputCoords/addPlacemark';
 
-const ClearYaMap = ({ currentLocation }) => {
+const ClearYaMap = ({ currentLocation, centerPosition, changePosition, multy }) => {
 
 
 
@@ -16,25 +16,47 @@ const ClearYaMap = ({ currentLocation }) => {
   const [globalPoint, setGlobalPoint] = useState(null);
 
 
-  const addPosition = (pos) => {
+  let addPosition = (pos, index) => {
 
+    // 
     myMapRef.current.geoObjects.remove(globalPoint);
 
-    const tempPoint = addPlacemark(myMap, myMapRef, pos, 'myMarker', 0);
+    let tempPoint = addPlacemark(myMap, myMapRef, pos, null, index);
 
     setGlobalPoint(tempPoint);
-    myMapRef.current.setCenter(currentLocation);
+    // currentLocation && myMapRef.current.setCenter(currentLocation);
     myMapRef.current.geoObjects.add(tempPoint);
 
   };
 
   useEffect(() => {
+    // console.log('currentLocation', currentLocation)
 
-    if (loadMap && currentLocation) {
-      addPosition(currentLocation);
+    if (loadMap) {
+      if (currentLocation) {
+        if (multy) {
+          console.log('remove all')
+          myMapRef.current.geoObjects.removeAll();
+
+          currentLocation.map((el, index) => {
+            addPosition(el, index)
+          });
+        } else {
+          addPosition(currentLocation, 0);
+        }
+      } else {
+        myMapRef.current.geoObjects.removeAll();
+      }
+
+      // console.log('currentLocation', currentLocation);
     }
   }, [loadMap, currentLocation]);
 
+  useEffect(() => {
+    if (loadMap) {
+      myMapRef.current.setCenter(centerPosition)
+    }
+  }, [centerPosition])
 
 
   return (
@@ -49,16 +71,19 @@ const ClearYaMap = ({ currentLocation }) => {
           height="100%"
           defaultState={
             {
-              center: [55.714247, 37.764375],
-              zoom: 10
+              center: centerPosition ? centerPosition : [55.714247, 37.764375],
+              zoom: 13
             }
           }
-          modules={["multiRouter.MultiRoute", "Placemark", "geocode"]}
+          modules={["util.bounds", "multiRouter.MultiRoute", "Placemark", "geocode"]}
           onLoad={(y) => {
             // myMap.current = y;
             setMyMap(y)
             setLoadMap(true)
             // console.log('ready', y);
+          }}
+          onBoundsChange={(e) => {
+            changePosition && changePosition(e)
           }}
           instanceRef={myMapRef}
         >

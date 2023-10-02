@@ -1,63 +1,46 @@
-import RenderFields from 'components/forms/RenderFields';
-import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainer'
 
 import { reduxForm } from 'redux-form';
 
-import { useEffect, useState, useRef } from 'react';
-import UserTop from 'pages/users/detail/UserTop';
+import { useState, useRef } from 'react';
+
 import Mobile from './partsCabinet/Mobile';
 import Desktop from './partsCabinet/Desktop';
-
+import { onSubmit } from 'components/forms/formParts/onSubmit';
 // --------------------------------------------------------------------
 
 const TemplateForm = (props) => {
   const {
     fields,
-    btnSubmiText,
     waitAnsw,
     submitSuccess,
     user,
     dirty,
-    newValue,
-    initialize,
-    reset,
-    dispatch,
-    change
+    invalid,
+
+
   } = props;
 
 
   const windowSize = useRef(window.innerWidth).current;
 
   const [checkErrorSubmit, setCheckErrorSubmit] = useState(false);
-  const [errCheck, setErrCheck] = useState(true);
 
-  // console.log('windowSize', windowSize)
   const onSubmit = (e) => {
+    let idTimeCheck;
     e.preventDefault();
-    // console.log('sub form', newValue)
-    // reset();
-    // dispatch(change(newValue.values))
-    // console.log('initialize', dispatch)
-    // initialize(newValue.values)
-    // setTimeout(() => {
 
-    // }, 500)
+    // console.log('sub form invalid check', invalid)
 
-
-    setCheckErrorSubmit(true);
-
-    setTimeout(() => {
-      setCheckErrorSubmit(false);
-    }, 10000);
-
-
-    if (errCheck) {
-      submitSuccess();
+    if (invalid) {
+      setCheckErrorSubmit(true);
+      clearTimeout(idTimeCheck);
+      idTimeCheck = setTimeout(() => {
+        setCheckErrorSubmit(false);
+      }, 10000);
     } else {
-      console.log('Ошибка полей')
+
+      submitSuccess();
     }
-
-
   };
 
 
@@ -70,11 +53,10 @@ const TemplateForm = (props) => {
               user={user}
               fields={fields}
               checkErrorSubmit={checkErrorSubmit}
-              setErrCheck={setErrCheck}
-              btnSubmiText={btnSubmiText}
+              btnSubmiText={'сохранить'}
               waitAnsw={waitAnsw}
               onSubmit={onSubmit}
-              dirty={dirty}
+            // dirty={dirty}
             />
           )}
           {windowSize > 576 && (
@@ -82,11 +64,10 @@ const TemplateForm = (props) => {
               user={user}
               fields={fields}
               checkErrorSubmit={checkErrorSubmit}
-              setErrCheck={setErrCheck}
-              btnSubmiText={btnSubmiText}
+              btnSubmiText={'сохранить'}
               waitAnsw={waitAnsw}
               onSubmit={onSubmit}
-              dirty={dirty}
+            // dirty={dirty}
 
             />
           )}

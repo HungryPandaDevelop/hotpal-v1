@@ -30,7 +30,7 @@ export const hotelsData = (array, tempArrayPrices) => {
       arrayHotels: array
     }
   }).then(res => {
-    console.log('res hotelsData')
+    // console.log('res hotelsData')
     // console.log('price', tempArrayPrices)
     // console.log('hotels full', res.data)
     // serArrayHotels(res.data)
@@ -65,9 +65,7 @@ export const regionSearch = (id,dateFrom,dateTo,personCount) => {
       personCount: personCount,
     }
   }).then(res => {
-    console.log('loaded', res)
-
-
+    // console.log('loaded', res)
     if (res.data.length > 0) {
 
       tempArrayHotels = res.data.map(el => {
@@ -84,7 +82,44 @@ export const regionSearch = (id,dateFrom,dateTo,personCount) => {
     // getDetailHotels(tempArrayHotels, tempArrayPrices)
   });
 
- 
+}
+
+export const geoSearch = (longitude, latitude,dateFrom,dateTo,personCount) => {
+  console.log('loading....', dateFrom,dateTo)
+
+  let tempArrayHotels = [];
+  let tempArrayPrices = [];
+
+
+  return axios.get(url+"/geo-search", {
+    headers: {
+      'ngrok-skip-browser-warning': true
+    },
+    params: {
+      longitude: longitude,
+      latitude: latitude,
+      dateFrom: dateFrom,
+      dateTo: dateTo,
+      personCount: personCount,
+    }
+  }).then(res => {
+    // console.log('loaded', res)
+    if (res.data.length > 0) {
+
+      tempArrayHotels = res.data.map(el => {
+        return el.id
+      })
+      tempArrayPrices = res.data.map(el => {
+        return [el.id, el.rates]
+        // return el.id
+      })
+      // setArrayPrices(tempArrayPrices)
+      return [tempArrayHotels, tempArrayPrices]
+    }
+
+    // getDetailHotels(tempArrayHotels, tempArrayPrices)
+  });
+
 }
 
 export const hotelPage = (id,dateFrom,dateTo,personCount) => {

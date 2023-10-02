@@ -7,8 +7,8 @@ const UserItem = ({
 }) => {
 
   const renderImg = (hotelSingle) => {
-
-    let startImg = hotelSingle.images.length > 0 && hotelSingle.images[0]
+    // console.log(hotelSingle)
+    let startImg = hotelSingle.images?.length > 0 && hotelSingle.images[0]
     if (startImg) {
       let regex = /[{}]/g;
       startImg = startImg.replace(regex, "");
@@ -37,8 +37,10 @@ const UserItem = ({
     return count;
   }
 
+  const slug = '93941.affiliate.0af1';
+
   return (
-    <Link to={`/hotels-catalog/${hotel.id}`} className="hotels-item">
+    <div className="hotels-item">
       {/* {startImg} */}
       <div className="hotels-img-container">
         {renderImg(hotel)}
@@ -46,7 +48,14 @@ const UserItem = ({
         <div className="hotels-raiting-container">
 
           <HotelsStars starRating={hotel.star_rating} />
+          <div className="btn-container">
+            <Link
+              className='btn btn--white-border'
+              target='_blank'
+              to={`https://www.ostrovok.ru/rooms/${hotel.id}/?cur=RUB&lang=ru&${slug}&utm_medium=partners&utm_source=${slug}`}>Забронировать</Link>
 
+
+          </div>
         </div>
       </div>
       <div className="hotels-info">
@@ -62,12 +71,12 @@ const UserItem = ({
         </div>
         <div className="hotels-price-container">
           {/* <div className="hotels-guest">1560 гостей</div> */}
-          {renderCountTravel() > 0 && <Link to={`/hotels-users/${hotel.id}`} className="btn btn--blue-border">Гости отеля {renderCountTravel()}</Link>}
+          <Link to={`/hotels-users/${hotel.id}`} className="btn btn--blue-border">Гости отеля {renderCountTravel()}</Link>
 
           <div className="hotels-price">от {hotel.price[0].daily_prices[0]} р.</div>
         </div>
       </div>
-    </Link >
+    </div >
   )
 }
 

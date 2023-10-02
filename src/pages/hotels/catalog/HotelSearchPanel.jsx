@@ -1,6 +1,6 @@
 
 import RenderForm from 'components/forms/RenderFormHotelsSearch';
-import { regionSearch, hotelsData } from 'pages/hotels/hooks/searchHotels';
+import { geoSearch, hotelsData } from 'pages/hotels/hooks/searchHotels';
 
 import { useEffect, useState } from 'react';
 
@@ -13,14 +13,19 @@ import { connect } from 'react-redux';
 const HotelsSearchPanel = ({
   formData,
   setListings,
-  setLoading
+  loading,
+  setLoading,
+  listingsCoords
 }) => {
+
+  const centerCity = [55.755864, 37.617698];
 
   const submitSuccess = () => {
 
     setLoading(true)
+    console.log('getHotels formData.values', formData.values)
 
-    let regionId = formData.values.city;
+    // let regionId = formData.values.city;
     let personCount = formData.values.personCount;
 
 
@@ -28,13 +33,20 @@ const HotelsSearchPanel = ({
     let dateTo = currentDate[1].split(".").reverse().join("-");
     let dateFrom = currentDate[0].split(".").reverse().join("-");
 
-    regionSearch(regionId, dateFrom, dateTo, personCount).then(res => {
-      console.log('getHotels', res)
-      hotelsData(res[0], res[1]).then(response => {
+    let longitude = formData.values.geoHotels[1];
+    let latitude = formData.values.geoHotels[0];
 
+    geoSearch(longitude, latitude, dateFrom, dateTo, personCount).then(res => {
+      // console.log('getHotels', res)
+      if (res) {
+        hotelsData(res[0], res[1]).then(response => {
+          setLoading(false)
+          setListings(response)
+        })
+      } else {
         setLoading(false)
-        setListings(response)
-      })
+        setListings(null)
+      }
     })
   }
 
@@ -59,7 +71,9 @@ const HotelsSearchPanel = ({
       <RenderForm
         fields={hotelsSearchFields}
         submitSuccess={submitSuccess}
-        initialValues={{ city: 2395, personCount: 2, dateRange: moment().format('DD.MM.YYYY') + ' - ' + moment().add(2, 'days').format('DD.MM.YYYY') }}
+        initialValues={{ geoHotels: centerCity, city: 2395, personCount: 2, dateRange: moment().format('DD.MM.YYYY') + ' - ' + moment().add(2, 'days').format('DD.MM.YYYY') }}
+        loading={loading}
+        listingsCoords={listingsCoords}
       // resetAll={resetAll}
       />
     </>

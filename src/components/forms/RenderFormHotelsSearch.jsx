@@ -9,12 +9,18 @@ import Tabs from 'components/forms/formSearch/Tabs';
 
 const HotelsSearchPanel = (props) => {
 
+
+
+
   const {
     fields,
     waitAnsw,
     submitSuccess,
     reset,
-    resetForm
+    resetForm,
+    initialValues,
+    loading,
+    listingsCoords
   } = props;
 
 
@@ -25,9 +31,11 @@ const HotelsSearchPanel = (props) => {
     submitSuccess();
 
   };
+
   const [showMobile, setShowMobile] = useState(false);
+  const [getCoords, setGetCoords] = useState(initialValues.geoHotels);
 
-
+  // const mutateValue = {...fields.geoHotels, cityName: 'testing'};
 
   return (
     <div className={`main-full border-search-hotels ${showMobile ? 'active' : ''}`}>
@@ -38,12 +46,14 @@ const HotelsSearchPanel = (props) => {
       </div>
       <div className={`border-container border-null-left border-container-search`}>
 
-        <div className="main-grid">
-          <RenderFields
+        <div className="">
+          {/* <RenderFields
             type="single"
             fields={fields.city}
-
-
+          /> */}
+          <RenderFields
+            type="single"
+            fields={{ ...fields.yaString, setGetCoords: setGetCoords }}
           />
 
           <RenderFields
@@ -79,7 +89,11 @@ const HotelsSearchPanel = (props) => {
           />
 
 
-
+          <RenderFields
+            type="single"
+            fields={{ ...fields.geoHotels, loading: loading, listingsCoords: listingsCoords, getCoords: getCoords }}
+          // fields={fields.geoHotels}
+          />
 
 
         </div>

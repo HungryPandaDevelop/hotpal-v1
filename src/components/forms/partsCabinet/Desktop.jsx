@@ -1,4 +1,4 @@
-import UserTop from 'pages/users/detail/UserTop';
+
 import RenderFields from 'components/forms/RenderFields';
 import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainerCabinet'
 import { calculateAge } from 'pages/users/hooks/calculateAge';
@@ -8,7 +8,6 @@ const Desktop = ({
   user,
   fields,
   checkErrorSubmit,
-  setErrCheck,
   btnSubmiText,
   waitAnsw,
   onSubmit,
@@ -28,6 +27,7 @@ const Desktop = ({
           <RenderFields
             type="single"
             fields={fields.dateBerth}
+            checkErrorSubmit={checkErrorSubmit}
           />
           <RenderFields
             type="single"
@@ -74,7 +74,7 @@ const Desktop = ({
                   type="single"
                   fields={fields.work}
                   checkErrorSubmit={checkErrorSubmit}
-                  setErrCheck={setErrCheck}
+
                 />
               </div>
             </li>
@@ -85,7 +85,7 @@ const Desktop = ({
                   type="single"
                   fields={fields.zodiac}
                   checkErrorSubmit={checkErrorSubmit}
-                  setErrCheck={setErrCheck}
+
                 />
               </div>
             </li>
@@ -96,7 +96,7 @@ const Desktop = ({
                   type="single"
                   fields={fields.tripPoint}
                   checkErrorSubmit={checkErrorSubmit}
-                  setErrCheck={setErrCheck}
+
                 />
               </div>
             </li>
@@ -107,7 +107,7 @@ const Desktop = ({
                   type="single"
                   fields={fields.orientation}
                   checkErrorSubmit={checkErrorSubmit}
-                  setErrCheck={setErrCheck}
+
                 />
               </div>
             </li>
@@ -119,14 +119,14 @@ const Desktop = ({
           type="single"
           fields={fields.description}
           checkErrorSubmit={checkErrorSubmit}
-          setErrCheck={setErrCheck}
+
         />
-        <div className={`btn-save-outer ${dirty ? 'active' : ''}`}>
+        <div className={`btn-save-outer ${dirty ? 'active' : 'active'}`}>
           <RenderBtnContainer
             btnSubmitText={btnSubmiText}
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
-
+            checkErrorSubmit={checkErrorSubmit}
           />
         </div>
       </div>

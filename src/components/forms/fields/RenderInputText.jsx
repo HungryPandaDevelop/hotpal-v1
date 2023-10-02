@@ -16,25 +16,12 @@ const TempateInput = (props) => {
     wrapClass,
     disabled,
     checkErrorSubmit,
-    setErrCheck,
   } = props.obj;
 
 
 
   const [firstLoad, setFirstLoad] = useState(0);
 
-  useEffect(() => {
-    console.log(error)
-    if (setErrCheck) {
-      if (error) {
-        setErrCheck(false);
-      }
-      else {
-        setErrCheck(true);
-      }
-    }
-
-  }, [error]);
 
   useEffect(() => {
     if (input.value && firstLoad === 0) {

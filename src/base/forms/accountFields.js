@@ -19,6 +19,7 @@ export const accountFields = {
     label: "Дата рождения", 
     placeholder: "Дата рождения", 
     wrapClass: "input-box" ,
+    validate: ['required'],
   },
   gender: { 
     type:"switch" ,

@@ -1,21 +1,19 @@
 
 
-const RenderBtnContainer = (props) => {
+const RenderBtnContainer = ({
+  colBtn,
+  waitAnsw,
+  onSubmit,
+  btnSubmitText,
 
-  const {
-    colBtn,
-    waitAnsw,
-    onSubmit,
-    btnSaveText,
-
-  } = props;
+}) => {
 
 
   return (
     <div className={`${colBtn ? colBtn : 'col-12'} btn-container`}>
-      <button className="btn btn--blue" onClick={(e) => { onSubmit(e) }} >
+      <button className="btn btn--blue" onClick={onSubmit} >
         {waitAnsw ? (<>Loading...</>) : (
-          <><i></i><span>{btnSaveText}</span></>
+          <><i></i><span>{btnSubmitText}</span></>
         )}
       </button>
     </div>

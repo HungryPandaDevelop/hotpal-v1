@@ -17,6 +17,7 @@ const PageStandart = () => {
 
       setListings(res);
       setLoading(false);
+
     })
   }, []);
 
