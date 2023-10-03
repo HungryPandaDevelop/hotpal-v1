@@ -59,12 +59,6 @@ export const getListing = async (baseName,  type, uid ) => {
       where('idHotel', '==',uid),
     );
   }
-  else if(type==='travelAll'){
-    q = query(
-      listingsRef,
-      where('uid', '!=',uid),
-    );
-  }
   else if(type==='usersArray'){
 
     q = query(
@@ -73,7 +67,6 @@ export const getListing = async (baseName,  type, uid ) => {
     );
   }
   else{
-    console.log('in cab 2', uid)
     q = query(
       listingsRef,
     );

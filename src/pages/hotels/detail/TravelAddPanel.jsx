@@ -22,15 +22,14 @@ const RoomsSearchPanel = ({
 
   useEffect(() => {
 
-    getListing('travel', 'userRef', hotel.id).then((res) => {
+    getListing('travel', 'travel', hotel.id).then((res) => {
+      console.log('hotel.id', hotel.id)
       res.map(el => {
         if (el.uid === uid && el.idHotel === hotel.id) {
           setTravelStateForm(false)
           setMyTravel(el);
         }
       })
-
-
     });
 
   }, []);

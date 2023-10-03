@@ -1,6 +1,6 @@
 import HotelsStars from 'pages/hotels/catalog/HotelsStars'
 
-import HotelImages from './HotelImages'
+import HotelImages from 'pages/hotels/detail/HotelImages'
 import HotelServices from './HotelServices'
 
 

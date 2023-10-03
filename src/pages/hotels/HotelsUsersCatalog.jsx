@@ -48,26 +48,27 @@ const HotelsUsersCatalog = ({ uid }) => {
 
 
     const usersArray = [];
-    getListing('travel', 'userRef', pageId).then((res) => {
+    getListing('travel', 'travel', pageId).then((res) => {
       let users = res;
       res.map(el => {
         if (el.uid !== uid) {
           usersArray.push(el.uid)
         }
       });
+      if (usersArray.length > 0) {
+        getListing('users', 'usersArray', usersArray).then((res) => {
 
-      getListing('users', 'usersArray', usersArray).then((res) => {
+          let tempUsers = [];
+          console.log('users', usersArray, res)
+          res.forEach(el => {
+            tempUsers.push({ ...users.find(e => e.uid === el.uid), ...el })
+          });
 
-        let tempUsers = [];
-        console.log('users', usersArray, res)
-        res.forEach(el => {
-          tempUsers.push({ ...users.find(e => e.uid === el.uid), ...el })
+          setLoading(false);
+          setSearchListing(tempUsers);
+          setListings(tempUsers);
         });
-
-        setLoading(false);
-        setSearchListing(tempUsers);
-        setListings(tempUsers);
-      });
+      }
 
     });
 
@@ -104,7 +105,7 @@ const HotelsUsersCatalog = ({ uid }) => {
           )}
         </div>
         <div className="col-12">
-          {uid && <TravelAddPanel hotel={hotel} />}
+          {loadingHotel ? 'load...' : <TravelAddPanel hotel={hotel} />}
         </div>
       </div>
       {loading ? (<div className='main-full'>Loading...</div>) : (

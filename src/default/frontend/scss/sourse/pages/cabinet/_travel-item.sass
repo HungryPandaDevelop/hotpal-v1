@@ -1,4 +1,6 @@
 .travel-item
+  position: relative
+
   .btn
     width: 50%
   .btn-container
@@ -7,8 +9,9 @@
     gap: 15px
 .travel-img
   height: 200px
-  @include bgImageEl("../images/stub-ico.svg", cover)
+  position: relative
   border-radius: 20px
   margin: 0 0 15px
+  overflow: hidden
 .travel-date
   margin-bottom: 15px

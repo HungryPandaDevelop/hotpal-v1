@@ -4651,6 +4651,9 @@ button[data-controls=next]:hover {
     margin-bottom: 30px;
   }
 }
+.travel-item {
+  position: relative;
+}
 .travel-item .btn {
   width: 50%;
 }
@@ -4666,12 +4669,10 @@ button[data-controls=next]:hover {
 
 .travel-img {
   height: 200px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("../images/stub-ico.svg");
+  position: relative;
   border-radius: 20px;
   margin: 0 0 15px;
+  overflow: hidden;
 }
 
 .travel-date {

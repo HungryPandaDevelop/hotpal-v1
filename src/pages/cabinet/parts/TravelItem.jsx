@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-
+import { renderImgSingle } from 'pages/hotels/hooks/renderImg';
 
 const TravelItem = ({ item, onDelete }) => {
   return (
     <div className='travel-item'>
       <div className="travel-img">
-
+        {renderImgSingle(item)}
       </div>
       <h3>{item.nameHotel}</h3>
       <div className="travel-date">

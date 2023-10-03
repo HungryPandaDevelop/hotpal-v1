@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import HotelsStars from 'pages/hotels/catalog/HotelsStars'
+import { renderImg } from 'pages/hotels/hooks/renderImg';
 const UserItem = ({
   hotel,
   travelList,
@@ -8,24 +9,23 @@ const UserItem = ({
   itemInner
 }) => {
 
-  const renderImg = (hotelSingle) => {
-    // console.log(hotelSingle)
-    let startImg = hotelSingle.images?.length > 0 && hotelSingle.images[0]
-    if (startImg) {
-      let regex = /[{}]/g;
-      startImg = startImg.replace(regex, "");
-      startImg = startImg.replace(/size/g, "1024x768");
-      return (
-        <div className="hotels-img"
-          style={{ backgroundImage: `url(${startImg})` }}
-        >
-        </div>
-      )
-    } else {
-      return <div className="hotels-img"></div>
-    }
-
-  }
+  // const renderImg = (hotelSingle) => {
+  //   // console.log(hotelSingle)
+  //   let startImg = hotelSingle.images?.length > 0 && hotelSingle.images[0]
+  //   if (startImg) {
+  //     let regex = /[{}]/g;
+  //     startImg = startImg.replace(regex, "");
+  //     startImg = startImg.replace(/size/g, "1024x768");
+  //     return (
+  //       <div className="hotels-img"
+  //         style={{ backgroundImage: `url(${startImg})` }}
+  //       >
+  //       </div>
+  //     )
+  //   } else {
+  //     return <div className="hotels-img"></div>
+  //   }
+  // }
 
   const renderCountTravel = () => {
     let count = 0;
