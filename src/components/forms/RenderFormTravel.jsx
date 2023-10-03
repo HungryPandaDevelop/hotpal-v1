@@ -25,10 +25,9 @@ const RoomsSearchPanel = (props) => {
 
   };
 
-  const slug = '93941.affiliate.0af1';
 
   return (
-    <div className="main-full travel-add-panel">
+    <div className="travel-add-panel">
       <div className="border-container border-container-search">
         <div className="main-grid">
           <RenderFields
@@ -39,16 +38,9 @@ const RoomsSearchPanel = (props) => {
             btnSubmitText={btnSubmitText}
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
-            colBtn="col-4 col-xs-12"
+            colBtn="col-6 col-xs-12"
           />
-          <div className="col-4 col-xs-12">
-            <div className="btn-container">
-              <Link
-                className='btn btn--blue'
-                target='_blank'
-                to={`https://www.ostrovok.ru/rooms/${listing.id}/?cur=RUB&lang=ru&${slug}&utm_medium=partners&utm_source=${slug}`}>Полная информация об отеле</Link>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

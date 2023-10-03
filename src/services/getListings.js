@@ -16,19 +16,29 @@ import { db } from 'default/config/firebase';
 
 export const getListing = async (baseName,  type, uid ) => {
 
+  console.log('getListing',baseName,  type, uid )
   const listingsRef = collection(db, baseName);
   
   let q;
-
+  
   if(type==='userRef'){
+    console.log('in cab', uid)
     q = query(
       listingsRef,
       where('userRef', '==', uid),
       orderBy('timestamp', 'desc'),
     );
   }
+  else if(type==='userUid'){ // travel переделать
+    console.log('in cab', uid)
+    q = query(
+      listingsRef,
+      where('uid', '==', uid),
+      orderBy('timestamp', 'desc'),
+    );
+  }
 
-  if(type==='noUserRef'){
+  else if(type==='noUserRef'){
     q = query(
       listingsRef,
       where('uid', '!=', uid),
@@ -56,13 +66,14 @@ export const getListing = async (baseName,  type, uid ) => {
     );
   }
   else if(type==='usersArray'){
-    console.log('uid',uid)
+
     q = query(
       listingsRef,
-      where('uid', 'in', uid[1])
+      where('uid', 'in', uid)
     );
   }
   else{
+    console.log('in cab 2', uid)
     q = query(
       listingsRef,
     );
@@ -71,13 +82,13 @@ export const getListing = async (baseName,  type, uid ) => {
 
   const querySnap = await getDocs(q);
 
-  // console.log('doc',querySnap)
+ 
 
   const getData = querySnap.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
-
+  console.log('doc', getData)
   return getData;
 
 }

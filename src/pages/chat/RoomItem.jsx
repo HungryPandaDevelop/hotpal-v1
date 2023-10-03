@@ -95,6 +95,8 @@ const RoomItem = ({
 
   if (loading) { return '' }
 
+  if (!roomUserInfo) { return false; }
+
   return (
     <div
       className={`rooms-item ${roomUrl === room.id ? 'active' : ''}`}

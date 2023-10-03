@@ -57,6 +57,7 @@ const HotelsDetail = ({ uid }) => {
       <HotelWarning listing={listing} />
 
       <HotelPlace listing={listing} />
+
       <div className="stub"></div>
     </div>
   )

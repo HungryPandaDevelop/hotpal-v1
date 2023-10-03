@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
+import moment from "moment";
+import { connect } from 'react-redux';
+
 import { getListing } from 'services/getListings';
 
+import { hotelPage, hotelsData } from 'pages/hotels/hooks/searchHotels';
 
+import HotelsItem from 'pages/hotels/catalog/HotelsItem';
+import TravelAddPanel from "pages/hotels/detail/TravelAddPanel";
 import UserItem from 'pages/users/catalog/UsersItem';
 import UsersSearchPanel from 'pages/users/catalog/UsersSearchPanel';
 
@@ -13,76 +19,117 @@ const HotelsUsersCatalog = ({ uid }) => {
 
   const [listings, setListings] = useState([]);
   const [searchListing, setSearchListing] = useState([]);
+
   const [loading, setLoading] = useState(true);
+
+  const [searchParams] = useSearchParams();
+
+
+  const [loadingHotel, setLoadingHotel] = useState(true);
+  const [hotel, setHotel] = useState([]);
 
   useEffect(() => {
 
+    // load HOTEL 
+    // console.log('searchParams', searchParams.get('from'), searchParams.get('from'))
+
+    let dateFrom = searchParams.get('from') ? searchParams.get('from') : moment().format('YYYY-MM-DD');
+    let dateTo = searchParams.get('to') ? searchParams.get('to') : moment().add(2, 'days').format('YYYY-MM-DD');
+
+    hotelPage(pageId, dateFrom, dateTo, 2).then(res => {
+      hotelsData(res).then(response => {
+        setLoadingHotel(false)
+        setHotel(response[0])
+        // console.log('get detail hotels', response[0])
+      })
+    });
+    // load HOTEL 
+
+
 
     const usersArray = [];
-
     getListing('travel', 'userRef', pageId).then((res) => {
       let users = res;
       res.map(el => {
         if (el.uid !== uid) {
           usersArray.push(el.uid)
         }
-      })
+      });
 
-      getListing('users', 'usersArray', [uid, usersArray]).then((res) => {
+      getListing('users', 'usersArray', usersArray).then((res) => {
 
-        let tempUser = [];
-        // console.log(res, users)
+        let tempUsers = [];
+        console.log('users', usersArray, res)
         res.forEach(el => {
-          tempUser.push({ ...users.find(e => e.uid === el.uid), ...el })
-        })
+          tempUsers.push({ ...users.find(e => e.uid === el.uid), ...el })
+        });
 
-
-
-        setListings(tempUser);
-        setSearchListing(tempUser);
         setLoading(false);
-
+        setSearchListing(tempUsers);
+        setListings(tempUsers);
       });
 
     });
 
-
-
-
-
-
   }, []);
 
 
-  if (loading) { return 'Loading...' }
+
 
   return (
     <>
       <div className="stub"></div>
-      <UsersSearchPanel
-        listings={listings}
-        searchListing={searchListing}
-        setSearchListing={setSearchListing}
-        disableTabs={true}
-      />
-      <div className="main-full">
-        <h1>
-          Люди в отеле {pageId}
-        </h1>
-      </div>
-      <div className="catalog-grid main-grid">
-        {searchListing.map((user, index) => (
-          <div key={index} className="col-4 col-xs-12">
-            <UserItem
-              user={user}
+
+      <div className="main-grid">
+        <div className="col-6">
+          <UsersSearchPanel
+            listings={listings}
+            searchListing={searchListing}
+            setSearchListing={setSearchListing}
+            // disableTabs={true}
+            miniPanel={true}
+          />
+        </div>
+        <div className="col-6">
+          <h3 className='hotels-topic'>Найдено <span>0 гостей</span></h3>
+          {loadingHotel ? 'load...' : (
+            <HotelsItem
+              key={hotel.id}
+              hotel={hotel}
               uid={uid}
-              dateTravel={user.dateTravel}
+              itemInner={true}
+            // travelList={travelList}
+            // searchDate={searchDate}
             />
-          </div>
-        ))}
+          )}
+        </div>
+        <div className="col-12">
+          {uid && <TravelAddPanel hotel={hotel} />}
+        </div>
       </div>
+      {loading ? (<div className='main-full'>Loading...</div>) : (
+        <div className="catalog-grid main-grid">
+          {searchListing.map((user, index) => (
+            <div key={index} className="col-4 col-xs-12">
+              <UserItem
+                user={user}
+                uid={uid}
+                dateTravel={user.dateTravel}
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
     </>
   )
 }
 
-export default HotelsUsersCatalog
+
+const mapStateToProps = (state) => {
+  return {
+    uid: state.account.uid
+  }
+}
+
+export default connect(mapStateToProps)(HotelsUsersCatalog);

@@ -37,6 +37,7 @@ const LikesItem = ({
 
   if ((typeLike === 'out' && !userSide) || (typeLike === 'in' && userSide)) { return false }
 
+  if (!user) { return false; }
 
   return (
     <div className="col-4 col-xs-6">

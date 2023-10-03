@@ -28,6 +28,7 @@ const TempateInput = (props) => {
       const { ymaps } = window;
       // console.log('ymaps', typeof ymaps.SuggestView)
       if (ymaps.SuggestView) {
+        console.log('sugg')
         const suggest = new ymaps.SuggestView('coords-ya');
 
         suggest.events.add('select', (e) => {

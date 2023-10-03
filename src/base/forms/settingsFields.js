@@ -125,11 +125,11 @@ export const settingsPrivacy= {
 
 }
 
-export const settingsTrave = {
+export const settingsTravel = {
   dateTravelRange: { 
     type:"dateRange" ,
     name: "dateTravelRange", 
     label: "Даты нахождения", 
-    wrapClass: "input-box col-4 col-xs-12" ,
+    wrapClass: "input-box col-6 col-xs-12" ,
   },
 }

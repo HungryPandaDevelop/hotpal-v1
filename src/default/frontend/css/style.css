@@ -3703,27 +3703,6 @@ button[data-controls=next]:hover {
   padding: 0;
 }
 
-.border-search-hotels .input-box {
-  margin-bottom: 25px;
-}
-.border-search-hotels .btn-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 15px;
-  height: 100%;
-  margin-top: 15px;
-}
-.border-search-hotels .btn-container .btn {
-  margin: auto 0 0;
-  width: 50%;
-}
-
-.geo-hotels {
-  outline: 1px solid red;
-  height: 300px;
-}
-
 .show-filter-mobile-container {
   display: none;
 }
@@ -5312,6 +5291,41 @@ button[data-controls=next]:hover {
 }
 /*-----users-end----*/ 
 /*-----hotels-start----*/ 
+.hotels-topic {
+  font-size: 20px;
+  text-align: right;
+  color: #0B132B;
+  padding: 5px 0px;
+}
+.hotels-topic span {
+  color: #00AEEF;
+}
+
+.border-search-hotels .user-location-map {
+  margin: 0;
+}
+.border-search-hotels .geo-input-box {
+  margin-top: 30px;
+}
+.border-search-hotels .input-box {
+  margin-bottom: 25px;
+}
+.border-search-hotels .btn-container {
+  text-align: left;
+  margin-top: 15px;
+}
+.border-search-hotels .btn-container .btn {
+  width: 190px;
+  margin: 0;
+}
+
+.border-users-mini .input-box {
+  margin-bottom: 15px;
+}
+.border-users-mini .box-range {
+  margin-bottom: 45px;
+}
+
 .hotels-item {
   text-decoration: none;
   display: block;
@@ -5320,6 +5334,10 @@ button[data-controls=next]:hover {
 }
 .hotels-item .hotels-stars {
   padding: 0;
+}
+.hotels-item .btn {
+  font-weight: 400;
+  padding: 2px 12px;
 }
 
 .hotels-img {
@@ -5389,8 +5407,9 @@ button[data-controls=next]:hover {
 
 .hotels-name {
   color: #0B132B;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
+  line-height: 1.1;
 }
 
 .hotels-info {
@@ -5407,6 +5426,9 @@ button[data-controls=next]:hover {
 .hotels-price-container {
   text-align: right;
 }
+.hotels-price-container .btn {
+  width: 190px;
+}
 
 .hotels-stars {
   text-align: left;
@@ -5415,6 +5437,7 @@ button[data-controls=next]:hover {
   padding-left: 15px;
 }
 .hotels-stars .star {
+  margin: 0 1px;
   display: inline-block;
   vertical-align: middle;
   width: 20px;
@@ -5439,10 +5462,13 @@ button[data-controls=next]:hover {
 }
 
 .hotels-guest {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
   color: #00AEEF;
-  margin: 0 0 15px;
+  margin: -11px 0 0;
+}
+.hotels-guest span {
+  font-size: 40px;
 }
 
 .hotels-price {

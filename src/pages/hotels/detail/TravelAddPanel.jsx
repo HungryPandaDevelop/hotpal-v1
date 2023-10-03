@@ -1,36 +1,36 @@
 import { useState, useEffect } from 'react';
-import RenderForm from 'components/forms/RenderFormTravel';
-import moment from "moment";
-import { settingsTrave } from 'base/forms/settingsFields';
-import { addCardsDefault } from 'services/addListing';
 import { connect } from 'react-redux';
+import moment from "moment";
+
+import RenderForm from 'components/forms/RenderFormTravel';
+import { settingsTravel } from 'base/forms/settingsFields';
+
+import { addCardsDefault } from 'services/addListing';
 import { getListing } from 'services/getListings';
-import TravelUserList from 'pages/hotels/detail/TravelUserList';
 import { deleteListing } from 'services/getListings';
 
 
 const RoomsSearchPanel = ({
   formData,
-  listing,
+  hotel,
   uid
 }) => {
 
-  const [travelList, setTravelList] = useState([]);
-  const [travelListLoad, setTravelListLoad] = useState(true);
+
   const [stateTravelForm, setTravelStateForm] = useState(true);
   const [myTravel, setMyTravel] = useState(null);
 
   useEffect(() => {
 
-    getListing('travel', 'userRef', listing.id).then((res) => {
+    getListing('travel', 'userRef', hotel.id).then((res) => {
       res.map(el => {
-        if (el.uid === uid && el.idHotel === listing.id) {
+        if (el.uid === uid && el.idHotel === hotel.id) {
           setTravelStateForm(false)
           setMyTravel(el);
         }
       })
-      setTravelList(res);
-      setTravelListLoad(false)
+
+
     });
 
   }, []);
@@ -43,14 +43,14 @@ const RoomsSearchPanel = ({
   };
 
   const submitSuccess = () => {
-    console.log(formData.values, uid, listing.id, listing.images[0])
+    // console.log(formData.values, uid, hotel.id, hotel.images[0])
 
     const travelObj = {
       'dateTravel': formData.values.dateTravelRange,
       'uid': uid,
-      'idHotel': listing.id,
-      'nameHotel': listing.name,
-      'imgHotel': listing.images[0]
+      'idHotel': hotel.id,
+      'nameHotel': hotel.name,
+      'imgHotel': hotel.images[0]
     }
 
     addCardsDefault(
@@ -60,20 +60,18 @@ const RoomsSearchPanel = ({
       });
   }
 
-  if (travelListLoad) {
-    return 'Load...'
-  }
+
 
 
   return (
 
     <>
       {stateTravelForm ? (<RenderForm
-        fields={settingsTrave}
+        fields={settingsTravel}
         btnSubmitText="Я буду в эти даты"
         initialValues={{ dateTravelRange: moment().format('DD.MM.YYYY') + ' - ' + moment().add(2, 'days').format('DD.MM.YYYY') }}
         submitSuccess={submitSuccess}
-        listing={listing}
+        listing={hotel}
       />) : (<div className="main-grid travel-info-panel border-container">
         <div className="col-4">
           <h3>Буду в эти даты</h3>
@@ -92,8 +90,6 @@ const RoomsSearchPanel = ({
 
       </div>)}
 
-
-      <TravelUserList travelList={travelList} uid={uid} />
     </>
 
   )

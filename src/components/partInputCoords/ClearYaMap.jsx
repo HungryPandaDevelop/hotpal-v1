@@ -72,7 +72,7 @@ const ClearYaMap = ({ currentLocation, centerPosition, changePosition, multy }) 
           defaultState={
             {
               center: centerPosition ? centerPosition : [55.714247, 37.764375],
-              zoom: 13
+              zoom: 14
             }
           }
           modules={["util.bounds", "multiRouter.MultiRoute", "Placemark", "geocode"]}

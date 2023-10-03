@@ -5,6 +5,9 @@
   margin: 0 0 30px
   .hotels-stars
     padding: 0
+  .btn
+    font-weight: 400
+    padding: 2px 12px
 .hotels-img
   @include bgImageEl("../images/stub-ico.svg", cover)
   @include positionElement(100%,100%,0,0)
@@ -20,6 +23,7 @@
   overflow: hidden
   margin: 0 0 15px
   display: flex
+
 .hotels-raiting-container
   margin-top: auto
   width: 100%
@@ -43,22 +47,27 @@
 
 .hotels-name
   color: $blackColor
-  font-size: $largeSize
+  font-size: 20px
   font-weight: 700
-
+  line-height: 1.1
 .hotels-info
   display: flex
 .hotels-name-container,
 .hotels-price-container
   width: 50%
+
 .hotels-price-container
   text-align: right
+  .btn
+
+    width: 190px
 .hotels-stars
   text-align: left
   width: 100%
   margin-top: auto
   padding-left: 15px
   .star
+    margin: 0 1px
     @include icoEl(20px,20px, '../images/icons/star-fill-gray.svg')
     &.active
       background-image: url('../images/icons/star-fill-yellow.svg')
@@ -71,10 +80,13 @@
   .goals-ico
     margin-right: 8px
 .hotels-guest
-  font-size: 32px
+  font-size: 24px
   font-weight: 700
   color: $blueColor
-  margin: 0 0 15px
+
+  margin: -11px 0 0
+  span
+    font-size: 40px
 .hotels-price
   margin-top: 15px
 @media (max-width: 576px)

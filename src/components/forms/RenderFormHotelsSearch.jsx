@@ -82,7 +82,7 @@ const HotelsSearchPanel = (props) => {
             colBtn="col-3 col-xs-12"
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
-            btnSubmitText="Найти"
+            btnSubmitText="Начать поиск"
             reset={reset}
             resetForm={resetForm}
 

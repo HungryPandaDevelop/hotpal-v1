@@ -15,7 +15,8 @@ const HotelsSearchPanel = ({
   setListings,
   loading,
   setLoading,
-  listingsCoords
+  listingsCoords,
+  setSearchDate
 }) => {
 
   const centerCity = [55.755864, 37.617698];
@@ -30,18 +31,23 @@ const HotelsSearchPanel = ({
 
 
     let currentDate = formData.values.dateRange.split(' - ');
-    let dateTo = currentDate[1].split(".").reverse().join("-");
-    let dateFrom = currentDate[0].split(".").reverse().join("-");
 
+    let dateFrom = currentDate[0].split(".").reverse().join("-");
+    let dateTo = currentDate[1].split(".").reverse().join("-");
+
+    setSearchDate([dateFrom, dateTo]);
     let longitude = formData.values.geoHotels[1];
     let latitude = formData.values.geoHotels[0];
 
     geoSearch(longitude, latitude, dateFrom, dateTo, personCount).then(res => {
       // console.log('getHotels', res)
       if (res) {
-        hotelsData(res[0], res[1]).then(response => {
+        hotelsData(res).then(response => {
           setLoading(false)
+
           setListings(response)
+
+          console.log('getHotels', response)
         })
       } else {
         setLoading(false)

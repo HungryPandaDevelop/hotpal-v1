@@ -4,12 +4,12 @@ import {goals} from "base/goals"
 import {zodiac} from "base/zodiac"
 import {orientation} from "base/orientation"
 import {typeWork} from "base/typeWork"
-export const usersSearchFields = {
 
+export const usersSearchFields = {
   gender: { 
     type:"switch" ,
     name: "gender", 
-    label: "Пол", 
+    label: "Выберите Пол", 
     options: [
       {name:'<div class="man-ico"></div>',value:"man"},
       {name:'<div class="woman-ico"></div>', value:"woman"},
@@ -69,6 +69,37 @@ export const usersSearchFields = {
     wrapClass: "col-3 search-select-box input-box col-xs-12",
     options: orientation
   },
+
+
+}
+
+export const usersSearchFieldsMini = {
+  gender: { 
+    type:"switch" ,
+    name: "gender", 
+    label: "Выберите Пол", 
+    options: [
+      {name:'<div class="man-ico"></div>',value:"man"},
+      {name:'<div class="woman-ico"></div>', value:"woman"},
+    ],
+    wrapClass: "input-box col-4 " ,
+  },
+  rangeBerth: { 
+    type:"range" ,
+    name: "rangeBerth", 
+    label: "Выберите возраст", 
+    range: [18, 75],
+    wrapClass: "input-box box-range col-8 col-xs-6" ,
+  },
+
+  goals: { 
+    type:"choiseTags" ,
+    name: "goals", 
+    label: "Выберите Цели", 
+    options: goals,
+    wrapClass: "col-12 input-box col-xs-12",
+  },
+
 
 
 }

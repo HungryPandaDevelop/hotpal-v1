@@ -3,7 +3,9 @@ import HotelsStars from 'pages/hotels/catalog/HotelsStars'
 const UserItem = ({
   hotel,
   travelList,
-  uid
+  uid,
+  searchDate,
+  itemInner
 }) => {
 
   const renderImg = (hotelSingle) => {
@@ -53,8 +55,6 @@ const UserItem = ({
               className='btn btn--white-border'
               target='_blank'
               to={`https://www.ostrovok.ru/rooms/${hotel.id}/?cur=RUB&lang=ru&${slug}&utm_medium=partners&utm_source=${slug}`}>Забронировать</Link>
-
-
           </div>
         </div>
       </div>
@@ -70,8 +70,9 @@ const UserItem = ({
           </div> */}
         </div>
         <div className="hotels-price-container">
-          {/* <div className="hotels-guest">1560 гостей</div> */}
-          <Link to={`/hotels-users/${hotel.id}`} className="btn btn--blue-border">Гости отеля {renderCountTravel()}</Link>
+          {travelList && (<div className="hotels-guest"><span>{renderCountTravel()}</span> гостей</div>)}
+          {!itemInner && (<Link to={`/hotels-users/${hotel.id}${searchDate ? `?from=${searchDate[0]}&to=${searchDate[1]}` : ''}`} className="btn btn--blue-border">просмотреть всех</Link>)}
+
 
           <div className="hotels-price">от {hotel.price[0].daily_prices[0]} р.</div>
         </div>

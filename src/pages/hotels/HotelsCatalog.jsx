@@ -18,16 +18,22 @@ const HotelsCatalog = ({ uid }) => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
+  const [searchDate, setSearchDate] = useState(null);
+
   const [travelList, setTravelList] = useState([]);
 
-
+  function toCaseCount(arg) {
+    let last = arg.toString().split('').pop();
+    if (last == 1) return ' вариант'
+    else if (last >= 2 && last <= 4) return ' варианта'
+    else if (last >= 5 && last <= 9) return ' вариантов'
+    else return ' вариантов'
+  }
 
   useEffect(() => {
     getListing('travel', 'travelAll', uid).then((res) => {
-
-
       setTravelList(res);
-
     });
   }, [])
 
@@ -46,19 +52,25 @@ const HotelsCatalog = ({ uid }) => {
             setLoading={setLoading}
             loading={loading}
             listingsCoords={listings}
+            setSearchDate={setSearchDate}
           />
         </div>
         {loading ? <div className='col-6'><Preloader /></div> : (
           <div
             className="col-6">
-            {listings ? listings.map((hotel, index) => (
+            <h2 className="hotels-topic">
+              Найдено <span>{listings.length} {toCaseCount(listings.length)}
+              </span>
+            </h2>
+            {listings.map((hotel, index) => (
               hotel.id && (<HotelsItem
                 key={index}
                 hotel={hotel}
                 uid={uid}
                 travelList={travelList}
+                searchDate={searchDate}
               />)
-            )) : <><h3>0 Отелей</h3></>}
+            ))}
           </div>
         )}
       </div>

@@ -12,8 +12,9 @@ const Travel = ({ uid }) => {
 
   useEffect(() => {
 
-    setLoading(true);
-    getListing('travel', 'userRef', uid).then((res) => {
+    // setLoading(true);
+
+    getListing('travel', 'userUid', uid).then((res) => {
       setListing(res);
       console.log(res)
       setLoading(false);

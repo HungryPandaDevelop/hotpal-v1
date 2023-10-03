@@ -45,7 +45,7 @@ const TempateInput = (props) => {
 
 
   const changePosition = (e) => {
-    console.log('change', e.originalEvent.newCenter)
+    // console.log('change', e.originalEvent)
     input.onChange(e.originalEvent.newCenter);
   }
 

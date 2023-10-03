@@ -1,9 +1,11 @@
 import { onUsersSearch } from '../hooks/onUsersSearch';
 
 import RenderForm from 'components/forms/RenderFormUsersSearch';
+import RenderFormMini from 'components/forms/RenderFormUsersMiniSearch';
 
 
 import { usersSearchFields } from 'base/forms/usersSearchFields';
+import { usersSearchFieldsMini } from 'base/forms/usersSearchFields';
 
 import { connect } from 'react-redux';
 
@@ -11,7 +13,8 @@ const UsersSearchPanel = ({
   formData,
   listings,
   setSearchListing,
-  disableTabs
+  disableTabs,
+  miniPanel
 }) => {
 
   const startValue = {}
@@ -27,13 +30,20 @@ const UsersSearchPanel = ({
 
   return (
     <>
-      <RenderForm
+      {miniPanel ? (
+        <RenderFormMini
+          fields={usersSearchFieldsMini}
+          submitSuccess={submitSuccess}
+          resetForm={resetForm}
+          disableTabs={disableTabs}
+        />
+      ) : (<RenderForm
         fields={usersSearchFields}
         submitSuccess={submitSuccess}
         resetForm={resetForm}
         disableTabs={disableTabs}
-      // resetAll={resetAll}
-      />
+      />)}
+
     </>
   )
 }

@@ -23,7 +23,7 @@ export const hotelsSearchFields = {
   dateRange: { 
     type:"dateRange" ,
     name: "dateRange", 
-    label: "Даты", 
+    label: "Даты визита", 
     wrapClass: "input-box" ,
   },
   personCount: { 
@@ -44,14 +44,14 @@ export const hotelsSearchFields = {
   yaString: { 
     type:"yaString" ,
     name: "yaString", 
-    label: "Поиск места", 
+    label: "Город", 
     wrapClass: "input-box" ,
   },
   geoHotels: { 
     type:"geo" ,
     name: "geoHotels", 
     label: "На карте", 
-    wrapClass: "input-box" ,
+    wrapClass: "input-box geo-input-box" ,
   },
   // raiting: { 
   //   type:"text" ,
