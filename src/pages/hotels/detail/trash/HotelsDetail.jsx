@@ -12,7 +12,7 @@ import { useState, useEffect } from "react"
 import { hotelPage, hotelsData } from 'pages/hotels/hooks/searchHotels';
 import moment from "moment";
 
-const HotelsDetail = ({ uid }) => {
+const HotelsDetail = () => {
 
   const params = useParams();
   const pageId = params.hotelId;
@@ -51,7 +51,8 @@ const HotelsDetail = ({ uid }) => {
 
       <HotelMain listing={listing} />
 
-      {uid && <TravelAddPanel listing={listing} />}
+      <TravelAddPanel listing={listing} />
+
       <RoomsDescription listing={listing} />
 
       <HotelWarning listing={listing} />

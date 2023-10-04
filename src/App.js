@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import PrivatRoute from 'blocks/PrivatRoute.jsx';
-import Header from 'blocks/Header';
-import Footer from 'blocks/footer/Footer';
+import PrivatRoute from 'blocks/PrivatRoute';
+import GlobalRoute from 'blocks/GlobalRoute';
+
+// import Header from 'blocks/Header';
+// import Footer from 'blocks/footer/Footer';
 
 
-import ControlsPanel from 'blocks/ControlsPanel';
+
 
 import CheckAuth from 'blocks/header/CheckAuth';
 
@@ -22,8 +24,6 @@ import Cabinet from 'pages/cabinet/Cabinet';
 import Settings from 'pages/cabinet/Settings';
 import Favorites from 'pages/cabinet/Favorites';
 import Likes from 'pages/cabinet/Likes';
-import Travel from 'pages/cabinet/Travel';
-
 
 import AuthStart from 'pages/auth/AuthStart';
 import RegStart from 'pages/auth/RegStart';
@@ -38,11 +38,9 @@ import UsersCatalog from 'pages/users/UserCatalog';
 import UsersDetail from 'pages/users/UserDetail';
 
 import HotelsCatalog from 'pages/hotels/HotelsCatalog';
-import HotelsDetail from 'pages/hotels/HotelsDetail';
 import HotelsUsersCatalog from 'pages/hotels/HotelsUsersCatalog';
 
 import Chat from 'pages/chat/Chat';
-import GetRooms from 'pages/chat/getRooms';
 
 import NotFound from 'pages/NotFound';
 
@@ -64,74 +62,62 @@ const App = ({account})=> {
   // console.log('uid', account)
   return (
       <>
+      
         <BrowserRouter>
           <CheckAuth />
-          
-          <Header uid={account.uid} />
-          {/* <div className="stub"></div> */}
-          {(account.uid ? <GetRooms /> : '')}
-          {(account.uid ? <ControlsPanel /> : '')}
-
-          
-          
+         
           <div className="content">
           <Routes> 
-            <Route path='/' exept element={<Main/>} ></Route>
-
-
-            <Route path='/auth-start' element={<AuthStart/>} ></Route>
-            <Route path='/reg-start' element={<RegStart/>} ></Route>
-            <Route path='/reg-mail' element={<RegMail/>} ></Route>
-            <Route path='/auth-mail' element={<AuthMail/>} ></Route>
-            <Route path='/reg-phone' element={<RegPhone/>} ></Route> 
-
-            <Route path='/reg-end' element={<RegEndPopup/>} ></Route> 
-
-            <Route path='/users-catalog' element={<UsersCatalog/>}></Route>
-            <Route path='/users-catalog/:userId' element={<UsersDetail/>}></Route>
-
-            <Route path='/hotels-catalog' element={<HotelsCatalog uid={account.uid}/>} ></Route>
-            <Route path='/hotels-catalog/:hotelId' element={<HotelsDetail uid={account.uid}/>} ></Route>
-            {account.uid && <Route path='/hotels-users/:hotelId' element={<HotelsUsersCatalog uid={account.uid}/>} ></Route>}
-  
-            <Route path='/no-verification' element={<NoVerification/>} ></Route>
-
-            {account.uid && (<Route path='/page-list' element={<PageList  account={account}/>} ></Route>)}
-            {account.uid && (<Route path='/page-list/:pageId' element={<PageListEdit  account={account}/> } ></Route>)}
-            {account.uid && (<Route path='/page-list-new/' element={<PageListNew  account={account}/>} ></Route>)}
+            <Route path='/' element={<GlobalRoute/>}>
+              {/* <Route path='/' exept element={<Main/>} ></Route> */}
+              <Route index element={<Main/>} ></Route>
+              <Route path='/auth-start' element={<AuthStart/>} ></Route>
+              <Route path='/reg-start' element={<RegStart/>} ></Route>
+              <Route path='/reg-mail' element={<RegMail/>} ></Route>
+              <Route path='/auth-mail' element={<AuthMail/>} ></Route>
+              <Route path='/reg-phone' element={<RegPhone/>} ></Route> 
+              <Route path='/reg-end' element={<RegEndPopup/>} ></Route> 
+            </Route>
             
-            <Route path='/page/:pageId' element={<PageStandart  account={account}/>} ></Route>
-            <Route path='*' element={<NotFound />}/>
 
-              <Route path='/cabinet' 
-              element={<PrivatRoute/>} 
-              >
+            <Route path='/' element={<PrivatRoute/>}>
+              <Route path='/users-catalog' element={<UsersCatalog/>}></Route>
+              <Route path='/users-catalog/:userId' element={<UsersDetail/>}></Route>
 
-                <Route index element={<Cabinet/>} ></Route>
+              <Route path='/hotels-catalog' element={<HotelsCatalog uid={account.uid}/>} ></Route>
+              <Route path='/hotels-users/:hotelId' element={<HotelsUsersCatalog uid={account.uid}/>} ></Route>
+    
+              <Route path='/no-verification' element={<NoVerification/>} ></Route>
 
-                <Route path='/cabinet/settings' element={<Settings/>} ></Route>
-                <Route path='/cabinet/chat' element={<Chat/>} ></Route>
-                <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
-                <Route path='/cabinet/favorites'   element={<Favorites type='white-list'/>} ></Route>
-                <Route path='/cabinet/dislikes'  element={<Favorites type='black-list' />} ></Route>
-                <Route path='/cabinet/likes'  element={<Likes  />} ></Route>
-                <Route path='/cabinet/travel'  element={<Travel  />} ></Route>
-                
-              </Route>
-            
+              <Route path='/page-list' element={<PageList  account={account}/>} ></Route>
+              <Route path='/page-list/:pageId' element={<PageListEdit  account={account}/> } ></Route>
+              <Route path='/page-list-new/' element={<PageListNew  account={account}/>} ></Route>
+              
+              <Route path='/page/:pageId' element={<PageStandart  account={account}/>} ></Route>
+              <Route path='*' element={<NotFound />}/>
+
+
+              <Route path='/cabinet/' element={<Cabinet/>} ></Route>
+
+              <Route path='/cabinet/settings' element={<Settings/>} ></Route>
+              <Route path='/cabinet/chat' element={<Chat/>} ></Route>
+              <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
+              <Route path='/cabinet/favorites'   element={<Favorites type='white-list'/>} ></Route>
+              <Route path='/cabinet/dislikes'  element={<Favorites type='black-list' />} ></Route>
+              <Route path='/cabinet/likes'  element={<Likes  />} ></Route>
+
               <Route path='/konf'  element={<Konf  />} ></Route>
               <Route path='/intelect'  element={<Intelect  />} ></Route>
               <Route path='/politic'  element={<Politic  />} ></Route>
               <Route path='/yslovia'  element={<Yslovia  />} ></Route>
+            </Route>
 
-            {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>
+          </div >
 
-          </div>
-          <Footer />
-          
+    
         </BrowserRouter>
-
+        
         <ToastContainer
           position="top-right"
           autoClose={5000}

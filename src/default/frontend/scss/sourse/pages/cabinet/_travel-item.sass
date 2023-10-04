@@ -1,17 +1,38 @@
 .travel-item
   position: relative
-
-  .btn
-    width: 50%
+  padding-top: 24px
+  border-bottom: 1px solid $grayColor
+  i
+    position: absolute
+    left: 0
+    margin-right: 8px
   .btn-container
-    display: flex
-    justify-content: space-between
-    gap: 15px
-.travel-img
-  height: 200px
-  position: relative
-  border-radius: 20px
-  margin: 0 0 15px
-  overflow: hidden
+    text-align: right
+    width: 140px
+  .btn
+    width: 110px
+    padding: 1px 8px 2px
+    font-weight: 400
+    font-size: 14px
+  .btn-trash
+    position: absolute
+    right: 0
+    top: 0
+.travel-line
+  display: flex
+.travel-name,
 .travel-date
+  position: relative
+  padding-left: 30px
   margin-bottom: 15px
+.travel-name
+  width: calc( 100% - 40px )
+.travel-date
+  width: calc( 100% - 40px )
+  margin-bottom: 15px
+  font-weight: 700
+.travel-guest
+  width: 140px
+  font-weight: 700
+  text-align: right
+  color: $blueColor

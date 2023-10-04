@@ -44,6 +44,12 @@ export const accountFields = {
     type:"coords" ,
     name: "currentLocation", 
     label: "Tекущие расположение", 
+    wrapClass: "input-box input-location" ,
+  },
+  hotelFind: { 
+    type:"autoHotel" ,
+    name: "hotelFind", 
+    label: "Tекущие расположение", 
     wrapClass: "input-box" ,
   },
   interests: { 

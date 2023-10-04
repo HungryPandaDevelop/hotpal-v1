@@ -36,7 +36,7 @@ const HotelsUsersCatalog = ({ uid }) => {
     let dateFrom = searchParams.get('from') ? searchParams.get('from') : moment().format('YYYY-MM-DD');
     let dateTo = searchParams.get('to') ? searchParams.get('to') : moment().add(2, 'days').format('YYYY-MM-DD');
 
-    hotelPage(pageId, dateFrom, dateTo, 2).then(res => {
+    hotelPage(pageId, dateFrom, dateTo, 1).then(res => {
       hotelsData(res).then(response => {
         setLoadingHotel(false)
         setHotel(response[0])
@@ -51,8 +51,8 @@ const HotelsUsersCatalog = ({ uid }) => {
     getListing('travel', 'travel', pageId).then((res) => {
       let users = res;
       res.map(el => {
-        if (el.uid !== uid) {
-          usersArray.push(el.uid)
+        if (el.userRef !== uid) {
+          usersArray.push(el.userRef)
         }
       });
       if (usersArray.length > 0) {
@@ -87,7 +87,6 @@ const HotelsUsersCatalog = ({ uid }) => {
             listings={listings}
             searchListing={searchListing}
             setSearchListing={setSearchListing}
-            // disableTabs={true}
             miniPanel={true}
           />
         </div>
@@ -99,8 +98,6 @@ const HotelsUsersCatalog = ({ uid }) => {
               hotel={hotel}
               uid={uid}
               itemInner={true}
-            // travelList={travelList}
-            // searchDate={searchDate}
             />
           )}
         </div>

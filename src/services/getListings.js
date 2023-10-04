@@ -16,7 +16,7 @@ import { db } from 'default/config/firebase';
 
 export const getListing = async (baseName,  type, uid ) => {
 
-  console.log('getListing',baseName,  type, uid )
+  // console.log('getListing',baseName,  type, uid )
   const listingsRef = collection(db, baseName);
   
   let q;
@@ -29,14 +29,14 @@ export const getListing = async (baseName,  type, uid ) => {
       orderBy('timestamp', 'desc'),
     );
   }
-  else if(type==='userUid'){ // travel переделать
-    console.log('in cab', uid)
-    q = query(
-      listingsRef,
-      where('uid', '==', uid),
-      orderBy('timestamp', 'desc'),
-    );
-  }
+  // else if(type==='userUid'){ // travel переделать
+  //   // console.log('in cab', uid)
+  //   q = query(
+  //     listingsRef,
+  //     where('uid', '==', uid),
+  //     orderBy('timestamp', 'desc'),
+  //   );
+  // }
 
   else if(type==='noUserRef'){
     q = query(
@@ -81,7 +81,7 @@ export const getListing = async (baseName,  type, uid ) => {
     id: doc.id,
     ...doc.data(),
   }));
-  console.log('doc', getData)
+  // console.log('doc', getData)
   return getData;
 
 }

@@ -49,7 +49,7 @@ import RenderInputComplex from './fields/RenderInputComplex'; // комлекс
 import RenderInputCoords from './fields/RenderInputCoords'; // координаты
 
 import RenderInputCity from './fields/RenderInputCity'; // выбор города
-import RenderInputRegion from './filedsSpecial/RegionHotel'; // выбор города
+import AutocompleteHotel from './filedsSpecial/AutocompleteHotel'; // выбор города
 import RenderInputGeoHotels from './filedsSpecial/GeoHotels'; // выбор точки
 import RenderInputYaString from './filedsSpecial/SearchYaString'; // выбор точки
 
@@ -235,10 +235,10 @@ const RenderFields = ({ fields, checkErrorSubmit, type }) => {
             />
           </>
         );
-      case 'region':
+      case 'autoHotel':
         return (
           <>
-            <RenderInputRegion
+            <AutocompleteHotel
               obj={obj}
             />
           </>

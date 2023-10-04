@@ -1,6 +1,6 @@
 import RenderFields from 'components/forms/RenderFields';
 import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainer';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 
 
@@ -11,7 +11,6 @@ const RoomsSearchPanel = (props) => {
     btnSubmitText,
     waitAnsw,
     submitSuccess,
-    listing
   } = props;
 
 

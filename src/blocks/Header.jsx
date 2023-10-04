@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+
 import logo from 'default/frontend/images/logo.svg'
 import logoWhite from 'default/frontend/images/logo-white.svg'
 import { Link } from 'react-router-dom'
@@ -9,10 +9,14 @@ import PopupNav from 'blocks/PopupNav';
 // import { getElementError } from '@testing-library/react';
 
 import ChangeTheme from 'blocks/ChangeTheme';
+import { connect } from 'react-redux';
 
+const Header = ({
+  uid,
+  main
 
-const Header = ({ uid }) => {
-  const location = useLocation();
+}) => {
+
 
   const [shopMenu, setShowMenu] = useState(false);
 
@@ -20,13 +24,13 @@ const Header = ({ uid }) => {
     // console.log('location', location.pathname)
     setShowMenu(false);
 
-  }, [location]);
+  }, []);
 
 
   return (
     <>
       <ChangeTheme />
-      <header className={`${location.pathname === '/' || location.pathname === '/auth-start' || location.pathname === '/auth-mail' || location.pathname === '/reg-end' || location.pathname === '/reg-start' || location.pathname === '/reg-mail' ? 'main-page-header' : ''}`}>
+      <header className={main ? 'main-page-header' : ''}>
         <div className="main-grid line-header line-header-nav">
           <div className="col-4 hidden-xs vertical-align">
             <nav className="nav-header">
@@ -55,4 +59,11 @@ const Header = ({ uid }) => {
   )
 }
 
-export default Header
+
+const mapStateToProps = (state) => {
+  return {
+    uid: state.account.uid,
+  }
+};
+
+export default connect(mapStateToProps)(Header);

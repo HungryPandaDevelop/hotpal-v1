@@ -1,11 +1,16 @@
 import { Navigate, Outlet, useSearchParams } from 'react-router-dom';
 import ActionFn from 'store/actions';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { saveListing } from 'services/saveListing';
 
 import { connect } from 'react-redux';
 
+import Header from 'blocks/Header';
+import Footer from 'blocks/footer/Footer';
+
+import GetRooms from 'pages/chat/getRooms';
+import ControlsPanel from 'blocks/ControlsPanel';
 
 const PrivateRoute = ({ account, ActionFn }) => {
 
@@ -13,7 +18,7 @@ const PrivateRoute = ({ account, ActionFn }) => {
   // const [loading, setLoading] = useState(true);
   // const [verificationCheck, setVerificationCheck] = useState(account.verificationCheck);
   useEffect(() => {
-    console.log('account', account)
+    // console.log('account', account)
     if (!account.loaded && !account.verificationCheck) {
       const verificationIdUrl = searchParams.get('vertificationId');
       const verificationIdAccount = account.vertificationId;
@@ -34,13 +39,23 @@ const PrivateRoute = ({ account, ActionFn }) => {
   }, [account]);
 
 
-  // console.log('account.loaded', account)
+  const renderAuthContent = () => {
+    return (
+      <>
+        <Header />
+        <GetRooms />
+        <ControlsPanel />
+
+        <Outlet />
+        <Footer />
+      </>
+    )
+  }
+
 
   return (
     <>
-      {/* {(account.uid ? (verificationCheck ? <Outlet /> : <Navigate to="/no-verification" />) : <Navigate to="/auth-start" />)} */}
-      {(account.loaded ? 'Loading...' : (account.uid ? (<Outlet />) : <Navigate to="/auth-start" />))}
-      {/* <Outlet /> */}
+      {(account.loaded ? 'Loading...' : (account.uid ? renderAuthContent() : <Navigate to="/auth-start" />))}
     </>
   )
 

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import HotelsStars from 'pages/hotels/catalog/HotelsStars'
 import { renderImg } from 'pages/hotels/hooks/renderImg';
+import { renderCountTravel } from 'pages/hotels/hooks/renderCountTravel';
 const UserItem = ({
   hotel,
   travelList,
@@ -9,35 +10,6 @@ const UserItem = ({
   itemInner
 }) => {
 
-  // const renderImg = (hotelSingle) => {
-  //   // console.log(hotelSingle)
-  //   let startImg = hotelSingle.images?.length > 0 && hotelSingle.images[0]
-  //   if (startImg) {
-  //     let regex = /[{}]/g;
-  //     startImg = startImg.replace(regex, "");
-  //     startImg = startImg.replace(/size/g, "1024x768");
-  //     return (
-  //       <div className="hotels-img"
-  //         style={{ backgroundImage: `url(${startImg})` }}
-  //       >
-  //       </div>
-  //     )
-  //   } else {
-  //     return <div className="hotels-img"></div>
-  //   }
-  // }
-
-  const renderCountTravel = () => {
-    let count = 0;
-    travelList.map(item => {
-      // console.log(item.idHotel, hotel.id)
-      if (item.idHotel === hotel.id && item.uid !== uid) {
-        count++
-      }
-    })
-
-    return count;
-  }
 
   const slug = '93941.affiliate.0af1';
 
@@ -70,7 +42,7 @@ const UserItem = ({
           </div> */}
         </div>
         <div className="hotels-price-container">
-          {travelList && (<div className="hotels-guest"><span>{renderCountTravel()}</span> гостей</div>)}
+          {travelList && (<div className="hotels-guest"><span>{renderCountTravel(travelList, hotel.id, uid)}</span> гостей</div>)}
           {!itemInner && (<Link to={`/hotels-users/${hotel.id}${searchDate ? `?from=${searchDate[0]}&to=${searchDate[1]}` : ''}`} className="btn btn--blue-border">просмотреть всех</Link>)}
 
 

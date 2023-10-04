@@ -35,7 +35,7 @@ const HotelsCatalog = ({ uid }) => {
     getListing('travel', 'travelAll', uid).then((res) => {
       setTravelList(res);
     });
-  }, [])
+  }, []);
 
   return (
     <>

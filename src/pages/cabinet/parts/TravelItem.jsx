@@ -1,20 +1,29 @@
 import { Link } from 'react-router-dom'
-import { renderImgSingle } from 'pages/hotels/hooks/renderImg';
+import { renderCountTravel } from 'pages/hotels/hooks/renderCountTravel';
 
-const TravelItem = ({ item, onDelete }) => {
+const TravelItem = ({ item, onDelete, uid, travelList }) => {
   return (
     <div className='travel-item'>
-      <div className="travel-img">
-        {renderImgSingle(item)}
+      <div className="btn-trash" onClick={() => onDelete(item.id)}></div>
+      <div className="travel-line">
+        <div className='travel-name'>
+          <i className='marker-ico'></i>
+          <b>{item.nameHotel} </b>
+          <span>{item.address}</span>
+        </div>
+        <div className="travel-guest">
+          {travelList ? renderCountTravel(travelList, item.idHotel, uid) : 0} гостей
+        </div>
       </div>
-      <h3>{item.nameHotel}</h3>
-      <div className="travel-date">
-        {item.dateTravel}
+      <div className="travel-line">
+        <div className="travel-date">
+          <i className='calendar-ico'></i> {item.dateTravel}
+        </div>
+        <div className="btn-container">
+          <Link to={`/hotels-catalog/${item.idHotel}`} className="btn btn--black-border">перейти</Link>
+        </div>
       </div>
-      <div className="btn-container">
-        <div className="btn btn--blue" onClick={() => onDelete(item.id)}>Удалить</div>
-        <Link to={`/hotels-catalog/${item.idHotel}`} className="btn btn--black">Изменить</Link>
-      </div>
+
     </div>
   )
 }

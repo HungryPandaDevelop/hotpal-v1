@@ -21,11 +21,11 @@ const RoomsSearchPanel = ({
   const [myTravel, setMyTravel] = useState(null);
 
   useEffect(() => {
-
+    console.log('hotel.id', hotel)
     getListing('travel', 'travel', hotel.id).then((res) => {
-      console.log('hotel.id', hotel.id)
+
       res.map(el => {
-        if (el.uid === uid && el.idHotel === hotel.id) {
+        if (el.userRef === uid && el.idHotel === hotel.id) {
           setTravelStateForm(false)
           setMyTravel(el);
         }
@@ -46,32 +46,23 @@ const RoomsSearchPanel = ({
 
     const travelObj = {
       'dateTravel': formData.values.dateTravelRange,
-      'uid': uid,
+      'address': hotel.address,
+      'userRef': uid,
       'idHotel': hotel.id,
       'nameHotel': hotel.name,
       'imgHotel': hotel.images[0]
     }
 
-    addCardsDefault(
-      travelObj, 'travel').then(res => {
-        setMyTravel(travelObj)
-        setTravelStateForm(false)
-      });
+    addCardsDefault(travelObj, 'travel').then(res => {
+      setMyTravel(travelObj)
+      setTravelStateForm(false)
+    });
   }
 
 
-
-
-  return (
-
-    <>
-      {stateTravelForm ? (<RenderForm
-        fields={settingsTravel}
-        btnSubmitText="Я буду в эти даты"
-        initialValues={{ dateTravelRange: moment().format('DD.MM.YYYY') + ' - ' + moment().add(2, 'days').format('DD.MM.YYYY') }}
-        submitSuccess={submitSuccess}
-        listing={hotel}
-      />) : (<div className="main-grid travel-info-panel border-container">
+  const renderWillThisPlace = () => {
+    return (
+      <div className="main-grid travel-info-panel border-container">
         <div className="col-4">
           <h3>Буду в эти даты</h3>
         </div>
@@ -86,8 +77,20 @@ const RoomsSearchPanel = ({
             >Изменить дату</div>
           </div>
         </div>
+      </div>
+    )
+  }
 
-      </div>)}
+
+  return (
+
+    <>
+      {stateTravelForm ? (<RenderForm
+        fields={settingsTravel}
+        btnSubmitText="Я буду в эти даты"
+        initialValues={{ dateTravelRange: moment().format('DD.MM.YYYY') + ' - ' + moment().add(2, 'days').format('DD.MM.YYYY') }}
+        submitSuccess={submitSuccess}
+      />) : renderWillThisPlace()}
 
     </>
 

@@ -13,7 +13,6 @@ const Tabs = ({ active, account, rooms, likes }) => {
     ['Личные сообщения (' + countTotalMessage + ')', '/cabinet/chat'],
     ['Симпатии (' + countTotalLikes + ')', '/cabinet/likes'],
     ['Черный список', '/cabinet/dislikes'],
-    ['Путешествия', '/cabinet/travel'],
   ];
 
   return (

@@ -595,6 +595,17 @@ section {
   border-color: #00AEEF;
 }
 
+.btn--black-border {
+  background-color: #ffffff;
+  border-color: #0B132B;
+  color: #0B132B;
+}
+.btn--black-border:hover {
+  background: #0B132B;
+  color: #ffffff;
+  border-color: #0B132B;
+}
+
 .btn--gray {
   background-color: #0B132B;
   border-color: #0B132B;
@@ -758,7 +769,7 @@ section {
   height: 20px;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 9px;
+  background-size: 8px;
   background-image: url("../images/icons/close-gray.svg");
   cursor: pointer;
   border: 2px solid rgba(58, 80, 107, 0.6);
@@ -3969,6 +3980,13 @@ button[data-controls=next]:hover {
 }
 /*-----home-end----*/ 
 /*-----cabinbet-start----*/ 
+.cabinet-page h3, .cabinet-page label {
+  font-size: 20px;
+  color: #3A506B;
+  text-transform: initial;
+  font-weight: 700;
+}
+
 .user-top-info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4000,9 +4018,6 @@ button[data-controls=next]:hover {
 .tags-add-container .tags-add-hint {
   margin-bottom: 8px;
 }
-.tags-add-container h3 {
-  color: #00AEEF;
-}
 .tags-add-container.special .tags-search i {
   display: none;
 }
@@ -4010,8 +4025,20 @@ button[data-controls=next]:hover {
   width: 240px;
 }
 
-.tags-container h3 {
-  margin-bottom: 8px;
+.cabinet-location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+}
+.cabinet-location .input-location {
+  width: calc(50% - 60px);
+}
+.cabinet-location .travel-story {
+  width: 50%;
+  border-left: 1px solid #3A506B;
+  padding-left: 30px;
+  margin-left: 0px;
 }
 
 .tags-search i {
@@ -4344,12 +4371,6 @@ button[data-controls=next]:hover {
   .mobile-user-container .input-box label {
     margin-bottom: 2px;
   }
-  .mobile-user-container .tags-container h3,
-  .mobile-user-container .tags-container .tags-add-hint-text,
-  .mobile-user-container .tags-add-hint h3,
-  .mobile-user-container .tags-add-hint .tags-add-hint-text {
-    font-size: 12px;
-  }
   .mobile-user-container .user-location-map {
     height: 110px;
     border-radius: 10px;
@@ -4653,30 +4674,58 @@ button[data-controls=next]:hover {
 }
 .travel-item {
   position: relative;
+  padding-top: 24px;
+  border-bottom: 1px solid rgba(58, 80, 107, 0.6);
 }
-.travel-item .btn {
-  width: 50%;
+.travel-item i {
+  position: absolute;
+  left: 0;
+  margin-right: 8px;
 }
 .travel-item .btn-container {
+  text-align: right;
+  width: 140px;
+}
+.travel-item .btn {
+  width: 110px;
+  padding: 1px 8px 2px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.travel-item .btn-trash {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.travel-line {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  gap: 15px;
 }
 
-.travel-img {
-  height: 200px;
+.travel-name,
+.travel-date {
   position: relative;
-  border-radius: 20px;
-  margin: 0 0 15px;
-  overflow: hidden;
+  padding-left: 30px;
+  margin-bottom: 15px;
+}
+
+.travel-name {
+  width: calc(100% - 40px);
 }
 
 .travel-date {
+  width: calc(100% - 40px);
   margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.travel-guest {
+  width: 140px;
+  font-weight: 700;
+  text-align: right;
+  color: #00AEEF;
 }
 
 /*-----cabinbet-end----*/ 
@@ -5172,6 +5221,7 @@ button[data-controls=next]:hover {
 }
 .user-top-info--view h2 {
   color: #0B132B;
+  width: calc(50% - 90px);
 }
 .user-top-info--view h2::first-letter {
   text-transform: uppercase;

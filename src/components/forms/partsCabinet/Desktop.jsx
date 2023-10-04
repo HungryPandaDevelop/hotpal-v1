@@ -2,7 +2,7 @@
 import RenderFields from 'components/forms/RenderFields';
 import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainerCabinet'
 import { calculateAge } from 'pages/users/hooks/calculateAge';
-
+import Travel from 'pages/cabinet/Travel';
 
 const Desktop = ({
   user,
@@ -39,10 +39,19 @@ const Desktop = ({
           type="single"
           fields={fields.goals}
         />
-        <RenderFields
-          type="single"
-          fields={fields.currentLocation}
-        />
+        <div className="cabinet-location">
+          {/* <RenderFields
+            type="single"
+            fields={fields.currentLocation}
+          /> */}
+          <RenderFields
+            type="single"
+            fields={fields.hotelFind}
+          />
+          <div className="travel-story">
+            <Travel />
+          </div>
+        </div>
       </div>
 
       <div className="col-4 col-xs-12">

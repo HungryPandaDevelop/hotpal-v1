@@ -1,12 +1,12 @@
-import Tabs from 'pages/cabinet/parts/Tabs';
+
 import TravelItem from 'pages/cabinet/parts/TravelItem';
 import { getListing } from 'services/getListings';
 import { useState, useEffect } from 'react'
 import { deleteListing } from 'services/getListings';
 import { connect } from 'react-redux';
-
 const Travel = ({ uid }) => {
 
+  const [travelList, setTravelList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [listing, setListing] = useState([]);
 
@@ -16,7 +16,11 @@ const Travel = ({ uid }) => {
 
     getListing('travel', 'userUid', uid).then((res) => {
       setListing(res);
-      console.log(res)
+
+      getListing('travel', 'travelAll', uid).then((res) => {
+        setTravelList(res);
+      });
+
       setLoading(false);
     });
 
@@ -32,25 +36,19 @@ const Travel = ({ uid }) => {
 
 
   return (
-    <>
-      <div className="stub"></div>
-      <div className="main-full">
-        <Tabs
-          active={6}
-        />
-        <div className="border-container border-null-top account-main" >
-          <div className="main-grid">
-            {listing.map(item => (
-              <div key={item.id} className="col-4">
-                <TravelItem item={item} onDelete={onDelete} />
-              </div>
-            ))}
-
-          </div>
-
+    <div className='input-box'>
+      <label><b>Будущие путешествия</b></label>
+      {listing.map(item => (
+        <div key={item.id} >
+          <TravelItem
+            item={item}
+            onDelete={onDelete}
+            travelList={travelList}
+            uid={uid}
+          />
         </div>
-      </div>
-    </>
+      ))}
+    </div>
   )
 }
 
