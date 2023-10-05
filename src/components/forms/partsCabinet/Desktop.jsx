@@ -39,16 +39,19 @@ const Desktop = ({
           type="single"
           fields={fields.goals}
         />
-        <div className="cabinet-location">
-          {/* <RenderFields
-            type="single"
-            fields={fields.currentLocation}
-          /> */}
-          <RenderFields
-            type="single"
-            fields={fields.hotelFind}
-          />
+        <div className="travel-user">
+          <div className='travel-current'>
+            <RenderFields
+              type="single"
+              fields={fields.hotelFind}
+            />
+            <RenderFields
+              type="single"
+              fields={fields.hotelDate}
+            />
+          </div>
           <div className="travel-story">
+            <h3>Будущие путешествия</h3>
             <Travel />
           </div>
         </div>

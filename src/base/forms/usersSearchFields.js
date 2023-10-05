@@ -23,14 +23,13 @@ export const usersSearchFields = {
     range: [18, 75],
     wrapClass: "input-box box-range col-2 col-xs-6" ,
   },
-  city: { 
-    type:"city", 
-    name: "city", 
-    label:"Город", 
-    placeholder:"Выбрать город",
+
+  hotelFind: { 
+    type:"autoHotel" ,
+    name: "hotelFind", 
+    label: "Tекущее расположение", 
     wrapClass: "col-3 search-select-box input-box col-xs-12",
   },
-
   goals: { 
     type:"choiseTags" ,
     name: "goals", 
@@ -82,7 +81,7 @@ export const usersSearchFieldsMini = {
       {name:'<div class="man-ico"></div>',value:"man"},
       {name:'<div class="woman-ico"></div>', value:"woman"},
     ],
-    wrapClass: "input-box col-4 " ,
+    wrapClass: "input-box col-4 col-xs-6" ,
   },
   rangeBerth: { 
     type:"range" ,

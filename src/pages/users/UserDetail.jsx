@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import UserTop from "./detail/UserTop";
 import GoalsUsers from "./detail/GoalsUsers";
 import InterestsUsers from "./detail/InterestsUsers";
-import Location from "./detail/Location";
 import Photos from "./detail/Photos";
 import PersonalInfo from "./detail/PersonalInfo";
-
 import Btns from "./detail/Btns";
+
+import Travel from 'pages/cabinet/Travel';
 
 const UserDetail = ({ uid, sympathys }) => {
 
@@ -48,7 +48,22 @@ const UserDetail = ({ uid, sympathys }) => {
                   uid={uid}
                 />
               </div>
-              {user.currentLocation && <Location user={user} />}
+
+              <div className="travel-user">
+                <div className="travel-current travel-current-detail">
+                  <h3>Tекущее расположение</h3>
+                  <div className="travel-current-line"><i className="marker-ico--blue"></i>{user.hotelFind}</div>
+                  <div className="travel-current-line"><i className="calendar-ico--blue"></i>{user.hotelDate}</div>
+                </div>
+                <div className="travel-story">
+                  <h3>Будущие путешествия</h3>
+                  <Travel catalogUserId={user.uid} />
+
+
+                </div>
+              </div>
+
+
             </div>
             <div className="col-4 hidden-xs">
               {user.imgsAccount && <Photos user={user} />}

@@ -65,7 +65,7 @@ const Mobile = ({
                 />
               </div>
             </li>
-            <li> 
+            <li>
               <div className="personal-info-name"><i className="celi-ico"></i><b>Цель поездки:</b></div>
               <div className="personal-info-value">
                 <RenderFields
@@ -98,10 +98,10 @@ const Mobile = ({
         />
       </div>
       <div className="col-xs-6">
-        <RenderFields
+        {/* <RenderFields
           type="single"
           fields={fields.currentLocation}
-        />
+        /> */}
       </div>
       <div className="col-xs-12">
         <RenderFields

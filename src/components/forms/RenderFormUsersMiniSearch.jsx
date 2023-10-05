@@ -16,7 +16,8 @@ const UsersSearchPanel = (props) => {
     submitSuccess,
     reset,
     resetForm,
-    disableTabs
+    disableTabs,
+    showMobile
   } = props;
 
 
@@ -32,10 +33,7 @@ const UsersSearchPanel = (props) => {
     e.preventDefault();
 
     submitSuccess();
-    setShowMobile(false);
   };
-
-  const [showMobile, setShowMobile] = useState(false);
 
 
 
@@ -43,16 +41,7 @@ const UsersSearchPanel = (props) => {
     <div className={`border-search-outer border-users-mini search-all ${showMobile ? 'active' : ''}`}>
 
       {!disableTabs && (<Tabs active="users" />)}
-      <div className="show-filter-mobile-container">
-        <div className={`show-filter-mobile ${showMobile ? 'active' : ''}`} onClick={() => { setShowMobile(true) }}>
-        </div>
-        {showMobile && (
-          <div className='close-container'>
-            <div className="btn-close" onClick={() => { setShowMobile(false) }}></div>
-          </div>
-        )}
 
-      </div>
       <div className={`border-container main-grid ${!disableTabs ? 'border-null-left' : ''} border-container-search `}>
         <RenderFields
           type="single"

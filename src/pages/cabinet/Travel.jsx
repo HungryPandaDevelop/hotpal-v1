@@ -4,28 +4,35 @@ import { getListing } from 'services/getListings';
 import { useState, useEffect } from 'react'
 import { deleteListing } from 'services/getListings';
 import { connect } from 'react-redux';
-const Travel = ({ uid }) => {
+const Travel = ({ uid, catalogUserId }) => {
 
   const [travelList, setTravelList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [listing, setListing] = useState([]);
 
+  const [stateShow, setStateShow] = useState(false);
+
   useEffect(() => {
 
     // setLoading(true);
+    let typeSearch = catalogUserId ? getListing('travel', 'usersArray', [catalogUserId]) : getListing('travel', 'userRef', uid);
 
-    getListing('travel', 'userUid', uid).then((res) => {
+    typeSearch.then((res) => {
       setListing(res);
-
+      // setCountShow(res.length);
+      if (res.length > 2) {
+        setStateShow(true);
+      }
       getListing('travel', 'travelAll', uid).then((res) => {
         setTravelList(res);
       });
-
       setLoading(false);
     });
 
   }, []);
-
+  const showAll = () => {
+    setStateShow(!stateShow)
+  }
   const onDelete = (id) => {
     deleteListing('travel', id).then(res => {
       setListing(listing.filter(el => el.id !== id))
@@ -37,17 +44,33 @@ const Travel = ({ uid }) => {
 
   return (
     <div className='input-box'>
-      <label><b>Будущие путешествия</b></label>
-      {listing.map(item => (
-        <div key={item.id} >
-          <TravelItem
-            item={item}
-            onDelete={onDelete}
-            travelList={travelList}
-            uid={uid}
-          />
+      {listing.map((item, index) => {
+        if (stateShow && index < 2) {
+          return false;
+        }
+        return (
+          <div key={item.id} >
+            <TravelItem
+              item={item}
+              onDelete={onDelete}
+              travelList={travelList}
+              uid={uid}
+              catalogUserId={catalogUserId}
+            />
+          </div>
+        )
+
+      })}
+      {listing.length > 2 && (
+        <div className="btn-container-bottom">
+          <div className="btn btn--blue" onClick={showAll}>
+            {stateShow ? 'Показать все' : 'Свернуть'}
+          </div>
         </div>
-      ))}
+      )}
+
+
+
     </div>
   )
 }

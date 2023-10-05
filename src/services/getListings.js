@@ -29,15 +29,6 @@ export const getListing = async (baseName,  type, uid ) => {
       orderBy('timestamp', 'desc'),
     );
   }
-  // else if(type==='userUid'){ // travel переделать
-  //   // console.log('in cab', uid)
-  //   q = query(
-  //     listingsRef,
-  //     where('uid', '==', uid),
-  //     orderBy('timestamp', 'desc'),
-  //   );
-  // }
-
   else if(type==='noUserRef'){
     q = query(
       listingsRef,

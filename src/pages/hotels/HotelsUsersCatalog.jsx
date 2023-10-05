@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getListing } from 'services/getListings';
 
 import { hotelPage, hotelsData } from 'pages/hotels/hooks/searchHotels';
+import { toCaseCount } from 'pages/hotels/hooks/toCaseCount'
 
 import HotelsItem from 'pages/hotels/catalog/HotelsItem';
 import TravelAddPanel from "pages/hotels/detail/TravelAddPanel";
@@ -27,6 +28,8 @@ const HotelsUsersCatalog = ({ uid }) => {
 
   const [loadingHotel, setLoadingHotel] = useState(true);
   const [hotel, setHotel] = useState([]);
+
+  const [userTravel, setUserTravel] = useState(false);
 
   useEffect(() => {
 
@@ -50,16 +53,19 @@ const HotelsUsersCatalog = ({ uid }) => {
     const usersArray = [];
     getListing('travel', 'travel', pageId).then((res) => {
       let users = res;
+      // console.log('trave', res)
       res.map(el => {
         if (el.userRef !== uid) {
+
           usersArray.push(el.userRef)
         }
       });
+      // console.log('usersArray', usersArray)
       if (usersArray.length > 0) {
         getListing('users', 'usersArray', usersArray).then((res) => {
 
+
           let tempUsers = [];
-          console.log('users', usersArray, res)
           res.forEach(el => {
             tempUsers.push({ ...users.find(e => e.uid === el.uid), ...el })
           });
@@ -67,7 +73,11 @@ const HotelsUsersCatalog = ({ uid }) => {
           setLoading(false);
           setSearchListing(tempUsers);
           setListings(tempUsers);
+          setUserTravel(false);
         });
+      } else {
+        setUserTravel(true);
+        setLoading(false);
       }
 
     });
@@ -75,14 +85,27 @@ const HotelsUsersCatalog = ({ uid }) => {
   }, []);
 
 
+  const renderEmptyHotelsUsers = (userTravel) => {
+    const notUser = 'В отеле нет гостей, будьте первым';
+    const notSearch = 'По вашему поиску пока нет гостей, попробуйте еще'
+
+    return (
+      <div className="col-12">
+        <div className='empty-message-box'>
+          <span>{userTravel ? notSearch : notUser}</span>
+          <i></i>
+        </div>
+      </div>
+    )
+  }
 
 
   return (
     <>
       <div className="stub"></div>
 
-      <div className="main-grid">
-        <div className="col-6">
+      <div className="main-grid hotel-user-catalog">
+        <div className="col-6 col-xs-12">
           <UsersSearchPanel
             listings={listings}
             searchListing={searchListing}
@@ -90,8 +113,8 @@ const HotelsUsersCatalog = ({ uid }) => {
             miniPanel={true}
           />
         </div>
-        <div className="col-6">
-          <h3 className='hotels-topic'>Найдено <span>0 гостей</span></h3>
+        <div className="col-6 col-xs-12">
+          <h3 className='total-count'>Найдено: <span>{listings.length} {toCaseCount(listings.length)}</span></h3>
           {loadingHotel ? 'load...' : (
             <HotelsItem
               key={hotel.id}
@@ -107,7 +130,7 @@ const HotelsUsersCatalog = ({ uid }) => {
       </div>
       {loading ? (<div className='main-full'>Loading...</div>) : (
         <div className="catalog-grid main-grid">
-          {searchListing.map((user, index) => (
+          {searchListing.length > 0 ? searchListing.map((user, index) => (
             <div key={index} className="col-4 col-xs-12">
               <UserItem
                 user={user}
@@ -115,7 +138,8 @@ const HotelsUsersCatalog = ({ uid }) => {
                 dateTravel={user.dateTravel}
               />
             </div>
-          ))}
+          )) : renderEmptyHotelsUsers(userTravel)
+          }
         </div>
       )}
 

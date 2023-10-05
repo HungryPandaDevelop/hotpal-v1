@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom'
 import { renderCountTravel } from 'pages/hotels/hooks/renderCountTravel';
 
-const TravelItem = ({ item, onDelete, uid, travelList }) => {
+const TravelItem = ({ item, onDelete, uid, travelList, catalogUserId }) => {
+
+  let currentDate = item.dateTravel.split(' - ');
+
+  let dateFrom = currentDate[0].split(".").reverse().join("-");
+  let dateTo = currentDate[1].split(".").reverse().join("-");
+
   return (
     <div className='travel-item'>
-      <div className="btn-trash" onClick={() => onDelete(item.id)}></div>
+      {!catalogUserId && <div className="btn-trash" onClick={() => onDelete(item.id)}></div>}
+
       <div className="travel-line">
         <div className='travel-name'>
           <i className='marker-ico'></i>
@@ -20,7 +27,7 @@ const TravelItem = ({ item, onDelete, uid, travelList }) => {
           <i className='calendar-ico'></i> {item.dateTravel}
         </div>
         <div className="btn-container">
-          <Link to={`/hotels-catalog/${item.idHotel}`} className="btn btn--black-border">перейти</Link>
+          <Link to={`/hotels-users/${item.idHotel}?from=${dateFrom}&to=${dateTo}`} className="btn btn--black-border">перейти</Link>
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import HotelsStars from 'pages/hotels/catalog/HotelsStars'
 import { renderImg } from 'pages/hotels/hooks/renderImg';
 import { renderCountTravel } from 'pages/hotels/hooks/renderCountTravel';
+import { toCaseCount } from 'pages/hotels/hooks/toCaseCount'
 const UserItem = ({
   hotel,
   travelList,
@@ -42,7 +43,7 @@ const UserItem = ({
           </div> */}
         </div>
         <div className="hotels-price-container">
-          {travelList && (<div className="hotels-guest"><span>{renderCountTravel(travelList, hotel.id, uid)}</span> гостей</div>)}
+          {travelList && (<div className="hotels-guest"><span>{renderCountTravel(travelList, hotel.id, uid)}</span>  {toCaseCount(renderCountTravel(travelList, hotel.id, uid))}</div>)}
           {!itemInner && (<Link to={`/hotels-users/${hotel.id}${searchDate ? `?from=${searchDate[0]}&to=${searchDate[1]}` : ''}`} className="btn btn--blue-border">просмотреть всех</Link>)}
 
 

@@ -1,0 +1,57 @@
+.tiny-account
+	position: relative
+	img
+		@include positionElement(100%,100%,0,0)
+		object-fit: cover
+	.tns-controls
+		left: 15px
+		width: calc(100% - 30px)
+		top: 50%
+		margin-top: -24px
+	[data-controls=prev],
+	[data-controls=next]
+		background: none
+		border: 0
+		display: block
+	[data-controls=prev]
+		@include bgImageEl("../images/arrows/carret-left-white.svg",75px)
+	[data-controls=next]
+		@include bgImageEl("../images/arrows/carret-right-white.svg",75px)
+.tiny-account-shadow
+	@include positionElement(100%,100%,0,0,left,top,2)
+	box-shadow: inset 0px -50px 80px rgb(0 0 0 / 22%)
+.tiny-account-img
+	height: 310px
+	position: relative
+	.delete-img-dragdrop
+		top: 30px
+.tiny-account
+	border-radius: 20px
+	overflow: hidden
+	margin: 0 0 15px
+.tiny-account-stub
+	height: 400px
+	margin: 0 0 15px
+
+	border-radius: 30px
+	position: relative
+	text-align: center
+	span
+		display: block
+		font-size: 16px
+		color: $blueColor
+		max-width: 150px
+		margin: 60px auto 0px
+	i
+		display: inline-block
+		width: 176px
+		height: 230px
+		@include bgImageEl("../images/tiny-stub.svg")
+.hint-tiny-file
+	font-size: 12px
+	i
+		font-style: normal
+.ragdrop-uploaded-tiny
+	.dragdrop-file-item
+		margin-top: 15px
+		margin-right: 0

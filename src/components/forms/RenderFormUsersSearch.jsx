@@ -8,16 +8,16 @@ import { useState } from 'react';
 
 
 
-const UsersSearchPanel = (props) => {
+const UsersSearchPanel = ({
+  fields,
+  waitAnsw,
+  submitSuccess,
+  reset,
+  resetForm,
+  disableTabs,
+  showMobile,
+}) => {
 
-  const {
-    fields,
-    waitAnsw,
-    submitSuccess,
-    reset,
-    resetForm,
-    disableTabs
-  } = props;
 
 
 
@@ -32,10 +32,8 @@ const UsersSearchPanel = (props) => {
     e.preventDefault();
 
     submitSuccess();
-    setShowMobile(false);
   };
 
-  const [showMobile, setShowMobile] = useState(false);
 
 
 
@@ -43,16 +41,7 @@ const UsersSearchPanel = (props) => {
     <div className={`main-full border-search-outer search-all ${showMobile ? 'active' : ''}`}>
 
       {!disableTabs && (<Tabs active="users" />)}
-      <div className="show-filter-mobile-container">
-        <div className={`show-filter-mobile ${showMobile ? 'active' : ''}`} onClick={() => { setShowMobile(true) }}>
-        </div>
-        {showMobile && (
-          <div className='close-container'>
-            <div className="btn-close" onClick={() => { setShowMobile(false) }}></div>
-          </div>
-        )}
 
-      </div>
       <div className={`border-container ${!disableTabs ? 'border-null-left' : ''} border-container-search `}>
         <div className="main-grid">
           <RenderFields
@@ -70,49 +59,32 @@ const UsersSearchPanel = (props) => {
           />
           <RenderFields
             type="single"
-            fields={fields.city}
+            fields={fields.hotelFind}
           />
           <RenderFields
             type="single"
             fields={fields.zodiac}
           />
 
-          {/* : ( */}
-          <>
 
-            {/* <RenderFields
-                  type="single"
-                  fields={fields.interests}
-                /> */}
+          <RenderFields
+            type="single"
+            fields={fields.work}
+          />
+          <RenderFields
+            type="single"
+            fields={fields.orientation}
+          />
+          <RenderBtnContainer
+            colBtn="col-12"
+            changeStatePanel={changeStatePanel}
+            waitAnsw={waitAnsw}
+            onSubmit={onSubmit}
+            btnSubmitText="Начать поиск"
+            reset={reset}
+            resetForm={resetForm}
 
-
-            <RenderFields
-              type="single"
-              fields={fields.work}
-            />
-            <RenderFields
-              type="single"
-              fields={fields.orientation}
-            />
-            <RenderBtnContainer
-              colBtn="col-12"
-              // btnMoreText="Свернуть"
-              changeStatePanel={changeStatePanel}
-              waitAnsw={waitAnsw}
-              onSubmit={onSubmit}
-              btnSubmitText="Начать поиск"
-              reset={reset}
-              resetForm={resetForm}
-
-            />
-          </>
-          {/* {fullPanel ?
-            
-            )} */}
-
-
-
-
+          />
         </div>
       </div>
     </div>

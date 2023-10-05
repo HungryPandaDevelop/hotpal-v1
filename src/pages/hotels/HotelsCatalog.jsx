@@ -46,7 +46,7 @@ const HotelsCatalog = ({ uid }) => {
 
 
       <div className="catalog-grid main-grid">
-        <div className="col-6">
+        <div className="col-6 col-xs-12">
           <HotelSearchPanel
             setListings={setListings}
             setLoading={setLoading}
@@ -55,11 +55,11 @@ const HotelsCatalog = ({ uid }) => {
             setSearchDate={setSearchDate}
           />
         </div>
-        {loading ? <div className='col-6'><Preloader /></div> : (
+        {loading ? <div className='col-6 col-xs-12'><Preloader /></div> : (
           <div
-            className="col-6">
-            <h2 className="hotels-topic">
-              Найдено <span>{listings.length} {toCaseCount(listings.length)}
+            className="col-6 col-xs-12">
+            <h2 className="total-count total-count--catalog">
+              Найдено: <span>{listings.length} {toCaseCount(listings.length)}
               </span>
             </h2>
             {listings.map((hotel, index) => (

@@ -96,8 +96,26 @@ $icoOffset: 8px
 	// 	color: $grayColor
 	// 	i
 	// 		background-image: url("../images/arrows/carret-left-blue.svg")
+.show-filter-mobile,
+.show-filter-close
+	background-color: $whiteColor
+	max-width: 200px
+	margin: 0 auto
+	width: 40px
+	height: 40px
+	display: inline-block
+	@include bgImageEl("../images/icons-app/filter.svg", 24px)
+	border-radius: 100%
+	border: 1px solid $blueColorSecond
+	margin-right: -1px
+	margin-top: -2px
+	&.active
+		display: none
 
-$icoBtnSize: 50px
+$icoBtnSize: 54px
+.show-filter-close
+	@include bgImageEl("../images/icons/close-blueSecond.svg", 12px)
+
 .btn-ico
 	cursor: pointer
 	background-color: $whiteColor

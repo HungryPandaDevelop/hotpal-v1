@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import UsersSearchPanel from 'pages/users/catalog/UsersSearchPanel';
 import UserItem from 'pages/users/catalog/UsersItem';
+import { toCaseCount } from 'pages/hotels/hooks/toCaseCount'
 
 const UserCatalog = ({ uid }) => {
 
@@ -38,8 +39,9 @@ const UserCatalog = ({ uid }) => {
         searchListing={searchListing}
         setSearchListing={setSearchListing}
       />
-      <div className="main-full">
-        <h1 className='mobile-topic'>Поиск по людям</h1>
+
+      <div className="main-full total-count">
+        Найдено всего: <span>{searchListing.length} {toCaseCount(searchListing.length)}</span>
       </div>
       <div className="catalog-grid main-grid">
         {searchListing.map((user, index) => (

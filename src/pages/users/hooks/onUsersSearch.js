@@ -38,8 +38,11 @@ export const onUsersSearch = (listings, values)=>{
   }
 
   const findByСoincideText = ()=>{
-    if(values.city){
-      currentListing = currentListing.filter(item=>(item.currentLocation?.address.indexOf(values.city)>-1));
+    // if(values.city){
+    //   currentListing = currentListing.filter(item=>(item.currentLocation?.address.indexOf(values.city)>-1));
+    // }
+    if(values.hotelFind){
+      currentListing = currentListing.filter(item=>(item.hotelFind.indexOf(values.hotelFind)>-1));
     }
   }
 

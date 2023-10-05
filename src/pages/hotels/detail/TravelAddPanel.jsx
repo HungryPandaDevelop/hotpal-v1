@@ -62,19 +62,20 @@ const RoomsSearchPanel = ({
 
   const renderWillThisPlace = () => {
     return (
-      <div className="main-grid travel-info-panel border-container">
-        <div className="col-4">
-          <h3>Буду в эти даты</h3>
-        </div>
-        <div className="col-4">
-          <div className='travel-info-date'>{myTravel.dateTravel}</div>
-        </div>
-        <div className="col-4">
-          <div className="btn-container">
-            <div
-              className="btn btn--blue"
-              onClick={() => { onDelete(myTravel.id) }}
-            >Изменить дату</div>
+      <div className="travel-add-panel border-container">
+        <div className="main-grid">
+          <div className="col-6 col-xs-12">
+            <h3>Буду в этом отеле</h3>
+            <div className='travel-info-date'>{myTravel.dateTravel}</div>
+          </div>
+
+          <div className="col-6 col-xs-12">
+            <div className="btn-container">
+              <div
+                className="btn btn--white"
+                onClick={() => { onDelete(myTravel.id) }}
+              >Изменить даты</div>
+            </div>
           </div>
         </div>
       </div>

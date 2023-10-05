@@ -23,7 +23,7 @@ const TempateInput = (props) => {
 
   // const [сhoiseName, setСhoiseName] = useState(placeholder ? placeholder : 'Выбрать город');
   const [loading, setLoading] = useState(false);
-  const [filterVal, setFilterVal] = useState('Москва');
+  const [filterVal, setFilterVal] = useState('');
 
   const [russianCitiesList, setRussianCities] = useState([]);
 
@@ -36,6 +36,11 @@ const TempateInput = (props) => {
   useEffect(() => {
 
     inputRef.current.addEventListener("focus", selectOpen);
+    console.log('input.value', input.value)
+    if (input.value) {
+      // input.onChange(input.value);
+      setFilterVal(input.value)
+    }
 
     document.addEventListener("click", handleClick);
     return () => {
@@ -60,6 +65,7 @@ const TempateInput = (props) => {
 
 
 
+
   }, [input]);
 
   const choiseCity = (e) => {
@@ -72,7 +78,7 @@ const TempateInput = (props) => {
     setOpen(false);
 
     // setСhoiseName(e.currentTarget.getAttribute('namecity'));
-    input.onChange(e.currentTarget.getAttribute('id'));
+    input.onChange(e.currentTarget.getAttribute('namecity'));
   }
 
 
@@ -106,7 +112,7 @@ const TempateInput = (props) => {
   const renderCityList = (russianCitiesListParam) => {
 
     return (russianCitiesListParam.length > 0) ? russianCitiesListParam.map((item, index) => {
-      // if (item.type === 'City') {
+      // if (item.type !== 'Railway Station') {
       return (
         <li
           key={index}
@@ -116,7 +122,12 @@ const TempateInput = (props) => {
           id={item.id}
 
         >
-          {item.type === 'City' && (<>Город</>)} {item.name}</li>
+          {/* {item.type === 'City' && (<>Город</>)} */}
+          {/* {item.type === 'Neighborhood' && (<>При Город</>)} */}
+          {/* {item.type === 'hotels' && (<>Отель</>)} */}
+          {/* {item.type === 'Multi-Region (within a country)' && (<>Регион</>)} */}
+
+          {item.name}</li>
       )
       // }
 

@@ -8,6 +8,7 @@
   h3
     color: $blackColor
     font-size: $largeSize
+    margin-bottom: 15px
   .input-box
     margin: 0 0 15px
 .border-container
@@ -41,7 +42,8 @@
   // position: sticky
   top: 15px
   z-index: 2
-
+  .border-tabs-container
+    display: none
 .border-container-search
   padding: 15px 30px 20px
   margin: 0 0 45px
@@ -60,57 +62,72 @@
 
 .show-filter-mobile-container
   display: none
-.mobile-topic
-  display: none
 
+.empty-message-box
+  border: 1px solid $grayColor
+  max-width: 540px
+  padding: 30px
+  text-align: center
+  font-weight: 700
+  font-size: 36px
+  margin: 30px auto
+  border-radius: 30px
+  span
+    line-height: 1.1
+    display: inline-block
+    margin-bottom: 45px
+  i
+    @include icoEl(100px,100px,'../images/icons-app/plane.svg')
+.total-count
+  text-align: center
+  font-weight: 700
+  font-size: 20px
+  padding: 30px 0
+  color: $blackColor
+  span
+    color: $blueColor
+.total-count--catalog
+  text-align: right
+  padding: 0 0 10px
 @media (max-width: 576px)
-  h1.mobile-topic
-    display: block
-    color: $blackColor
-
+  .total-count
+    padding: 15px 0
+    text-align: center
   .border-container
     padding: 15px
     border-radius: 0px 0px 30px 30px
     .main-grid
       gap: 0
-
+  .border-tab
+    font-size: 12px
+    width: 50%
+    margin: 0
+    padding: 8px 15px 7px
+    text-align: center
   .show-filter-mobile-container
-    display: block
-    margin-bottom: 15px
-    font-size: 0
-    text-align: right
+    display: flex
 
-  .show-filter-mobile
-    background-color: $whiteColor
-    max-width: 200px
-    margin: 0 auto
-    width: 40px
-    height: 40px
-    display: inline-block
-    @include bgImageEl("../images/icons-app/filter.svg", 24px)
-    border-radius: 100%
-    border: 1px solid $blueColorSecond
-    &.active
-      display: none
+    .border-tabs-container
+      width: calc(100% - 50px)
+      display: flex
+      gap: 8px
+      border-bottom: 1px solid $grayColor
+      margin-bottom: 15px
+      // padding-bottom: 15px
+
   .border-tabs-container
     display: none
   .search-all
-    .border-tabs-container
-      // border-bottom: 1px solid $grayColor
-      width: calc(100% - 60px)
-      padding-top: 17px
-      display: none
 
-    .border-tab
-      padding: 6px 6px 4px
-      width: 50%
-      margin: 0 15px 0 0
-      text-align: center
-      font-size: 13px
     .border-container-search
-      display: none
+      // display: none
       padding: 0
-      padding-top: 20px
+      position: relative
+      overflow: hidden
+      height: 90px
+      border: 0
+      border-radius: 0
+      margin: 0
       .main-grid
         gap: 15px 0
       .box-range
@@ -120,28 +137,12 @@
         width: 47%
       .close-container
     .close-container
-      position: absolute
-      width: 100%
-      padding: 0 15px
-      left: 0
-      top: 15px
+      text-align: right
+      padding: 15px 0
     &.active
-      display: block
-      position: fixed
-      top: 0
-      z-index: 5
-      background: #fff
-      width: 100%
-      height: 100vh
-      overflow-y: auto
-      .show-filter-mobile-container
-        margin-bottom: 0
-      .border-tabs-container
-        display: flex
       .border-container-search
-        display: block
-        border: 0
-        border-top: 1px solid $grayColor
+        // display: block
+        height: auto
     .search-select-box
       label
         // display: inline-block

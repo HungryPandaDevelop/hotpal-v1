@@ -40,16 +40,17 @@ export const accountFields = {
     textSecond: "Данные цели будут использоваться, как приглашения, для большего совпадения пар.", 
     options: goals,
   },
-  currentLocation: { 
-    type:"coords" ,
-    name: "currentLocation", 
-    label: "Tекущие расположение", 
-    wrapClass: "input-box input-location" ,
-  },
+
   hotelFind: { 
     type:"autoHotel" ,
     name: "hotelFind", 
-    label: "Tекущие расположение", 
+    label: "Tекущее расположение", 
+    wrapClass: "input-find-hotel input-box" ,
+  },
+  hotelDate: { 
+    type:"dateRange" ,
+    name: "hotelDate", 
+    label: "Даты", 
     wrapClass: "input-box" ,
   },
   interests: { 

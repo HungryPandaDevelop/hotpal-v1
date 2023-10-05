@@ -38,7 +38,7 @@ const HotelsSearchPanel = (props) => {
   // const mutateValue = {...fields.geoHotels, cityName: 'testing'};
 
   return (
-    <div className={`main-full border-search-hotels ${showMobile ? 'active' : ''}`}>
+    <div className={`border-search-hotels ${showMobile ? 'active' : ''}`}>
       <Tabs active="hotels" />
       <div className="show-filter-mobile-container">
         <div className={`show-filter-mobile ${showMobile ? 'active' : ''}`} onClick={() => { setShowMobile(!showMobile) }}>
@@ -47,10 +47,7 @@ const HotelsSearchPanel = (props) => {
       <div className={`border-container border-null-left border-container-search`}>
 
         <div className="">
-          {/* <RenderFields
-            type="single"
-            fields={fields.city}
-          /> */}
+
           <RenderFields
             type="single"
             fields={{ ...fields.yaString, setGetCoords: setGetCoords }}
@@ -60,24 +57,7 @@ const HotelsSearchPanel = (props) => {
             type="single"
             fields={fields.dateRange}
           />
-          {/* <RenderFields
-            type="single"
-            fields={fields.dateIn}
-          />
-          <RenderFields
-            type="single"
-            fields={fields.dateOut}
-          /> */}
-          <RenderFields
-            type="single"
-            fields={fields.personCount}
-          />
 
-
-          {/* <RenderFields
-            type="single"
-            fields={fields.raiting}
-          /> */}
           <RenderBtnContainer
             colBtn="col-3 col-xs-12"
             waitAnsw={waitAnsw}
