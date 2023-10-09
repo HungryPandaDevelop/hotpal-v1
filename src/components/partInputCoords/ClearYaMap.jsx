@@ -35,7 +35,7 @@ const ClearYaMap = ({ currentLocation, centerPosition, changePosition, multy }) 
     if (loadMap) {
       if (currentLocation) {
         if (multy) {
-          console.log('remove all')
+          // console.log('remove all')
           myMapRef.current.geoObjects.removeAll();
 
           currentLocation.map((el, index) => {

@@ -292,9 +292,22 @@ section {
   color: #00AEEF;
 }
 
+@media (max-width: 1400px) {
+  .content {
+    padding-right: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .main-grid {
+    gap: 15px;
+  }
+}
 @media (max-width: 576px) {
   .main-grid {
     gap: 30px 0;
+  }
+  .content {
+    padding-right: 0px;
   }
 }
 /*-----defat-content-end----*/
@@ -1020,7 +1033,7 @@ section {
   vertical-align: middle;
   width: 54px;
   height: 54px;
-  background-position: center 11px;
+  background-position: center 15px;
   background-repeat: no-repeat;
   background-size: 40px;
   background-image: url("../images/icons-app/like-blue.svg");
@@ -1071,6 +1084,20 @@ section {
   background-image: url("../images/icons-app/chat-white.svg");
 }
 
+@media (max-width: 670px) and (min-width: 576px) {
+  .btn-ico--like,
+  .btn-ico--chat {
+    width: 34px;
+    height: 34px;
+  }
+  .btn-ico--chat {
+    background-size: 18px;
+  }
+  .btn-ico--like {
+    background-position: center 11px;
+    background-size: 18px;
+  }
+}
 .spinner-container {
   position: relative;
   height: 30px;
@@ -3320,6 +3347,29 @@ footer .nav li {
     text-align: left;
   }
 }
+.bests-panel {
+  padding-top: 45px;
+  margin-bottom: 8px;
+}
+.bests-panel a {
+  display: inline-block;
+  margin: 0 15px 15px 0;
+  text-decoration: none;
+}
+.bests-panel a:hover {
+  color: #00AEEF;
+}
+
+.best-user-item {
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 100%;
+  margin: 0 15px 15px 0;
+}
+
 .map-home {
   height: 400px;
   position: relative;
@@ -3831,7 +3881,7 @@ button[data-controls=next]:hover {
     font-size: 12px;
     width: 50%;
     margin: 0;
-    padding: 8px 15px 7px;
+    padding: 8px 5px 7px;
     text-align: center;
   }
   .show-filter-mobile-container {
@@ -3887,6 +3937,13 @@ button[data-controls=next]:hover {
   .search-all .btn-container .btn {
     width: 50%;
     margin: 0;
+  }
+  .empty-message-box {
+    font-size: 24px;
+  }
+  .empty-message-box i {
+    width: 60px;
+    height: 60px;
   }
 }
 /*-----home-start----*/ 
@@ -4296,7 +4353,7 @@ button[data-controls=next]:hover {
   }
   .mobile-user-container .tag {
     font-size: 12px;
-    padding: 0px 14px;
+    padding: 0px 10px;
   }
   .mobile-user-container .tag i {
     width: 14px;
@@ -4316,6 +4373,11 @@ button[data-controls=next]:hover {
   .mobile-user-container .input-box label {
     margin-bottom: 2px;
   }
+  .mobile-user-container .data-input-container::after {
+    width: 21px;
+    height: 25px;
+    background-size: 12px;
+  }
   .mobile-user-container .user-location-map {
     height: 110px;
     border-radius: 10px;
@@ -4328,6 +4390,20 @@ button[data-controls=next]:hover {
     background-size: 24px;
     width: 20px;
     margin: 0;
+  }
+  .mobile-user-container .search-field-container {
+    height: 20px;
+  }
+  .mobile-user-container .search-field-container .input-decorate {
+    padding: 0;
+    width: 90%;
+  }
+  .mobile-user-container .search-field-container em {
+    width: 20px;
+    height: 20px;
+    background-size: 8px;
+    right: -5px;
+    top: 0;
   }
   .mobile-user-container .input-decorate {
     font-size: 12px;
@@ -4353,6 +4429,7 @@ button[data-controls=next]:hover {
     display: block;
   }
   .mobile-user-container .user-top-info--view h2 {
+    width: 100%;
     font-size: 24px;
   }
   .mobile-user-container .user-info-gender {
@@ -4401,6 +4478,10 @@ button[data-controls=next]:hover {
   }
   .btn-save-outer.active {
     bottom: 60px;
+  }
+  .cabinet-page h3,
+  .cabinet-page label {
+    font-size: 15px;
   }
 }
 .tiny-account {
@@ -4788,6 +4869,24 @@ button[data-controls=next]:hover {
   .travel-add-panel .btn-container {
     padding: 0;
   }
+  .travel-user {
+    display: block;
+  }
+  .travel-current,
+  .travel-story {
+    width: 100%;
+  }
+  .travel-story {
+    border: 0;
+    padding: 0;
+    margin-top: -130px;
+  }
+  .travel-story .btn {
+    padding: 0px 8px 0px;
+    font-weight: 400;
+    font-size: 12px;
+    width: 100%;
+  }
 }
 .travel-item {
   position: relative;
@@ -4845,6 +4944,41 @@ button[data-controls=next]:hover {
   color: #00AEEF;
 }
 
+@media (max-width: 576px) {
+  .travel-item {
+    padding-bottom: 15px;
+  }
+  .travel-item .btn-container {
+    width: 100%;
+  }
+  .travel-item i {
+    width: 18px;
+    height: 18px;
+  }
+  .travel-line {
+    display: block;
+  }
+  .travel-name {
+    width: 100%;
+    font-size: 14px;
+    margin: 0;
+  }
+  .travel-guest {
+    width: 100%;
+    text-align: left;
+  }
+  .travel-date {
+    font-size: 12px;
+  }
+  .travel-date {
+    width: 100%;
+  }
+  .travel-name,
+  .travel-date,
+  .travel-guest {
+    padding-left: 22px;
+  }
+}
 /*-----cabinbet-end----*/ 
 /*-----users-start----*/ 
 .users-item {
@@ -5328,6 +5462,17 @@ button[data-controls=next]:hover {
   font-size: 14px;
 }
 
+@media (max-width: 1240px) {
+  .users-item-info {
+    padding: 15px;
+  }
+  .users-item-info .btn-container .btn-ico {
+    margin-left: 8px;
+  }
+  .users-item-info .name-users h3 {
+    font-size: 16px;
+  }
+}
 .user-top-info--view {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5422,6 +5567,13 @@ button[data-controls=next]:hover {
 }
 
 @media (max-width: 576px) {
+  .border-container-user {
+    border: 0;
+    padding: 0;
+  }
+  .user-top-info--view h2 {
+    width: 50%;
+  }
   .photos-mobile {
     display: block;
     margin-bottom: 15px;

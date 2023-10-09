@@ -11,6 +11,9 @@ import Footer from 'blocks/footer/Footer';
 
 import GetRooms from 'pages/chat/getRooms';
 import ControlsPanel from 'blocks/ControlsPanel';
+import BestPanel from 'blocks/BestPanel';
+
+
 
 const PrivateRoute = ({ account, ActionFn }) => {
 
@@ -47,6 +50,9 @@ const PrivateRoute = ({ account, ActionFn }) => {
         <ControlsPanel />
 
         <Outlet />
+
+        <BestPanel />
+
         <Footer />
       </>
     )

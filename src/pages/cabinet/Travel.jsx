@@ -13,11 +13,12 @@ const Travel = ({ uid, catalogUserId }) => {
   const [stateShow, setStateShow] = useState(false);
 
   useEffect(() => {
-
+    console.log('catalogUserId', catalogUserId)
     // setLoading(true);
-    let typeSearch = catalogUserId ? getListing('travel', 'usersArray', [catalogUserId]) : getListing('travel', 'userRef', uid);
+    let typeSearch = catalogUserId ? getListing('travel', 'usersArrayRef', [catalogUserId]) : getListing('travel', 'userRef', uid);
 
     typeSearch.then((res) => {
+      console.log(res)
       setListing(res);
       // setCountShow(res.length);
       if (res.length > 2) {

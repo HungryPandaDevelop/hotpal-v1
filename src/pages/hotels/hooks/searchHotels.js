@@ -19,6 +19,27 @@ export const autocompleteSearch = (term) => {
   });
 }
 
+export const hotelsDataSingle = (hotelPrices) => {
+ 
+
+  let tempArrayHotels = hotelPrices.map(el => {
+        return el.id
+    })
+
+  return axios.get(url+"/hotels-data", {
+    headers: {
+      'ngrok-skip-browser-warning': true
+    },
+    params: {
+      arrayHotels: tempArrayHotels
+    }
+  }).then(res => {
+
+    return res.data;
+
+  });
+}
+
 export const hotelsData = (hotelPrices) => {
   // console.log('start hotelsData', hotelPrices)
 
@@ -53,7 +74,7 @@ export const hotelsData = (hotelPrices) => {
 
 
 export const geoSearch = (longitude, latitude,dateFrom,dateTo,personCount) => {
-  console.log('loading....', dateFrom,dateTo)
+  // console.log('loading....', dateFrom,dateTo)
 
   // let tempArrayHotels = [];
   // let tempArrayPrices = [];

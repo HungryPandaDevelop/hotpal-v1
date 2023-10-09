@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore';
 
 
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 import { db } from 'default/config/firebase';
 
@@ -51,10 +51,16 @@ export const getListing = async (baseName,  type, uid ) => {
     );
   }
   else if(type==='usersArray'){
-
+    console.log('u a', uid)
     q = query(
       listingsRef,
       where('uid', 'in', uid)
+    );
+  }
+  else if(type==='usersArrayRef'){
+    q = query(
+      listingsRef,
+      where('userRef', 'in', uid)
     );
   }
   else{

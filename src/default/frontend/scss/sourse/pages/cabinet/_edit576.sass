@@ -41,7 +41,7 @@
 	.mobile-user-container
 		.tag
 			font-size: 12px
-			padding: 0px 14px
+			padding: 0px 10px
 			i
 				width: 14px
 				height: 14px
@@ -56,7 +56,10 @@
 				font-size: 12px
 			label
 				margin-bottom: 2px
-
+		.data-input-container::after
+			width: 21px
+			height: 25px
+			background-size: 12px
 		.user-location-map
 			height: 110px
 			border-radius: 10px
@@ -67,6 +70,17 @@
 				background-size: 24px
 				width: 20px
 				margin: 0
+		.search-field-container
+			height: 20px
+			.input-decorate
+				padding: 0
+				width: 90%
+			em
+				width: 20px
+				height: 20px
+				background-size: 8px
+				right: -5px
+				top: 0
 		.input-decorate
 			font-size: 12px
 			padding: 2px 8px
@@ -86,6 +100,7 @@
 		.user-top-info--view
 			display: block
 			h2
+				width: 100%
 				font-size: 24px
 		.user-info-gender
 			font-size: 12px
@@ -125,3 +140,6 @@
 
 		&.active
 			bottom: 60px
+	.cabinet-page h3,
+	.cabinet-page label
+		font-size: 15px

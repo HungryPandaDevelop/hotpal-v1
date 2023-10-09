@@ -24,7 +24,7 @@ const HotelsSearchPanel = ({
   const submitSuccess = () => {
 
     setLoading(true)
-    console.log('getHotels formData.values', formData.values)
+    // console.log('getHotels formData.values', formData.values)
 
     // let regionId = formData.values.city;
     let personCount = formData.values.personCount;
@@ -43,11 +43,11 @@ const HotelsSearchPanel = ({
       // console.log('getHotels', res)
       if (res) {
         hotelsData(res).then(response => {
+
           setLoading(false)
 
           setListings(response)
 
-          console.log('getHotels', response)
         })
       } else {
         setLoading(false)
@@ -59,6 +59,9 @@ const HotelsSearchPanel = ({
   const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
+
+
+
 
     if (formData && firstLoad) {
       setFirstLoad(false)

@@ -47,7 +47,7 @@ const UserItem = ({
           {!itemInner && (<Link to={`/hotels-users/${hotel.id}${searchDate ? `?from=${searchDate[0]}&to=${searchDate[1]}` : ''}`} className="btn btn--blue-border">просмотреть всех</Link>)}
 
 
-          <div className="hotels-price">от {hotel.price[0].daily_prices[0]} р.</div>
+          {hotel.price && <div className="hotels-price">от {hotel.price[0].daily_prices[0]} р.</div>}
         </div>
       </div>
     </div >

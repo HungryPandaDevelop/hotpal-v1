@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, useLocation } from "react-router-dom";
 import moment from "moment";
 import { connect } from 'react-redux';
 
 import { getListing } from 'services/getListings';
 
-import { hotelPage, hotelsData } from 'pages/hotels/hooks/searchHotels';
+import { hotelPage, hotelsDataSingle } from 'pages/hotels/hooks/searchHotels';
 import { toCaseCount } from 'pages/hotels/hooks/toCaseCount'
 
 import HotelsItem from 'pages/hotels/catalog/HotelsItem';
@@ -14,11 +14,12 @@ import UserItem from 'pages/users/catalog/UsersItem';
 import UsersSearchPanel from 'pages/users/catalog/UsersSearchPanel';
 
 const HotelsUsersCatalog = ({ uid }) => {
-
+  const { pathname } = useLocation();
   const params = useParams();
   const pageId = params.hotelId;
 
   const [listings, setListings] = useState([]);
+
   const [searchListing, setSearchListing] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -38,17 +39,32 @@ const HotelsUsersCatalog = ({ uid }) => {
 
     let dateFrom = searchParams.get('from') ? searchParams.get('from') : moment().format('YYYY-MM-DD');
     let dateTo = searchParams.get('to') ? searchParams.get('to') : moment().add(2, 'days').format('YYYY-MM-DD');
+    // console.log(dateFrom, dateTo)
 
-    hotelPage(pageId, dateFrom, dateTo, 1).then(res => {
-      hotelsData(res).then(response => {
+
+    hotelsDataSingle([{ id: pageId }]).then(response => {
+
+
+
+      hotelPage(pageId, dateFrom, dateTo, 1).then(res => {
+
+
+        if (res) {
+          var renderArrHotels = [];
+
+          response.forEach((el, index) => {
+            let findPrice = res.find(e => e.id === el.id)
+            renderArrHotels.push({ price: findPrice.rates, ...el })
+          });
+
+          setHotel(renderArrHotels[0]);
+        } else {
+          setHotel(response[0]);
+        }
         setLoadingHotel(false)
-        setHotel(response[0])
-        // console.log('get detail hotels', response[0])
-      })
+      });
+
     });
-    // load HOTEL 
-
-
 
     const usersArray = [];
     getListing('travel', 'travel', pageId).then((res) => {
@@ -82,7 +98,7 @@ const HotelsUsersCatalog = ({ uid }) => {
 
     });
 
-  }, []);
+  }, [pathname]);
 
 
   const renderEmptyHotelsUsers = (userTravel) => {
@@ -114,7 +130,7 @@ const HotelsUsersCatalog = ({ uid }) => {
           />
         </div>
         <div className="col-6 col-xs-12">
-          <h3 className='total-count'>Найдено: <span>{listings.length} {toCaseCount(listings.length)}</span></h3>
+          <h3 className='total-count total-count--catalog'>Найдено: <span>{listings.length} {toCaseCount(listings.length)}</span></h3>
           {loadingHotel ? 'load...' : (
             <HotelsItem
               key={hotel.id}

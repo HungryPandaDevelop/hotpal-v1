@@ -1,7 +1,7 @@
 import UserTop from 'pages/users/detail/UserTop';
 import RenderFields from 'components/forms/RenderFields';
 import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainerCabinet'
-
+import Travel from 'pages/cabinet/Travel';
 
 const Mobile = ({
   user,
@@ -25,16 +25,7 @@ const Mobile = ({
       <div className="col-xs-6">
         {!user.verificationCheck && <div className="verification-hint">Вы не верифицированы</div>}
         <UserTop user={user} />
-        {/* <RenderFields
-        type="single"
-        fields={fields.name}
-        checkErrorSubmit={checkErrorSubmit}
-        setErrCheck={setErrCheck}
-      />
-      <RenderFields
-        type="single"
-        fields={fields.gender}
-      /> */}
+
         <RenderFields
           type="single"
           fields={fields.goals}
@@ -90,7 +81,18 @@ const Mobile = ({
           </ul>
         </div>
       </div>
-      <div className="col-xs-6"></div>
+      <div className="col-xs-6">
+        <div className='travel-current'>
+          <RenderFields
+            type="single"
+            fields={fields.hotelFind}
+          />
+          <RenderFields
+            type="single"
+            fields={fields.hotelDate}
+          />
+        </div>
+      </div>
       <div className="col-xs-6">
         <RenderFields
           type="single"
@@ -98,10 +100,10 @@ const Mobile = ({
         />
       </div>
       <div className="col-xs-6">
-        {/* <RenderFields
-          type="single"
-          fields={fields.currentLocation}
-        /> */}
+        <div className="travel-story">
+          <h3>Будущие путешествия</h3>
+          <Travel />
+        </div>
       </div>
       <div className="col-xs-12">
         <RenderFields

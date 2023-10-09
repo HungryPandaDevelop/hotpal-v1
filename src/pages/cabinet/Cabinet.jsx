@@ -39,7 +39,6 @@ const Cabinet = ({ formData, account }) => {
           newValue={formData}
         />
       </div>
-      <div className="stub"></div>
     </>
   )
 }

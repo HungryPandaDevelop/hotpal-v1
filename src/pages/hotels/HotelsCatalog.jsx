@@ -14,6 +14,7 @@ import Preloader from 'components/Preloader';
 
 import { getListing } from 'services/getListings';
 
+
 const HotelsCatalog = ({ uid }) => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ const HotelsCatalog = ({ uid }) => {
 
   const [travelList, setTravelList] = useState([]);
 
-  function toCaseCount(arg) {
+  const toCaseCount = (arg) => {
     let last = arg.toString().split('').pop();
     if (last == 1) return ' вариант'
     else if (last >= 2 && last <= 4) return ' варианта'
@@ -31,9 +32,13 @@ const HotelsCatalog = ({ uid }) => {
     else return ' вариантов'
   }
 
+
+
   useEffect(() => {
+
     getListing('travel', 'travelAll', uid).then((res) => {
       setTravelList(res);
+
     });
   }, []);
 

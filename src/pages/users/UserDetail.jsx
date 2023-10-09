@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { getSingleListing } from "services/getSingleListing"
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import UserTop from "./detail/UserTop";
@@ -13,7 +13,7 @@ import Btns from "./detail/Btns";
 import Travel from 'pages/cabinet/Travel';
 
 const UserDetail = ({ uid, sympathys }) => {
-
+  const { pathname } = useLocation();
   const params = useParams();
 
   const [user, setUser] = useState({});
@@ -25,7 +25,7 @@ const UserDetail = ({ uid, sympathys }) => {
       setUser(getuser);
       setLoading(false);
     })
-  }, []);
+  }, [pathname]);
 
   if (loading) { return 'Loading...' }
 
@@ -33,7 +33,7 @@ const UserDetail = ({ uid, sympathys }) => {
     <>
       <div className="stub"></div>
       <div className="main-full">
-        <div className="border-container">
+        <div className="border-container border-container-user">
           <div className="main-grid">
             <div className="col-4 col-xs-12 photos-mobile">
               {user.imgsAccount && <Photos user={user} />}
@@ -50,11 +50,14 @@ const UserDetail = ({ uid, sympathys }) => {
               </div>
 
               <div className="travel-user">
+
                 <div className="travel-current travel-current-detail">
                   <h3>Tекущее расположение</h3>
-                  <div className="travel-current-line"><i className="marker-ico--blue"></i>{user.hotelFind}</div>
-                  <div className="travel-current-line"><i className="calendar-ico--blue"></i>{user.hotelDate}</div>
+                  {user.hotelFind && (<div className="travel-current-line"><i className="marker-ico--blue"></i>{user.hotelFind}</div>)}
+                  {user.hotelDate && (<div className="travel-current-line"><i className="calendar-ico--blue"></i>{user.hotelDate}</div>)}
                 </div>
+
+
                 <div className="travel-story">
                   <h3>Будущие путешествия</h3>
                   <Travel catalogUserId={user.uid} />
@@ -88,7 +91,7 @@ const UserDetail = ({ uid, sympathys }) => {
           </div>
         </div>
       </div>
-      <div className="stub"></div>
+
     </>
   )
 }

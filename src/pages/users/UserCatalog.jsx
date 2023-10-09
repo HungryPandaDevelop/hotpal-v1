@@ -45,7 +45,7 @@ const UserCatalog = ({ uid }) => {
       </div>
       <div className="catalog-grid main-grid">
         {searchListing.map((user, index) => (
-          <div key={index} className="col-4 col-xs-12">
+          <div key={index} className="col-4 col-md-6 col-xs-12">
             <UserItem
               user={user}
               uid={uid}
@@ -53,7 +53,6 @@ const UserCatalog = ({ uid }) => {
           </div>
         ))}
       </div>
-      <div className="stub"></div>
     </>
   )
 }

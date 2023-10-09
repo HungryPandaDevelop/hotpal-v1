@@ -48,7 +48,7 @@ const Header = ({
           </div>
           <div className="col-9 col-xs-7 mobile-container vertical-align">
             <div>
-              {uid && <Link to="/" className='btn btn--blue'>Мой акканут</Link>}
+              {uid && <Link to="/cabinet" className='btn btn--blue'>Мой акканут</Link>}
             </div>
             <div className="btn-hamburger" onClick={() => setShowMenu(true)}></div>
           </div>

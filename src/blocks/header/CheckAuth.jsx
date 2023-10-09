@@ -52,11 +52,7 @@ const CheckAuth = ({
 
   }, []);
 
-  return (
-    <>
-      {/* <div>AuthInfo: {(account.uid ? 'Logged: ' + account.uid : 'No Logged')}</div> */}
-    </>
-  )
+  return false
 }
 
 

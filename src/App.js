@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import PrivatRoute from 'blocks/PrivatRoute';
 import GlobalRoute from 'blocks/GlobalRoute';
 
+import ScrollTop from 'components/ScrollTop'
 // import Header from 'blocks/Header';
 // import Footer from 'blocks/footer/Footer';
 
@@ -65,7 +66,7 @@ const App = ({account})=> {
       
         <BrowserRouter>
           <CheckAuth />
-         
+          <ScrollTop />
           <div className="content">
           <Routes> 
             <Route path='/' element={<GlobalRoute/>}>
