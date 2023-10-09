@@ -51,7 +51,7 @@ const HotelsCatalog = ({ uid }) => {
 
 
       <div className="catalog-grid main-grid">
-        <div className="col-6 col-xs-12">
+        <div className="col-6 col-sm-12 col-xs-12">
           <HotelSearchPanel
             setListings={setListings}
             setLoading={setLoading}
@@ -60,9 +60,9 @@ const HotelsCatalog = ({ uid }) => {
             setSearchDate={setSearchDate}
           />
         </div>
-        {loading ? <div className='col-6 col-xs-12'><Preloader /></div> : (
+        {loading ? <div className='col-6  col-sm-12 col-xs-12'><Preloader /></div> : (
           <div
-            className="col-6 col-xs-12">
+            className="col-6 col-sm-12 col-xs-12">
             <h2 className="total-count total-count--catalog">
               Найдено: <span>{listings.length} {toCaseCount(listings.length)}
               </span>

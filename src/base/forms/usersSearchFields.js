@@ -14,42 +14,42 @@ export const usersSearchFields = {
       {name:'<div class="man-ico"></div>',value:"man"},
       {name:'<div class="woman-ico"></div>', value:"woman"},
     ],
-    wrapClass: "input-box col-2 col-xs-6" ,
+    wrapClass: "input-box col-2 col-md-6 col-xs-6" ,
   },
   rangeBerth: { 
     type:"range" ,
     name: "rangeBerth", 
     label: "Выберите возраст", 
     range: [18, 75],
-    wrapClass: "input-box box-range col-2 col-xs-6" ,
+    wrapClass: "input-box box-range col-2 col-lg-3 col-md-6 col-xs-6" ,
   },
 
   hotelFind: { 
     type:"autoHotel" ,
     name: "hotelFind", 
     label: "Tекущее расположение", 
-    wrapClass: "col-3 search-select-box input-box col-xs-12",
+    wrapClass: " search-select-box input-box col-3 col-md-6 col-xs-12",
   },
   goals: { 
     type:"choiseTags" ,
     name: "goals", 
     label: "Выберите Цели", 
     options: goals,
-    wrapClass: "col-8 input-box col-xs-12",
+    wrapClass: "col-8 col-lg-7 col-md-12  input-box col-xs-12",
   },
   interests: { 
     type:"choiseTags" ,
     name: "interests", 
     label: "Интересы", 
     options: interests,
-    wrapClass: "col-3 input-box col-xs-12",
+    wrapClass: "col-3  col-md-6 col-xs-12 input-box ",
   },
   zodiac: { 
     type:"select", 
     name: "zodiac",  
     label: "Зодиак",
     placeholder:"Выбрать зодиак",
-    wrapClass: "col-3 search-select-box input-box col-xs-12",
+    wrapClass: "col-3 col-md-6 search-select-box input-box col-xs-12",
     options: zodiac
   },
   work: { 
@@ -57,7 +57,7 @@ export const usersSearchFields = {
     name: "work",  
     label: "Работа",
     placeholder:"Выбрать работу",
-    wrapClass: "col-3 search-select-box input-box col-xs-12",
+    wrapClass: "col-3  col-md-6  search-select-box input-box col-xs-12",
     options: typeWork
   },
   orientation: { 
@@ -65,7 +65,7 @@ export const usersSearchFields = {
     name: "orientation",  
     placeholder:"Выбрать ориентацию",
     label: "Ориентация",
-    wrapClass: "col-3 search-select-box input-box col-xs-12",
+    wrapClass: "col-3  col-md-6 search-select-box input-box col-xs-12",
     options: orientation
   },
 
@@ -81,14 +81,14 @@ export const usersSearchFieldsMini = {
       {name:'<div class="man-ico"></div>',value:"man"},
       {name:'<div class="woman-ico"></div>', value:"woman"},
     ],
-    wrapClass: "input-box col-4 col-xs-6" ,
+    wrapClass: "input-box col-4 col-sm-6 col-xs-6" ,
   },
   rangeBerth: { 
     type:"range" ,
     name: "rangeBerth", 
     label: "Выберите возраст", 
     range: [18, 75],
-    wrapClass: "input-box box-range col-8 col-xs-6" ,
+    wrapClass: "input-box box-range col-8  col-sm-6 col-xs-6" ,
   },
 
   goals: { 

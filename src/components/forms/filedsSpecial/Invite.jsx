@@ -1,5 +1,5 @@
 import { Field, change } from 'redux-form';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 
 const TempateInput = (props) => {
@@ -10,20 +10,21 @@ const TempateInput = (props) => {
 
   const {
     onSubmit,
-    setErrCheckExtra,
-    dispatch,
+    setIgnoreText,
+    // dispatch,
   } = props.obj;
 
 
 
   const sendInvite = (e, set) => {
 
-    setErrCheckExtra(true)
+    setIgnoreText(false);
+
     onSubmit(e);
 
   }
   const changeInvite = (type, text) => {
-    // dispatch(change('singleInput', 'message', 'Свидание в номере'))
+    // dispatch(change('singleInput', 'message', text))
     input.onChange({
       text: text,
       type: type,

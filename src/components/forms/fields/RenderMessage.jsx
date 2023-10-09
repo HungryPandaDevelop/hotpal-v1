@@ -15,22 +15,11 @@ const TempateInput = (props) => {
     maxLength,
     wrapClass,
     checkErrorSubmit,
-    setErrCheck,
     onSubmit
   } = props.obj;
 
 
-  useEffect(() => {
-    // console.log('error', error)
-    if (error) {
-      // console.log(1)
-      setErrCheck(false);
-    }
-    else {
-      // console.log(2)
-      setErrCheck(true);
-    }
-  }, [input]);
+
 
 
   const handleOnChange = (e) => {

@@ -37,11 +37,11 @@ const Header = ({
               <Nav />
             </nav>
           </div>
-          <div className="col-4 col-xs-5 logo-container">
+          <div className="col-4 col-lg-3 col-sm-2 col-xs-5 logo-container">
             <Link className="logo logo-dark" to="/"> <img src={logo} alt={logo} /></Link>
             <Link className="logo logo-white" to="/"> <img src={logoWhite} alt={logoWhite} /></Link>
           </div>
-          <div className="col-4 hidden-xs vertical-align">
+          <div className="col-4 col-lg-5 hidden-xs vertical-align">
             <div className="btn-container">
               <InfoAccount />
             </div>

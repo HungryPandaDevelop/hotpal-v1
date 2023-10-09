@@ -17,63 +17,59 @@ const TemplateForm = (props) => {
     reset,
     dispatch,
     colText,
-    colBtn
+    colBtn,
+    invalid
   } = props;
 
 
 
   const [checkErrorSubmit, setCheckErrorSubmit] = useState(false);
-  const [errCheck, setErrCheck] = useState(false);
 
-  let errCheckExtra = false;
 
-  const setErrCheckExtra = (param) => {
-    errCheckExtra = param;
-  }
+  const [ignoreText, setIgnoreText] = useState(false);
 
   const onSubmit = (e) => {
+    let idTimeCheck;
     e.preventDefault();
 
-
-
-    setCheckErrorSubmit(true);
-
     setTimeout(() => {
-      setCheckErrorSubmit(false);
+      setCheckErrorSubmit(true);
     }, 10000);
 
     // console.log('errCheck', errCheck)
 
-    if (errCheck) {
-      submitSuccess();
-      setErrCheck(false);
-      setCheckErrorSubmit(false);
-      reset();
+    if (invalid && ignoreText) {
+
+      setCheckErrorSubmit(true);
+
+      clearTimeout(idTimeCheck);
+
+      idTimeCheck = setTimeout(() => {
+        setCheckErrorSubmit(false);
+      }, 10000);
+
     } else {
-      console.log('Ошибка полей')
+      setIgnoreText(false)
+      submitSuccess();
+      reset();
     }
 
-    if (errCheckExtra) {
-      setCheckErrorSubmit(false);
-      submitSuccess();
-      // console.log('send extra')
-      reset();
-    }
+
 
 
   };
 
   const customFieldMessage = {
     ...fields.message,
-    dispatch: dispatch,
+    // dispatch: dispatch,
     onSubmit: onSubmit
   }
   const customFieldsInv = {
     ...fields.invite,
-    dispatch: dispatch,
+    // dispatch: dispatch,
     onSubmit: onSubmit,
-    setErrCheckExtra: setErrCheckExtra,
-    setInviteMessage: setInviteMessage
+    setIgnoreText: setIgnoreText,
+    // setInviteMessage: setInviteMessage
   }
 
 
@@ -88,13 +84,13 @@ const TemplateForm = (props) => {
               type="single"
               fields={customFieldMessage}
               checkErrorSubmit={checkErrorSubmit}
-              setErrCheck={setErrCheck}
+
             />
             <RenderFields
               type="single"
               fields={fields.fileMessage}
               checkErrorSubmit={checkErrorSubmit}
-              setErrCheck={setErrCheck}
+
             />
           </div>
         </div>

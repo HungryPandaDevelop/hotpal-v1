@@ -3,7 +3,7 @@
 	justify-content: space-between
 	h2
 		color: $blackColor
-		width: calc(50% - 90px)
+		width: calc(100% - 200px)
 		&::first-letter
 			text-transform: uppercase
 .user-info-gender
@@ -20,9 +20,9 @@
 		vertical-align: middle
 .user-middle-info
 	display: flex
-	.tags-container,
+	.tags-container
+		width: calc( 100% - 220px )
 	.btn-container
-		width: 50%
 	.btn-container
 		padding-top: 45px
 		text-align: right
@@ -60,6 +60,26 @@
 .photos-mobile
 	display: none
 
+@media (max-width: 820px)
+	.user-top-info--view
+		display: block
+		h2
+			width: 100%
+	.user-middle-info
+		display: block
+		.tags-container
+			width: 100%
+		.btn-container
+			padding-bottom: 30px
+			text-align: left
+			padding-top: 0
+		.btn-ico
+			margin-left: 0
+			margin-right: 15px
+	.user-photo img
+		height: 300px
+	.travel-user
+		width: 200%
 @media (max-width: 576px)
 	.border-container-user
 		border: 0
@@ -79,6 +99,7 @@
 			text-align: left
 			padding: 15px 0 30px
 			margin: 0
+
 	.user-info-gender
 		padding: 7px 0
 	.border-delimetr.border-account

@@ -16,7 +16,7 @@ const Desktop = ({
 }) => {
   return (
     <>
-      <div className="col-8 col-xs-12">
+      <div className="col-8 col-sm-6 col-xs-12">
 
         <div className="user-top-info--view">
           <h2>
@@ -57,7 +57,7 @@ const Desktop = ({
         </div>
       </div>
 
-      <div className="col-4 col-xs-12">
+      <div className="col-4  col-sm-6 col-xs-12">
         <RenderFields
           type="single"
           fields={fields.imgsAccount}
@@ -69,14 +69,14 @@ const Desktop = ({
       <div className="col-12">
         <div className="border-delimetr border-account"></div>
       </div>
-      <div className="col-8 col-xs-12">
+      <div className="col-8  col-sm-6 col-xs-12">
         <RenderFields
           type="single"
           fields={fields.interests}
         />
 
       </div>
-      <div className="col-4 col-xs-12">
+      <div className="col-4  col-sm-6 col-xs-12">
         <div className="personal-info">
           <ul className="ln">
             <li>

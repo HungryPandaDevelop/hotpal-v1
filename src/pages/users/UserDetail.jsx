@@ -35,10 +35,10 @@ const UserDetail = ({ uid, sympathys }) => {
       <div className="main-full">
         <div className="border-container border-container-user">
           <div className="main-grid">
-            <div className="col-4 col-xs-12 photos-mobile">
+            <div className="col-4 col-sm-6 col-xs-12 photos-mobile">
               {user.imgsAccount && <Photos user={user} />}
             </div>
-            <div className="col-8 col-xs-12">
+            <div className="col-8 col-sm-6 col-xs-12">
 
               <UserTop user={user} />
               <div className="user-middle-info">
@@ -68,16 +68,16 @@ const UserDetail = ({ uid, sympathys }) => {
 
 
             </div>
-            <div className="col-4 hidden-xs">
+            <div className="col-4 col-sm-6 hidden-xs">
               {user.imgsAccount && <Photos user={user} />}
             </div>
             <div className="col-12">
               <div className="border-delimetr border-account"></div>
             </div>
-            <div className="col-8 col-xs-12">
+            <div className="col-8 col-sm-6 col-xs-12">
               <InterestsUsers special="special-tags" user={user} />
             </div>
-            <div className="col-4 col-xs-12">
+            <div className="col-4 col-sm-6 col-xs-12">
               <PersonalInfo user={user} />
             </div>
             <div className="col-12">
