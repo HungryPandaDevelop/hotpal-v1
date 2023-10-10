@@ -4,7 +4,7 @@ import {
   getAuth,
   updateProfile,
   createUserWithEmailAndPassword,
-  sendEmailVerification
+
 } from 'firebase/auth';
 
 

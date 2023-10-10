@@ -11,23 +11,28 @@ import Section from "pages/main/Section"
 
 import { registrationAccount } from 'services/registrationAccount';
 
+import { v4 as uuidv4 } from 'uuid';
+
 const RegMail = ({ formData }) => {
 
   const navigate = useNavigate();
 
+  const generateId = uuidv4();
+
   const [loading, setLoading] = useState(false);
-  const [successSend, setSuccessSend] = useState(true);
+
 
   const submitSuccess = () => {
 
-    if (successSend) {
-      setLoading(true);
-      registrationAccount(formData.values).then((res) => {
-        setLoading(false)
-        if (!res) { return false };
-        navigate('/reg-end', { replace: true });
-      });
-    }
+
+    setLoading(true);
+    const regValues = { ...formData.values, vertificationId: generateId }
+    registrationAccount(regValues).then((res) => {
+      setLoading(false)
+      if (!res) { return false };
+      navigate('/reg-end', { vertificationId: generateId });
+    });
+
 
   }
 
@@ -43,7 +48,7 @@ const RegMail = ({ formData }) => {
           fields={regFields}
           btnSubmitText={loading ? 'Loading..' : "Регистрация"}
           submitSuccess={submitSuccess}
-          setSuccessSend={setSuccessSend}
+
         />
       </Popup>
       <Section />

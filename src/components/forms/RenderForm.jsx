@@ -13,7 +13,8 @@ let TemplateForm = (props) => {
     waitAnsw,
     submitSuccess,
     colBtn,
-    invalid
+    invalid,
+
   } = props;
 
 
@@ -29,6 +30,7 @@ let TemplateForm = (props) => {
 
       setCheckErrorSubmit(true);
       clearTimeout(idTimeCheck);
+
       idTimeCheck = setTimeout(() => {
         setCheckErrorSubmit(false);
       }, 10000);
