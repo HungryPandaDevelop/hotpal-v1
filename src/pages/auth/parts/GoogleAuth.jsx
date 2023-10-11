@@ -2,25 +2,30 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { googleAuth } from 'services/googleAuth';
 import ActionFn from 'store/actions';
+import { v4 as uuidv4 } from 'uuid';
 
 const GoogleAuth = ({ btnText, ActionFn, account }) => {
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
+  const generateId = uuidv4();
   const onGoogleClick = () => {
-    googleAuth(account).then(uid => {
-      if (!uid) { return false };
+    googleAuth(generateId).then(res => {
+      if (!res[0]) { return false };
 
       // localStorage.setItem('account', JSON.stringify({ uid: uid }));
-      setTimeout(() => {
-        ActionFn('SET_INFO_ACCOUNT', { uid: uid });
-        console.log('account', account)
-        console.log('ss', uid)
-        if (uid === 'auth') {
-          navigate('/cabinet/', { replace: true });
-        } else {
-          navigate('/reg-end', { replace: true });
-        }
-      }, 500)
+      // setTimeout(() => {
+      ActionFn('SET_INFO_ACCOUNT', { uid: res[1] });
+      // console.log('account', account)
+
+      if (res[0] === 'auth') {
+        navigate('/cabinet/', { replace: true });
+      } else {
+        navigate('/reg-end', {
+          state:
+            { vertificationId: generateId }
+        });
+      }
+      // }, 500)
 
 
     });

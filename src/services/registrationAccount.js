@@ -44,7 +44,7 @@ export const registrationAccount = async (formData) => {
     
     
   
-    const formDataCopy = { ...formData, uid: user.uid, typeReg: 'mail' };
+    const formDataCopy = { ...formData, uid: user.uid };
 
     delete formDataCopy.password;
 

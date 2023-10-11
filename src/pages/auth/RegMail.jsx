@@ -30,7 +30,10 @@ const RegMail = ({ formData }) => {
     registrationAccount(regValues).then((res) => {
       setLoading(false)
       if (!res) { return false };
-      navigate('/reg-end', { vertificationId: generateId });
+      navigate('/reg-end', {
+        state:
+          { vertificationId: generateId }
+      });
     });
 
 

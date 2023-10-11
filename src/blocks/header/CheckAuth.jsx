@@ -23,7 +23,8 @@ const CheckAuth = ({
     onAuthStateChanged(auth, (user) => {
       ActionFn('SET_INFO_ACCOUNT', { loaded: true, });
       if (user) {
-        // console.log('in')
+        console.log('in check', user)
+
         getSingleListing('users', user.uid).then(res => {
           // console.log('userInfo', res, userInfo)
           let userInfo = {
@@ -33,11 +34,11 @@ const CheckAuth = ({
             loaded: false,
             ...res
           };
-
-          saveListing(userInfo, user.uid, 'users', true); // обновить время заходу, убрать всплывашку
-
+          console.log('get user', res)
+          if (res) {
+            saveListing(userInfo, user.uid, 'users', true); // обновить время заходу, убрать всплывашку
+          }
           // localStorage.setItem('account', JSON.stringify(userInfo));
-
           ActionFn('SET_INFO_ACCOUNT', userInfo);
         });
 

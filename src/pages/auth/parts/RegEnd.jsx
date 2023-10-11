@@ -1,46 +1,47 @@
-import axios from 'axios';
+import ActionFn from 'store/actions';
 
-import { Link, useNavigate } from 'react-router-dom';
-import { saveListing } from 'services/saveListing';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 
-const RegEnd = ({ account, route }) => {
+import { sendEmail } from 'pages/auth/parts/RegEnd/sendEmail'
 
-  const generateId = route?.params.generateId;
+import { saveListing } from 'services/saveListing';
+
+
+const RegEnd = ({ account, ActionFn }) => {
+
+  const location = useLocation();
+  let [searchParams] = useSearchParams()
+
   useEffect(() => {
-    sendEmail();
-  }, [])
 
-  const sendEmail = () => {
+    if (!account.loaded) {
 
-    // The current location.
-    // console.log(window.location.host);
+      if (account.email && !account.vertificationSend) {
+        sendEmail(account, location);
+      }
+      else if (!account.verificationCheck) {
+        const verificationIdUrl = searchParams.get('vertificationId');
+        const verificationIdAccount = account.vertificationId;
 
-    console.log('account', account)
-    console.log('account', account.email)
+        if (verificationIdUrl) {
+          if (verificationIdUrl === verificationIdAccount) {
 
-
-    if (account.email && !account.vertificationSend) {
-      axios.get("http://hotpal.ru/api/mail.php", {
-        params: {
-          mail: account.email,
-          name: account.name,
-          vertificationId: generateId,
-          host: window.location.host
+            saveListing({ verificationCheck: true }, account.uid, 'users');
+            ActionFn('SET_INFO_ACCOUNT', { verificationCheck: true });
+          }
         }
-      }).then(res => {
+      }
 
-        saveListing({ vertificationSend: true }, account.uid, 'users');
 
-        console.log('res', res.data)
-
-      });
-    } else {
-      console.log('redirect')
-      // navigate('/');
     }
-  }
+  }, [account]);
+
+
+
+
 
   const renderMailSend = () => {
     return (
@@ -54,6 +55,7 @@ const RegEnd = ({ account, route }) => {
       </>
     )
   }
+
   const renderNoReg = () => {
     return (
       <>
@@ -64,20 +66,22 @@ const RegEnd = ({ account, route }) => {
       </>
     )
   }
+
   const renderMailSending = () => {
     return (
       <>
         <h3>Поздравляем!<br />Вы успешно создали аккаунт.</h3>
+        <Link className='btn btn--blue' to="/cabinet">В кабинет</Link>
       </>
     )
   }
 
 
-  if (account.email && account.vertificationSend) {
-    return renderMailSend()
+  if (account.email && account.verificationCheck) {
+    return renderMailSending()
   }
   else if (account.email) {
-    return renderMailSending()
+    return renderMailSend()
   }
   else {
     return renderNoReg()
@@ -93,4 +97,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(RegEnd);
+export default connect(mapStateToProps, { ActionFn })(RegEnd);

@@ -24,7 +24,7 @@ const RegEnd = () => {
           {/* <Link to="/auth-phone" className="btn btn-reg btn-phone"><i></i><span>Войти через номер телефона</span></Link> */}
           <Link to="/auth-mail" className="btn btn-reg btn-mail"><i></i><span>Войти через почту</span></Link>
           <div className="simle-link">
-            <Link to="/">Проблемы со входом?</Link>
+            <Link to="/forgot-pass">Проблемы со входом?</Link>
           </div>
         </div>
       </Popup>

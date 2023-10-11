@@ -6,7 +6,7 @@ import Section from "pages/main/Section"
 
 const RegEndPopup = () => {
 
-  let successMail = 'bink@inbox.ru'
+  // let successMail = 'bink@inbox.ru'
 
   return (
     <>
@@ -14,7 +14,9 @@ const RegEndPopup = () => {
         showStart={true}
         linkBack={true}
       >
-        <RegEnd successMail={successMail} />
+        <RegEnd
+        // successMail={successMail} 
+        />
 
       </Popup>
       <Section />

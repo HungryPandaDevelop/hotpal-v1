@@ -22,7 +22,7 @@ export const getListing = async (baseName,  type, uid ) => {
   let q;
   
   if(type==='userRef'){
-    console.log('in cab', uid)
+    // console.log('in cab', uid)
     q = query(
       listingsRef,
       where('userRef', '==', uid),
@@ -33,6 +33,14 @@ export const getListing = async (baseName,  type, uid ) => {
     q = query(
       listingsRef,
       where('uid', '!=', uid),
+      orderBy('uid', 'desc'),
+
+    );
+  }
+  else if(type==='userEmail'){
+    q = query(
+      listingsRef,
+      where('email', '==', uid),
       orderBy('uid', 'desc'),
 
     );

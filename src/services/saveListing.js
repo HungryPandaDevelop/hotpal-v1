@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 
 
 export const saveListing = async (dataForm, cardsId, baseName, notShow) => {
-  
+    // console.log('dataForm', dataForm)
     try {
       
       const cardsRef = doc(db, baseName, cardsId);
@@ -28,8 +28,9 @@ export const saveListing = async (dataForm, cardsId, baseName, notShow) => {
 
       return true;
     } catch (error) {
+
       toast.error('Невозможно обновить данные')
-      console.log(error)
+      // console.log('ERR', dataForm, cardsId, baseName, error)
 
       return false;
     }

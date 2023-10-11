@@ -21,7 +21,7 @@ import { toast } from 'react-toastify';
 
 
 
-export const googleAuth = async (account) => {
+export const googleAuth = async (generateId) => {
 
   try {
 
@@ -33,22 +33,24 @@ export const googleAuth = async (account) => {
     provider.setCustomParameters({
       prompt: 'select_account',
     });
-    // console.log('step 1')
+    console.log('step 1')
     const userCredential = await signInWithPopup(auth, provider);
 
+    console.log('step 1.1')
 
     const user = userCredential.user;
-    // console.log('step 2')
+    console.log('step 2')
 
     updateProfile(auth.currentUser, {
       displayName: user.displayName
     });
+    console.log('step 3')
 
     // check for user
     const docRef = doc(db, 'users', user.uid);
     const docSnap = await getDoc(docRef);
 
-    // console.log('step 3')
+    console.log('step 4')
 
     if (!docSnap.exists()) {
       // console.log('step 4')
@@ -58,9 +60,10 @@ export const googleAuth = async (account) => {
         name: user.displayName,
         email: user.email,
         uid: user.uid,
+        vertificationId: generateId,
         timestamp: serverTimestamp(),
       });
-      return 'reg';
+      return ['reg', user.uid];
       
     }else{
       toast.success('Авторизация успешна');
@@ -73,14 +76,10 @@ export const googleAuth = async (account) => {
         timestamp: serverTimestamp(),
       }
       await updateDoc(cardsRef, dataForm);
-      return 'auth';
+      return ['auth', user.uid];
       
     }
 
-
-
-
-    return  user.uid;
   }
   catch(error){
     console.log(error)

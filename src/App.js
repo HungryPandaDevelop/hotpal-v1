@@ -26,9 +26,11 @@ import Settings from 'pages/cabinet/Settings';
 import Favorites from 'pages/cabinet/Favorites';
 import Likes from 'pages/cabinet/Likes';
 
+import ForgotPassword from 'pages/auth/ForgotPassword';
+import ChangeForgotPassword from 'pages/auth/ChangeForgotPassword';
 import AuthStart from 'pages/auth/AuthStart';
 import RegStart from 'pages/auth/RegStart';
-import RegPhone from 'pages/auth/RegPhone';
+// import RegPhone from 'pages/auth/RegPhone';
 import RegMail from 'pages/auth/RegMail';
 
 import AuthMail from 'pages/auth/AuthMail';
@@ -76,7 +78,9 @@ const App = ({account})=> {
               <Route path='/reg-start' element={<RegStart/>} ></Route>
               <Route path='/reg-mail' element={<RegMail/>} ></Route>
               <Route path='/auth-mail' element={<AuthMail/>} ></Route>
-              <Route path='/reg-phone' element={<RegPhone/>} ></Route> 
+              <Route path='/forgot-pass' element={<ForgotPassword/>} ></Route>
+              <Route path='/change-forgot-pass' element={<ChangeForgotPassword/>} ></Route>
+              {/* <Route path='/reg-phone' element={<RegPhone/>} ></Route>  */}
               <Route path='/reg-end' element={<RegEndPopup/>} ></Route> 
             </Route>
             

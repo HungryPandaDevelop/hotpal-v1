@@ -87,3 +87,36 @@ export const authFields = {
     wrapClass: "input-box  col-12",
   },
 };
+
+export const getPass = {
+  email: { 
+    name: "email", 
+    label: "Почта", 
+    placeholder: "Введите почту", 
+    type:"text" , 
+    validate: ['required','minLength','mailCheck'],
+    wrapClass: "input-box  col-12",
+  },
+};
+
+export const settingsPassword = {
+
+  checkPassword: { 
+    name: "checkPassword", 
+    label: "Введите пароль",
+    type:"password",
+    wrapClass: "col-12 input-box",
+  },
+  changePassword: { 
+    name: "changePassword", 
+    type:"password",
+    label: "Новый пароль",
+    wrapClass: "col-12 input-box",
+  },
+  checkChangePassword: { 
+    name: "checkChangePassword", 
+    type:"password",
+    label: "Подтвердить пароль",
+    wrapClass: "col-12 input-box",
+  },
+}

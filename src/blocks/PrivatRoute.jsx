@@ -1,8 +1,12 @@
-import { Navigate, Outlet, useSearchParams } from 'react-router-dom';
+import {
+  Navigate,
+  Outlet,
+  // useSearchParams
+} from 'react-router-dom';
 import ActionFn from 'store/actions';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
-import { saveListing } from 'services/saveListing';
+// import { saveListing } from 'services/saveListing';
 
 import { connect } from 'react-redux';
 
@@ -17,29 +21,23 @@ import BestPanel from 'blocks/BestPanel';
 
 const PrivateRoute = ({ account, ActionFn }) => {
 
-  let [searchParams] = useSearchParams()
-  // const [loading, setLoading] = useState(true);
-  // const [verificationCheck, setVerificationCheck] = useState(account.verificationCheck);
-  useEffect(() => {
-    // console.log('account', account)
-    if (!account.loaded && !account.verificationCheck) {
-      const verificationIdUrl = searchParams.get('vertificationId');
-      const verificationIdAccount = account.vertificationId;
+  // let [searchParams] = useSearchParams()
 
-      // console.log('check', verificationIdUrl, verificationIdAccount, account)
+  // useEffect(() => {
+  //   // console.log('account', account)
+  //   if (!account.loaded && !account.verificationCheck) {
+  //     const verificationIdUrl = searchParams.get('vertificationId');
+  //     const verificationIdAccount = account.vertificationId;
 
-      if (verificationIdUrl) {
-        if (verificationIdUrl === verificationIdAccount) {
-          // console.log('send ')
-          // setVerificationCheck(true);
-          saveListing({ verificationCheck: true }, account.uid, 'users');
-          ActionFn('SET_INFO_ACCOUNT', { verificationCheck: true });
-        }
-      } else {
-        // setLoading(false)
-      }
-    }
-  }, [account]);
+  //     if (verificationIdUrl) {
+  //       if (verificationIdUrl === verificationIdAccount) {
+
+  //         saveListing({ verificationCheck: true }, account.uid, 'users');
+  //         ActionFn('SET_INFO_ACCOUNT', { verificationCheck: true });
+  //       }
+  //     }
+  //   }
+  // }, [account]);
 
 
   const renderAuthContent = () => {
