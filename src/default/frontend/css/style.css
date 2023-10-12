@@ -4251,6 +4251,15 @@ button[data-controls=next]:hover {
   font-weight: 700;
   margin-bottom: 8px;
 }
+.cabinet-page .user-top-info--view {
+  gap: 15px;
+}
+.cabinet-page .user-top-info--view h2 {
+  width: 50%;
+}
+.cabinet-page .user-top-info--view .input-box {
+  width: 25%;
+}
 
 .user-top-info {
   display: -webkit-box;
@@ -4262,6 +4271,15 @@ button[data-controls=next]:hover {
 .verification-hint {
   font-size: 14px;
   color: #00AEEF;
+}
+
+.err-date-cabinet {
+  font-size: 12px;
+  color: #ed1834;
+  font-weight: 700;
+  line-height: 1.2;
+  display: inline-block;
+  margin-top: 8px;
 }
 
 .account-main .file-decorate {
@@ -4500,16 +4518,6 @@ button[data-controls=next]:hover {
   .mobile-user-container .main-grid {
     gap: 15px;
   }
-  .tiny-account-stub {
-    height: 240px;
-  }
-  .tiny-account-stub span {
-    margin-top: 20px;
-  }
-  .tiny-account-stub i {
-    width: 70px;
-    height: 130px;
-  }
   .tags-add-container .btn {
     width: 100%;
   }
@@ -4629,6 +4637,7 @@ button[data-controls=next]:hover {
     text-align: center;
     padding: 15px;
     font-size: 12px;
+    bottom: -10px;
   }
   .btn-save-outer span {
     margin: 0;
@@ -4695,7 +4704,7 @@ button[data-controls=next]:hover {
 }
 
 .tiny-account-img {
-  height: 310px;
+  height: 297px;
   position: relative;
 }
 .tiny-account-img .delete-img-dragdrop {
@@ -4709,7 +4718,7 @@ button[data-controls=next]:hover {
 }
 
 .tiny-account-stub {
-  height: 400px;
+  height: 222px;
   margin: 0 0 15px;
   border-radius: 30px;
   position: relative;
@@ -4724,8 +4733,8 @@ button[data-controls=next]:hover {
 }
 .tiny-account-stub i {
   display: inline-block;
-  width: 176px;
-  height: 230px;
+  width: 146px;
+  height: 190px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -4744,6 +4753,21 @@ button[data-controls=next]:hover {
   margin-right: 0;
 }
 
+@media (max-width: 568px) {
+  .tiny-account-stub {
+    height: 127px;
+  }
+  .tiny-account-stub span {
+    font-size: 14px;
+    color: #00AEEF;
+    max-width: none;
+    margin: 0;
+  }
+  .tiny-account-stub i {
+    width: 70px;
+    height: 130px;
+  }
+}
 .settings-tabs-container {
   display: -webkit-box;
   display: -ms-flexbox;

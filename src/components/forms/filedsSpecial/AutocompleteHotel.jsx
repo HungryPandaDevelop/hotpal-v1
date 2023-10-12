@@ -36,7 +36,7 @@ const TempateInput = (props) => {
   useEffect(() => {
 
     inputRef.current.addEventListener("focus", selectOpen);
-    console.log('input.value', input.value)
+    // console.log('input.value', input.value)
     if (input.value) {
       // input.onChange(input.value);
       setFilterVal(input.value)

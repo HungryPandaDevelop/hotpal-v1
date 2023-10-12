@@ -2,16 +2,17 @@ import UserTop from 'pages/users/detail/UserTop';
 import RenderFields from 'components/forms/RenderFields';
 import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainerCabinet'
 import Travel from 'pages/cabinet/Travel';
-
+import { calculateAge } from 'pages/users/hooks/calculateAge';
 const Mobile = ({
   user,
   fields,
   checkErrorSubmit,
-  setErrCheck,
+
   btnSubmiText,
   waitAnsw,
   onSubmit,
-  newValue
+  newValue,
+  dirty
 
 }) => {
   return (
@@ -32,6 +33,16 @@ const Mobile = ({
         />
       </div>
       <div className="col-xs-6">
+        <div className='input-box'>
+          <RenderFields
+            type="single"
+            fields={fields.dateBerth}
+            checkErrorSubmit={checkErrorSubmit}
+          />
+          {newValue && calculateAge(newValue.values.dateBerth) < 18 && <span className='err-date-cabinet'>Вам нету 18 лет, Ваша анкета не участвует в поиске</span>}
+
+
+        </div>
         <div className="personal-info">
           <ul className="ln">
             <li>
@@ -41,7 +52,7 @@ const Mobile = ({
                   type="single"
                   fields={fields.work}
                   checkErrorSubmit={checkErrorSubmit}
-                  setErrCheck={setErrCheck}
+
                 />
               </div>
             </li>
@@ -52,7 +63,7 @@ const Mobile = ({
                   type="single"
                   fields={fields.zodiac}
                   checkErrorSubmit={checkErrorSubmit}
-                  setErrCheck={setErrCheck}
+
                 />
               </div>
             </li>
@@ -63,7 +74,7 @@ const Mobile = ({
                   type="single"
                   fields={fields.tripPoint}
                   checkErrorSubmit={checkErrorSubmit}
-                  setErrCheck={setErrCheck}
+
                 />
               </div>
             </li>
@@ -74,7 +85,7 @@ const Mobile = ({
                   type="single"
                   fields={fields.orientation}
                   checkErrorSubmit={checkErrorSubmit}
-                  setErrCheck={setErrCheck}
+
                 />
               </div>
             </li>
@@ -110,15 +121,15 @@ const Mobile = ({
           type="single"
           fields={fields.description}
           checkErrorSubmit={checkErrorSubmit}
-          setErrCheck={setErrCheck}
+
         />
       </div>
-      <div className={`btn-save-outer ${newValue ? 'active' : ''}`}>
+      <div className={`btn-save-outer ${dirty ? 'active' : ''}`}>
         <RenderBtnContainer
           btnSubmitText={btnSubmiText}
           waitAnsw={waitAnsw}
           onSubmit={onSubmit}
-          newValue={newValue}
+
         />
       </div>
     </>

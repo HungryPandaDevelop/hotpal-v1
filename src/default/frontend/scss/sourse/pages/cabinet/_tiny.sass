@@ -21,7 +21,7 @@
 	@include positionElement(100%,100%,0,0,left,top,2)
 	box-shadow: inset 0px -50px 80px rgb(0 0 0 / 22%)
 .tiny-account-img
-	height: 310px
+	height: 297px
 	position: relative
 	.delete-img-dragdrop
 		top: 30px
@@ -30,7 +30,7 @@
 	overflow: hidden
 	margin: 0 0 15px
 .tiny-account-stub
-	height: 400px
+	height: 222px
 	margin: 0 0 15px
 
 	border-radius: 30px
@@ -44,8 +44,8 @@
 		margin: 60px auto 0px
 	i
 		display: inline-block
-		width: 176px
-		height: 230px
+		width: 146px
+		height: 190px
 		@include bgImageEl("../images/tiny-stub.svg")
 .hint-tiny-file
 	font-size: 12px
@@ -55,3 +55,14 @@
 	.dragdrop-file-item
 		margin-top: 15px
 		margin-right: 0
+@media (max-width: 568px)
+	.tiny-account-stub
+		height: 127px
+		span
+			font-size: 14px
+			color: #00AEEF
+			max-width: none
+			margin: 0
+		i
+			width: 70px
+			height: 130px

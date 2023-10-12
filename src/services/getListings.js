@@ -59,7 +59,6 @@ export const getListing = async (baseName,  type, uid ) => {
     );
   }
   else if(type==='usersArray'){
-    console.log('u a', uid)
     q = query(
       listingsRef,
       where('uid', 'in', uid)

@@ -11,7 +11,7 @@ import Rooms from 'pages/chat/Rooms';
 import Tabs from 'pages/cabinet/parts/Tabs';
 
 
-const Chat = ({ account, rooms }) => {
+const Chat = ({ account }) => {
 
   const params = useParams();
 

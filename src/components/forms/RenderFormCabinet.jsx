@@ -1,11 +1,11 @@
 
-import { reduxForm } from 'redux-form';
+import { reduxForm, reset } from 'redux-form';
 
 import { useState, useRef } from 'react';
 
 import Mobile from './partsCabinet/Mobile';
 import Desktop from './partsCabinet/Desktop';
-import { onSubmit } from 'components/forms/formParts/onSubmit';
+// import { onSubmit } from 'components/forms/formParts/onSubmit';
 // --------------------------------------------------------------------
 
 const TemplateForm = (props) => {
@@ -15,15 +15,17 @@ const TemplateForm = (props) => {
     submitSuccess,
     user,
     dirty,
+    dispatch,
     invalid,
-
-
+    newValue,
+    initialize
   } = props;
-
 
   const windowSize = useRef(window.innerWidth).current;
 
   const [checkErrorSubmit, setCheckErrorSubmit] = useState(false);
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const onSubmit = (e) => {
     let idTimeCheck;
@@ -40,6 +42,7 @@ const TemplateForm = (props) => {
     } else {
 
       submitSuccess();
+
     }
   };
 
@@ -56,7 +59,8 @@ const TemplateForm = (props) => {
               btnSubmiText={'сохранить'}
               waitAnsw={waitAnsw}
               onSubmit={onSubmit}
-            // dirty={dirty}
+              newValue={newValue}
+              dirty={dirty}
             />
           )}
           {windowSize > 576 && (
@@ -67,7 +71,9 @@ const TemplateForm = (props) => {
               btnSubmiText={'сохранить'}
               waitAnsw={waitAnsw}
               onSubmit={onSubmit}
-            // dirty={dirty}
+              newValue={newValue}
+              dirty={dirty}
+
 
             />
           )}

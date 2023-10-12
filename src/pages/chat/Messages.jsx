@@ -7,7 +7,9 @@ import { getMyRoomMessages, stopWatch } from 'services/chatEvents';
 import MessagesItem from './MessagesItem';
 import MessagesHead from './MessagesHead';
 
-const Messages = ({ uid, roomId, type }) => {
+import { updateRead } from 'services/chatEvents';
+
+const Messages = ({ uid, roomId, type, rooms }) => {
 
   const [allMessages, setAllMessages] = useState([]);
 
@@ -16,7 +18,9 @@ const Messages = ({ uid, roomId, type }) => {
   useEffect(() => {
 
     getMyRoomMessages(setAllMessages, roomId);
-
+    const currentRoom = rooms && rooms.find(el => el.id === roomId);
+    console.log('cr', currentRoom)
+    updateRead(roomId, currentRoom, uid)
     return () => {
       stopWatch();
     }
@@ -51,7 +55,7 @@ const mapStateToProps = (state) => {
 
   return {
     uid: state.account.uid,
-    rooms: state.account.uid,
+    rooms: state.globalState.rooms,
   }
 }
 

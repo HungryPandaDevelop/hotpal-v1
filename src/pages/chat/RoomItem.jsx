@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import { updateRead } from 'services/chatEvents';
+// import { updateRead } from 'services/chatEvents';
 
 
 import { userImg } from 'pages/users/catalog/UsersItem/userImg';
-
-import { getCurrentTime } from 'pages/chat/RoomItem/getCurrentTime';
 
 import { getSingleListing } from 'services/getSingleListing';
 
@@ -46,24 +44,25 @@ const RoomItem = ({
     });
 
     let count = 0;
+
     room.data.messages.map(undread => {
       if (!undread.read && undread.uid !== uid) {
         count++;
       }
     });
+
     setCountUnread(count);
 
-
-
-
-  }, []);
+  }, [room]);
 
   useEffect(() => {
+    console.log('room in', roomUrl, room.id)
     if (roomUrl === room.id) {
-      updateRead(roomUrl, room, uid);
+
+      // updateRead(roomUrl, room, uid);
+
       if (type !== 'popup') {
         ActionFn('SET_CURRENT_ROOM', { roomUserInfo: roomUserInfo });
-
       }
     };
 

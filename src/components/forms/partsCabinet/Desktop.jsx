@@ -12,8 +12,11 @@ const Desktop = ({
   waitAnsw,
   onSubmit,
   dirty,
-
+  newValue
 }) => {
+
+
+
   return (
     <>
       <div className="col-8 col-sm-6 col-xs-12">
@@ -24,11 +27,16 @@ const Desktop = ({
             {!user.verificationCheck && <div className="verification-hint">Вы не верифицированы</div>}
           </h2>
 
-          <RenderFields
-            type="single"
-            fields={fields.dateBerth}
-            checkErrorSubmit={checkErrorSubmit}
-          />
+          <div className='input-box'>
+            <RenderFields
+              type="single"
+              fields={fields.dateBerth}
+              checkErrorSubmit={checkErrorSubmit}
+            />
+
+            {newValue && calculateAge(newValue.values.dateBerth) < 18 && <span className='err-date-cabinet'>Вам нету 18 лет, Ваша анкета не участвует в поиске</span>}
+
+          </div>
           <RenderFields
             type="single"
             fields={fields.gender}
@@ -133,7 +141,7 @@ const Desktop = ({
           checkErrorSubmit={checkErrorSubmit}
 
         />
-        <div className={`btn-save-outer ${dirty ? 'active' : 'active'}`}>
+        <div className={`btn-save-outer ${dirty ? 'active' : ''}`}>
           <RenderBtnContainer
             btnSubmitText={btnSubmiText}
             waitAnsw={waitAnsw}
