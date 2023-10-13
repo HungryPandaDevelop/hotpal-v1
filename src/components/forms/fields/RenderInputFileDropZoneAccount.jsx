@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import { Field } from 'redux-form';
 
-import storeImage from 'services/storeImage';
+import axios from 'axios';
 
 import { useDropzone } from 'react-dropzone'
 
@@ -45,7 +45,6 @@ const TemplateFile = (props) => {
     label,
     labelSecond,
     wrapClass,
-    onSubmit
   } = props.obj;
 
   // console.log('onSubmit', onSubmit)
@@ -63,25 +62,38 @@ const TemplateFile = (props) => {
 
 
   const onDrop = async (acceptedFiles) => {
-    let fileUrls;
-    console.log(acceptedFiles)
-    if (acceptedFiles.length < 10) {
-      fileUrls = await Promise.all( // загрузили получили урлы
-        acceptedFiles.map((file) => storeImage(file, setLoadingFile, 'users'))
-      ).catch(() => {
-        console.log('err')
-        return
-      });
+    setLoadingFile(true);
+    console.log('acceptedFiles', acceptedFiles)
+    const files = acceptedFiles;
+    let fileUrls = [];
 
-      console.log('fileUrls', fileUrls)
+    try {
 
-      setNameFile([...nameFile, ...fileUrls]);
+      for (let index = 0; index < files.length; index++) {
+        // [...files].map((file, index) => {
 
-      input.onChange([...nameFile, ...fileUrls]);
-    } else {
-      alert('меньше')
+        const formData = new FormData();
+        formData.append("image", files[index]);
+
+        const response = await axios.post(`http://hotpal.ru/api/upload.php`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+
+        fileUrls.push({ url: response.data.imageURL, id: response.data.newFileName });
+        // fileFull.push(response.data.newFileName);
+
+      }
+
+
+      setNameFile(fileUrls);
+      input.onChange(fileUrls);
+      setLoadingFile(false);
     }
-
+    catch (err) {
+      console.log('err', err);
+    }
 
 
   };
@@ -92,20 +104,24 @@ const TemplateFile = (props) => {
   });
 
 
-  const deleteFile = (deleteItem, e) => {
-    setNameFile(nameFile.filter(item => item !== deleteItem))
+  const deleteFile = async (deleteItem) => {
+    console.log('deleteItem', deleteItem)
+    try {
+      const res = await axios.post(`http://hotpal.ru/api/deleteUpload.php`, { fileToDelete: deleteItem }, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
+      console.log('Результат удаления файла:', res);
 
-    input.onChange(nameFile.filter(item => item !== deleteItem))
+      setNameFile(nameFile.filter(item => item.id !== deleteItem))
 
-    const desertRef = ref(storage, nameFile);
+      input.onChange(nameFile.filter(item => item.id !== deleteItem))
 
-    deleteObject(desertRef).then(() => {
-      console.log('file delete')
-      // onSubmit(e)
-    }).catch((error) => {
-      console.log('file delete err', error)
-    });
 
+    } catch (err) {
+      console.error('Ошибка при удалении файла', err);
+    }
   }
 
 
@@ -128,9 +144,9 @@ const TemplateFile = (props) => {
             {nameFile && nameFile.map((item, index) => (
               <div className="tiny-account-item" key={index}>
                 <div className="tiny-account-img">
-                  <img src={item} alt={item} />
+                  <img src={item.url} alt={item.url} />
                   {windowSize < 576 && (
-                    <i className="delete-img-dragdrop" onClick={() => { deleteFile(item) }}></i>
+                    <i className="delete-img-dragdrop" onClick={() => { deleteFile(item.id) }}></i>
                   )}
                 </div>
               </div>
@@ -152,9 +168,9 @@ const TemplateFile = (props) => {
             {nameFile && nameFile.map((item, index) => (
               <div className="dragdrop-file-item" key={index}>
                 <div className="dragdrop-file-img">
-                  <img src={item} alt={item} />
+                  <img src={item.url} alt={item.url} />
                 </div>
-                <i className="delete-img-dragdrop" onClick={(e) => { deleteFile(item, e) }}></i>
+                <i className="delete-img-dragdrop" onClick={(e) => { deleteFile(item.id, e) }}></i>
               </div>
             ))}
           </TinySlider>

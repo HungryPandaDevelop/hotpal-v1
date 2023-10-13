@@ -14,6 +14,7 @@ const Passwords = () => {
       fields={settingsPassword}
       btnSubmitText="Поменять пароль"
       submitSuccess={submitSuccess}
+
     />
   )
 }

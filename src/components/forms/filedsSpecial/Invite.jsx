@@ -9,8 +9,8 @@ const TempateInput = (props) => {
   } = props;
 
   const {
-    onSubmit,
-    setIgnoreText,
+    // onSubmit,
+    ignoreTextSubmit,
     // dispatch,
   } = props.obj;
 
@@ -18,9 +18,9 @@ const TempateInput = (props) => {
 
   const sendInvite = (e, set) => {
 
-    setIgnoreText(false);
+    ignoreTextSubmit(e);
 
-    onSubmit(e);
+    // onSubmit(e);
 
   }
   const changeInvite = (type, text) => {

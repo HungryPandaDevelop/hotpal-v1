@@ -3,12 +3,12 @@ import ActionFn from 'store/actions';
 import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const InfoAccount = ({ uid, ActionFn }) => {
 
   const auth = getAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const onLogOut = () => {
     auth.signOut();

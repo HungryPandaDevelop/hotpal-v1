@@ -1,25 +1,26 @@
 import { saveListing } from 'services/saveListing';
 
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 import RenderForm from 'components/forms/RenderFormCabinet';
 
-import { getSingleListing } from 'services/getSingleListing';
+// import { getSingleListing } from 'services/getSingleListing';
 
 import { accountFields } from 'base/forms/accountFields';
 
 import { connect } from 'react-redux';
 
 import Tabs from 'pages/cabinet/parts/Tabs';
+import ActionFn from 'store/actions';
 
-const Cabinet = ({ formData, account }) => {
+const Cabinet = ({ formData, account, ActionFn }) => {
 
 
 
   const submitSuccess = () => {
 
     saveListing(formData.values, account.uid, 'users');
-
+    ActionFn('SET_INFO_ACCOUNT', { ...account, ...formData.values });
   };
 
 
@@ -37,6 +38,7 @@ const Cabinet = ({ formData, account }) => {
           user={account}
           submitSuccess={submitSuccess}
           newValue={formData}
+
         />
       </div>
     </>
@@ -51,5 +53,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Cabinet);
+export default connect(mapStateToProps, { ActionFn })(Cabinet);
 

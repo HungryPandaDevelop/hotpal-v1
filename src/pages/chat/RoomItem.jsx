@@ -56,7 +56,7 @@ const RoomItem = ({
   }, [room]);
 
   useEffect(() => {
-    console.log('room in', roomUrl, room.id)
+
     if (roomUrl === room.id) {
 
       // updateRead(roomUrl, room, uid);
@@ -84,7 +84,7 @@ const RoomItem = ({
     // console.log('myMessages', myMessages)
     if (myMessages.length > 0) {
       let tempLastMessage = myMessages[myMessages.length - 1];
-      lastMessage = (tempLastMessage.text.length !== 0) ? tempLastMessage.text : tempLastMessage.invite.text
+      lastMessage = (tempLastMessage.message.length !== 0) ? tempLastMessage.message : tempLastMessage.invite.message
       // console.log('lastMessage', myMessages[myMessages.length - 1])
     }
 

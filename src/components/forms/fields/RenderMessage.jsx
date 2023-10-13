@@ -15,7 +15,8 @@ const TempateInput = (props) => {
     maxLength,
     wrapClass,
     checkErrorSubmit,
-    onSubmit
+    onSubmit,
+    messageRef
   } = props.obj;
 
 
@@ -44,6 +45,7 @@ const TempateInput = (props) => {
         placeholder={placeholder}
         maxLength={maxLength}
         onChange={handleOnChange}
+        ref={messageRef}
       >
       </textarea>
 

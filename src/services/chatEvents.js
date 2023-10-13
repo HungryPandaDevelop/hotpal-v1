@@ -180,14 +180,18 @@ export const sendMessage = async (roomId, uid, message ) => {
   const getRoomInfo = getDocRoomInfo.data();
 
 
+  console.log('message', message)
 
   getRoomInfo.messages.push({
-    ...message,
     uid: uid,
     read: false,
-    timestamp: new Date()
+    message: '',
+    invite: '',
+    fileMessage: [],
+    timestamp: new Date(),
+    ...message,
   });
-
+  console.log('message', getRoomInfo)
   try {
     await setDoc(doc(db, 'rooms', roomId), getRoomInfo);
     toast.success('Сообщение отправлено');
@@ -199,7 +203,7 @@ export const sendMessage = async (roomId, uid, message ) => {
 }
 
 export const updateRead = async (roomId, room, uid)=>{
-
+  console.log('room', room)
   const changeRead = room.data.messages.map(message=>{
     if(message.uid !== uid){
       message.read = true

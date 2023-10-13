@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import { connect } from 'react-redux';
 
@@ -9,23 +9,51 @@ import MessagesHead from './MessagesHead';
 
 import { updateRead } from 'services/chatEvents';
 
+import { animateScroll as scroll } from 'react-scroll';
+
 const Messages = ({ uid, roomId, type, rooms }) => {
 
+  const chatRef = useRef(null);
   const [allMessages, setAllMessages] = useState([]);
+
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   // const [unreadMessages, setUnreadMessages] = useState(0);
 
   useEffect(() => {
 
+
     getMyRoomMessages(setAllMessages, roomId);
-    const currentRoom = rooms && rooms.find(el => el.id === roomId);
-    console.log('cr', currentRoom)
-    updateRead(roomId, currentRoom, uid)
+
+
+    const currentRoom = rooms.find(el => el.id === roomId);
+    if (currentRoom) {
+      updateRead(roomId, currentRoom, uid);
+
+    }
+
+
+
     return () => {
       stopWatch();
     }
   }, [roomId]);
 
+  const scrollToBottom = () => {
+
+    scroll.scrollToBottom({
+      containerId: 'messages-container', // Здесь укажите ID вашего контейнера
+      duration: 250, // Настройте длительность анимации
+    });
+  }
+
+  useEffect(() => {
+
+    if (imageLoaded) {
+      scrollToBottom();
+    }
+
+  }, [allMessages, imageLoaded])
 
   const renderMessages = () => {
     if (allMessages.length <= 0) {
@@ -37,13 +65,14 @@ const Messages = ({ uid, roomId, type, rooms }) => {
       uid={uid}
       roomId={roomId}
       index={index}
+      setImageLoaded={setImageLoaded}
     />)
   }
 
   return (
     <>
       {type !== 'popup' && <MessagesHead />}
-      <div className="messages-container custom-scroll">
+      <div id="messages-container" className="messages-container custom-scroll" ref={chatRef}>
 
         {renderMessages()}
       </div>

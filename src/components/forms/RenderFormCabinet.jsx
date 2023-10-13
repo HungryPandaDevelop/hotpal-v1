@@ -1,5 +1,5 @@
 
-import { reduxForm, reset } from 'redux-form';
+import { reduxForm } from 'redux-form';
 
 import { useState, useRef } from 'react';
 
@@ -15,30 +15,31 @@ const TemplateForm = (props) => {
     submitSuccess,
     user,
     dirty,
-    dispatch,
+    // dispatch,
     invalid,
     newValue,
-    initialize
+    // initialize
   } = props;
 
   const windowSize = useRef(window.innerWidth).current;
 
   const [checkErrorSubmit, setCheckErrorSubmit] = useState(false);
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  // const [formSubmitted, setFormSubmitted] = useState(false);
 
   const onSubmit = (e) => {
     let idTimeCheck;
     e.preventDefault();
 
-    // console.log('sub form invalid check', invalid)
-
     if (invalid) {
+
       setCheckErrorSubmit(true);
       clearTimeout(idTimeCheck);
+
       idTimeCheck = setTimeout(() => {
         setCheckErrorSubmit(false);
-      }, 10000);
+      }, 3000);
+
     } else {
 
       submitSuccess();

@@ -1,10 +1,11 @@
-import { getStorage, ref, deleteObject } from "firebase/storage";
 
 import { useState, useEffect } from 'react';
 
-import { Field } from 'redux-form';
+import { Field, change } from 'redux-form';
 
-import storeImage from 'services/storeImage';
+import axios from 'axios';
+
+// import storeImage from 'services/storeImage';
 
 import { useRef } from 'react';
 
@@ -12,7 +13,7 @@ const TemplateFile = (props) => {
 
   const inputRef = useRef(null);
 
-  const storage = getStorage();
+  // const storage = getStorage();
 
   const {
     input,
@@ -23,7 +24,9 @@ const TemplateFile = (props) => {
     label,
     labelSecond,
     wrapClass,
-    textEmpty
+    textEmpty,
+    dispatch,
+    messageRef
   } = props.obj;
 
   const [nameFile, setNameFile] = useState([]);
@@ -38,46 +41,63 @@ const TemplateFile = (props) => {
   const onCallFileInput = () => {
     inputRef.current.click();
   }
-  const onChange = async (acceptedFiles) => {
 
-    let fileUrls;
-    // 
-    const files = [...acceptedFiles.target.files];
-    console.log(files)
-    if (files.length < 10) {
-      fileUrls = await Promise.all( // загрузили получили урлы
-        files.map((file) => storeImage(file, setLoadingFile, 'users'))
-      ).catch(() => {
-        console.log('err')
-        return
-      });
+  const onChange = async (e) => {
+    setLoadingFile(true);
 
-      console.log('fileUrls', fileUrls)
+    const files = e.target.files;
+    let fileUrls = [];
 
-      setNameFile([...nameFile, ...fileUrls]);
+    dispatch(change('chatForm', 'message', ' '));
 
-      input.onChange([...nameFile, ...fileUrls]);
-    } else {
-      alert('меньше')
+    try {
+      messageRef.current.focus();
+      for (let index = 0; index < files.length; index++) {
+        // [...files].map((file, index) => {
+
+        const formData = new FormData();
+        formData.append("image", files[index]);
+
+        const response = await axios.post(`http://hotpal.ru/api/upload.php`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+
+        fileUrls.push({ url: response.data.imageURL, id: response.data.newFileName });
+        // fileFull.push(response.data.newFileName);
+
+      }
+
+
+      setNameFile(fileUrls);
+      input.onChange(fileUrls);
+      setLoadingFile(false);
     }
-
-
+    catch (err) {
+      console.log('err', err);
+    }
 
   };
 
-  const deleteFile = (deleteItem) => {
-    setNameFile(nameFile.filter(item => item !== deleteItem))
+  const deleteFile = async (deleteItem) => {
+    console.log('deleteItem', deleteItem)
+    try {
+      const res = await axios.post(`http://hotpal.ru/api/deleteUpload.php`, { fileToDelete: deleteItem }, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
+      console.log('Результат удаления файла:', res);
 
-    input.onChange(nameFile.filter(item => item !== deleteItem))
+      setNameFile(nameFile.filter(item => item.id !== deleteItem))
 
-    const desertRef = ref(storage, nameFile);
+      input.onChange(nameFile.filter(item => item.id !== deleteItem))
 
-    deleteObject(desertRef).then(() => {
-      console.log('file delete')
-    }).catch((error) => {
-      console.log('file delete err', error)
-    });
 
+    } catch (err) {
+      console.error('Ошибка при удалении файла', err);
+    }
   }
 
 
@@ -103,9 +123,9 @@ const TemplateFile = (props) => {
         {nameFile && nameFile.map((item, index) => (
           <div className="dragdrop-file-item" key={index}>
             <div className="dragdrop-file-img">
-              <img src={item} alt={item} />
+              <img src={item.url} alt={item.url} />
             </div>
-            <i onClick={() => { deleteFile(item) }}></i>
+            <i className="delete-img-dragdrop" onClick={() => { deleteFile(item.id) }}></i>
           </div>
         ))}
       </div>

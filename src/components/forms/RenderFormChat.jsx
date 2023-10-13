@@ -3,7 +3,7 @@ import RederBtnChatContainer from 'components/forms/formParts/RederBtnChatContai
 
 import { reduxForm } from 'redux-form';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // --------------------------------------------------------------------
 
@@ -13,62 +13,65 @@ const TemplateForm = (props) => {
     btnSubmitText,
     waitAnsw,
     submitSuccess,
-    setInviteMessage,
     reset,
-    dispatch,
     colText,
     colBtn,
-    invalid
+    invalid,
+    dispatch,
   } = props;
 
-
+  const messageRef = useRef(null);
 
   const [checkErrorSubmit, setCheckErrorSubmit] = useState(false);
 
 
-  const [ignoreText, setIgnoreText] = useState(false);
+
+  const ignoreTextSubmit = (e) => {
+    e.preventDefault();
+    submitSuccess();
+    reset();
+  }
 
   const onSubmit = (e) => {
+
+
+
+
+
     let idTimeCheck;
     e.preventDefault();
-
-    setTimeout(() => {
+    // if (sendValue.)
+    if (invalid) {
       setCheckErrorSubmit(true);
-    }, 10000);
-
-    // console.log('errCheck', errCheck)
-
-    if (invalid && ignoreText) {
-
-      setCheckErrorSubmit(true);
-
       clearTimeout(idTimeCheck);
 
       idTimeCheck = setTimeout(() => {
         setCheckErrorSubmit(false);
-      }, 10000);
+      }, 3000);
 
     } else {
-      setIgnoreText(false)
       submitSuccess();
       reset();
     }
 
 
-
-
   };
 
+  const customFieldImg = {
+    ...fields.fileMessage,
+    dispatch: dispatch,
+    messageRef: messageRef
+  }
   const customFieldMessage = {
     ...fields.message,
-    // dispatch: dispatch,
+    messageRef: messageRef,
     onSubmit: onSubmit
   }
   const customFieldsInv = {
     ...fields.invite,
     // dispatch: dispatch,
     onSubmit: onSubmit,
-    setIgnoreText: setIgnoreText,
+    ignoreTextSubmit: ignoreTextSubmit,
     // setInviteMessage: setInviteMessage
   }
 
@@ -88,8 +91,9 @@ const TemplateForm = (props) => {
             />
             <RenderFields
               type="single"
-              fields={fields.fileMessage}
-              checkErrorSubmit={checkErrorSubmit}
+              fields={customFieldImg}
+              dispatch={dispatch}
+
 
             />
           </div>
@@ -115,7 +119,7 @@ const TemplateForm = (props) => {
 
 
 export default reduxForm({
-  form: 'singleInput',
+  form: 'chatForm',
   enableReinitialize: true,
 })(TemplateForm);
 

@@ -16,6 +16,7 @@ const Privacy = ({ formData, uid, listings }) => {
       btnSubmitText="Сохранить"
       initialValues={listings}
       submitSuccess={submitSuccess}
+
     />
   )
 }

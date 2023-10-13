@@ -3220,6 +3220,19 @@ header.main-page-header .btn-hamburger {
   width: 25px;
   height: 25px;
 }
+.controls-panel-popup .chat-form .file-input-container {
+  background-color: #ffffff;
+  padding: 8px;
+  border-radius: 8px;
+  margin: 0;
+}
+.controls-panel-popup .chat-form .delete-img-dragdrop {
+  right: 10px;
+}
+.controls-panel-popup .chat-form .dragdrop-file-item {
+  width: 90px;
+  height: 60px;
+}
 
 .popup-chat-rooms {
   position: relative;
@@ -6706,6 +6719,9 @@ button[data-controls=next]:hover {
 }
 .chat-form .file-input-container {
   margin-top: 15px;
+  -moz-text-align-last: left;
+       text-align-last: left;
+  padding-bottom: 15px;
 }
 .chat-form .input-file {
   display: none;

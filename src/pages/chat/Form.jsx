@@ -1,11 +1,11 @@
-import RenderForm from 'components/forms/RenderForm';
+// import RenderForm from 'components/forms/RenderForm';
 import RenderFormChat from 'components/forms/RenderFormChat';
 
-import { useState } from 'react';
+// import { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { chatFields } from 'base/forms/chatFields';
-import { chatPopupFields } from 'base/forms/chatPopupFields';
+// import { chatPopupFields } from 'base/forms/chatPopupFields';
 
 import { sendMessage } from 'services/chatEvents';
 
@@ -16,15 +16,15 @@ const Form = ({ formData, uid, roomId, type }) => {
 
   const submitSuccess = () => {
 
-    let message = {
-      text: formData?.values.message ? formData.values.message : '',
-      invite: formData?.values.invite ? formData.values.invite : '',
-      imgs: formData?.values.fileMessage ? formData.values.fileMessage : ''
-    }
+    // let message = {
+    //   text: formData.values.message ? formData.values.message : '',
+    //   invite: formData?.values.invite ? formData.values.invite : '',
+    //   imgs: formData?.values.fileMessage ? formData.values.fileMessage : ''
+    // }
 
-    console.log('formData', message)
+    // console.log('formData', message)
 
-    sendMessage(roomId, uid, message);
+    sendMessage(roomId, uid, formData.values);
 
   }
 
@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
 
   return {
     uid: state.account.uid,
-    formData: state.form.singleInput,
+    formData: state.form.chatForm,
   }
 }
 

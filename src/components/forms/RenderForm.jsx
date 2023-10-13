@@ -33,7 +33,7 @@ let TemplateForm = (props) => {
 
       idTimeCheck = setTimeout(() => {
         setCheckErrorSubmit(false);
-      }, 10000);
+      }, 3000);
     } else {
 
       submitSuccess();
