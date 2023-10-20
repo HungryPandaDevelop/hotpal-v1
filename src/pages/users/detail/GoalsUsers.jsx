@@ -1,17 +1,12 @@
-import { renderGoals } from 'pages/users/hooks/renderGoals';
-
 
 const GoalsUsers = ({ user }) => {
 
   const { goals } = user;
 
-  if (goals === undefined || goals.length === 0) { return false; }
-
-
   return (
     <div className="tags-container">
       <h3>Цели:</h3>
-      {goals.map((goal, index) => (
+      {(goals === undefined || goals.length === 0) ? 'Cписок целей пуст' : goals.map((goal, index) => (
         <div className="tag" key={index}><span dangerouslySetInnerHTML={{ __html: goal }}></span> </div>
       ))
       }

@@ -88,7 +88,7 @@ const RoomsSearchPanel = ({
     <>
       {stateTravelForm ? (<RenderForm
         fields={settingsTravel}
-        btnSubmitText="Я буду в эти даты"
+        btnSubmitText="Подтверждаю"
         initialValues={{ dateTravelRange: moment().format('DD.MM.YYYY') + ' - ' + moment().add(2, 'days').format('DD.MM.YYYY') }}
         submitSuccess={submitSuccess}
       />) : renderWillThisPlace()}

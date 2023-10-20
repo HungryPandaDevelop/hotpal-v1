@@ -27,6 +27,7 @@
     "react-draft-wysiwyg": "^1.15.0",
     "react-dropzone": "^14.2.3",
     "react-input-mask": "^2.0.4",
+    "react-lightslider": "^1.0.2",
     "react-quill": "^2.0.0",
     "react-redux": "^7.2.6",
     "react-redux-form": "^1.16.14",

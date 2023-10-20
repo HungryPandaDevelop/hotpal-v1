@@ -1,5 +1,5 @@
 export const orientation = [
-  
+    {label:"Очистить", value: null}, 
     {label:"Гетеросексуал", value:"Гетеросексуал"}, 
     {label:"Гомосексуал", value:"Гомосексуал"}, 
     {label:"Бисексуал", value:"Бисексуал"}, 

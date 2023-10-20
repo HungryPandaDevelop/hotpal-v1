@@ -1,4 +1,5 @@
 export const zodiac = [
+  {label:"Очистить", value: null}, 
   {label:"Овен", value:"Овен"}, 
   {label:"Телец", value:"Телец"}, 
   {label:"Близнецы", value:"Близнецы"}, 

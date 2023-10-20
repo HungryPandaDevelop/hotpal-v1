@@ -6,6 +6,11 @@ import img2 from 'default/frontend/images/partners/2.svg'
 import img3 from 'default/frontend/images/partners/3.svg'
 import img4 from 'default/frontend/images/partners/4.svg'
 
+import img1w from 'default/frontend/images/partners/1_white.svg'
+import img2w from 'default/frontend/images/partners/2_white.svg'
+import img3w from 'default/frontend/images/partners/3_white.svg'
+import img4w from 'default/frontend/images/partners/4_white.svg'
+
 
 const Section = ({ account }) => {
   return (
@@ -40,11 +45,20 @@ const Section = ({ account }) => {
         </div>
       </section>
       <section className="partners-home">
-        <div className="partners-container main-full">
-          <div className="partners-item"> <img src={img1} alt="" /><b>2560</b><span>гостей</span></div>
-          <div className="partners-item"> <img src={img2} alt="" /><b>2560</b><span>гостей</span></div>
-          <div className="partners-item"> <img src={img3} alt="" /><b>2560</b><span>гостей</span></div>
-          <div className="partners-item"> <img src={img4} alt="" /><b>2560</b><span>гостей</span></div>
+        <div className="partners-container main-full partners-white">
+          <div className="partners-item"> <img src={img1} alt="" /></div>
+          <div className="partners-item"> <img src={img2} alt="" /></div>
+          <div className="partners-item"> <img src={img3} alt="" /></div>
+          <div className="partners-item"> <img src={img4} alt="" /></div>
+        </div>
+        <div className="partners-container main-full partners-black">
+          <div className="partners-item"> <img src={img1w} alt="" /></div>
+          <div className="partners-item"> <img src={img2w} alt="" /></div>
+          <div className="partners-item"> <img src={img3w} alt="" /></div>
+          <div className="partners-item"> <img src={img4w} alt="" /></div>
+        </div>
+        <div className="btn-container">
+          <Link className='btn btn--white' to='/hotels-catalog'>Выберите свой отель</Link>
         </div>
       </section>
     </>

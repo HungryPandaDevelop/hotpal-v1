@@ -41,16 +41,17 @@ const LikesItem = ({
 
   return (
     <div className="col-4 col-xs-6">
-      <Link
-        to={`/users-catalog/${userLoadId}`}
+      <div
+
         className="like-item"
       // onMouseEnter={() => { onRead(like, uid) }}
       >
         {/* <RenderRead like={like} uid={uid} /> */}
-        <div className="img-cover-info">
+
+        <Link to={`/users-catalog/${userLoadId}`} className="img-cover-info">
           <RemderImg user={user} />
           <h3>{user.name}</h3>
-        </div>
+        </Link>
 
         <div className="btn-container">
           {userSide ? renderStatus(like) : (
@@ -81,7 +82,7 @@ const LikesItem = ({
             title="С глаз долой"
           ></div>
         </div>
-      </Link>
+      </div>
     </div>
   )
 }

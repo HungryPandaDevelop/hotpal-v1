@@ -53,7 +53,7 @@ const UserDetail = ({ uid, sympathys }) => {
 
                 <div className="travel-current travel-current-detail">
                   <h3>Tекущее расположение</h3>
-                  {user.hotelFind && (<div className="travel-current-line"><i className="marker-ico--blue"></i>{user.hotelFind}</div>)}
+                  {user.hotelFind ? (<div className="travel-current-line"><i className="marker-ico--blue"></i>{user.hotelFind}</div>) : <div className="travel-current-empty">Не определено</div>}
                   {user.hotelDate && (<div className="travel-current-line"><i className="calendar-ico--blue"></i>{user.hotelDate}</div>)}
                 </div>
 

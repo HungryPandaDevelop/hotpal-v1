@@ -82,6 +82,10 @@ const App = ({account})=> {
               <Route path='/change-forgot-pass' element={<ChangeForgotPassword/>} ></Route>
               {/* <Route path='/reg-phone' element={<RegPhone/>} ></Route>  */}
               <Route path='/reg-end' element={<RegEndPopup/>} ></Route> 
+              <Route path='/konf'  element={<Konf  />} ></Route>
+              <Route path='/intelect'  element={<Intelect  />} ></Route>
+              <Route path='/politic'  element={<Politic  />} ></Route>
+              <Route path='/yslovia'  element={<Yslovia  />} ></Route>
             </Route>
             
 
@@ -111,10 +115,7 @@ const App = ({account})=> {
               <Route path='/cabinet/dislikes'  element={<Favorites type='black-list' />} ></Route>
               <Route path='/cabinet/likes'  element={<Likes  />} ></Route>
 
-              <Route path='/konf'  element={<Konf  />} ></Route>
-              <Route path='/intelect'  element={<Intelect  />} ></Route>
-              <Route path='/politic'  element={<Politic  />} ></Route>
-              <Route path='/yslovia'  element={<Yslovia  />} ></Route>
+
             </Route>
 
           </Routes>

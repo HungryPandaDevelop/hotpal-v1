@@ -14,6 +14,9 @@
 .travel-current-detail
   color: $blueColor
   font-weight: 700
+.travel-current-empty
+  color: $blackColor
+  font-weight: 400
 .travel-story
   width: 50%
   border-left: 1px solid $blueColorSecond
@@ -22,22 +25,35 @@
 .travel-story
   .btn-container-bottom
     padding-top: 15px
-
+.travel-add-panel-container
+  max-width: 740px
+  margin: 0 auto
 .travel-add-panel
   background-color: $blueColor
   color: $whiteColor
   margin-bottom: 30px
   border-color: $blueColor
+  label
+    margin: 0
+    padding-top: 8px
+  .input-box
+    display: flex
+    label
+      // width: 30%
+  .data-input-container
+    padding-left: 30px
+    width: calc(100% - 350px)
   h3,label
     font-size: 20px
     color: $whiteColor
     margin-bottom: 1px
     text-transform: initial
-  .btn-container
-    padding-top: 30px
+
   .btn
-    width: 100%
+    // width: 100%
     margin: 0
+  .btn-container
+    text-align: center
 .travel-info-date
   padding: 8px
 .travel-info-panel
@@ -51,6 +67,11 @@
   .travel-add-panel
     border-radius: 30px
     .btn-container
+      padding: 0
+    .input-box
+      display: block
+    .data-input-container
+      width: 100%
       padding: 0
   .travel-user
     display: block

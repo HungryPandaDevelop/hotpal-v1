@@ -29,7 +29,7 @@ export const accountFields = {
       {name:'<div class="man-ico"></div>',value:"man"},
       {name:'<div class="woman-ico"></div>', value:"woman"},
     ],
-    wrapClass: "input-box" ,
+    wrapClass: "input-box gender-input-box" ,
   },
   goals: { 
     type:"tags" ,
@@ -81,10 +81,11 @@ export const accountFields = {
     name: "tripPoint",  
     placeholder:"Выбрать цель",
     options: [
-      {label:"Отдых", value:"type1"}, 
-      {label:"Командировка", value:"type2"}, 
-      {label:"Загар", value:"type3"}, 
-      {label:"Кураж", value:"type4"}, 
+      {label:"Очистить", value: null}, 
+      {label:"Отдых", value:"Отдых"}, 
+      {label:"Командировка", value:"Командировка"}, 
+      {label:"Загар", value:"Загар"}, 
+      {label:"Кураж", value:"Кураж"}, 
     ]
   },
   orientation: { 

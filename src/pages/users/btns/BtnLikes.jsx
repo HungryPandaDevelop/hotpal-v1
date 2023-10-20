@@ -39,7 +39,9 @@ const BtnLikes = ({
       'userRef': uid,
       'userLikes': userInfo.uid,
     }, base).then(res => {
+
       setIdPoup('likes');
+
       showPopup(true);
       setStatus(res);
     });

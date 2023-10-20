@@ -18,6 +18,8 @@ const TemplateForm = (props) => {
     colBtn,
     invalid,
     dispatch,
+    account,
+    roomUserInfo
   } = props;
 
   const messageRef = useRef(null);
@@ -75,7 +77,18 @@ const TemplateForm = (props) => {
     // setInviteMessage: setInviteMessage
   }
 
-
+  const renderBtnInvite = () => {
+    // console.log(roomUserInfo.setting_invites, account.orientation)
+    // if (roomUserInfo.setting_invites) {
+    //   if (roomUserInfo.setting_invites !== account.orientation) {
+    //     return false;
+    //   }
+    // }
+    return <RenderFields
+      type="single"
+      fields={customFieldsInv}
+    />
+  }
 
   return (
     <form>
@@ -99,10 +112,10 @@ const TemplateForm = (props) => {
           </div>
         </div>
         <div className={`${colBtn ? colBtn : 'col-4'} col-xs-12 chat-btns-outer`}>
-          <RenderFields
-            type="single"
-            fields={customFieldsInv}
-          />
+
+
+
+          {renderBtnInvite()}
 
           <RederBtnChatContainer
             btnSubmitText={btnSubmitText}

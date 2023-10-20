@@ -30,8 +30,10 @@ const TempateInput = (props) => {
 
   const inputRef = useRef();
 
-  const onTagsAd = (item) => {
+  const onTagsAdd = (item) => {
     setTags([...tags, item]);
+
+    console.log('item', filterList.filter(origin => origin !== item))
 
     setFilterList(filterList.filter(origin => origin !== item))
   };
@@ -68,9 +70,6 @@ const TempateInput = (props) => {
         setOriginList(tempArr);
         setFilterList(tempArr);
 
-      } else {
-        setOriginList(options);
-        setFilterList(options);
       }
     }
 
@@ -89,14 +88,16 @@ const TempateInput = (props) => {
       if ((el.toLowerCase()).indexOf(e.target.value) >= 0) { return el; }
     }));
   };
-  const renderOptions = () => {
+
+
+  const renderOptions = (filterList) => {
 
     if (subType) return false;
 
     return (
       <ul className="tags-popup ln">
         {filterList.length === 0 ? 'Список пуст' : filterList.map((item, index) => (
-          <li key={index} onClick={() => { onTagsAd(item) }} dangerouslySetInnerHTML={{ __html: item }}></li>
+          <li key={index} onClick={() => { onTagsAdd(item) }} dangerouslySetInnerHTML={{ __html: item }}></li>
         ))}
       </ul>)
   }
@@ -109,7 +110,7 @@ const TempateInput = (props) => {
         <h3>{label}:</h3>
         <div className="tags-addted">
 
-          {tags.map((item, index) => (
+          {tags.length === 0 ? 'Список пуст' : tags.map((item, index) => (
             <span
               key={index}
               className="tag"
@@ -136,7 +137,7 @@ const TempateInput = (props) => {
             onFocus={() => { setShowPopup(true) }}
           />
           <i></i>
-          {renderOptions()}
+          {renderOptions(filterList)}
         </div>
         {subType && <div className='btn btn--blue' onClick={addOwn}>Добавить интерес</div>}
       </div>

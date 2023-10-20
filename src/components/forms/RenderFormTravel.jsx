@@ -27,8 +27,7 @@ const RoomsSearchPanel = (props) => {
 
   return (
     <div className="travel-add-panel border-container">
-      <div className="main-grid">
-
+      <div className="travel-add-panel-container">
         <RenderFields
           type="single"
           fields={fields.dateTravelRange}
@@ -40,7 +39,6 @@ const RoomsSearchPanel = (props) => {
           classBtn='btn-white'
           colBtn="col-6 col-xs-12"
         />
-
       </div>
     </div>
   )

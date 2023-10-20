@@ -11,7 +11,7 @@ import Rooms from 'pages/chat/Rooms';
 import Tabs from 'pages/cabinet/parts/Tabs';
 
 
-const Chat = ({ account }) => {
+const Chat = ({ account, roomUserInfo }) => {
 
   const params = useParams();
 
@@ -41,6 +41,8 @@ const Chat = ({ account }) => {
                 <ChatForm
                   roomId={params.roomId}
                   type='page'
+                  account={account}
+                  roomUserInfo={roomUserInfo}
                 />
               </div>) : ''}
 
@@ -60,6 +62,7 @@ const Chat = ({ account }) => {
 const mapStateToProps = (state) => {
   return {
     account: state.account,
+    roomUserInfo: state.globalState.roomUserInfo,
   }
 }
 

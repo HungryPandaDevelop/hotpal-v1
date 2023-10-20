@@ -1,5 +1,5 @@
 export const typeWork = [
-  
+    {label:"Очистить", value: null}, 
     {label:"Работаю", value:"Работаю"}, 
     {label:"Не работаю", value:"Не работаю"}, 
     {label:"Предприниматель", value:"Предприниматель"}, 

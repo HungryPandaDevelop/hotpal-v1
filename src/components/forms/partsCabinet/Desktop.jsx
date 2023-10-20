@@ -1,4 +1,4 @@
-
+import { useState, useEffect } from 'react';
 import RenderFields from 'components/forms/RenderFields';
 import RenderBtnContainer from 'components/forms/formParts/RenderBtnContainerCabinet'
 import { calculateAge } from 'pages/users/hooks/calculateAge';
@@ -15,10 +15,55 @@ const Desktop = ({
   newValue
 }) => {
 
+  const [windowSize, setWindowSize] = useState(0);
+
+  const handleWindowResize = () => {
+    setWindowSize(window.innerWidth);
+    console.log(window.innerWidth)
+  }
+
+
+
+
+  const renderSlider = (windowSize, screen) => {
+
+
+    const renderInput = () => (
+      <div className="col-4 col-sm-6 col-xs-12">
+        {newValue && (newValue.values.imgsAccount === undefined || newValue.values.imgsAccount.length === 0) && <div className='hit-img-null'>
+          Ваша анкета не отобразиться в поиске, пока вы не добавите фото!
+        </div>}
+        <RenderFields
+          type="single"
+          fields={fields.imgsAccount}
+          onSubmit={onSubmit}
+        />
+      </div>
+    );
+
+    if (windowSize > 576 && screen === 'desktop') {
+      return renderInput();
+    }
+
+    if (windowSize < 576 && screen === 'mobile') {
+      return renderInput();
+    }
+
+  }
+  useEffect(() => {
+
+    handleWindowResize();
+    window.addEventListener('resize', handleWindowResize);
+    // unsubscribe from the event on component unmount
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, [])
 
 
   return (
     <>
+
+      {renderSlider(windowSize, 'mobile')}
+
       <div className="col-8 col-sm-6 col-xs-12">
 
         <div className="user-top-info--view">
@@ -34,7 +79,7 @@ const Desktop = ({
               checkErrorSubmit={checkErrorSubmit}
             />
 
-            {newValue && calculateAge(newValue.values.dateBerth) < 18 && <span className='err-date-cabinet'>Вам нету 18 лет, Ваша анкета не участвует в поиске</span>}
+            {newValue && calculateAge(newValue.values.dateBerth) < 18 && <span className='err-date-cabinet'>Вам нет 18 лет, Ваша анкета не участвует в поиске</span>}
 
           </div>
           <RenderFields
@@ -65,16 +110,9 @@ const Desktop = ({
         </div>
       </div>
 
-      <div className="col-4  col-sm-6 col-xs-12">
-        <RenderFields
-          type="single"
-          fields={fields.imgsAccount}
-          onSubmit={onSubmit}
-        />
-      </div>
+      {renderSlider(windowSize, 'desktop')}
 
-
-      <div className="col-12">
+      <div className="col-12 hidden-xs">
         <div className="border-delimetr border-account"></div>
       </div>
       <div className="col-8  col-sm-6 col-xs-12">

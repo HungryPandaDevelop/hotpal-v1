@@ -10,7 +10,7 @@ import { chatFields } from 'base/forms/chatFields';
 import { sendMessage } from 'services/chatEvents';
 
 
-const Form = ({ formData, uid, roomId, type }) => {
+const Form = ({ formData, uid, roomId, type, account, roomUserInfo }) => {
 
 
 
@@ -38,7 +38,8 @@ const Form = ({ formData, uid, roomId, type }) => {
         submitSuccess={submitSuccess}
         colText={type === 'page' ? "col-8 " : "col-7"}
         colBtn={type === 'page' ? "col-4 " : "col-5"}
-
+        account={account}
+        roomUserInfo={roomUserInfo}
       />
 
 

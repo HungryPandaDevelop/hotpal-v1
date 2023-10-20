@@ -37,7 +37,7 @@ const TemplateFieldPassword = (props) => {
 
   return (
     <div className={wrapClass}>
-      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
+      {label && <label htmlFor={input.name}>{label} {labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       <div className={`input-password ${showPass ? 'view-pass' : ''}`}>
         <input
           type={showPass ? ("text") : ("password")}

@@ -12,28 +12,32 @@ const BestUsers = () => {
     getListing('likes').then((res) => {
       // 
       // getMaxListing(res, 'userRef').slice(0, 9)
-      let usersArr = [];
-      let loadLikes = getMaxListing(res, 'userLikes')//.slice(0, 9)
+      // console.log('res', res)
+      if (res.length > 0) {
+        let usersArr = [];
+        let loadLikes = getMaxListing(res, 'userLikes')//.slice(0, 9)
 
 
-      loadLikes.map(item => {
-        usersArr.push(item.userLikes)
-      });
+        loadLikes.map(item => {
+          usersArr.push(item.userLikes)
+        });
 
-      setLoading(false);
-      // console.log(getMaxListing(res, 'userRef').slice(0, 9))
-      // console.log(usersArr)
-      getListing('users', 'usersArray', usersArr).then((res) => {
-        setListings(res)
+        setLoading(false);
+        // console.log(getMaxListing(res, 'userRef').slice(0, 9))
+        // console.log(usersArr)
+        getListing('users', 'usersArray', usersArr).then((res) => {
+          setListings(res)
 
-      })
+        })
+      }
+
     });
   }, [])
 
   return (
     <div className='best-users'>
       <h3>Топ анкеты:</h3>
-      {listings.map((user, index) => (
+      {loading ? 'Load...' : listings.map((user, index) => (
         <Link to={`/users-catalog/${user.id}`} key={index} className='best-user-item'>
           <div className="users-item-img img-use-bg" style={userImg(user)}></div>
         </Link>

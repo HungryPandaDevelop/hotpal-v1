@@ -15,7 +15,7 @@ export const renderStatus = (like) => {
 
   switch (like.status) {
     case 'see':
-      return tagSimp('see', 'Рассматриваю')
+      return tagSimp('see', 'Рассматривает')
 
     case 'agree':
       return tagSimp('agree', 'Взаимно')

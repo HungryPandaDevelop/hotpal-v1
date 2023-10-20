@@ -4,15 +4,13 @@ import {
   collection,
   query,
   onSnapshot,
-  serverTimestamp,
-  addDoc,
   getDocs,
   getDoc,
   updateDoc,
   doc,
   where,
   setDoc,
-  orderBy
+
 } from 'firebase/firestore';
 
 import { db } from 'default/config/firebase';
@@ -33,11 +31,11 @@ export const createRoom = async (MyUid, heUid) => {
 
     resp.forEach(room=>{    
       if(room.connectUsersUid[1] === heUid){
-        console.log('1')
+        // console.log('1')
         roomsAvailable = room.id
       }
       if(room.connectUsersUid[0] === heUid){
-        console.log('2')
+        // console.log('2')
         roomsAvailable = room.id
       }
     });
@@ -49,7 +47,7 @@ export const createRoom = async (MyUid, heUid) => {
         return roomsAvailable;
         
       }else{
-        console.log('create')
+        // console.log('create')
         await setDoc(doc(db, 'rooms',  generateId), {...sendData, id: generateId});
         toast.success('Комната добавлена');
         return generateId;
@@ -79,7 +77,7 @@ export const getMyRooms = async (uid) =>{
       ...doc.data(),
   }));
 
-  console.log('getMyRooms', list)
+  // console.log('getMyRooms', list)
 
   return list;
 }
@@ -180,7 +178,7 @@ export const sendMessage = async (roomId, uid, message ) => {
   const getRoomInfo = getDocRoomInfo.data();
 
 
-  console.log('message', message)
+  // console.log('message', message)
 
   getRoomInfo.messages.push({
     uid: uid,
@@ -191,7 +189,7 @@ export const sendMessage = async (roomId, uid, message ) => {
     timestamp: new Date(),
     ...message,
   });
-  console.log('message', getRoomInfo)
+  // console.log('message', getRoomInfo)
   try {
     await setDoc(doc(db, 'rooms', roomId), getRoomInfo);
     toast.success('Сообщение отправлено');
@@ -203,7 +201,7 @@ export const sendMessage = async (roomId, uid, message ) => {
 }
 
 export const updateRead = async (roomId, room, uid)=>{
-  console.log('room', room)
+  // console.log('room', room)
   const changeRead = room.data.messages.map(message=>{
     if(message.uid !== uid){
       message.read = true
@@ -220,7 +218,7 @@ export const updateInvite = async (roomId, status, index)=>{
 
   const getDocRoomInfo =  await getDoc(doc(db, 'rooms', roomId));
   const getRoomInfo = getDocRoomInfo.data();
-  console.log(getRoomInfo, status, index)
+  // console.log(getRoomInfo, status, index)
   getRoomInfo.messages[index].invite.status = status;
 
   try {

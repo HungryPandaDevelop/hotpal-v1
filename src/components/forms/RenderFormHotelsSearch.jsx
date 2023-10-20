@@ -46,34 +46,41 @@ const HotelsSearchPanel = (props) => {
       </div>
       <div className={`border-container border-null-left border-container-search`}>
 
-        <div className="">
+        <div className="main-grid">
+          <div className="col-6 col-xs-12">
+            <RenderFields
+              type="single"
+              fields={{ ...fields.yaString, setGetCoords: setGetCoords }}
+            />
+            <RenderFields
+              type="single"
+              fields={fields.dateRange}
+            />
+            <RenderBtnContainer
+              colBtn="col-6 col-xs-12"
+              waitAnsw={waitAnsw}
+              onSubmit={onSubmit}
+              btnSubmitText="Начать поиск"
+              reset={reset}
+              resetForm={resetForm}
 
-          <RenderFields
-            type="single"
-            fields={{ ...fields.yaString, setGetCoords: setGetCoords }}
-          />
+            />
 
-          <RenderFields
-            type="single"
-            fields={fields.dateRange}
-          />
+          </div>
+          <div className="col-6">
+            <RenderFields
+              type="single"
+              fields={{ ...fields.geoHotels, loading: loading, listingsCoords: listingsCoords, getCoords: getCoords }}
+            />
 
-          <RenderBtnContainer
-            colBtn="col-3 col-xs-12"
-            waitAnsw={waitAnsw}
-            onSubmit={onSubmit}
-            btnSubmitText="Начать поиск"
-            reset={reset}
-            resetForm={resetForm}
-
-          />
+          </div>
 
 
-          <RenderFields
-            type="single"
-            fields={{ ...fields.geoHotels, loading: loading, listingsCoords: listingsCoords, getCoords: getCoords }}
-          // fields={fields.geoHotels}
-          />
+
+
+
+
+
 
 
         </div>

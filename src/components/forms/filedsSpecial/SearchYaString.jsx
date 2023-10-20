@@ -19,44 +19,47 @@ const TempateInput = (props) => {
     setGetCoords
   } = props.obj;
 
+  const initSuggest = () => {
+    // console.log('sugg 1')
+    const { ymaps } = window;
+    if (ymaps.SuggestView) {
+
+      const suggest = new ymaps.SuggestView('coords-ya');
+
+      suggest.events.add('select', (e) => {
+
+        const val = String(e.get('item').value.trim());
+
+        const myGeocoder = ymaps.geocode(val);
+
+        myGeocoder
+          .then(res => {
+            const coords = [res.geoObjects.get(0).geometry._coordinates[0], res.geoObjects.get(0).geometry._coordinates[1]]
+            // console.log('coords', coords)
+            setGetCoords(coords)
+          });
+      });
+    }
+  }
+
 
   useEffect(() => {
 
+    setTimeout(() => {
+      initSuggest()
+    }, 500);
 
 
-    const initSuggest = () => {
-      const { ymaps } = window;
-      // console.log('ymaps', typeof ymaps.SuggestView)
-      if (ymaps.SuggestView) {
-        console.log('sugg')
-        const suggest = new ymaps.SuggestView('coords-ya');
 
-        suggest.events.add('select', (e) => {
+    // const loadTest = () => {
+    //   console.log('sugg 1');
+    // }
 
-          const val = String(e.get('item').value.trim());
+    // window.addEventListener('load', loadTest);
 
-          const myGeocoder = ymaps.geocode(val);
-
-          myGeocoder
-            .then(res => {
-              const coords = [res.geoObjects.get(0).geometry._coordinates[0], res.geoObjects.get(0).geometry._coordinates[1]]
-              // const currentValue = { 'address': val, 'coords': coords };
-
-              // input.onChange(currentValue);
-              // setCurrentLocation(coords);
-              console.log('coords', coords)
-              setGetCoords(coords)
-            });
-        });
-      }
-    }
-
-    window.addEventListener('load', initSuggest);
-
-    return () => {
-      window.removeEventListener('load', initSuggest);
-    }
-
+    // return () => {
+    //   window.removeEventListener('load', loadTest);
+    // }
   }, []);
 
 

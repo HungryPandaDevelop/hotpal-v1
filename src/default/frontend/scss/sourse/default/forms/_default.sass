@@ -42,19 +42,23 @@ input:disabled
 	position: relative
 	label
 		font-weight: 800
-		color: $blueColorSecond
-		margin: 0 0 8px
+		color: #3A506B
+		margin: 0px 0 3px
 		display: inline-block
 		text-transform: uppercase
+		position: relative
+		top: -5px
+
 .input-date
 	padding: 10px 15px
+
 .data-input-container
 	position: relative
 	&::after
 		content: ""
 		@include positionElement(38px, 38px,0,0, right)
 		@include bgImageEl("../images/icons/calendar-gray.svg", 21px, center)
-		// outline: 1px solid red
+
 .preloader-input
 	@include positionElement(38px,38px,0px,0,right)
 	.preloader
@@ -62,3 +66,13 @@ input:disabled
 		height: 20px
 		margin-top: -10px
 		margin-left: -10px
+
+.geo-input-box
+	.ya-map
+		height: 280px
+		position: relative
+		overflow: hidden
+		border-radius: 30px
+@media (max-width: 1024px)
+	.input-box label
+		font-size: 14px

@@ -33,6 +33,7 @@ const Favorites = ({ account, type }) => {
         />
         <div className="border-container border-null-top account-main" >
           <div className="main-grid">
+            {listing.length === 0 && (<div className='col-12'><h3>Ваш черный список пуст.</h3></div>)}
             {listing.map((list, index) => (
               <FavoritesItem
                 key={index}

@@ -13,7 +13,8 @@ import TravelAddPanel from "pages/hotels/detail/TravelAddPanel";
 import UserItem from 'pages/users/catalog/UsersItem';
 import UsersSearchPanel from 'pages/users/catalog/UsersSearchPanel';
 
-const HotelsUsersCatalog = ({ uid }) => {
+const HotelsUsersCatalog = ({ account }) => {
+  const { uid } = account;
   const { pathname } = useLocation();
   const params = useParams();
   const pageId = params.hotelId;
@@ -150,7 +151,7 @@ const HotelsUsersCatalog = ({ uid }) => {
             <div key={index} className="col-4 col-xs-12">
               <UserItem
                 user={user}
-                uid={uid}
+                account={account}
                 dateTravel={user.dateTravel}
               />
             </div>
@@ -166,7 +167,7 @@ const HotelsUsersCatalog = ({ uid }) => {
 
 const mapStateToProps = (state) => {
   return {
-    uid: state.account.uid
+    account: state.account
   }
 }
 

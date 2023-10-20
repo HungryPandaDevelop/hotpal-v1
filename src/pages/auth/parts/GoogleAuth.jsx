@@ -4,11 +4,14 @@ import { googleAuth } from 'services/googleAuth';
 import ActionFn from 'store/actions';
 import { v4 as uuidv4 } from 'uuid';
 
-const GoogleAuth = ({ btnText, ActionFn, account }) => {
+const GoogleAuth = ({ btnText, ActionFn, checkStatus }) => {
 
   const navigate = useNavigate();
   const generateId = uuidv4();
   const onGoogleClick = () => {
+
+    if (!checkStatus) { return false; }
+
     googleAuth(generateId).then(res => {
       if (!res[0]) { return false };
 

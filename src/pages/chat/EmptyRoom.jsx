@@ -6,7 +6,7 @@ const EmptyRoom = () => {
       <div className="empty-room-container">
         <h3>
           Для того, чтобы начать общение,
-          выберите себе собеседника
+          Выберите себе собеседника
         </h3>
         <div className="btn-container">
           <Link to='/users-catalog' className="btn btn--blue">Перейти к поиску</Link>

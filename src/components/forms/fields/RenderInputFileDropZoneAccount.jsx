@@ -1,4 +1,3 @@
-import { getStorage, ref, deleteObject } from "firebase/storage";
 
 import { useState, useEffect, useRef } from 'react';
 
@@ -7,8 +6,6 @@ import { Field } from 'redux-form';
 import axios from 'axios';
 
 import { useDropzone } from 'react-dropzone'
-
-
 
 import TinySlider from "tiny-slider-react";
 import 'tiny-slider/dist/tiny-slider.css';
@@ -22,19 +19,11 @@ const settings = {
   items: 1,
   // gutter: 15,
 };
-const settingsSecond = {
-  // lazyload: true,
-  nav: false,
-  controls: false,
-  mouseDrag: true,
-  loop: false,
-  items: 3,
-  gutter: 15,
-};
+
+
 
 const TemplateFile = (props) => {
-  const windowSize = useRef(window.innerWidth).current;
-  const storage = getStorage();
+
 
   const {
     input,
@@ -51,11 +40,15 @@ const TemplateFile = (props) => {
 
   const [nameFile, setNameFile] = useState([]);
 
+  const [arrFiles, setArrFiles] = useState([]);
+
   const [loadingFile, setLoadingFile] = useState(false);
+
 
   useEffect(() => {
     // console.log('input.value', input.value)
     if (input.value) {
+      setArrFiles(input.value)
       setNameFile(input.value);
     }
   }, [input]);
@@ -63,8 +56,11 @@ const TemplateFile = (props) => {
 
   const onDrop = async (acceptedFiles) => {
     setLoadingFile(true);
-    console.log('acceptedFiles', acceptedFiles)
+
+    console.log('acceptedFiles', acceptedFiles);
+
     const files = acceptedFiles;
+
     let fileUrls = [];
 
     try {
@@ -80,6 +76,7 @@ const TemplateFile = (props) => {
             'Content-Type': 'multipart/form-data'
           }
         });
+        console.log('res', response)
 
         fileUrls.push({ url: response.data.imageURL, id: response.data.newFileName });
         // fileFull.push(response.data.newFileName);
@@ -87,8 +84,8 @@ const TemplateFile = (props) => {
       }
 
 
-      setNameFile(fileUrls);
-      input.onChange(fileUrls);
+      setNameFile([...arrFiles, ...fileUrls]);
+      input.onChange([...arrFiles, ...fileUrls]);
       setLoadingFile(false);
     }
     catch (err) {
@@ -125,58 +122,52 @@ const TemplateFile = (props) => {
   }
 
 
+  const renderTiny = (files, settingsParams, classParam) => {
+
+    if (files.length === 0) { return false }
+
+    return <div className={classParam}>
+      <TinySlider settings={settingsParams} >
+        {files.map((item, index) => (
+          <div className="tiny-account-item" key={index}>
+            <div className="tiny-account-img">
+              <img src={item.url} alt={item.url} />
+              <div className="tiny-account-shadow"></div>
+              <i className="delete-img-dragdrop" onClick={() => { deleteFile(item.id) }}></i>
+            </div>
+          </div>
+        ))}
+
+      </TinySlider>
+    </div>
+
+  }
+
 
   return (
     <div className={wrapClass}>
       <div className="tiny-account">
 
-        {nameFile.length === 0 ? (
-
+        {nameFile.length === 0 && (
           <div className="tiny-account-stub">
             <span>Добавить, своё фото</span>
             <i></i>
           </div>
+        )}
 
-        ) : (<div className="tiny-account-shadow111"></div>)}
-        <>
-
-          <TinySlider settings={settings} >
-            {nameFile && nameFile.map((item, index) => (
-              <div className="tiny-account-item" key={index}>
-                <div className="tiny-account-img">
-                  <img src={item.url} alt={item.url} />
-                  {windowSize < 576 && (
-                    <i className="delete-img-dragdrop" onClick={() => { deleteFile(item.id) }}></i>
-                  )}
-                </div>
-              </div>
-            ))}
-          </TinySlider>
-        </>
-
+        {renderTiny(nameFile, settings)}
       </div>
+
       {label && <label><b>{label}</b>{labelSecond && <div className='hint-input-file hint-tiny-file'><i><span>{labelSecond}</span></i></div>}</label>}
-      {
-        nameFile.length < 10 && (<div className={`dragdrop-container ${isDragActive ? 'dragged' : ''}`} {...getRootProps()}>
-          <input {...getInputProps()} />
-          {loadingFile === true ? <div className="preloader"></div> : (<span>Перетащите несколько файлов сюда или нажмите, чтобы выбрать файлы</span>)}
-        </div>)
-      }
-      {windowSize > 576 && (
-        <div className="ragdrop-uploaded ragdrop-uploaded-tiny">
-          <TinySlider settings={settingsSecond} >
-            {nameFile && nameFile.map((item, index) => (
-              <div className="dragdrop-file-item" key={index}>
-                <div className="dragdrop-file-img">
-                  <img src={item.url} alt={item.url} />
-                </div>
-                <i className="delete-img-dragdrop" onClick={(e) => { deleteFile(item.id, e) }}></i>
-              </div>
-            ))}
-          </TinySlider>
-        </div>
-      )}
-    </div >
+
+      <div className={`dragdrop-container ${isDragActive ? 'dragged' : ''}`} {...getRootProps()}>
+        <input {...getInputProps()} />
+        {loadingFile === true ? <div className="preloader"></div> : (<span>Перетащите несколько файлов сюда или нажмите, чтобы выбрать файлы</span>)}
+      </div>
+
+      {renderTiny(nameFile, { ...settings, items: 3, gutter: 15, }, 'dragdrop-uploaded-tiny')}
+
+    </div>
 
   )
 }

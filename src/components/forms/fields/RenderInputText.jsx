@@ -33,7 +33,7 @@ const TempateInput = (props) => {
   return (
     <div className={wrapClass}>
       {/* {<i className="num-offset">{num}</i>} */}
-      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
+      {label && <label htmlFor={input.name}>{label} {labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       <input
         {...input}
         placeholder={placeholder}

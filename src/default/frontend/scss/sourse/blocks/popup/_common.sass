@@ -35,7 +35,7 @@
 			color: $blueColor
 			border-color: $blueColor
 	h4
-		margin-bottom: 25px
+		margin-bottom: 15px
 	.btn-reg-container
 		margin-top: 30px
 .reg-end
@@ -53,3 +53,26 @@
 	margin-top: 25px
 	a
 		text-decoration: none
+.checkbox-custom
+	font-size: 14px
+	position: relative
+	padding-left: 30px
+	margin-bottom: 20px
+	a
+		color: $blueColor
+		display: inline
+	span
+		@include positionElement(20px,20px,0,0)
+		border: 1px solid $blackColor
+		border-radius: 100%
+		cursor: pointer
+		&:hover
+			border-color: $blueColor
+		&.active
+			&::after
+				content: ""
+				@include positionElement(12px,12px, 3px, 3px)
+				background-color: $blueColor
+				border-radius: 100%
+.checkbox-custom-line
+	margin-bottom: 4px

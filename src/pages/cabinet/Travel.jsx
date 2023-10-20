@@ -45,7 +45,7 @@ const Travel = ({ uid, catalogUserId }) => {
 
   return (
     <div className='input-box'>
-      {listing.map((item, index) => {
+      {listing.length === 0 ? 'Список пуст' : listing.map((item, index) => {
         if (stateShow && index < 2) {
           return false;
         }

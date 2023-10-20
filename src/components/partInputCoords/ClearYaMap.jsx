@@ -60,7 +60,7 @@ const ClearYaMap = ({ currentLocation, centerPosition, changePosition, multy }) 
 
 
   return (
-    <div className="user-location-map">
+    <div className="ya-map">
       <YMaps
         query={{ apikey: 'fdb17d90-1d93-4d15-aa02-45c372d5e0f8' }}
 
@@ -72,7 +72,7 @@ const ClearYaMap = ({ currentLocation, centerPosition, changePosition, multy }) 
           defaultState={
             {
               center: centerPosition ? centerPosition : [55.714247, 37.764375],
-              zoom: 14
+              zoom: 11
             }
           }
           modules={["util.bounds", "multiRouter.MultiRoute", "Placemark", "geocode"]}

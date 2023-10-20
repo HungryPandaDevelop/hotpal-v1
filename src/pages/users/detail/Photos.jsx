@@ -22,7 +22,7 @@ const Photos = ({ user }) => {
       <TinySlider settings={settings}>
         {user.imgsAccount.map((img, index) => (
           <div key={index}>
-            <img src={img} alt={img} />
+            <img src={img.url} alt={img} />
           </div>))}
       </TinySlider>
     </div>

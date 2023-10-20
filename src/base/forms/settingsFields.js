@@ -1,4 +1,4 @@
-
+import {orientation} from "base/orientation"
 
 export const settingsPrivateData = {
 
@@ -43,83 +43,53 @@ export const settingsPassword = {
 
 export const settingsPrivacy= {
 
-  invites: { 
+  setting_invites: { 
     type:"select", 
-    name: "invites",  
+    name: "setting_invites",  
     label:"Кто может отправлять мне приглашения",
     placeholder:"Выбрать ориентацию",
     wrapClass: "col-6 col-xs-12 input-box",
-    options: [
-      {label:"тип 1", value:"type1"}, 
-      {label:"тип 2", value:"type2"}, 
-      {label:"тип 3", value:"type3"}, 
-      {label:"тип 4", value:"type4"}, 
-    ]
+    options: orientation
   },
-  likes: { 
+  setting_likes: { 
     type:"select", 
-    name: "likes",  
+    name: "setting_likes",  
     label:"Кто может лайкать меня",
     placeholder:"Выбрать ориентацию",
     wrapClass: "col-6 col-xs-12 input-box",
-    options: [
-      {label:"тип 1", value:"type1"}, 
-      {label:"тип 2", value:"type2"}, 
-      {label:"тип 3", value:"type3"}, 
-      {label:"тип 4", value:"type4"}, 
-    ]
+    options: orientation
   },
-  history: { 
+  // history: { 
+  //   type:"select", 
+  //   name: "history",  
+  //   label:"Кто может видеть историю моих поисков",
+  //   placeholder:"Выбрать ориентацию",
+  //   wrapClass: "col-6 col-xs-12 input-box",
+  //   options: orientation
+  // },
+  setting_messages: { 
     type:"select", 
-    name: "history",  
-    label:"Кто может видеть историю моих поисков",
-    placeholder:"Выбрать ориентацию",
-    wrapClass: "col-6 col-xs-12 input-box",
-    options: [
-      {label:"тип 1", value:"type1"}, 
-      {label:"тип 2", value:"type2"}, 
-      {label:"тип 3", value:"type3"}, 
-      {label:"тип 4", value:"type4"}, 
-    ]
-  },
-  messages: { 
-    type:"select", 
-    name: "messages",  
+    name: "setting_messages",  
     label:"Кто может отправлять мне личные сообщения",
     placeholder:"Выбрать ориентацию",
     wrapClass: "col-6 col-12 input-box",
-    options: [
-      {label:"тип 1", value:"type1"}, 
-      {label:"тип 2", value:"type2"}, 
-      {label:"тип 3", value:"type3"}, 
-      {label:"тип 4", value:"type4"}, 
-    ]
+    options: orientation
   },
-  founds: { 
+  setting_founds: { 
     type:"select", 
-    name: "founds",  
+    name: "setting_founds",  
     label:"Кто может видеть мой профиль",
     placeholder:"Выбрать ориентацию",
     wrapClass: "col-6  col-xs-12 input-box",
-    options: [
-      {label:"тип 1", value:"type1"}, 
-      {label:"тип 2", value:"type2"}, 
-      {label:"тип 3", value:"type3"}, 
-      {label:"тип 4", value:"type4"}, 
-    ]
+    options: orientation
   },
-  goals: { 
+  setting_goals: { 
     type:"select", 
-    name: "goals", 
+    name: "setting_goals", 
     label:"Кто может видеть мои цели", 
     placeholder:"Выбрать ориентацию",
     wrapClass: "col-6 col-xs-12 input-box",
-    options: [
-      {label:"тип 1", value:"type1"}, 
-      {label:"тип 2", value:"type2"}, 
-      {label:"тип 3", value:"type3"}, 
-      {label:"тип 4", value:"type4"}, 
-    ]
+    options: orientation
   },
 
 
@@ -129,7 +99,7 @@ export const settingsTravel = {
   dateTravelRange: { 
     type:"dateRange" ,
     name: "dateTravelRange", 
-    label: "Даты нахождения", 
-    wrapClass: "input-box col-6 col-xs-12" ,
+    label: "Я буду в этом отеле (Выберите даты)", 
+    wrapClass: "input-box" ,
   },
 }

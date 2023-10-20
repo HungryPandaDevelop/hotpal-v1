@@ -1,12 +1,17 @@
 import { renderGoals } from 'pages/users/hooks/renderGoals';
 
 
-const GoalsUsers = ({ user }) => {
+const GoalsUsers = ({ user, account }) => {
 
   const { goals } = user;
 
   if (goals === undefined || goals.length === 0) { return false; }
 
+  if (user.setting_goals) {
+    if (user.setting_goals !== account.orientation) {
+      return false;
+    }
+  }
 
   return (
     <div className="goals-users">
