@@ -55,7 +55,7 @@ const TemplateForm = (props) => {
             user={user}
             fields={fields}
             checkErrorSubmit={checkErrorSubmit}
-            btnSubmiText={'Сохранить'}
+            btnSubmitText={'Сохранить'}
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
             newValue={newValue}

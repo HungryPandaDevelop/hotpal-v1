@@ -59,7 +59,7 @@ const PageList = ({ formData, account }) => {
           btnSaveText="Сохранить изменения"
           fields={pagesFields}
           initialValues={{ title: listings.title, content: listings.content }}
-          btnSubmiText="Сохранить"
+          btnSubmitText="Сохранить"
           // initialValues={listings}
           submitSuccess={submitSuccess}
 

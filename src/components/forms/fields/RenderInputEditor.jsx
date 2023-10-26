@@ -2,6 +2,7 @@ import { Field } from 'redux-form';
 import { useEffect } from 'react';
 
 import React, { useState } from 'react';
+
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -17,9 +18,7 @@ const TempateInput = (props) => {
     label,
     labelSecond,
     placeholder,
-    maxLength,
     wrapClass,
-    checkErrorSubmit,
     setErrCheck,
   } = props.obj;
 
@@ -42,11 +41,20 @@ const TempateInput = (props) => {
     }
   }, [error]);
 
+  const handleChange = (value) => {
+    input.onChange(value);
+  };
+
+
   return (
     <div className={wrapClass}>
       {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
 
-      <ReactQuill  {...input} id={input.name} theme="snow" value={value} onChange={setValue} />
+      <ReactQuill
+        value={input.value}
+        onChange={handleChange}
+        className={`input-decorate ${error && 'input-error'}`}
+      />
 
       {/* {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))} */}
     </div>

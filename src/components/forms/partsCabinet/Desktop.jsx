@@ -8,7 +8,7 @@ const Desktop = ({
   user,
   fields,
   checkErrorSubmit,
-  btnSubmiText,
+  btnSubmitText,
   waitAnsw,
   onSubmit,
   dirty,
@@ -181,7 +181,7 @@ const Desktop = ({
         />
         <div className={`btn-save-outer ${dirty ? 'active' : ''}`}>
           <RenderBtnContainer
-            btnSubmitText={btnSubmiText}
+            btnSubmitText={btnSubmitText}
             waitAnsw={waitAnsw}
             onSubmit={onSubmit}
             checkErrorSubmit={checkErrorSubmit}

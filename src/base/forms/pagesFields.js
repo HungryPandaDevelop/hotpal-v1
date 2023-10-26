@@ -8,7 +8,7 @@ export const pagesFields = {
     wrapClass: "input-box col-12" ,
   },
   content: {
-    type: "textarea", 
+    type: "editor", 
     name: "content",
     validate: ['required'],
     wrapClass: "input-box col-12" , 

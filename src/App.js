@@ -56,10 +56,11 @@ import PageStandart from 'pages/admin/PageStandart';
 
 // import VKauth from 'pages/VKauth';
 
-import Yslovia from 'pages/default/Yslovia'
-import Konf from 'pages/default/Konf'
-import Politic from 'pages/default/Politic'
-import Intelect from 'pages/default/Intelect'
+import Yslovia from 'pages/default/Yslovia';
+import Konf from 'pages/default/Konf';
+import Politic from 'pages/default/Politic';
+import Intelect from 'pages/default/Intelect';
+import About from 'pages/default/About';
 
 const App = ({account})=> {
   // console.log('uid', account)
@@ -86,6 +87,7 @@ const App = ({account})=> {
               <Route path='/intelect'  element={<Intelect  />} ></Route>
               <Route path='/politic'  element={<Politic  />} ></Route>
               <Route path='/yslovia'  element={<Yslovia  />} ></Route>
+              <Route path='/about'  element={<About  />} ></Route>
             </Route>
             
 
