@@ -3,27 +3,27 @@ import { connect } from 'react-redux';
 import Rooms from 'pages/chat/Rooms';
 import MessagesPopup from "blocks/controls-panel/chat/Messages";
 
-const Chat = ({ uid }) => {
+const Chat = ({ uid, panelChatRoom, roomUserInfo }) => {
 
-  const [choiseRoom, setChoiseRoom] = useState(0);
-  const [currentUser, setCurrentUser] = useState([]);
-
+  // const [choiseRoom, setChoiseRoom] = useState(0);
+  // const [currentUser, setCurrentUser] = useState([]);
+  console.log('panelChatRoom', roomUserInfo)
   return (
     <>
-      {choiseRoom === 0 ? (
+      {panelChatRoom === 0 ? (
         <Rooms
           uid={uid}
-          setChoiseRoom={setChoiseRoom}
-          setCurrentUser={setCurrentUser}
+          // setChoiseRoom={setChoiseRoom}
+          // setCurrentUser={setCurrentUser}
           type='popup'
         />
       ) :
         (
           <MessagesPopup
             uid={uid}
-            roomId={choiseRoom}
-            currentUser={currentUser}
-            setChoiseRoom={setChoiseRoom}
+            roomId={panelChatRoom}
+            currentUser={roomUserInfo}
+          // setChoiseRoom={setChoiseRoom}
           />
         )}
 
@@ -34,6 +34,8 @@ const Chat = ({ uid }) => {
 const mapStateToProps = (state) => {
   return {
     uid: state.account.uid,
+    panelChatRoom: state.globalState.panelChatRoom,
+    roomUserInfo: state.globalState.roomUserInfo,
   }
 }
 

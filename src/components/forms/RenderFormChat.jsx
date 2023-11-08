@@ -13,6 +13,7 @@ const TemplateForm = (props) => {
     btnSubmitText,
     waitAnsw,
     submitSuccess,
+    submitInvite,
     reset,
     colText,
     colBtn,
@@ -28,17 +29,9 @@ const TemplateForm = (props) => {
 
 
 
-  const ignoreTextSubmit = (e) => {
-    e.preventDefault();
-    submitSuccess();
-    reset();
-  }
+
 
   const onSubmit = (e) => {
-
-
-
-
 
     let idTimeCheck;
     e.preventDefault();
@@ -72,23 +65,14 @@ const TemplateForm = (props) => {
   const customFieldsInv = {
     ...fields.invite,
     // dispatch: dispatch,
-    onSubmit: onSubmit,
-    ignoreTextSubmit: ignoreTextSubmit,
+    // onSubmit: onSubmit,
+    // ignoreTextSubmit: ignoreTextSubmit,
+    submitInvite: submitInvite,
+    dispatch: dispatch
     // setInviteMessage: setInviteMessage
   }
 
-  const renderBtnInvite = () => {
-    // console.log(roomUserInfo.setting_invites, account.orientation)
-    // if (roomUserInfo.setting_invites) {
-    //   if (roomUserInfo.setting_invites !== account.orientation) {
-    //     return false;
-    //   }
-    // }
-    return <RenderFields
-      type="single"
-      fields={customFieldsInv}
-    />
-  }
+
 
   return (
     <form>
@@ -115,7 +99,10 @@ const TemplateForm = (props) => {
 
 
 
-          {renderBtnInvite()}
+          <RenderFields
+            type="single"
+            fields={customFieldsInv}
+          />
 
           <RederBtnChatContainer
             btnSubmitText={btnSubmitText}

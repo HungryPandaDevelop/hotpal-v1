@@ -1,7 +1,7 @@
 
 import RenderForm from 'components/forms/RenderFormHotelsSearch';
 import { geoSearch, hotelsData } from 'pages/hotels/hooks/searchHotels';
-
+import { getMaxListing } from 'components/getMaxListing';
 import { useEffect, useState } from 'react';
 
 import moment from "moment";
@@ -16,7 +16,8 @@ const HotelsSearchPanel = ({
   loading,
   setLoading,
   listingsCoords,
-  setSearchDate
+  setSearchDate,
+  travelList
 }) => {
 
   const centerCity = [55.755864, 37.617698];
@@ -43,12 +44,34 @@ const HotelsSearchPanel = ({
       // console.log('getHotels', res)
       if (res) {
         hotelsData(res).then(response => {
+          console.log(response)
+
+
+
+          // console.log('travelList', getMaxListing(travelList, 'idHotel'))
+          let hotelCount = getMaxListing(travelList, 'idHotel');
+
+
+          // console.log(hotelCount);
+
+
+          var renderCountTravelHotels = [];
+
+          response.forEach((el, index) => {
+
+            let findCount = hotelCount.find(e => e.idHotel === el.id)
+
+            renderCountTravelHotels.push({ countTravels: findCount ? findCount.count : 0, ...el })
+
+          });
+
+          // console.log(renderCountTravelHotels.sort((a, b) => b.countTravels - a.countTravels));
 
           setLoading(false)
 
-          setListings(response)
+          setListings(renderCountTravelHotels.sort((a, b) => b.countTravels - a.countTravels))
 
-        })
+        });
       } else {
         setLoading(false)
         setListings(null)

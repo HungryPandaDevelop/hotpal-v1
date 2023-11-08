@@ -65,6 +65,7 @@ const UserCatalog = ({ account }) => {
               <UserItem
                 user={user}
                 account={account}
+
               />
             </div>
           )

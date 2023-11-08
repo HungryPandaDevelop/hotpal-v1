@@ -7,7 +7,7 @@ import GoogleAuth from 'pages/auth/parts/GoogleAuth';
 import { useState } from 'react';
 
 const RegStart = () => {
-  const [checkStatus, setCheckStatus] = useState(false);
+  const [checkStatus, setCheckStatus] = useState(true);
 
   const changeCheckStatus = () => {
     setCheckStatus(!checkStatus)

@@ -23,6 +23,7 @@ const HotelsCatalog = ({ uid }) => {
   const [searchDate, setSearchDate] = useState(null);
 
   const [travelList, setTravelList] = useState([]);
+  const [travelListLoad, setTravelListLoad] = useState(true);
 
   const toCaseCount = (arg) => {
     let last = arg.toString().split('').pop();
@@ -38,7 +39,7 @@ const HotelsCatalog = ({ uid }) => {
 
     getListing('travel', 'travelAll', uid).then((res) => {
       setTravelList(res);
-
+      setTravelListLoad(false);
     });
   }, []);
 
@@ -52,13 +53,14 @@ const HotelsCatalog = ({ uid }) => {
 
       <div className="catalog-grid main-grid">
         <div className="col-12 col-sm-12 col-xs-12">
-          <HotelSearchPanel
+          {travelListLoad ? 'Load' : (<HotelSearchPanel
             setListings={setListings}
             setLoading={setLoading}
             loading={loading}
             listingsCoords={listings}
+            travelList={travelList}
             setSearchDate={setSearchDate}
-          />
+          />)}
         </div>
 
         {loading ? <div className='col-12  col-sm-12 col-xs-12'><Preloader /></div> : (
@@ -72,7 +74,6 @@ const HotelsCatalog = ({ uid }) => {
             {listings.map((hotel, index) => (
               hotel.id && (<div className='col-6 col-xs-12' key={index}>
                 <HotelsItem
-
                   hotel={hotel}
                   uid={uid}
                   travelList={travelList}

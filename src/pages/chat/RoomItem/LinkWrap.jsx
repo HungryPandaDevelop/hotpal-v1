@@ -8,14 +8,15 @@ const LinkWrap = ({
   path,
   room,
   roomUserInfo,
-  setChoiseRoom,
-  setCurrentUser
-
+  // setChoiseRoom,
+  // setCurrentUser,
+  ActionFn
 }) => {
 
-  const choiseRoom = (user, roomUserInfo) => {
-    setChoiseRoom(user.id)
-    setCurrentUser(roomUserInfo)
+  const choiseRoom = (room, roomUserInfo) => {
+    // setChoiseRoom(user.id)
+    ActionFn('SET_CURRENT_ROOM', { roomUserInfo: roomUserInfo, panelChatRoom: room.id })
+    // setCurrentUser(roomUserInfo)
   }
 
   if (type === 'page') {

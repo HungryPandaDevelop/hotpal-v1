@@ -96,6 +96,12 @@
 
 @media (max-width: 576px)
   .hotels-item
+    margin: 0
+    .hotels-info
+      display: block
+  .hotels-name-container,
+  .hotels-price-container
+    width: 100%
   .hotels-raiting-container
     padding: 15px
   .hotels-stars .star
@@ -103,9 +109,16 @@
     height: 10px
   .hotels-name
     font-size: 16px
+    margin-bottom: 15px
+  .hotels-price
+    margin-top: 10px
+
   .hotels-guest
+    display: inline-block
+    width: 37%
     font-size: 16px
     margin: -5px 0 8px
+    text-align: left
     span
       font-size: 20px
   .hotels-goals

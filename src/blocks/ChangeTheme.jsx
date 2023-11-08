@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
+import { connect } from 'react-redux';
+import ActionFn from 'store/actions';
 
-const ChangeTheme = () => {
-  const [showDark, setShowDark] = useState(false);
-
+const ChangeTheme = ({ showDark, ActionFn }) => {
+  // const [showDark, setShowDark] = useState(false);
+  console.log('showDark', showDark)
   const changeStyleSite = () => {
 
     if (showDark) {
@@ -12,8 +14,8 @@ const ChangeTheme = () => {
     else {
       document.getElementsByTagName('body')[0].classList.add("dark-theme");
     }
-
-    setShowDark(!showDark)
+    ActionFn('DARK', { showDark: !showDark })
+    // setShowDark(!showDark)
   }
 
 
@@ -22,4 +24,14 @@ const ChangeTheme = () => {
   )
 }
 
-export default ChangeTheme;
+const mapStateToProps = (state) => {
+
+  return {
+    showDark: state.globalState.showDark,
+  }
+}
+
+export default connect(mapStateToProps,
+  {
+    ActionFn
+  })(ChangeTheme);

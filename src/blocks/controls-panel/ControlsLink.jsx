@@ -2,16 +2,18 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 const ControlsLink = ({
   name,
-  setPopupActive,
-  setIdActive,
-  idActive
+  // setPopupActive,
+  // setIdActive,
+  idActive,
+  ActionFn
 }) => {
 
   const location = useLocation();
 
   const activeEl = (name) => {
-    setPopupActive(false);
-    setIdActive(name);
+    // setPopupActive(false);
+    ActionFn('STATE_PANEL', { panelState: false, panelId: 0, panelName: '' })
+    // setIdActive(name);
   }
 
 

@@ -99,7 +99,7 @@ export const settingsTravel = {
   dateTravelRange: { 
     type:"dateRange" ,
     name: "dateTravelRange", 
-    label: "Я буду в этом отеле (Выберите даты)", 
+    label: "Выберите даты", 
     wrapClass: "input-box" ,
   },
 }

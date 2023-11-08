@@ -26,6 +26,7 @@ const Messages = ({ uid, roomId, type, rooms }) => {
     getMyRoomMessages(setAllMessages, roomId);
 
 
+
     const currentRoom = rooms.find(el => el.id === roomId);
     if (currentRoom) {
       updateRead(roomId, currentRoom, uid);
@@ -40,7 +41,7 @@ const Messages = ({ uid, roomId, type, rooms }) => {
   }, [roomId]);
 
   const scrollToBottom = () => {
-
+    console.log('scroll')
     scroll.scrollToBottom({
       containerId: 'messages-container', // Здесь укажите ID вашего контейнера
       duration: 250, // Настройте длительность анимации

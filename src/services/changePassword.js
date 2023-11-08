@@ -33,7 +33,7 @@ export const changePassword =  async (formData) => {
       if(changePassword && changePassword.length > 4){
         if((changePassword === checkChangePassword)){
           updatePassword(user, changePassword).then(() => {
-            toast.success('Обновили пароль');
+            toast.success('Вы обновили пароль');
           }).catch((error) => {});
         }else{
           toast.error('Пароли не совпадают');
@@ -74,7 +74,7 @@ export const changePasswordNoAuth =  async (formData, getUser) => {
       console.log('user', userCredential)
       const user = auth.currentUser;
       updatePassword(user, changePassword).then(() => {
-        toast.success('Обновили пароль');
+        toast.success('Вы обновили пароль');
         return true
       }).catch((error) => {
         return false

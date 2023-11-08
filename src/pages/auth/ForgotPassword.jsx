@@ -52,7 +52,7 @@ const ForgotPassword = ({ formData }) => {
       if (res.length > 0) {
         console.log('res ema', res)
 
-        axios.get("http://hotpal.ru/api/mail-send-pass.php", {
+        axios.get("https://hotpal.ru/api/mail-send-pass.php", {
           params: {
             mail: res[0].email,
             name: res[0].name,

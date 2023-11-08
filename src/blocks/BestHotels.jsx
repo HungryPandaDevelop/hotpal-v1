@@ -13,8 +13,8 @@ const BestHotels = () => {
     getListing('travel', 'travelAll').then((res) => {
       setListings(getMaxListing(res, 'idHotel').slice(0, 9));
       setLoading(false)
-
     });
+
   }, []);
 
 

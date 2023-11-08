@@ -3,6 +3,8 @@ import Popup from "blocks/controls-panel/Popup";
 import ControlsBtn from "blocks/controls-panel/ControlsBtn";
 import ControlsLink from "blocks/controls-panel/ControlsLink";
 import totalCountMessage from "blocks/controls-panel/parts/totalCountMessage";
+import ActionFn from 'store/actions';
+
 // import { fn } from "moment";
 import $ from 'jquery';
 import { connect } from 'react-redux';
@@ -11,6 +13,10 @@ const ControlsPanel = ({
   uid,
   rooms,
   likes,
+  ActionFn,
+  panelState,
+  panelId,
+  panelName
 }) => {
 
   const popupRef = useRef(null);
@@ -28,34 +34,20 @@ const ControlsPanel = ({
 
     function bodyClick(e) {
       if (!$(e.target).is('.link-back, .link-back *, .controls-panel-popup, .controls-panel-popup  *, div.controls-btn, div.controls-btn  *, .rooms-item, .rooms-item  *')) {
-        setPopupActive(false);
-        setIdActive('');
+        // setPopupActive(false);
+        // setIdActive('');
+        ActionFn('STATE_PANEL', { panelState: false, panelId: 0, panelName: '' })
       }
     }
-
-    // function handleClick(e) {
-    //   console.log('s')
-    //   if ((popupRef && popupRef.current)) {
-    //     const ref = popupRef.current;
-
-    //     if (!btnRef.current.classList.contains('controls-btn')) {
-
-    //       if (!ref.contains(e.target)) {
-
-    //         setPopupActive(false);
-    //         setIdActive('');
-    //       }
-    //     }
-    //   }
-    // }
-
   }, []);
 
 
 
-  const [popupActive, setPopupActive] = useState(false);
-  const [nameActive, setNameActive] = useState('');
-  const [idActive, setIdActive] = useState(0);
+  // const [popupActive, setPopupActive] = useState(false);
+
+
+  // const [nameActive, setNameActive] = useState('');
+  // const [idActive, setIdActive] = useState(0);
 
   const countTotalMessage = totalCountMessage('rooms', uid, rooms);
   const countTotalLikes = totalCountMessage('likes', uid, rooms, likes);
@@ -74,24 +66,29 @@ const ControlsPanel = ({
     return arrNames.map(name => <ControlsBtn
       name={name}
       key={name[1]}
-      idActive={idActive}
-      setPopupActive={setPopupActive}
-      setNameActive={setNameActive}
-      setIdActive={setIdActive}
+
+      // setPopupActive={setPopupActive}
+      // setNameActive={setNameActive}
+
+      idActive={panelId}
+      // setIdActive={setIdActive}
+
       btnRef={btnRef}
       uid={uid}
       rooms={rooms}
       likes={likes}
+      ActionFn={ActionFn}
     />)
   }
   const renderLink = (arrNames) => {
     return arrNames.map(name => <ControlsLink
       key={name[1]}
       name={name}
-      idActive={idActive}
-      setPopupActive={setPopupActive}
-      setNameActive={setNameActive}
-      setIdActive={setIdActive}
+      idActive={panelId}
+      ActionFn={ActionFn}
+    // setPopupActive={setPopupActive}
+    // setNameActive={setNameActive}
+    // setIdActive={setIdActive}
     />)
   }
 
@@ -101,11 +98,16 @@ const ControlsPanel = ({
         {renderBtn(arrNames)}
         {renderLink(arrLinks)}
       </div>
-      {popupActive && <Popup
-        setPopupActive={setPopupActive}
-        nameActive={nameActive}
-        idActive={idActive}
-        setIdActive={setIdActive}
+      {panelState && <Popup
+        // setPopupActive={setPopupActive}
+
+        ActionFn={ActionFn}
+
+        nameActive={panelName}
+        idActive={panelId}
+
+        // setIdActive={setIdActive}
+
         popupRef={popupRef}
 
       />}
@@ -120,7 +122,10 @@ const mapStateToProps = (state) => {
     uid: state.account.uid,
     rooms: state.globalState.rooms,
     likes: state.globalState.likes,
+    panelState: state.globalState.panelState,
+    panelId: state.globalState.panelId,
+    panelName: state.globalState.panelName,
   }
 }
 
-export default connect(mapStateToProps)(ControlsPanel);
+export default connect(mapStateToProps, { ActionFn })(ControlsPanel);

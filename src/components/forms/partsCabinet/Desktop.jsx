@@ -19,7 +19,7 @@ const Desktop = ({
 
   const handleWindowResize = () => {
     setWindowSize(window.innerWidth);
-    console.log(window.innerWidth)
+    // console.log(window.innerWidth)
   }
 
 
@@ -56,7 +56,7 @@ const Desktop = ({
     window.addEventListener('resize', handleWindowResize);
     // unsubscribe from the event on component unmount
     return () => window.removeEventListener('resize', handleWindowResize);
-  }, [])
+  }, []);
 
 
   return (
@@ -68,8 +68,9 @@ const Desktop = ({
 
         <div className="user-top-info--view">
           <h2>
-            {user.name}, {calculateAge(user.dateBerth)}
+            {user.name} {user.verificationCheck ? (<div className="verification-ico"></div>) : ''}{user.dateBerth && ', ' + calculateAge(user.dateBerth)}
             {!user.verificationCheck && <div className="verification-hint">Вы не верифицированы</div>}
+
           </h2>
 
           <div className='input-box'>

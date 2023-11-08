@@ -9,7 +9,7 @@ import GoalsUsers from 'pages/users/catalog/UsersItem/GoalsUsers';
 import NameUsers from 'pages/users/catalog/UsersItem/NameUsers';
 import Btns from 'pages/users/catalog/UsersItem/Btns';
 
-const UserItem = ({ user, dateTravel, account }) => {
+const UserItem = ({ user, dateTravel, account, windowSize }) => {
 
 
 
@@ -32,6 +32,7 @@ const UserItem = ({ user, dateTravel, account }) => {
         <Btns
           user={user}
           account={account}
+
         />
 
       </div>

@@ -6,9 +6,8 @@ import { useState, useEffect } from 'react';
 
 import SettingTabs from 'pages/cabinet/settings/SettingTabs';
 
-
+import ActionFn from 'store/actions';
 // import { getSingleListing } from 'services/getSingleListing';
-
 
 
 import { connect } from 'react-redux';
@@ -20,7 +19,7 @@ import PrivacyTabs from 'pages/cabinet/settings/Privacy';
 
 import Tabs from 'pages/cabinet/parts/Tabs';
 
-const Cabinet = ({ account, formData }) => {
+const Cabinet = ({ account, formData, ActionFn }) => {
 
   const [currentTab, setCurrentTab] = useState(0);
 
@@ -40,6 +39,7 @@ const Cabinet = ({ account, formData }) => {
             formData={formData}
             uid={account.uid}
             listings={account}
+            ActionFn={ActionFn}
           />
         )
       case 2:
@@ -85,5 +85,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Cabinet);
+export default connect(mapStateToProps, { ActionFn })(Cabinet);
 

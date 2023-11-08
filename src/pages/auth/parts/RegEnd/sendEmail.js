@@ -7,7 +7,7 @@ export const sendEmail = (account, location) => {
   // console.log(window.location.host);
   const generateId = location.state?.vertificationId
 
-    axios.get("http://hotpal.ru/api/mail.php", {
+    axios.get("https://hotpal.ru/api/mail.php", {
       params: {
         mail: account.email,
         name: account.name,
@@ -15,7 +15,7 @@ export const sendEmail = (account, location) => {
         host: window.location.host
       }
     }).then(res => {
-      console.log('in send', account, account.uid)
+      console.log('in send', res)
       saveListing({ vertificationSend: true }, account.uid, 'users');
     });
 

@@ -71,7 +71,7 @@ const TemplateFile = (props) => {
         const formData = new FormData();
         formData.append("image", files[index]);
 
-        const response = await axios.post(`http://hotpal.ru/api/upload.php`, formData, {
+        const response = await axios.post(`https://hotpal.ru/api/upload.php`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -104,7 +104,7 @@ const TemplateFile = (props) => {
   const deleteFile = async (deleteItem) => {
     console.log('deleteItem', deleteItem)
     try {
-      const res = await axios.post(`http://hotpal.ru/api/deleteUpload.php`, { fileToDelete: deleteItem }, {
+      const res = await axios.post(`https://hotpal.ru/api/deleteUpload.php`, { fileToDelete: deleteItem }, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }

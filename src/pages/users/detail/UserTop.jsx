@@ -3,7 +3,7 @@ import { calculateAge } from 'pages/users/hooks/calculateAge';
 const UserTop = ({ user }) => {
   return (
     <div className="user-top-info--view">
-      <h2>{user.name} {calculateAge(user.dateBerth) && ',' + calculateAge(user.dateBerth)}</h2>
+      <h2>{user.name} {user.verificationCheck ? (<div className="verification-ico"></div>) : ''} {calculateAge(user.dateBerth) && ',' + calculateAge(user.dateBerth)}</h2>
 
       <div className="user-info-gender">
         {user.gender && user.gender === 'man' ? (

@@ -581,6 +581,17 @@ section {
   display: inline-block;
 }
 
+.verification-ico {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/verification.svg");
+}
+
 @media (max-width: 992px) {
   .tag {
     padding: 3px 5px;
@@ -617,6 +628,17 @@ section {
   background: #3A506B;
   color: #ffffff;
   border-color: #3A506B;
+}
+
+.btn-white {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #0B132B;
+}
+.btn-white:hover {
+  background: #0B132B;
+  color: #ffffff;
+  border-color: #0B132B;
 }
 
 .btn--blue-border {
@@ -3112,6 +3134,12 @@ header.main-page-header .btn-hamburger {
   overflow-y: auto;
   height: 100%;
 }
+.likes-popup h3 {
+  color: #0B132B;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
 
 .panel-close {
   display: none;
@@ -3120,7 +3148,7 @@ header.main-page-header .btn-hamburger {
 @media (max-width: 576px) {
   .controls-panel {
     width: 100%;
-    top: calc(100% - 60px);
+    top: calc(100dvh - 60px);
     height: 60px;
     padding: 0;
   }
@@ -3137,8 +3165,8 @@ header.main-page-header .btn-hamburger {
   }
   .controls-panel-head {
     font-size: 12px;
-    padding: 4px 15px 3px;
-    border-radius: 18px 18px 0 0;
+    padding: 7px 5px 5px;
+    border-radius: 14px 14px 0 0;
     width: 220px;
     left: 20px;
   }
@@ -3207,9 +3235,9 @@ header.main-page-header .btn-hamburger {
 }
 .controls-panel-popup .chat-form .file-input-container {
   background-color: #ffffff;
-  padding: 8px;
   border-radius: 8px;
   margin: 0;
+  padding: 0;
 }
 .controls-panel-popup .chat-form .delete-img-dragdrop {
   right: 10px;
@@ -3217,6 +3245,11 @@ header.main-page-header .btn-hamburger {
 .controls-panel-popup .chat-form .dragdrop-file-item {
   width: 90px;
   height: 60px;
+  margin: 8px;
+  position: relative;
+}
+.controls-panel-popup .chat-form .dragdrop-file-item img {
+  width: 100%;
 }
 
 .popup-chat-rooms {
@@ -3276,15 +3309,19 @@ header.main-page-header .btn-hamburger {
     gap: 0;
   }
   .controls-panel-popup .chat-form textarea {
+    padding-left: 50px;
     height: 41px;
   }
   .controls-panel-popup .chat-form .btn-container {
-    width: 60px;
-    margin: auto;
+    margin: 0;
+    margin-left: auto;
+    margin-right: 6px;
+    position: relative;
+    top: -35px;
   }
   .controls-panel-popup .chat-form .btn {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     font-size: 0;
     background-color: #00AEEF;
     background-position: center;
@@ -3299,6 +3336,8 @@ header.main-page-header .btn-hamburger {
   }
   .controls-panel-popup .chat-form .file-decorate {
     top: -36px;
+    left: 0;
+    right: auto;
   }
   .controls-panel-popup .chat-invite-container {
     margin: auto 0;
@@ -3308,7 +3347,8 @@ header.main-page-header .btn-hamburger {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    width: calc(100% - 70px);
+    margin: 15px auto 0;
+    width: 100%;
   }
   .controls-panel-popup .chat-invite-container h3 {
     margin: 0;
@@ -3443,6 +3483,17 @@ footer .nav li {
 
 .footer-mobile-text {
   display: none;
+}
+
+.age-plus {
+  border: 2px solid #0B132B;
+  width: 36px;
+  height: 36px;
+  line-height: 34px;
+  border-radius: 100%;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
 @media (max-width: 576px) {
@@ -3630,6 +3681,9 @@ button[data-controls=next]:hover {
   transition: ease-out 0.5s;
   visibility: hidden;
   opacity: 0;
+}
+.popup .popup-hint {
+  margin-bottom: 30px;
 }
 .popup.show {
   visibility: visible;
@@ -4066,8 +4120,9 @@ button[data-controls=next]:hover {
     font-size: 12px;
     width: 50%;
     margin: 0;
-    padding: 8px 5px 7px;
+    padding: 6px 5px 5px;
     text-align: center;
+    border-radius: 14px 14px 0 0;
   }
   .show-filter-mobile-container {
     display: -webkit-box;
@@ -4090,7 +4145,7 @@ button[data-controls=next]:hover {
     padding: 0;
     position: relative;
     overflow: hidden;
-    height: 87px;
+    height: 74px;
     border: 0;
     border-radius: 0;
     margin: 0;
@@ -4111,6 +4166,7 @@ button[data-controls=next]:hover {
   }
   .search-all.active .border-container-search {
     height: auto;
+    overflow: visible;
   }
   .search-all .btn-container {
     display: -webkit-box;
@@ -4583,6 +4639,8 @@ button[data-controls=next]:hover {
   .cabinet-page .btn-save-outer {
     text-align: center;
     padding: 15px;
+    bottom: auto;
+    top: 100dvh;
   }
   .cabinet-page .btn-save-outer span {
     margin: 0;
@@ -4591,7 +4649,7 @@ button[data-controls=next]:hover {
     width: 100%;
   }
   .cabinet-page .btn-save-outer.active {
-    bottom: 60px;
+    top: calc(100dvh - 148px);
   }
   .cabinet-page .hit-img-null {
     margin: 0px auto 0px;
@@ -4767,6 +4825,17 @@ button[data-controls=next]:hover {
   background-color: #ebedf0;
 }
 
+.link-delete-account {
+  color: rgba(58, 80, 107, 0.6);
+  font-weight: 700;
+  display: inline-block;
+  margin-left: 30px;
+  cursor: pointer;
+}
+.link-delete-account:hover {
+  color: #0B132B;
+}
+
 @media (max-width: 576px) {
   .settings-tabs-container {
     display: block;
@@ -4818,6 +4887,7 @@ button[data-controls=next]:hover {
   position: relative;
   text-decoration: none;
   min-width: 160px;
+  margin-bottom: 30px;
 }
 .like-item h3 {
   text-align: center;
@@ -4826,6 +4896,11 @@ button[data-controls=next]:hover {
 }
 .like-item a {
   text-decoration: none;
+}
+
+.account-main .like-item {
+  width: 49%;
+  display: inline-block;
 }
 
 .like-img {
@@ -5000,7 +5075,6 @@ button[data-controls=next]:hover {
 }
 
 .travel-add-panel-container {
-  max-width: 740px;
   margin: 0 auto;
 }
 
@@ -5013,15 +5087,14 @@ button[data-controls=next]:hover {
 .travel-add-panel label {
   margin: 0;
   padding-top: 8px;
+  display: inline-block;
+  padding: 0;
 }
 .travel-add-panel .input-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  margin: 0;
 }
 .travel-add-panel .data-input-container {
-  padding-left: 30px;
-  width: calc(100% - 350px);
+  width: 100%;
 }
 .travel-add-panel h3, .travel-add-panel label {
   font-size: 20px;
@@ -5029,7 +5102,15 @@ button[data-controls=next]:hover {
   margin-bottom: 1px;
   text-transform: initial;
 }
+.travel-add-panel h3 {
+  font-size: 40px;
+  margin-top: 2px;
+}
+.travel-add-panel .btn-container {
+  margin-top: 30px;
+}
 .travel-add-panel .btn {
+  width: 100%;
   margin: 0;
 }
 .travel-add-panel .btn-container {
@@ -5037,7 +5118,10 @@ button[data-controls=next]:hover {
 }
 
 .travel-info-date {
-  padding: 8px;
+  padding: 8px 15px 7px;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
+  font-size: 14px;
 }
 
 .travel-info-panel h3 {
@@ -5075,10 +5159,23 @@ button[data-controls=next]:hover {
     padding: 0;
   }
   .travel-story .btn {
-    padding: 0px 8px 0px;
-    font-weight: 400;
-    font-size: 12px;
     width: 100%;
+  }
+  .travel-add-panel {
+    margin-top: 30px;
+  }
+  .travel-add-panel h3 {
+    text-align: center;
+    font-size: 21px;
+    margin-bottom: 8px;
+  }
+  .travel-add-panel label {
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+  }
+  .travel-add-panel .btn-container {
+    margin-top: 15px;
   }
 }
 .travel-item {
@@ -6028,6 +6125,16 @@ button[data-controls=next]:hover {
   }
 }
 @media (max-width: 576px) {
+  .hotels-item {
+    margin: 0;
+  }
+  .hotels-item .hotels-info {
+    display: block;
+  }
+  .hotels-name-container,
+  .hotels-price-container {
+    width: 100%;
+  }
   .hotels-raiting-container {
     padding: 15px;
   }
@@ -6037,10 +6144,17 @@ button[data-controls=next]:hover {
   }
   .hotels-name {
     font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .hotels-price {
+    margin-top: 10px;
   }
   .hotels-guest {
+    display: inline-block;
+    width: 37%;
     font-size: 16px;
     margin: -5px 0 8px;
+    text-align: left;
   }
   .hotels-guest span {
     font-size: 20px;
@@ -6707,8 +6821,22 @@ button[data-controls=next]:hover {
        text-align-last: left;
   padding-bottom: 15px;
 }
+.chat-form .dragdrop-file-item {
+  width: 120px;
+  height: 90px;
+  position: relative;
+  border: 1px solid #00AEEF;
+  border-radius: 6px;
+}
+.chat-form .dragdrop-file-item img {
+  width: 100%;
+}
 .chat-form .input-file {
   display: none;
+}
+
+.invite-ico-box {
+  display: inline-block;
 }
 
 .chat-invite-container {
@@ -7137,6 +7265,45 @@ button[data-controls=next]:hover {
   }
 }
 /*-----chat-end----*/
+.page-why h1 {
+  font-size: 40px;
+  color: #0B132B;
+  max-width: 520px;
+  margin: 0 auto 30px;
+}
+.page-why h1 span {
+  color: #00AEEF;
+}
+
+.why-top {
+  text-align: center;
+}
+.why-top img {
+  width: 100%;
+  max-width: 640px;
+}
+
+.img-why {
+  margin: 90px 0;
+}
+
+.why-body img {
+  width: 100%;
+}
+.why-body h3 {
+  color: #0B132B;
+}
+.why-body p {
+  margin: 0 0 30px;
+}
+.why-body .btn-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.why-body .btn-container .btn {
+  width: 200px;
+}
+
 .dark-theme {
   background-color: #0B132B;
 }
@@ -7240,7 +7407,8 @@ button[data-controls=next]:hover {
 .dark-theme .settings-tabs-container,
 .dark-theme .invite-ico,
 .dark-theme .btn-trash {
-  background-color: #ffffff;
+  background-color: #0B132B;
+  border-color: #ffffff;
 }
 .dark-theme .man-ico {
   background-image: url("../images/icons-app/man-white.svg");
@@ -7286,6 +7454,17 @@ button[data-controls=next]:hover {
 }
 .dark-theme .partners-white {
   display: none;
+}
+.dark-theme .messages-box--answer {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+.dark-theme .settings-tab {
+  color: #ffffff;
+}
+.dark-theme .settings-tab:hover,
+.dark-theme .settings-tab.active {
+  color: #0B132B;
 }
 
 .logo-white {

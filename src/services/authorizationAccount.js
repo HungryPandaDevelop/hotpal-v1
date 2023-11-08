@@ -18,7 +18,7 @@ export const authorizationAccount =  async (formData) => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
       if (userCredential.user) {
-        toast.success('Авторизации успешна')
+        // toast.success('Авторизации успешна')
         console.log('user', userCredential)
       }
 

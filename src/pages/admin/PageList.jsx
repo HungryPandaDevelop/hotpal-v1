@@ -44,7 +44,7 @@ const PageList = ({ account }) => {
       <div className="stub"></div>
       <div className="main-full">
         <h1>Список страниц</h1>
-        {/* <Link to="/page-list-new" className="btn btn--blue">Новая страница</Link> */}
+        <Link to="/page-list-new" className="btn btn--blue">Новая страница</Link>
         <ul className="ln">
           {listings.map((el, index) => (
             <li key={index}>

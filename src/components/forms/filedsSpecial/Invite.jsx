@@ -2,6 +2,7 @@ import { Field, change } from 'redux-form';
 // import { useState, useEffect } from 'react';
 
 
+
 const TempateInput = (props) => {
 
   const {
@@ -10,43 +11,56 @@ const TempateInput = (props) => {
 
   const {
     // onSubmit,
-    ignoreTextSubmit,
-    // dispatch,
+    submitInvite,
+    dispatch,
   } = props.obj;
 
 
+  const sendInvite = (type, text) => {
 
-  const sendInvite = (e, set) => {
+    // dispatch(change('chatForm', 'invite', {
+    //   text: text,
+    //   type: type,
+    //   status: 'see'
+    // }))
 
-    ignoreTextSubmit(e);
+    // dispatch(change('chatForm', 'message', 'test'))
+
+    // input.onChange({
+    //   text: text,
+    //   type: type,
+    //   status: 'see'
+    // });
+
+
+    submitInvite(
+      {
+        invite:
+        {
+          text: text,
+          type: type,
+          status: 'see'
+        }
+      });
+
 
     // onSubmit(e);
 
   }
-  const changeInvite = (type, text) => {
-    // dispatch(change('singleInput', 'message', text))
-    input.onChange({
-      text: text,
-      type: type,
-      status: 'see'
-    });
-  }
-  const resetInvite = () => {
-    // dispatch(change('singleInput', 'message', ''));
-    input.onChange('');
-  }
+
 
 
 
   const renderBtn = (type, text) => {
     return (
-      <div
-        className="invite-ico"
-        onClick={(e) => { sendInvite(e, type) }}
-        onMouseEnter={() => { changeInvite(type, text) }}
-        onMouseLeave={() => { resetInvite() }}
-      >
-        <i className={`${type}-ico`}></i><span dangerouslySetInnerHTML={{ __html: text }}></span></div>
+      <div className='invite-ico-box'>
+        <div
+          className="invite-ico"
+          onClick={(e) => { sendInvite(type, text) }}
+
+        >
+          <i className={`${type}-ico`}></i><span dangerouslySetInnerHTML={{ __html: text }}></span></div>
+      </div>
     )
   }
 
@@ -69,6 +83,7 @@ const RenderInputInvite = ({ obj }) => {
     name={obj.name}
     obj={obj}
     component={TempateInput}
+
   />;
 }
 

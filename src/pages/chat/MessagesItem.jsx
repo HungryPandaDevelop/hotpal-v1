@@ -18,7 +18,8 @@ const MessagesItem = ({ message, uid, roomId, index, setImageLoaded }) => {
     let loadImgId;
     clearTimeout(loadImgId)
     loadImgId = setTimeout(() => {
-      setImageLoaded(true)
+      setImageLoaded(true);
+
     }, 250);
   }
 
@@ -30,7 +31,7 @@ const MessagesItem = ({ message, uid, roomId, index, setImageLoaded }) => {
 
         {message.invite.type ? (<span dangerouslySetInnerHTML={{ __html: message.invite.text }}></span>) : message.message}
 
-        {message.fileMessage ? (<div>
+        {message.fileMessage.length > 0 ? (<div>
           {message.fileMessage.map((img, index) => (
             <img onLoad={loadImg} className="messages-img" src={img.url} key={index} alt={img} />
           ))}

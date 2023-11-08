@@ -54,7 +54,7 @@ export const googleAuth = async (generateId) => {
 
     if (!docSnap.exists()) {
       // console.log('step 4')
-      toast.success('Rегистрация успешна');
+      // toast.success('Rегистрация успешна');
 
       await setDoc(doc(db, 'users', user.uid), {
         name: user.displayName,
@@ -66,7 +66,7 @@ export const googleAuth = async (generateId) => {
       return ['reg', user.uid];
       
     }else{
-      toast.success('Авторизация успешна');
+      // toast.success('Авторизация успешна');
 
       const cardsRef = doc(db, 'users', user.uid);
       const dataForm = {

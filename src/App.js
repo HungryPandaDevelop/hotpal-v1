@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import PrivatRoute from 'blocks/PrivatRoute';
 import GlobalRoute from 'blocks/GlobalRoute';
+import GlobalRouteWhite from 'blocks/GlobalRouteWhite';
 
 import ScrollTop from 'components/ScrollTop'
 // import Header from 'blocks/Header';
@@ -55,25 +56,26 @@ import PageStandart from 'pages/admin/PageStandart';
 
 
 // import VKauth from 'pages/VKauth';
-
+import CookiePopup from 'blocks/CookiePopup'
 import Yslovia from 'pages/default/Yslovia';
 import Konf from 'pages/default/Konf';
 import Politic from 'pages/default/Politic';
 import Intelect from 'pages/default/Intelect';
 import About from 'pages/default/About';
+import Why from 'pages/default/Why';
 
 const App = ({account})=> {
   // console.log('uid', account)
   return (
       <>
-      
+
         <BrowserRouter>
           <CheckAuth />
           <ScrollTop />
+          <CookiePopup/>
           <div className="content">
           <Routes> 
             <Route path='/' element={<GlobalRoute/>}>
-              {/* <Route path='/' exept element={<Main/>} ></Route> */}
               <Route index element={<Main/>} ></Route>
               <Route path='/auth-start' element={<AuthStart/>} ></Route>
               <Route path='/reg-start' element={<RegStart/>} ></Route>
@@ -81,13 +83,15 @@ const App = ({account})=> {
               <Route path='/auth-mail' element={<AuthMail/>} ></Route>
               <Route path='/forgot-pass' element={<ForgotPassword/>} ></Route>
               <Route path='/change-forgot-pass' element={<ChangeForgotPassword/>} ></Route>
-              {/* <Route path='/reg-phone' element={<RegPhone/>} ></Route>  */}
               <Route path='/reg-end' element={<RegEndPopup/>} ></Route> 
+            </Route>
+            <Route path='/' element={<GlobalRouteWhite/>}>
               <Route path='/konf'  element={<Konf  />} ></Route>
               <Route path='/intelect'  element={<Intelect  />} ></Route>
               <Route path='/politic'  element={<Politic  />} ></Route>
               <Route path='/yslovia'  element={<Yslovia  />} ></Route>
               <Route path='/about'  element={<About  />} ></Route>
+              <Route path='/why'  element={<Why  />} ></Route>
             </Route>
             
 

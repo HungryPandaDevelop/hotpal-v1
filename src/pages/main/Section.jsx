@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import img1 from 'default/frontend/images/partners/1.svg'
 import img2 from 'default/frontend/images/partners/2.svg'
 import img3 from 'default/frontend/images/partners/3.svg'
@@ -12,7 +15,15 @@ import img3w from 'default/frontend/images/partners/3_white.svg'
 import img4w from 'default/frontend/images/partners/4_white.svg'
 
 
+
 const Section = ({ account }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (account.uid) {
+      // navigate('/users-catalog');
+    }
+  }, [account]);
+
   return (
     <>
       <section className="main-home">
@@ -21,7 +32,7 @@ const Section = ({ account }) => {
         </div>
         <div className="main-home-content main-full">
           <div className="main-home-info">
-            <h1>Знакомство в отелях</h1>
+            <h1>Знакомства в отелях</h1>
             {!account.uid && (
               <div className="btn-container">
                 <Link className="element-btn btn btn--black" to="/reg-start">Создать аккаунт</Link>

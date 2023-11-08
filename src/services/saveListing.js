@@ -22,7 +22,7 @@ export const saveListing = async (dataForm, cardsId, baseName, notShow) => {
         if(notShow){
 
         }else{
-          toast.success('Данные обновлены')
+          // toast.success('Данные обновлены')
         }
 
 

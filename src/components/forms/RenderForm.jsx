@@ -14,6 +14,7 @@ let TemplateForm = (props) => {
     submitSuccess,
     colBtn,
     invalid,
+    children
 
   } = props;
 
@@ -58,6 +59,7 @@ let TemplateForm = (props) => {
         btnSubmitText={btnSubmitText}
         waitAnsw={waitAnsw}
         onSubmit={onSubmit}
+        children={children}
       />
 
     </form >

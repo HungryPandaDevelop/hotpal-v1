@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // https://8124-37-204-10-198.ngrok-free.app
-const url = 'https://f421-37-204-10-198.ngrok-free.app';
+const url = 'https://26e8-37-204-10-198.ngrok-free.app';
 export const autocompleteSearch = (term) => {
  
   // console.log('search start')
@@ -62,10 +62,11 @@ export const hotelsData = (hotelPrices) => {
     // hotelPrices.forEach((el,index) => {
     //     renderArrHotels.push({ ...res.data.find(e => e.id === el.id), price: el.rates, index: index, el: el })
     // });
-    res.data.forEach((el,index) => {
+    console.log('res',res)
+    res.data.length>0 &&  res.data.forEach((el,index) => {
       let findPrice = hotelPrices.find(e => e.id === el.id)
       renderArrHotels.push({ price: findPrice.rates , ...el })
-  });
+    });
     
     return renderArrHotels;
 

@@ -6,7 +6,7 @@ import ChatHead from "./ChatHead"
 
 import { updateRead } from 'services/chatEvents';
 
-const MessagesPopup = ({ uid, roomId, currentUser, setChoiseRoom }) => {
+const MessagesPopup = ({ uid, roomId, currentUser }) => {
 
   useEffect(() => {
     console.log("chat popup")
@@ -14,7 +14,7 @@ const MessagesPopup = ({ uid, roomId, currentUser, setChoiseRoom }) => {
 
   return (
     <>
-      <ChatHead currentUser={currentUser} roomId={roomId} setChoiseRoom={setChoiseRoom} />
+      <ChatHead currentUser={currentUser} roomId={roomId} />
       <Messages uid={uid} roomId={roomId} type='popup' />
       <ChatForm roomId={roomId} type='popup' />
     </>

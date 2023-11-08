@@ -7,7 +7,13 @@ import RoomItem from 'pages/chat/RoomItem';
 import { connect } from 'react-redux';
 
 
-const RoomList = ({ uid, roomId, setChoiseRoom, setCurrentUser, type, rooms }) => {
+const RoomList = ({
+  uid,
+  roomId,
+  // setChoiseRoom, 
+  // setCurrentUser, 
+  type,
+  rooms }) => {
   // console.log('rooms', rooms)
 
 
@@ -25,8 +31,8 @@ const RoomList = ({ uid, roomId, setChoiseRoom, setCurrentUser, type, rooms }) =
         uid={uid}
         type={type}
         onDeleteRoom={onDeleteRoom}
-        setChoiseRoom={setChoiseRoom}
-        setCurrentUser={setCurrentUser}
+      // setChoiseRoom={setChoiseRoom}
+      // setCurrentUser={setCurrentUser}
       />) : <EmptyRoom />}
 
     </div>

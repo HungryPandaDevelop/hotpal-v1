@@ -18,42 +18,44 @@ const Sympathy = ({ uid, likes }) => {
             {likes.length === 0 ? (<div className='col-12'><h3>Делайте больше поисков, ищите, вступайте в диалоги и Вас заметят!</h3>
               <Link to="/users-catalog" className="btn btn--blue">Начать поиск</Link>
             </div>) : (<>
-              <div className="col-12">
+              <div className="col-6">
                 <h3>Входящие</h3>
-              </div>
-              {likes.map((like, index) => {
+                {likes.map((like, index) => {
 
-                if (like) {
-                  return (
-                    <LikesItem
-                      key={index}
-                      uid={uid}
-                      like={like.data}
-                      likes={likes}
-                      typeLike="in"
-                    />
-                  )
+                  if (like) {
+                    return (
+                      <LikesItem
+                        key={index}
+                        uid={uid}
+                        like={like.data}
+                        likes={likes}
+                        typeLike="in"
+                      />
+                    )
+                  }
                 }
-              }
-              )}
-              <div className="col-12">
+                )}
+              </div>
+
+              <div className="col-6">
                 <h3>Отправленные</h3>
-              </div>
-              {likes.map((like, index) => {
+                {likes.map((like, index) => {
 
-                if (like) {
-                  return (
-                    <LikesItem
-                      key={index}
-                      uid={uid}
-                      like={like.data}
-                      likes={likes}
-                      typeLike="out"
-                    />
-                  )
+                  if (like) {
+                    return (
+                      <LikesItem
+                        key={index}
+                        uid={uid}
+                        like={like.data}
+                        likes={likes}
+                        typeLike="out"
+                      />
+                    )
+                  }
                 }
-              }
-              )}
+                )}
+              </div>
+
             </>)}
 
           </div>

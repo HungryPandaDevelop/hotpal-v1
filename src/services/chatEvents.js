@@ -49,7 +49,7 @@ export const createRoom = async (MyUid, heUid) => {
       }else{
         // console.log('create')
         await setDoc(doc(db, 'rooms',  generateId), {...sendData, id: generateId});
-        toast.success('Комната добавлена');
+        // toast.success('Комната добавлена');
         return generateId;
       }
 
@@ -192,7 +192,7 @@ export const sendMessage = async (roomId, uid, message ) => {
   // console.log('message', getRoomInfo)
   try {
     await setDoc(doc(db, 'rooms', roomId), getRoomInfo);
-    toast.success('Сообщение отправлено');
+    // toast.success('Сообщение отправлено');
     
   } catch (error) {
       console.error(error);
@@ -223,7 +223,7 @@ export const updateInvite = async (roomId, status, index)=>{
 
   try {
     await setDoc(doc(db, 'rooms', roomId), getRoomInfo);
-    toast.success('Сообщение отправлено');
+    // toast.success('Сообщение отправлено');
     
   } catch (error) {
       console.error(error);

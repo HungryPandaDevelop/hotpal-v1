@@ -10,24 +10,15 @@ import { chatFields } from 'base/forms/chatFields';
 import { sendMessage } from 'services/chatEvents';
 
 
-const Form = ({ formData, uid, roomId, type, account, roomUserInfo }) => {
-
+const Form = ({ formData, uid, roomId, type, account, roomUserInfo, panelState }) => {
 
 
   const submitSuccess = () => {
-
-    // let message = {
-    //   text: formData.values.message ? formData.values.message : '',
-    //   invite: formData?.values.invite ? formData.values.invite : '',
-    //   imgs: formData?.values.fileMessage ? formData.values.fileMessage : ''
-    // }
-
-    // console.log('formData', message)
-
     sendMessage(roomId, uid, formData.values);
-
   }
-
+  const submitInvite = (inviteData) => {
+    sendMessage(roomId, uid, inviteData);
+  }
 
   return (
     <div className="chat-form">
@@ -36,6 +27,7 @@ const Form = ({ formData, uid, roomId, type, account, roomUserInfo }) => {
         fields={chatFields}
         btnSubmitText="Отправить"
         submitSuccess={submitSuccess}
+        submitInvite={submitInvite}
         colText={type === 'page' ? "col-8 " : "col-7"}
         colBtn={type === 'page' ? "col-4 " : "col-5"}
         account={account}

@@ -17,8 +17,8 @@ const RoomItem = ({
   roomUrl,
   uid,
   onDeleteRoom,
-  setChoiseRoom,
-  setCurrentUser,
+  // setChoiseRoom,
+  // setCurrentUser,
   type,
   ActionFn
 }) => {
@@ -36,6 +36,7 @@ const RoomItem = ({
 
       setLoading(false);
       setRoomUserInfo(res);
+
       if (type !== 'popup') {
 
         ActionFn('SET_CURRENT_ROOM', { roomUserInfo: res });
@@ -105,8 +106,9 @@ const RoomItem = ({
         type={type}
         room={room}
         roomUserInfo={roomUserInfo}
-        setChoiseRoom={setChoiseRoom}
-        setCurrentUser={setCurrentUser}
+        // setChoiseRoom={setChoiseRoom}
+        // setCurrentUser={setCurrentUser}
+        ActionFn={ActionFn}
       >
 
         <>

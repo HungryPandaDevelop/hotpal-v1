@@ -32,7 +32,7 @@ export const addCardsDefault = async (dataForm, baseCards, )=>{
     await setDoc(doc(db, baseCards,  generateId), dataForm);
     // await addDoc(collection(db, baseCards), dataForm);
   
-    toast.success('Элемент добавален');
+    // toast.success('Элемент добавален');
     return generateId;
 
   } catch (error) {

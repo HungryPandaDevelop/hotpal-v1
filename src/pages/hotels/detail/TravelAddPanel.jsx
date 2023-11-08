@@ -64,12 +64,18 @@ const RoomsSearchPanel = ({
     return (
       <div className="travel-add-panel border-container">
         <div className="main-grid">
-          <div className="col-6 col-xs-12">
+          <div className="col-4 col-xs-12">
             <h3>Буду в этом отеле</h3>
-            <div className='travel-info-date'>{myTravel.dateTravel}</div>
-          </div>
 
-          <div className="col-6 col-xs-12">
+          </div>
+          <div className="col-4 col-xs-12">
+            <div className="input-box">
+              <label><b>Выбранные даты</b></label>
+              <div className='travel-info-date'>{myTravel.dateTravel}</div>
+            </div>
+
+          </div>
+          <div className="col-4 col-xs-12">
             <div className="btn-container">
               <div
                 className="btn btn--white"

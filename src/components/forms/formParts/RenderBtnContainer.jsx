@@ -5,7 +5,8 @@ const RenderBtnContainer = ({
   waitAnsw,
   onSubmit,
   btnSubmitText,
-  classBtn
+  classBtn,
+  children
 }) => {
 
 
@@ -16,6 +17,7 @@ const RenderBtnContainer = ({
           <><i></i><span>{btnSubmitText}</span></>
         )}
       </button>
+      {children}
     </div>
   )
 }

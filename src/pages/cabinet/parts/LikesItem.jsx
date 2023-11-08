@@ -40,48 +40,46 @@ const LikesItem = ({
   if (!user) { return false; }
 
   return (
-    <div className="col-4 col-xs-6">
-      <div
+    <div
 
-        className="like-item"
-      // onMouseEnter={() => { onRead(like, uid) }}
-      >
-        {/* <RenderRead like={like} uid={uid} /> */}
+      className="like-item"
+    // onMouseEnter={() => { onRead(like, uid) }}
+    >
+      {/* <RenderRead like={like} uid={uid} /> */}
 
-        <Link to={`/users-catalog/${userLoadId}`} className="img-cover-info">
-          <RemderImg user={user} />
-          <h3>{user.name}</h3>
-        </Link>
+      <Link to={`/users-catalog/${userLoadId}`} className="img-cover-info">
+        <RemderImg user={user} />
+        <h3>{user.name}</h3>
+      </Link>
 
-        <div className="btn-container">
-          {userSide ? renderStatus(like) : (
-            <>
-              <div className="like-hint">
-                Ваш ответ на симпатию
-              </div>
-              <RenderUserBtn
-                like={like}
-                status="see"
-                textBtn="Оцениваю"
-              />
-              <RenderUserBtn
-                like={like}
-                status="agree"
-                textBtn="Нравится"
-              />
-              <RenderUserBtn
-                like={like}
-                status="disagree"
-                textBtn="Не нравится"
-              />
-            </>
-          )}
-          <div
-            className="like-status-btn trash-like-btn"
-            onClick={() => { onDelete(like.id, setLoading) }}
-            title="С глаз долой"
-          ></div>
-        </div>
+      <div className="btn-container">
+        {userSide ? renderStatus(like) : (
+          <>
+            <div className="like-hint">
+              Ваш ответ на симпатию
+            </div>
+            <RenderUserBtn
+              like={like}
+              status="see"
+              textBtn="Оцениваю"
+            />
+            <RenderUserBtn
+              like={like}
+              status="agree"
+              textBtn="Нравится"
+            />
+            <RenderUserBtn
+              like={like}
+              status="disagree"
+              textBtn="Не нравится"
+            />
+          </>
+        )}
+        <div
+          className="like-status-btn trash-like-btn"
+          onClick={() => { onDelete(like.id, setLoading) }}
+          title="С глаз долой"
+        ></div>
       </div>
     </div>
   )
