@@ -35,17 +35,21 @@ const LikesItem = ({
   if (loading) { return '' }
 
 
-  if ((typeLike === 'out' && !userSide) || (typeLike === 'in' && userSide)) { return false }
+  // if ((typeLike === 'out' && !userSide) || (typeLike === 'in' && userSide)) { return false }
 
   if (!user) { return false; }
+
+  if (userSide === true && like.status !== 'agree') {
+    return false;
+  }
 
   return (
     <div
 
       className="like-item"
-    // onMouseEnter={() => { onRead(like, uid) }}
+      onMouseEnter={() => { onRead(like, uid) }}
     >
-      {/* <RenderRead like={like} uid={uid} /> */}
+      <RenderRead like={like} uid={uid} />
 
       <Link to={`/users-catalog/${userLoadId}`} className="img-cover-info">
         <RemderImg user={user} />
@@ -55,24 +59,25 @@ const LikesItem = ({
       <div className="btn-container">
         {userSide ? renderStatus(like) : (
           <>
-            <div className="like-hint">
-              Ваш ответ на симпатию
-            </div>
-            <RenderUserBtn
+            {like.status === 'agree' && (<div className="like-hint">
+              Симпатия взаимна
+            </div>)}
+
+            {/* <RenderUserBtn
               like={like}
               status="see"
               textBtn="Оцениваю"
-            />
+            /> */}
             <RenderUserBtn
               like={like}
               status="agree"
               textBtn="Нравится"
             />
-            <RenderUserBtn
+            {/* <RenderUserBtn
               like={like}
               status="disagree"
               textBtn="Не нравится"
-            />
+            /> */}
           </>
         )}
         <div

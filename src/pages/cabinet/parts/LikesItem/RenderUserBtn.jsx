@@ -3,8 +3,14 @@ import { saveListing } from 'services/saveListing';
 const RenderUserBtn = ({ like, status, textBtn }) => {
 
   const onSetStatus = (status) => {
-    let newData = { ...like, status: status }
+    let newData;
     console.log('newData', newData)
+    if (like.status === 'agree') {
+      newData = { ...like, status: 'see' }
+    }
+    else {
+      newData = { ...like, status: 'agree' }
+    }
     saveListing(newData, like.id, 'likes')
 
   }

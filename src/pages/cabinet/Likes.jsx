@@ -14,47 +14,29 @@ const Sympathy = ({ uid, likes }) => {
           active={3}
         />
         <div className="border-container border-null-top account-main" >
-          <div className="main-grid">
+          <div className="likes-all">
             {likes.length === 0 ? (<div className='col-12'><h3>Делайте больше поисков, ищите, вступайте в диалоги и Вас заметят!</h3>
               <Link to="/users-catalog" className="btn btn--blue">Начать поиск</Link>
             </div>) : (<>
-              <div className="col-6">
-                <h3>Входящие</h3>
-                {likes.map((like, index) => {
 
-                  if (like) {
-                    return (
-                      <LikesItem
-                        key={index}
-                        uid={uid}
-                        like={like.data}
-                        likes={likes}
-                        typeLike="in"
-                      />
-                    )
-                  }
+              {likes.map((like, index) => {
+
+                if (like) {
+                  return (
+                    <LikesItem
+                      key={index}
+                      uid={uid}
+                      like={like.data}
+                      likes={likes}
+                    // typeLike="in"
+                    />
+                  )
                 }
-                )}
-              </div>
+              }
+              )}
 
-              <div className="col-6">
-                <h3>Отправленные</h3>
-                {likes.map((like, index) => {
 
-                  if (like) {
-                    return (
-                      <LikesItem
-                        key={index}
-                        uid={uid}
-                        like={like.data}
-                        likes={likes}
-                        typeLike="out"
-                      />
-                    )
-                  }
-                }
-                )}
-              </div>
+
 
             </>)}
 

@@ -109,7 +109,7 @@ export const accountFields = {
     labelSecond:"(Изображение формата jpg,png не менее 150x150 px, не более 8Мб)", 
     typeFile: "img", 
     typeUpload:".png, .jpg, .jpeg", 
-    maxSize: 5242880, 
+    maxSize: 52428800, 
     textEmpty: "На данный момент фоно не выбрано",
     wrapClass: "col-12 input-photo-container account-item",
   },

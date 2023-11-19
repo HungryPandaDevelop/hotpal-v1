@@ -4883,24 +4883,22 @@ button[data-controls=next]:hover {
   }
 }
 .like-item {
+  display: inline-block;
   text-align: center;
   position: relative;
   text-decoration: none;
-  min-width: 160px;
-  margin-bottom: 30px;
+  min-width: 120px;
+  margin: 0 15px 30px;
+  vertical-align: top;
 }
 .like-item h3 {
   text-align: center;
   font-size: 16px;
   color: #0B132B;
+  margin: 0 0 8px;
 }
 .like-item a {
   text-decoration: none;
-}
-
-.account-main .like-item {
-  width: 49%;
-  display: inline-block;
 }
 
 .like-img {
@@ -4998,32 +4996,31 @@ button[data-controls=next]:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 24px;
-  background-image: url("../images/icons/trash-white.svg");
-  background-color: #00AEEF;
-}
-.trash-like-btn:hover {
   background-image: url("../images/icons/trash-blue.svg");
   background-color: #ffffff;
+}
+.trash-like-btn:hover {
+  background-image: url("../images/icons/trash-white.svg");
+  background-color: #00AEEF;
 }
 
 .like-hint {
   font-size: 14px;
   color: rgba(58, 80, 107, 0.6);
-  margin: 0 0 7px;
+  margin-top: -4px;
+  margin-bottom: 6px;
 }
 
 .status-new {
-  width: auto;
+  width: 20px;
   position: absolute;
-  height: auto;
+  height: 20px;
   z-index: 2;
-  left: 0;
+  right: 0px;
   top: 0;
-  background-color: #fba72a;
-  font-weight: 700;
-  padding: 2px 12px;
-  border-radius: 4px;
-  font-size: 14px;
+  background-color: #00AEEF;
+  font-size: 0;
+  border-radius: 100%;
 }
 
 @media (max-width: 576px) {
