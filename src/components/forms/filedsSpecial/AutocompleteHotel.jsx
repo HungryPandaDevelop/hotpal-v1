@@ -93,13 +93,13 @@ const TempateInput = (props) => {
         console.log('regions get', res)
         setLoading(false)
         setRussianCities(res.data)
-      })
+      });
 
     }, 1000))
 
     setFilterVal(e.target.value);
 
-
+    input.onChange(e.currentTarget.getAttribute('namecity')); // ?
   }
 
   const clearFilterVal = () => {
@@ -117,6 +117,7 @@ const TempateInput = (props) => {
         <li
           key={index}
           // coords={[item.coords.lat, item.coords.lon]}
+          className={(item.type === 'hotels') ? 'hotels' : ''}
           namecity={item.name}
           onClick={choiseCity}
           id={item.id}
@@ -147,6 +148,7 @@ const TempateInput = (props) => {
         <div className={`search-field-container ${filterVal.length > 0 ? 'search-choises' : ''}`}>
 
           <input
+            {...input}
             type="text"
             value={filterVal}
             ref={inputRef}

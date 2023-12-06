@@ -8,18 +8,7 @@ export const hotelsSearchFields = {
     placeholder:"Выбрать город",
     wrapClass: "input-box",
   },
-  // dateIn: { 
-  //   type:"date" ,
-  //   name: "dateIn", 
-  //   label: "Дата заезда", 
-  //   wrapClass: "input-box col-3 col-xs-12" ,
-  // },
-  // dateOut: { 
-  //   type:"date" ,
-  //   name: "dateOut", 
-  //   label: "Дата выезда", 
-  //   wrapClass: "input-box col-3 col-xs-12" ,
-  // },
+
   dateRange: { 
     type:"dateRange" ,
     name: "dateRange", 
@@ -52,6 +41,12 @@ export const hotelsSearchFields = {
     name: "geoHotels", 
     label: "На карте", 
     wrapClass: "input-box geo-input-box" ,
+  },
+  hotelFind: { 
+    type:"autoHotel" ,
+    name: "hotelFind", 
+    label: "Tекущее расположение", 
+    wrapClass: " search-select-box input-box col-3 col-md-6 col-xs-12",
   },
   // raiting: { 
   //   type:"text" ,

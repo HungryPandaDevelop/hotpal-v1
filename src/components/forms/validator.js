@@ -18,6 +18,13 @@ export const minLength = (value)=>{
   return undefined;
 }
 
+export const minLengthPass = (value)=>{
+  if(value && value.length < 6) { 
+    return 'Минимум 6 символа';
+  }
+  return undefined;
+}
+
 export const mailCheck = (value)=>{
   const regex  = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if(value && regex.test(value)) { 

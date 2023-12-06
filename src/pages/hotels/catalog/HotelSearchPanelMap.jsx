@@ -1,12 +1,7 @@
 
-import RenderForm from 'components/forms/RenderFormHotelsSearch';
-
+import RenderForm from 'components/forms/RenderFormHotelsSearchMap';
 import { geoSearch, hotelsData } from 'pages/hotels/hooks/searchHotels';
-
-import { autocompleteSearch } from 'pages/hotels/hooks/searchHotels';
-
 import { getMaxListing } from 'components/getMaxListing';
-
 import { useEffect, useState } from 'react';
 
 import moment from "moment";
@@ -25,8 +20,9 @@ const HotelSearchPanelMap = ({
   travelList
 }) => {
 
+  const centerCity = [55.755864, 37.617698];
 
-  const submitSuccess = (e) => {
+  const submitSuccess = () => {
 
     setLoading(true)
     // console.log('getHotels formData.values', formData.values)
@@ -41,38 +37,53 @@ const HotelSearchPanelMap = ({
     let dateTo = currentDate[1].split(".").reverse().join("-");
 
     setSearchDate([dateFrom, dateTo]);
-    // let longitude = formData.values.geoHotels[1];
-    // let latitude = formData.values.geoHotels[0];
+    let longitude = formData.values.geoHotels[1];
+    let latitude = formData.values.geoHotels[0];
+
+    geoSearch(longitude, latitude, dateFrom, dateTo, personCount).then(res => {
+      // console.log('getHotels', res)
+      if (res) {
+        hotelsData(res).then(response => {
+          console.log(response)
 
 
-    console.log("formData", formData)
 
-    autocompleteSearch(formData.values.hotelFind).then(res => {
-      console.log('regions get', res)
-      setLoading(false)
+          // console.log('travelList', getMaxListing(travelList, 'idHotel'))
+          let hotelCount = getMaxListing(travelList, 'idHotel');
 
-      hotelsData(res.data, 'auto').then(response => {
-        console.log('hotelsData', response)
-        // console.log('travelList', getMaxListing(travelList, 'idHotel'))
-        let hotelCount = getMaxListing(travelList, 'idHotel');
-        // console.log(hotelCount);
-        var renderCountTravelHotels = [];
-        response.forEach((el, index) => {
-          let findCount = hotelCount.find(e => e.idHotel === el.id)
-          renderCountTravelHotels.push({ countTravels: findCount ? findCount.count : 0, ...el })
+
+          // console.log(hotelCount);
+
+
+          var renderCountTravelHotels = [];
+
+          response.forEach((el, index) => {
+
+            let findCount = hotelCount.find(e => e.idHotel === el.id)
+
+            renderCountTravelHotels.push({ countTravels: findCount ? findCount.count : 0, ...el })
+
+          });
+
+          // console.log(renderCountTravelHotels.sort((a, b) => b.countTravels - a.countTravels));
+
+          setLoading(false)
+
+          setListings(renderCountTravelHotels.sort((a, b) => b.countTravels - a.countTravels))
+
         });
-        // console.log(renderCountTravelHotels.sort((a, b) => b.countTravels - a.countTravels));
+      } else {
         setLoading(false)
-        setListings(renderCountTravelHotels.sort((a, b) => b.countTravels - a.countTravels))
-      });
-    });
-
-
+        setListings(null)
+      }
+    })
   }
 
   const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
+
+
 
 
     if (formData && firstLoad) {
@@ -84,16 +95,16 @@ const HotelSearchPanelMap = ({
 
 
 
+
+
+
   return (
     <>
+
       <RenderForm
         fields={hotelsSearchFields}
         submitSuccess={submitSuccess}
-        initialValues={{
-          city: 2395,
-          personCount: 2,
-          dateRange: moment().format('DD.MM.YYYY') + ' - ' + moment().add(2, 'days').format('DD.MM.YYYY')
-        }}
+        initialValues={{ geoHotels: centerCity, city: 2395, personCount: 2, dateRange: moment().format('DD.MM.YYYY') + ' - ' + moment().add(2, 'days').format('DD.MM.YYYY') }}
         loading={loading}
         listingsCoords={listingsCoords}
       // resetAll={resetAll}

@@ -47,7 +47,8 @@ const LikesItem = ({
     <div
 
       className="like-item"
-      onMouseEnter={() => { onRead(like, uid) }}
+      // onMouseEnter={() => { onRead(like, uid) }}
+      onClick={() => { onRead(like, uid) }}
     >
       <RenderRead like={like} uid={uid} />
 

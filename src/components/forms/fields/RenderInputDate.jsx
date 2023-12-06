@@ -3,11 +3,14 @@ import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import { useEffect, useRef } from "react";
 
+import { useMask, InputMask } from '@react-input/mask';
 
 const TempateInput = (props) => {
 
-  let $input = useRef(null);
   let dp = useRef(null);
+  let inputRef = useRef(null);
+
+  // const InputMask = useMask({ mask: '+0 (___) ___-__-__', replacement: { _: /\d/ } });
 
   const {
     input,
@@ -39,8 +42,8 @@ const TempateInput = (props) => {
   useEffect(() => {
     // Save instance for the further update
 
-    dp.current = new AirDatepicker($input.current, {
-      dateFormat: 'yyyy-MM-dd'
+    dp.current = new AirDatepicker(inputRef.current, {
+      dateFormat: 'dd-MM-yyyy'
     });
   }, []);
 
@@ -51,14 +54,25 @@ const TempateInput = (props) => {
     <div className={wrapClass}>
       {label && <label htmlFor={input.name}><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>}
       <div className="data-input-container">
-        <input
+        {/* <input
           {...input}
-          // type="date"
           placeholder={placeholder}
           id={input.name}
-          ref={$input}
+          ref={inputRef}
+          // ref={InputMask}
           className={`input-date input-decorate ${checkErrorSubmit && error && 'input-error'}`}
+        /> */}
+
+        <InputMask
+          {...input}
+          placeholder={placeholder}
+          id={input.name}
+          className={`input-date input-decorate ${checkErrorSubmit && error && 'input-error'}`}
+          mask="__-__-____"
+          replacement={{ _: /\d/ }}
+          ref={inputRef}
         />
+
 
       </div>
       {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}

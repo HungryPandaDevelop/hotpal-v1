@@ -42,6 +42,7 @@ import UsersCatalog from 'pages/users/UserCatalog';
 import UsersDetail from 'pages/users/UserDetail';
 
 import HotelsCatalog from 'pages/hotels/HotelsCatalog';
+import HotelsCatalogMap from 'pages/hotels/HotelsCatalogMap';
 import HotelsUsersCatalog from 'pages/hotels/HotelsUsersCatalog';
 
 import Chat from 'pages/chat/Chat';
@@ -99,6 +100,7 @@ const App = ({account})=> {
               <Route path='/users-catalog' element={<UsersCatalog/>}></Route>
               <Route path='/users-catalog/:userId' element={<UsersDetail/>}></Route>
 
+              <Route path='/hotels-catalog-map' element={<HotelsCatalogMap uid={account.uid}/>} ></Route>
               <Route path='/hotels-catalog' element={<HotelsCatalog uid={account.uid}/>} ></Route>
               <Route path='/hotels-users/:hotelId' element={<HotelsUsersCatalog uid={account.uid}/>} ></Route>
     

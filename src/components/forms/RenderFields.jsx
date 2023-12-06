@@ -53,7 +53,7 @@ import RenderInputGeoHotels from './filedsSpecial/GeoHotels'; // выбор то
 import RenderInputYaString from './filedsSpecial/SearchYaString'; // выбор точки
 
 
-import { required, minLength, mailCheck } from 'components/forms/validator';
+import { required, minLength, minLengthPass, mailCheck } from 'components/forms/validator';
 
 const RenderFields = ({ fields, checkErrorSubmit, type }) => {
 
@@ -63,6 +63,7 @@ const RenderFields = ({ fields, checkErrorSubmit, type }) => {
     validate && validate.map((item) => {
       if (item === 'required') { validateArr.push(required); }
       else if (item === 'minLength') { validateArr.push(minLength); }
+      else if (item === 'minLengthPass') { validateArr.push(minLengthPass); }
       else if (item === 'mailCheck') { validateArr.push(mailCheck); }
     });
 

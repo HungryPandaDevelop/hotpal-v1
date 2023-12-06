@@ -40,12 +40,19 @@ export const hotelsDataSingle = (hotelPrices) => {
   });
 }
 
-export const hotelsData = (hotelPrices) => {
+export const hotelsData = (hotelPrices, type) => {
   // console.log('start hotelsData', hotelPrices)
 
-  let tempArrayHotels = hotelPrices.map(el => {
-        return el.id
-    })
+  let tempArrayHotels;
+  
+  if(type==='auto'){
+    tempArrayHotels =  hotelPrices.filter(el => el.type === 'hotels')
+  }
+
+  tempArrayHotels = tempArrayHotels.map(el => {
+    return el.id
+  });
+
 
   return axios.get(url+"/hotels-data", {
     headers: {

@@ -147,6 +147,7 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../images/stub-ico.svg");
+  background-position: center 20%;
 }
 
 h1,
@@ -3148,7 +3149,8 @@ header.main-page-header .btn-hamburger {
 @media (max-width: 576px) {
   .controls-panel {
     width: 100%;
-    top: calc(100dvh - 60px);
+    top: auto;
+    bottom: 0;
     height: 60px;
     padding: 0;
   }
@@ -3172,10 +3174,11 @@ header.main-page-header .btn-hamburger {
   }
   .controls-panel-popup {
     position: fixed;
-    top: 116px;
+    bottom: 60px;
+    text-align: left;
     width: 100%;
     right: 0;
-    height: calc(100vh - 174px);
+    height: auto;
     border-radius: 0;
     -webkit-box-shadow: none;
             box-shadow: none;
@@ -3299,7 +3302,7 @@ header.main-page-header .btn-hamburger {
 
 @media (max-width: 576px) {
   .controls-panel-popup .messages-container {
-    height: calc(100vh - 400px);
+    height: calc(100dvh - 410px);
     padding: 15px;
   }
   .controls-panel-popup .chat-form {
@@ -4666,6 +4669,8 @@ button[data-controls=next]:hover {
   top: 0;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center 20%;
+     object-position: center 20%;
 }
 .tiny-account .tns-controls {
   left: 15px;
@@ -4764,6 +4769,8 @@ button[data-controls=next]:hover {
   top: 0;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center 20%;
+     object-position: center 20%;
 }
 .dragdrop-uploaded-tiny .tiny-account-img {
   width: 100%;
@@ -4899,6 +4906,7 @@ button[data-controls=next]:hover {
 }
 .like-item a {
   text-decoration: none;
+  display: block;
 }
 
 .like-img {
@@ -5934,6 +5942,13 @@ button[data-controls=next]:hover {
 }
 .border-users-mini .box-range {
   margin-bottom: 45px;
+}
+
+.hotels-search-panel .search-select li {
+  display: none;
+}
+.hotels-search-panel .search-select .hotels {
+  display: block;
 }
 
 @media (max-width: 992px) {

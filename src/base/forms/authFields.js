@@ -47,7 +47,7 @@ export const regFields = {
     label: "Пароль",
     placeholder: "Пароль",
     type:"password", 
-    validate: ['required','minLength'],
+    validate: ['required','minLengthPass'],
     wrapClass: "input-box  col-6",
   },
 };

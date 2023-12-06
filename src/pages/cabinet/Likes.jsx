@@ -15,9 +15,10 @@ const Sympathy = ({ uid, likes }) => {
         />
         <div className="border-container border-null-top account-main" >
           <div className="likes-all">
-            {likes.length === 0 ? (<div className='col-12'><h3>Делайте больше поисков, ищите, вступайте в диалоги и Вас заметят!</h3>
+            {likes.length === 0 ? (<>
+              <h3>Делайте больше поисков, ищите, вступайте в диалоги и Вас заметят!</h3>
               <Link to="/users-catalog" className="btn btn--blue">Начать поиск</Link>
-            </div>) : (<>
+            </>) : (<>
 
               {likes.map((like, index) => {
 

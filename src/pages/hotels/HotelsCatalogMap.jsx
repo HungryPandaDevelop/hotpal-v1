@@ -8,14 +8,14 @@ import { useEffect, useState } from 'react'
 
 import { connect } from 'react-redux';
 
-import HotelSearchPanel from 'pages/hotels/catalog/HotelSearchPanel';
+import HotelSearchPanelMap from 'pages/hotels/catalog/HotelSearchPanelMap';
 import HotelsItem from 'pages/hotels/catalog/HotelsItem';
 import Preloader from 'components/Preloader';
 
 import { getListing } from 'services/getListings';
 
 
-const HotelsCatalog = ({ uid }) => {
+const HotelsCatalogMap = ({ uid }) => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -49,7 +49,7 @@ const HotelsCatalog = ({ uid }) => {
 
       <div className="catalog-grid main-grid">
         <div className="col-12 col-sm-12 col-xs-12">
-          {travelListLoad ? 'Load' : (<HotelSearchPanel
+          {travelListLoad ? 'Load' : (<HotelSearchPanelMap
             setListings={setListings}
             setLoading={setLoading}
             loading={loading}
@@ -93,4 +93,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(HotelsCatalog);
+export default connect(mapStateToProps)(HotelsCatalogMap);
