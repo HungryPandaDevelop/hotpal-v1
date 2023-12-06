@@ -4120,10 +4120,10 @@ button[data-controls=next]:hover {
     gap: 0;
   }
   .border-tab {
-    font-size: 12px;
+    font-size: 10px;
     width: 50%;
     margin: 0;
-    padding: 6px 5px 5px;
+    padding: 6px 2px 5px;
     text-align: center;
     border-radius: 14px 14px 0 0;
   }
@@ -5950,6 +5950,12 @@ button[data-controls=next]:hover {
 .hotels-search-panel .search-select .hotels {
   display: block;
 }
+.hotels-search-panel .main-grid {
+  row-gap: 0;
+}
+.hotels-search-panel .btn-container {
+  margin-top: 0;
+}
 
 @media (max-width: 992px) {
   .border-search-hotels .geo-input-box {
@@ -5974,8 +5980,8 @@ button[data-controls=next]:hover {
     display: flex;
     border-bottom: 1px solid rgba(58, 80, 107, 0.6);
     margin-bottom: 15px;
-    gap: 8px;
-    width: calc(100% - 50px);
+    gap: 4px;
+    width: calc(100% - 0px);
   }
   .hotel-user-catalog {
     gap: 0;

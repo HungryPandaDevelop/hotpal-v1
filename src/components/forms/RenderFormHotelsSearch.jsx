@@ -49,7 +49,7 @@ const HotelsSearchPanelMap = (props) => {
               fields={fields.hotelFind}
             />
           </div>
-          <div className="col-6">
+          <div className="col-6 col-xs-12">
             <RenderFields
               type="single"
               fields={fields.dateRange}

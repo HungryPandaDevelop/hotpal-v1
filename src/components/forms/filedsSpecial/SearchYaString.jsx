@@ -15,6 +15,7 @@ const TempateInput = (props) => {
   const {
     label,
     labelSecond,
+    placeholder,
     wrapClass,
     setGetCoords
   } = props.obj;
@@ -77,7 +78,7 @@ const TempateInput = (props) => {
         className="input-decorate"
         defaultValue={input.value.address}
         autoComplete="off"
-
+        placeholder={placeholder}
       />
 
     </div>

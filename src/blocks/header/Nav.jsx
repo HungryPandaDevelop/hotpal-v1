@@ -8,6 +8,9 @@ const Nav = () => {
       <li>
         <Link to="/hotels-catalog">Все Отели</Link>
       </li>
+      <li>
+        <Link to="/hotels-catalog-map">Все Города</Link>
+      </li>
       {/* <li>
         <Link to="/support">Поддержка</Link>
       </li>

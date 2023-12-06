@@ -33,8 +33,9 @@ export const hotelsSearchFields = {
   yaString: { 
     type:"yaString" ,
     name: "yaString", 
-    label: "Город", 
+    label: "Поиск отелей по городам", 
     wrapClass: "input-box" ,
+    placeholder: "Ведите название города"
   },
   geoHotels: { 
     type:"geo" ,
@@ -45,8 +46,9 @@ export const hotelsSearchFields = {
   hotelFind: { 
     type:"autoHotel" ,
     name: "hotelFind", 
-    label: "Tекущее расположение", 
+    label: "Поиск по отелям", 
     wrapClass: " search-select-box input-box col-3 col-md-6 col-xs-12",
+    placeholder: "Ведите название отеля"
   },
   // raiting: { 
   //   type:"text" ,

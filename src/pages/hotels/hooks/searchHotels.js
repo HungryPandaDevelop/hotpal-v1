@@ -43,10 +43,10 @@ export const hotelsDataSingle = (hotelPrices) => {
 export const hotelsData = (hotelPrices, type) => {
   // console.log('start hotelsData', hotelPrices)
 
-  let tempArrayHotels;
+  let tempArrayHotels = hotelPrices;
   
   if(type==='auto'){
-    tempArrayHotels =  hotelPrices.filter(el => el.type === 'hotels')
+    tempArrayHotels =  tempArrayHotels.filter(el => el.type === 'hotels')
   }
 
   tempArrayHotels = tempArrayHotels.map(el => {

@@ -15,7 +15,7 @@ const TempateInput = (props) => {
   const {
     label,
     labelSecond,
-    // placeholder,
+    placeholder,
     wrapClass,
   } = props.obj;
 
@@ -154,7 +154,7 @@ const TempateInput = (props) => {
             ref={inputRef}
             className="search-input input-decorate"
             onChange={onSearchCity}
-            placeholder="Введите название города"
+            placeholder={placeholder}
           />
           {loading ? (<>
             <div className="preloader-input">
