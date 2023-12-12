@@ -4,7 +4,7 @@ const CookiePopup = () => {
 
   const [popupShow, setPopupShow] = useState(localStorage.getItem('cookie'));
 
-  console.log(localStorage.getItem('cookie'))
+  // console.log(localStorage.getItem('cookie'))
 
   const handleClick = () => {
     setPopupShow('no')

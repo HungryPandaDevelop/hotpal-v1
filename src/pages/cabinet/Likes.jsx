@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 const Sympathy = ({ uid, likes }) => {
 
+  console.log('likes', likes)
 
 
   return (
@@ -22,17 +23,17 @@ const Sympathy = ({ uid, likes }) => {
 
               {likes.map((like, index) => {
 
-                if (like) {
-                  return (
-                    <LikesItem
-                      key={index}
-                      uid={uid}
-                      like={like.data}
-                      likes={likes}
-                    // typeLike="in"
-                    />
-                  )
-                }
+                // if (like) {
+                return (
+                  <LikesItem
+                    key={index}
+                    uid={uid}
+                    like={like.data}
+                    likes={likes}
+                  // typeLike="in"
+                  />
+                )
+                // }
               }
               )}
 

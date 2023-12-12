@@ -20,7 +20,8 @@ const LikesItem = ({
   const [user, setUser] = useState([]);
 
   let userSide = uid === like.interlocutors[0] ? true : false;
-  let userLoadId = uid === like.interlocutors[0] ? like.interlocutors[1] : like.interlocutors[0];
+
+  let userLoadId = userSide ? like.interlocutors[1] : like.interlocutors[0];
 
   useEffect(() => {
 
@@ -30,14 +31,37 @@ const LikesItem = ({
     });
 
 
-  }, [like]);
+  }, []);
 
-  if (loading) { return '' }
+  if (loading) { return 'Load user...' }
 
 
   // if ((typeLike === 'out' && !userSide) || (typeLike === 'in' && userSide)) { return false }
 
-  if (!user) { return false; }
+  if (!user) {
+    return (
+      <div
+
+        className="like-item"
+
+        onClick={() => { onRead(like, uid) }}
+        onMouseEnter={() => { onRead(like, uid) }}
+      >
+        <RenderRead like={like} uid={uid} />
+        <div>
+          Пользователь удален
+        </div>
+
+        <div className="btn-container">
+          <div
+            className="like-status-btn trash-like-btn"
+            onClick={() => { onDelete(like.id, setLoading) }}
+            title="С глаз долой"
+          ></div>
+        </div>
+      </div>
+    );
+  }
 
   if (userSide === true && like.status !== 'agree') {
     return false;
@@ -47,7 +71,7 @@ const LikesItem = ({
     <div
 
       className="like-item"
-      // onMouseEnter={() => { onRead(like, uid) }}
+      onMouseEnter={() => { onRead(like, uid) }}
       onClick={() => { onRead(like, uid) }}
     >
       <RenderRead like={like} uid={uid} />

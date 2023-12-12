@@ -1077,10 +1077,12 @@ section {
   background-image: url("../images/icons-app/like-white.svg");
 }
 .btn-ico--like.active {
-  background-image: url("../images/icons-app/like-fill-blue.svg");
+  background-image: url("../images/verification.svg");
+  background-position: center;
+  font-size: 0;
 }
 .btn-ico--like.active:hover {
-  background-image: url("../images/icons-app/like-fill-white.svg");
+  background-image: url("../images/verification-white.svg");
 }
 
 .btn-ico--blacklist {
@@ -3060,7 +3062,7 @@ header.main-page-header .btn-hamburger {
 
 .controls-panel-popup {
   width: 592px;
-  position: absolute;
+  position: fixed;
   height: 620px;
   z-index: 4;
   right: 90px;
@@ -3987,7 +3989,7 @@ button[data-controls=next]:hover {
 
 .border-tab {
   text-transform: uppercase;
-  padding: 8px 30px 7px;
+  padding: 8px 10px 7px;
   border: 1px solid rgba(58, 80, 107, 0.6);
   background-color: #ffffff;
   border-bottom: 0;
@@ -3995,9 +3997,10 @@ button[data-controls=next]:hover {
   display: inline-block;
   cursor: pointer;
   font-weight: 800;
-  margin-right: 25px;
+  margin-right: 15px;
   text-decoration: none;
   color: #3A506B;
+  font-size: 12px;
 }
 .border-tab:hover, .border-tab.active {
   background-color: #00AEEF;

@@ -9,9 +9,6 @@ const GetRooms = ({ uid, actionFn }) => {
 
 
   const setRoomOut = (rooms) => {
-
-
-
     actionFn('SET_ROOMS', { rooms: rooms });
   }
   const setLikesOut = (likes) => {
@@ -21,6 +18,7 @@ const GetRooms = ({ uid, actionFn }) => {
   useEffect(() => {
     // console.log('uid', uid)
     getMyRoomsOnline(setRoomOut, uid);
+
     getMyLikesOnline(setLikesOut, uid);
 
 

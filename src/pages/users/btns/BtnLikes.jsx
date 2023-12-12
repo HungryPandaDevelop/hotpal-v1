@@ -6,6 +6,7 @@ import { deleteListing } from 'services/getListings';
 
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
 
 const BtnLikes = ({
   user,
@@ -18,17 +19,38 @@ const BtnLikes = ({
   const base = 'likes';
 
   const [status, setStatus] = useState(false);
+  const [invite, setInvite] = useState(false);
+
 
 
   useEffect(() => {
+    console.log('likes', likes)
+    setInvite(false);
+    setStatus(false);
 
-    likes && likes.map((collection) => {
-      if (uid === collection.data.interlocutors[0] && user.uid === collection.data.interlocutors[1]) {
-        setStatus(collection.data.id);
-      };
-    });
+    if (likes.length > 0) {
+      likes.map((like) => {
 
-  }, []);
+
+        // if (user.uid === like.data.userLikes) {
+        //   setStatus(like.data.id);
+        // }
+
+        if (user.uid === like.data.userLikes) {
+          setStatus(like.data.id); // у меня на экране
+        }
+
+        if (user.uid === like.data.userRef) {
+          //   setStatus(like.data.id); // у него на экране
+          setInvite(true);
+        }
+
+
+
+      })
+    }
+
+  }, [likes]);
 
   const onAdd = (userInfo) => {
 
@@ -63,10 +85,14 @@ const BtnLikes = ({
 
 
   return (
-    <div
-      className={`btn-ico--like btn-ico ${status ? 'active' : ''}`}
-      onClick={() => { onStatusChange(user) }}
-    ></div>
+    <>
+      {invite ? <Link className='btn-ico--like btn-ico active' to='/cabinet/likes'>Перейти</Link> : (
+        <div
+          className={`btn-ico--like btn-ico ${status ? 'active' : ''}`}
+          onClick={() => { onStatusChange(user) }}
+        ></div>
+      )}
+    </>
   )
 }
 

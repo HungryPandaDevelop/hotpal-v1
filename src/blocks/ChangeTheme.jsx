@@ -5,7 +5,7 @@ import ActionFn from 'store/actions';
 
 const ChangeTheme = ({ showDark, ActionFn }) => {
   // const [showDark, setShowDark] = useState(false);
-  console.log('showDark', showDark)
+  // console.log('showDark', showDark)
   const changeStyleSite = () => {
 
     if (showDark) {

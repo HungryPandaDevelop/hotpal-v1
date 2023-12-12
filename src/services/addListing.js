@@ -25,7 +25,7 @@ export const addCardsDefault = async (dataForm, baseCards, )=>{
   const generateId = uuidv4();
 
   try {
-    console.log('dataForm', dataForm)
+    // console.log('dataForm', dataForm)
     dataForm['timestamp'] = serverTimestamp();
     dataForm.id = generateId;
 
