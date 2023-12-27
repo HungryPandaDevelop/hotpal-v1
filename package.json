@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
+    "@vkid/sdk": "^1.0.2",
     "air-datepicker": "^3.3.5",
     "axios": "^1.2.3",
     "base-64": "^1.0.0",

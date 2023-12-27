@@ -1077,12 +1077,12 @@ section {
   background-image: url("../images/icons-app/like-white.svg");
 }
 .btn-ico--like.active {
-  background-image: url("../images/verification.svg");
+  background-image: url("../images/icons-app/time-blue.svg");
   background-position: center;
   font-size: 0;
 }
 .btn-ico--like.active:hover {
-  background-image: url("../images/verification-white.svg");
+  background-image: url("../images/icons-app/time-white.svg");
 }
 
 .btn-ico--blacklist {
@@ -7346,6 +7346,9 @@ button[data-controls=next]:hover {
   background-color: #ffffff;
   color: #00AEEF;
   border-color: #ffffff;
+}
+.dark-theme .goals-users-tag {
+  background-color: #0B132B;
 }
 .dark-theme .logo-dark {
   display: none;

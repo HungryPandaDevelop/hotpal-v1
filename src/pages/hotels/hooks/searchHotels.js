@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 // https://8124-37-204-10-198.ngrok-free.app
-const url = 'https://26e8-37-204-10-198.ngrok-free.app';
+const url = 'https://1f14-37-204-10-198.ngrok-free.app';
 export const autocompleteSearch = (term) => {
- 
+
   // console.log('search start')
-  return axios.get(url+"/autocomplete-search", {
+  return axios.get(url + "/autocomplete-search", {
     headers: {
       'ngrok-skip-browser-warning': true
     },
@@ -20,13 +20,13 @@ export const autocompleteSearch = (term) => {
 }
 
 export const hotelsDataSingle = (hotelPrices) => {
- 
+
 
   let tempArrayHotels = hotelPrices.map(el => {
-        return el.id
-    })
+    return el.id
+  })
 
-  return axios.get(url+"/hotels-data", {
+  return axios.get(url + "/hotels-data", {
     headers: {
       'ngrok-skip-browser-warning': true
     },
@@ -44,9 +44,9 @@ export const hotelsData = (hotelPrices, type) => {
   // console.log('start hotelsData', hotelPrices)
 
   let tempArrayHotels = hotelPrices;
-  
-  if(type==='auto'){
-    tempArrayHotels =  tempArrayHotels.filter(el => el.type === 'hotels')
+
+  if (type === 'auto') {
+    tempArrayHotels = tempArrayHotels.filter(el => el.type === 'hotels')
   }
 
   tempArrayHotels = tempArrayHotels.map(el => {
@@ -54,7 +54,7 @@ export const hotelsData = (hotelPrices, type) => {
   });
 
 
-  return axios.get(url+"/hotels-data", {
+  return axios.get(url + "/hotels-data", {
     headers: {
       'ngrok-skip-browser-warning': true
     },
@@ -69,26 +69,26 @@ export const hotelsData = (hotelPrices, type) => {
     // hotelPrices.forEach((el,index) => {
     //     renderArrHotels.push({ ...res.data.find(e => e.id === el.id), price: el.rates, index: index, el: el })
     // });
-    console.log('res',res)
-    res.data.length>0 &&  res.data.forEach((el,index) => {
+    console.log('res', res)
+    res.data.length > 0 && res.data.forEach((el, index) => {
       let findPrice = hotelPrices.find(e => e.id === el.id)
-      renderArrHotels.push({ price: findPrice.rates , ...el })
+      renderArrHotels.push({ price: findPrice.rates, ...el })
     });
-    
+
     return renderArrHotels;
 
   });
 }
 
 
-export const geoSearch = (longitude, latitude,dateFrom,dateTo,personCount) => {
+export const geoSearch = (longitude, latitude, dateFrom, dateTo, personCount) => {
   // console.log('loading....', dateFrom,dateTo)
 
   // let tempArrayHotels = [];
   // let tempArrayPrices = [];
 
 
-  return axios.get(url+"/geo-search", {
+  return axios.get(url + "/geo-search", {
     headers: {
       'ngrok-skip-browser-warning': true
     },
@@ -157,14 +157,14 @@ export const geoSearch = (longitude, latitude,dateFrom,dateTo,personCount) => {
 // }
 
 
-export const hotelPage = (id,dateFrom,dateTo,personCount) => {
+export const hotelPage = (id, dateFrom, dateTo, personCount) => {
   // console.log('loading....', dateFrom,dateTo)
 
   // let tempArrayHotels = [];
   // let tempArrayPrices = [];
 
 
-  return axios.get(url+"/hotel-page", {
+  return axios.get(url + "/hotel-page", {
     headers: {
       'ngrok-skip-browser-warning': true
     },
@@ -194,5 +194,5 @@ export const hotelPage = (id,dateFrom,dateTo,personCount) => {
     // getDetailHotels(tempArrayHotels, tempArrayPrices)
   });
 
- 
+
 }
