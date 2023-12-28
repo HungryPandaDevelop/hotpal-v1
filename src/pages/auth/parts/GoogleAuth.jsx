@@ -35,7 +35,7 @@ const GoogleAuth = ({ btnText, ActionFn, checkStatus }) => {
   }
 
   return (
-    <div className="btn btn-reg btn-google" onClick={onGoogleClick}><i> </i><span>{btnText}</span></div>
+    <div className="btn btn-reg btn-google" onClick={onGoogleClick}><i></i><span>{btnText}</span></div>
   )
 }
 

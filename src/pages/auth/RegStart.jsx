@@ -5,6 +5,7 @@ import Section from "pages/main/Section"
 import PolitksCheck from 'pages/auth/parts/PolitksCheck'
 import GoogleAuth from 'pages/auth/parts/GoogleAuth';
 import { useState } from 'react';
+import VkAuth from 'pages/auth/parts/VkAuth';
 
 const RegStart = () => {
   const [checkStatus, setCheckStatus] = useState(true);
@@ -29,6 +30,7 @@ const RegStart = () => {
         <h4>Создайте аккаунт с помощью:</h4>
         <div className="btn-container">
           <GoogleAuth btnText="Создать через Gmail" checkStatus={checkStatus} />
+          <VkAuth btnText="Создать через Vk" />
           <Link to={checkStatus ? '/reg-mail' : '/reg-start'} className="btn btn-reg btn-mail"><i></i><span>Создать через почту</span></Link>
         </div>
       </Popup>

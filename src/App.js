@@ -37,6 +37,8 @@ import RegMail from 'pages/auth/RegMail';
 import AuthMail from 'pages/auth/AuthMail';
 import RegEndPopup from 'pages/auth/RegEndPopup';
 
+import CheckStatusVk from 'pages/auth/CheckStatusVk';
+
 
 import UsersCatalog from 'pages/users/UserCatalog';
 import UsersDetail from 'pages/users/UserDetail';
@@ -74,7 +76,7 @@ const App = ({account})=> {
           <CheckAuth />
           <ScrollTop />
           <CookiePopup/>
-          <div className="content">
+          
           <Routes> 
             <Route path='/' element={<GlobalRoute/>}>
               <Route index element={<Main/>} ></Route>
@@ -85,6 +87,7 @@ const App = ({account})=> {
               <Route path='/forgot-pass' element={<ForgotPassword/>} ></Route>
               <Route path='/change-forgot-pass' element={<ChangeForgotPassword/>} ></Route>
               <Route path='/reg-end' element={<RegEndPopup/>} ></Route> 
+              <Route path='/check-vk' element={<CheckStatusVk/>} ></Route> 
             </Route>
             <Route path='/' element={<GlobalRouteWhite/>}>
               <Route path='/konf'  element={<Konf  />} ></Route>
@@ -97,6 +100,7 @@ const App = ({account})=> {
             
 
             <Route path='/' element={<PrivatRoute/>}>
+              
               <Route path='/users-catalog' element={<UsersCatalog/>}></Route>
               <Route path='/users-catalog/:userId' element={<UsersDetail/>}></Route>
 
@@ -127,7 +131,7 @@ const App = ({account})=> {
             </Route>
 
           </Routes>
-          </div >
+        
 
     
         </BrowserRouter>

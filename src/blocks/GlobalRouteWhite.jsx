@@ -5,11 +5,11 @@ import Footer from 'blocks/footer/Footer';
 
 const GlobalRoute = () => {
   return (
-    <>
+    <div className='content-main'>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </div>
   )
 }
 

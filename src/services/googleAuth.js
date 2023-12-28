@@ -33,13 +33,13 @@ export const googleAuth = async (generateId) => {
     provider.setCustomParameters({
       prompt: 'select_account',
     });
-    console.log('step 1')
+    // console.log('step 1')
     const userCredential = await signInWithPopup(auth, provider);
 
-    console.log('step 1.1')
+    // console.log('step 1.1')
 
     const user = userCredential.user;
-    console.log('step 2')
+    // console.log('step 2')
 
     updateProfile(auth.currentUser, {
       displayName: user.displayName

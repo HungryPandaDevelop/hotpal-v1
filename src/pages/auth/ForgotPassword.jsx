@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getPass } from 'base/forms/authFields';
 import { connect } from 'react-redux';
 import Popup from 'components/Popup';
-import Section from "pages/main/Section"
+import Section from "pages/main/Section";
 import { getListing } from 'services/getListings';
 import RenderForm from 'components/forms/RenderForm';
 import { toast } from 'react-toastify';

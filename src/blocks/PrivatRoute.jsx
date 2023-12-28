@@ -42,7 +42,7 @@ const PrivateRoute = ({ account, ActionFn }) => {
 
   const renderAuthContent = () => {
     return (
-      <>
+      <div className='content'>
         <Header />
         <GetRooms />
         <ControlsPanel />
@@ -52,7 +52,7 @@ const PrivateRoute = ({ account, ActionFn }) => {
         <BestPanel />
 
         <Footer />
-      </>
+      </div>
     )
   }
 
