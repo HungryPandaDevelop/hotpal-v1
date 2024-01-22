@@ -23,7 +23,7 @@ const HotelSearchPanelMap = ({
   const centerCity = [55.755864, 37.617698];
 
   const submitSuccess = () => {
-
+    // console.log('start search')
     setLoading(true)
     // console.log('getHotels formData.values', formData.values)
 
@@ -41,10 +41,12 @@ const HotelSearchPanelMap = ({
     let latitude = formData.values.geoHotels[0];
 
     geoSearch(longitude, latitude, dateFrom, dateTo, personCount).then(res => {
+
       // console.log('getHotels', res)
+
       if (res) {
-        hotelsData(res).then(response => {
-          console.log(response)
+        hotelsData(res.slice(0, 100)).then(response => {
+          // console.log('geo data', response)
 
 
 

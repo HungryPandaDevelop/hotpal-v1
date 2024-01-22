@@ -26,7 +26,9 @@ const HotelsCatalogMap = ({ uid }) => {
   const [travelListLoad, setTravelListLoad] = useState(true);
 
   const toCaseCount = (arg) => {
+
     let last = arg.toString().split('').pop();
+
     if (last == 1) return ' вариант'
     else if (last >= 2 && last <= 4) return ' варианта'
     else if (last >= 5 && last <= 9) return ' вариантов'
@@ -38,6 +40,7 @@ const HotelsCatalogMap = ({ uid }) => {
   useEffect(() => {
 
     getListing('travel', 'travelAll', uid).then((res) => {
+
       setTravelList(res);
       setTravelListLoad(false);
     });

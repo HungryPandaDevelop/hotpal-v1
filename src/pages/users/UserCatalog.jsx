@@ -34,8 +34,8 @@ const UserCatalog = ({ account }) => {
 
 
       setSearchListing(allUsers);
-      setListings(allUsers);
 
+      setListings(allUsers);
 
 
       setLoading(false);
