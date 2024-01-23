@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { ToastContainer } from 'react-toastify';
@@ -18,7 +18,7 @@ import ScrollTop from 'components/ScrollTop'
 import CheckAuth from 'blocks/header/CheckAuth';
 
 
-import Main from 'pages/Main' ;
+import Main from 'pages/Main';
 
 import NoVerification from 'pages/cabinet/NoVerification';
 
@@ -67,87 +67,97 @@ import Intelect from 'pages/default/Intelect';
 import About from 'pages/default/About';
 import Why from 'pages/default/Why';
 
-const App = ({account})=> {
+import MysqlList from 'pages/mysql/List';
+import MysqlAdd from 'pages/mysql/Add';
+import MysqlEdit from 'pages/mysql/Edit';
+
+const App = ({ account }) => {
   // console.log('uid', account)
   return (
-      <>
+    <>
 
-        <BrowserRouter>
-          <CheckAuth />
-          <ScrollTop />
-          <CookiePopup/>
-          
-          <Routes> 
-            <Route path='/' element={<GlobalRoute/>}>
-              <Route index element={<Main/>} ></Route>
-              <Route path='/auth-start' element={<AuthStart/>} ></Route>
-              <Route path='/reg-start' element={<RegStart/>} ></Route>
-              <Route path='/reg-mail' element={<RegMail/>} ></Route>
-              <Route path='/auth-mail' element={<AuthMail/>} ></Route>
-              <Route path='/forgot-pass' element={<ForgotPassword/>} ></Route>
-              <Route path='/change-forgot-pass' element={<ChangeForgotPassword/>} ></Route>
-              <Route path='/reg-end' element={<RegEndPopup/>} ></Route> 
-              <Route path='/check-vk' element={<CheckStatusVk/>} ></Route> 
-            </Route>
-            <Route path='/' element={<GlobalRouteWhite/>}>
-              <Route path='/konf'  element={<Konf  />} ></Route>
-              <Route path='/intelect'  element={<Intelect  />} ></Route>
-              <Route path='/politic'  element={<Politic  />} ></Route>
-              <Route path='/yslovia'  element={<Yslovia  />} ></Route>
-              <Route path='/about'  element={<About  />} ></Route>
-              <Route path='/why'  element={<Why  />} ></Route>
-            </Route>
-            
+      <BrowserRouter>
+        <CheckAuth />
+        <ScrollTop />
+        <CookiePopup />
 
-            <Route path='/' element={<PrivatRoute/>}>
-              
-              <Route path='/users-catalog' element={<UsersCatalog/>}></Route>
-              <Route path='/users-catalog/:userId' element={<UsersDetail/>}></Route>
-
-              <Route path='/hotels-catalog-map' element={<HotelsCatalogMap uid={account.uid}/>} ></Route>
-              <Route path='/hotels-catalog' element={<HotelsCatalog uid={account.uid}/>} ></Route>
-              <Route path='/hotels-users/:hotelId' element={<HotelsUsersCatalog uid={account.uid}/>} ></Route>
-    
-              <Route path='/no-verification' element={<NoVerification/>} ></Route>
-
-              <Route path='/page-list' element={<PageList  account={account}/>} ></Route>
-              <Route path='/page-list/:pageId' element={<PageListEdit  account={account}/> } ></Route>
-              <Route path='/page-list-new/' element={<PageListNew  account={account}/>} ></Route>
-              
-              <Route path='/page/:pageId' element={<PageStandart  account={account}/>} ></Route>
-              <Route path='*' element={<NotFound />}/>
+        <Routes>
+          <Route path='/' element={<GlobalRoute />}>
+            <Route index element={<Main />} ></Route>
+            <Route path='/auth-start' element={<AuthStart />} ></Route>
+            <Route path='/reg-start' element={<RegStart />} ></Route>
+            <Route path='/reg-mail' element={<RegMail />} ></Route>
+            <Route path='/auth-mail' element={<AuthMail />} ></Route>
+            <Route path='/forgot-pass' element={<ForgotPassword />} ></Route>
+            <Route path='/change-forgot-pass' element={<ChangeForgotPassword />} ></Route>
+            <Route path='/reg-end' element={<RegEndPopup />} ></Route>
+            <Route path='/check-vk' element={<CheckStatusVk />} ></Route>
+          </Route>
+          <Route path='/' element={<GlobalRouteWhite />}>
+            <Route path='/konf' element={<Konf />} ></Route>
+            <Route path='/intelect' element={<Intelect />} ></Route>
+            <Route path='/politic' element={<Politic />} ></Route>
+            <Route path='/yslovia' element={<Yslovia />} ></Route>
+            <Route path='/about' element={<About />} ></Route>
+            <Route path='/why' element={<Why />} ></Route>
+          </Route>
 
 
-              <Route path='/cabinet/' element={<Cabinet/>} ></Route>
+          <Route path='/' element={<PrivatRoute />}>
 
-              <Route path='/cabinet/settings' element={<Settings/>} ></Route>
-              <Route path='/cabinet/chat' element={<Chat/>} ></Route>
-              <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
-              <Route path='/cabinet/favorites'   element={<Favorites type='white-list'/>} ></Route>
-              <Route path='/cabinet/dislikes'  element={<Favorites type='black-list' />} ></Route>
-              <Route path='/cabinet/likes'  element={<Likes  />} ></Route>
+            <Route path='/mysql/list' element={<MysqlList />}></Route>
+            <Route path='/mysql/add' element={<MysqlAdd />}></Route>
+            <Route path='/mysql/edit' element={<MysqlEdit />}></Route>
 
 
-            </Route>
 
-          </Routes>
-        
+            <Route path='/users-catalog' element={<UsersCatalog />}></Route>
+            <Route path='/users-catalog/:userId' element={<UsersDetail />}></Route>
 
-    
-        </BrowserRouter>
-        
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      </>
+            <Route path='/hotels-catalog-map' element={<HotelsCatalogMap uid={account.uid} />} ></Route>
+            <Route path='/hotels-catalog' element={<HotelsCatalog uid={account.uid} />} ></Route>
+            <Route path='/hotels-users/:hotelId' element={<HotelsUsersCatalog uid={account.uid} />} ></Route>
+
+            <Route path='/no-verification' element={<NoVerification />} ></Route>
+
+            <Route path='/page-list' element={<PageList account={account} />} ></Route>
+            <Route path='/page-list/:pageId' element={<PageListEdit account={account} />} ></Route>
+            <Route path='/page-list-new/' element={<PageListNew account={account} />} ></Route>
+
+            <Route path='/page/:pageId' element={<PageStandart account={account} />} ></Route>
+            <Route path='*' element={<NotFound />} />
+
+
+            <Route path='/cabinet/' element={<Cabinet />} ></Route>
+
+            <Route path='/cabinet/settings' element={<Settings />} ></Route>
+            <Route path='/cabinet/chat' element={<Chat />} ></Route>
+            <Route path='/cabinet/chat/:roomId' element={<Chat />} ></Route>
+            <Route path='/cabinet/favorites' element={<Favorites type='white-list' />} ></Route>
+            <Route path='/cabinet/dislikes' element={<Favorites type='black-list' />} ></Route>
+            <Route path='/cabinet/likes' element={<Likes />} ></Route>
+
+
+          </Route>
+
+        </Routes>
+
+
+
+      </BrowserRouter>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 }
 
