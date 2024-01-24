@@ -68,8 +68,8 @@ import About from 'pages/default/About';
 import Why from 'pages/default/Why';
 
 import MysqlList from 'pages/mysql/List';
-import MysqlAdd from 'pages/mysql/Add';
-import MysqlEdit from 'pages/mysql/Edit';
+import MysqlAdd from 'pages/mysql/AddBase';
+// import MysqlEdit from 'pages/mysql/Edit';
 
 const App = ({ account }) => {
   // console.log('uid', account)
@@ -107,7 +107,7 @@ const App = ({ account }) => {
 
             <Route path='/mysql/list' element={<MysqlList />}></Route>
             <Route path='/mysql/add' element={<MysqlAdd />}></Route>
-            <Route path='/mysql/edit' element={<MysqlEdit />}></Route>
+            {/* <Route path='/mysql/edit' element={<MysqlEdit />}></Route> */}
 
 
 

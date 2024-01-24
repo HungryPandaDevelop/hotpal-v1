@@ -34,6 +34,8 @@ const CheckAuth = ({
             loaded: false,
             ...res
           };
+
+
           console.log('get user', res)
           if (res) {
             saveListing(userInfo, user.uid, 'users', true); // обновить время заходу, убрать всплывашку

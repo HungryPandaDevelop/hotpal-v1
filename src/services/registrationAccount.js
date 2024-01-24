@@ -1,6 +1,6 @@
 import { db } from 'default/config/firebase';
 
-import { 
+import {
   getAuth,
   updateProfile,
   createUserWithEmailAndPassword,
@@ -14,6 +14,7 @@ import {
   serverTimestamp
 } from 'firebase/firestore';
 
+import { addMysql } from 'pages/mysql/addMysql';
 
 import { toast } from 'react-toastify';
 
@@ -21,39 +22,40 @@ import { toast } from 'react-toastify';
 
 export const registrationAccount = async (formData) => {
 
- 
+
 
   const { name, email, password } = formData;
 
   try {
-  
+
     const auth = getAuth();
- 
+
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
     updateProfile(auth.currentUser, {
       displayName: name
     });
 
-    
-    
+
+
     /* add to base auth */
 
     /* add to firestore base */
     const user = userCredential.user;
-    
-    
-  
+
+
+
     const formDataCopy = { ...formData, uid: user.uid };
 
     delete formDataCopy.password;
 
     formDataCopy.timestamp = serverTimestamp();
 
+    console.log('formDataCopy', formDataCopy);
 
-    await setDoc(doc(db, 'users', user.uid), formDataCopy);
-  
-    
+    // await setDoc(doc(db, 'users', user.uid), formDataCopy);
+    addMysql(formDataCopy);
+
 
 
     // await sendEmailVerification(auth.currentUser).then(function() {
@@ -70,9 +72,9 @@ export const registrationAccount = async (formData) => {
     return user;
 
   } catch (error) {
-    if( error.code === 'auth/email-already-in-use'){
+    if (error.code === 'auth/email-already-in-use') {
       toast.error('Такой Email уже есть');
-    }else{
+    } else {
       toast.error('Ошибка регистрации');
     }
 
