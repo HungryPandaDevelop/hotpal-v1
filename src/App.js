@@ -69,6 +69,7 @@ import Why from 'pages/default/Why';
 
 import MysqlList from 'pages/mysql/List';
 import MysqlAdd from 'pages/mysql/AddBase';
+import MysqlDetail from 'pages/mysql/Detail';
 // import MysqlEdit from 'pages/mysql/Edit';
 
 const App = ({ account }) => {
@@ -100,13 +101,16 @@ const App = ({ account }) => {
             <Route path='/yslovia' element={<Yslovia />} ></Route>
             <Route path='/about' element={<About />} ></Route>
             <Route path='/why' element={<Why />} ></Route>
+
+            <Route path='/mysql/list' element={<MysqlList />}></Route>
+            <Route path='/mysql/add' element={<MysqlAdd />}></Route>
+            <Route path='/mysql/detail' element={<MysqlDetail />}></Route>
           </Route>
 
 
           <Route path='/' element={<PrivatRoute />}>
 
-            <Route path='/mysql/list' element={<MysqlList />}></Route>
-            <Route path='/mysql/add' element={<MysqlAdd />}></Route>
+
             {/* <Route path='/mysql/edit' element={<MysqlEdit />}></Route> */}
 
 

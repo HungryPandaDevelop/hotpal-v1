@@ -49,7 +49,27 @@ export const registrationAccount = async (formData) => {
 
     delete formDataCopy.password;
 
-    formDataCopy.timestamp = serverTimestamp();
+    // formDataCopy.timestamp = serverTimestamp();
+
+    // Получаем текущую дату и время
+    var currentDate = new Date();
+
+    // Функция для добавления ведущего нуля к числам < 10
+    function padZero(num) {
+      return num < 10 ? '0' + num : num;
+    }
+
+    // Получаем день, месяц, год, часы и минуты
+    var day = padZero(currentDate.getDate());
+    var month = padZero(currentDate.getMonth() + 1); // Месяцы начинаются с 0
+    var year = currentDate.getFullYear();
+    var hours = padZero(currentDate.getHours());
+    var minutes = padZero(currentDate.getMinutes());
+
+    // Форматируем в строку
+    var formattedDate = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes;
+
+    formDataCopy.timestamp = formattedDate;
 
     console.log('formDataCopy', formDataCopy);
 
@@ -72,6 +92,7 @@ export const registrationAccount = async (formData) => {
     return user;
 
   } catch (error) {
+    console.log('err', error)
     if (error.code === 'auth/email-already-in-use') {
       toast.error('Такой Email уже есть');
     } else {

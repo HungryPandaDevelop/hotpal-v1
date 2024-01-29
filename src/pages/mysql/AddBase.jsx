@@ -3,7 +3,13 @@ const AddBase = () => {
 
 
   const addToBase = () => {
-    addMysql();
+    const tempData = {
+      uid: "test",
+      email: "email",
+      name: "name",
+      gender: "gender",
+    }
+    addMysql(tempData);
   }
 
   return (
