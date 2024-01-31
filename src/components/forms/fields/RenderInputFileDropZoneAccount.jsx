@@ -9,6 +9,7 @@ import { useDropzone } from 'react-dropzone'
 
 import TinySlider from "tiny-slider-react";
 import 'tiny-slider/dist/tiny-slider.css';
+import { type } from '@testing-library/user-event/dist/type';
 
 const settings = {
   // lazyload: true,
@@ -48,8 +49,19 @@ const TemplateFile = (props) => {
   useEffect(() => {
     // console.log('input.value', input.value)
     if (input.value) {
-      setArrFiles(input.value)
-      setNameFile(input.value);
+
+      let toObj = [];
+      if ('object' === typeof input.value) {
+        toObj = input.value;
+        console.log('1')
+      }
+      else {
+        toObj = JSON.parse(input.value);
+      }
+
+
+      setArrFiles(toObj)
+      setNameFile(toObj);
     }
   }, [input]);
 
@@ -124,7 +136,14 @@ const TemplateFile = (props) => {
 
   const renderTiny = (files, settingsParams, classParam) => {
 
-    if (files.length === 0) { return false }
+
+    if (files.length === 0) {
+      return false
+    }
+
+    console.log('files', typeof files)
+
+    // files = JSON.parse(files);
 
     return <div className={classParam}>
       <TinySlider settings={settingsParams} >

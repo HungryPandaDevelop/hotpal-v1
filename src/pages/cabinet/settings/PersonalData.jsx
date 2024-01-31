@@ -7,36 +7,53 @@ import { getAuth, deleteUser } from 'firebase/auth';
 
 import { useNavigate } from 'react-router-dom';
 
-const PersonalData = ({ formData, uid, listings, ActionFn }) => {
+import { updateMysql } from 'pages/mysql/updateMysql';
+import { deleteMysql } from 'pages/mysql/deleteMysql';
 
+const PersonalData = ({ formData, uid, account, ActionFn }) => {
 
+  // 
 
   const submitSuccess = () => {
 
-    saveListing(formData.values, uid, 'users');
 
+    let sendData = { ...account, ...formData.values };
+
+
+    updateMysql(sendData);
 
   }
 
   const auth = getAuth();
 
-  const deleteAccount = () => {
-    var user = auth.currentUser;
+  const deleteAccount = async () => {
+    try {
+      const user = auth.currentUser;
 
-    deleteListing('users', user.uid).then(() => {
+      await deleteMysql(user.uid);
+      await deleteUser(user);
+
       auth.signOut();
       ActionFn('EXIT_ACCOUNT', null);
-      // navigate('/auth-start');
-      deleteUser(user);
-    });
-  }
+    } catch (error) {
+      // Обработка ошибок, например, вывод в консоль или уведомление пользователю
+      console.error('Произошла ошибка при удалении аккаунта:', error);
+    }
+
+    // deleteListing('users', user.uid).then(() => {
+    //   auth.signOut();
+    //   ActionFn('EXIT_ACCOUNT', null);
+    //   // navigate('/auth-start');
+    //   deleteUser(user);
+    // });
+  };
 
   return (
     <>
       <RenderForm
         fields={settingsPrivateData}
         btnSubmitText="Сохранить"
-        initialValues={listings}
+        initialValues={account}
         submitSuccess={submitSuccess}
       >
         <span className="link-delete-account" onClick={deleteAccount}>Удалить Аккант</span>

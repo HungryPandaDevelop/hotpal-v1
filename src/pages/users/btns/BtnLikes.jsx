@@ -24,7 +24,7 @@ const BtnLikes = ({
 
 
   useEffect(() => {
-    console.log('likes', likes)
+    // console.log('likes', likes)
     setInvite(false);
     setStatus(false);
 

@@ -5,7 +5,7 @@ import { saveListing } from 'services/saveListing';
 import RenderForm from 'components/forms/RenderFormCabinet';
 
 // import { getSingleListing } from 'services/getSingleListing';
-
+import { updateMysql } from 'pages/mysql/updateMysql'
 import { accountFields } from 'base/forms/accountFields';
 
 import { connect } from 'react-redux';
@@ -17,10 +17,16 @@ const Cabinet = ({ formData, account, ActionFn }) => {
 
 
 
-  const submitSuccess = () => {
+  const submitSuccess = async () => {
 
-    saveListing(formData.values, account.uid, 'users');
+    // saveListing(formData.values, account.uid, 'users');
+
+    await updateMysql(formData.values, account.uid);
+
     ActionFn('SET_INFO_ACCOUNT', { ...account, ...formData.values });
+
+
+
   };
 
 

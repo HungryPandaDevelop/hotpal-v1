@@ -7,8 +7,9 @@ import { useEffect } from 'react';
 
 import { sendEmail } from 'pages/auth/parts/RegEnd/sendEmail'
 
-import { saveListing } from 'services/saveListing';
+// import { saveListing } from 'services/saveListing';
 
+import { updateMysql } from 'pages/mysql/updateMysql';
 
 const RegEnd = ({ account, ActionFn }) => {
 
@@ -19,18 +20,24 @@ const RegEnd = ({ account, ActionFn }) => {
 
     if (!account.loaded) {
 
-      if (account.email && !account.vertificationSend) {
+
+      if (account.email && !JSON.parse(account.verificationSend)) {
+
         sendEmail(account, location);
       }
-      else if (!account.verificationCheck) {
-        const verificationIdUrl = searchParams.get('vertificationId');
-        const verificationIdAccount = account.vertificationId;
+      else if (!JSON.parse(account.verificationCheck)) {
+
+        const verificationIdUrl = searchParams.get('verificationId');
+        const verificationIdAccount = account.verificationId;
 
         if (verificationIdUrl) {
           if (verificationIdUrl === verificationIdAccount) {
 
-            saveListing({ verificationCheck: true }, account.uid, 'users');
-            ActionFn('SET_INFO_ACCOUNT', { verificationCheck: true });
+            // saveListing({ verificationCheck: true }, account.uid, 'users');
+
+            updateMysql({ ...account, verificationCheck: 1 });
+
+            ActionFn('SET_INFO_ACCOUNT', { verificationCheck: 1 });
           }
         }
       }
@@ -78,7 +85,7 @@ const RegEnd = ({ account, ActionFn }) => {
   }
 
 
-  if (account.email && account.verificationCheck) {
+  if (account.email && JSON.parse(account.verificationCheck)) {
     return renderMailSending()
   }
   else if (account.email) {

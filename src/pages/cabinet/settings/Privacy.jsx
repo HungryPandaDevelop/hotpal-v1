@@ -2,11 +2,17 @@ import RenderForm from 'components/forms/RenderForm';
 import { settingsPrivacy } from 'base/forms/settingsFields';
 import { saveListing } from 'services/saveListing';
 
-const Privacy = ({ formData, uid, listings }) => {
+import { updateMysql } from 'pages/mysql/updateMysql'
+
+const Privacy = ({ formData, uid, account }) => {
 
   const submitSuccess = () => {
 
-    saveListing(formData.values, uid, 'users');
+    let sendData = { ...account, ...formData.values };
+    console.log('sendData', sendData)
+    updateMysql(sendData);
+
+    // saveListing(formData.values, uid, 'users');
 
   }
 
@@ -14,7 +20,7 @@ const Privacy = ({ formData, uid, listings }) => {
     <RenderForm
       fields={settingsPrivacy}
       btnSubmitText="Сохранить"
-      initialValues={listings}
+      initialValues={account}
       submitSuccess={submitSuccess}
 
     />

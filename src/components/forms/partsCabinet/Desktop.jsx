@@ -27,10 +27,22 @@ const Desktop = ({
 
   const renderSlider = (windowSize, screen) => {
 
+    const renderEmpty = () => {
+      if (newValue) {
+        if (!newValue.values.imgsAccount) {
+          return false;
+        }
+        if (newValue.values.imgsAccount.length === 0) {
+          return false;
+        }
+        return true;
+      }
+
+    }
 
     const renderInput = () => (
       <div className="col-4 col-sm-6 col-xs-12">
-        {newValue && (newValue.values.imgsAccount === undefined || newValue.values.imgsAccount.length === 0) && <div className='hit-img-null'>
+        {!renderEmpty() && <div className='hit-img-null'>
           Ваша анкета не отобразиться в поиске, пока вы не добавите фото!
         </div>}
         <RenderFields

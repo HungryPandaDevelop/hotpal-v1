@@ -38,7 +38,7 @@ const Cabinet = ({ account, formData, ActionFn }) => {
           <PersonalDataTabs
             formData={formData}
             uid={account.uid}
-            listings={account}
+            account={account}
             ActionFn={ActionFn}
           />
         )
@@ -47,7 +47,7 @@ const Cabinet = ({ account, formData, ActionFn }) => {
           <PrivacyTabs
             formData={formData}
             uid={account.uid}
-            listings={account}
+            account={account}
           />
         )
       default:

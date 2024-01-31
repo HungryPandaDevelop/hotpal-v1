@@ -26,14 +26,14 @@ const RegMail = ({ formData }) => {
 
 
     setLoading(true);
-    const regValues = { ...formData.values, vertificationId: generateId }
+    const regValues = { ...formData.values, verificationId: generateId }
     registrationAccount(regValues).then((res) => {
       setLoading(false)
       if (!res) { return false };
 
       navigate('/reg-end', {
         state:
-          { vertificationId: generateId }
+          { verificationId: generateId }
       });
     });
 

@@ -45,27 +45,27 @@ const CheckAuth = ({
         //   ActionFn('SET_INFO_ACCOUNT', userInfo);
         // });
 
-        console.log('g', getMysql(user.uid));
+        const fetchData = async () => {
+          try {
+            const result = await getMysql(user.uid);
+            // Здесь можете выполнить код с полученными данными
+            let userInfo = {
+              // name: user.displayName,
+              email: user.email,
+              uid: user.uid,
+              loaded: false,
+              ...result
+            };
 
-        // .then(({ data }) => {
+            ActionFn('SET_INFO_ACCOUNT', userInfo);
 
-        //   let userInfo = {
-        //     // name: user.displayName,
-        //     email: user.email,
-        //     uid: user.uid,
-        //     loaded: false,
-        //     ...data
-        //   };
+          } catch (error) {
+            // Обработка ошибок при выполнении запроса
+            console.error('Ошибка при получении данных:', error);
+          }
+        };
 
-        //   ActionFn('SET_INFO_ACCOUNT', userInfo);
-
-        //   // setListing(res.data.data);
-
-
-
-        //   console.log('in send', data);
-
-        // });
+        fetchData();
 
       }
       else {

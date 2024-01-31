@@ -63,10 +63,23 @@ const TempateInput = (props) => {
       // console.log('in')
 
 
-      if (input.value && input.value.length > 0) {
-        setTags(input.value);
+      if (input.value && input.value.length > 2) {
+
+        let sting = input.value;
+
+        // sting = sting.replace(/="/g, "='");
+        // sting = sting.replace(/">/g, "'>");
+
+        let inputValue = JSON.parse(sting);
+
+        setTags(inputValue);
         let tempArr = options;
-        input.value.map(el => tempArr = tempArr.filter(item => el !== item));
+
+
+        console.log('input.value', inputValue)
+
+        inputValue.map(el => tempArr = tempArr.filter(item => el !== item));
+
         setOriginList(tempArr);
         setFilterList(tempArr);
 

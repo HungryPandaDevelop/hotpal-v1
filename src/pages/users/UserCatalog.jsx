@@ -21,7 +21,8 @@ const UserCatalog = ({ account }) => {
 
 
     getListing('users', 'noUserRef', uid).then((res) => {
-
+      // let dataUser = JSON.stringify(res);
+      // console.log('res', dataUser);
       let allUsers = res.filter(user => {
 
         if (user.setting_founds && (user.setting_founds !== account.orientation) || (user.imgsAccount === undefined || user.imgsAccount.length === 0)) {

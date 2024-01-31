@@ -1,32 +1,29 @@
 import axios from 'axios';
 
-// const myArray = ['<i class="bokal-ico"></i>Бокал в лобби', '<i class="padushka-ico"></i>Свидание в номере',]
-// const jsonString = JSON.stringify(myArray);
 
-// const myArrayI = [{ url: 'https://hotpal.ru/uploads/6560796264445_3BAAB293-3334-4DEA-AAFC-73C39C72928D.jpeg', id: '6560796264445_3BAAB293-3334-4DEA-AAFC-73C39C72928D.jpeg' }, { url: 'https://hotpal.ru/uploads/65afb7839e05a_1.jpg', id: '65afb7839e05a_1.jpg' }]
-// const jsonStringI = JSON.stringify(myArrayI);
+export const addMysql = async ({ uid, name, email, dateBerth, gender, timestamp }) => {
+  // console.log('send', uid, name, email, dateBerth, gender, timestamp)
+  try {
+    const response = await axios.get("https://hotpal.ru/api/base/vendor/create.php", {
+      params: {
+        uid: uid,
+        email: email,
+        name: name,
+        gender: gender,
+        dateBerth: dateBerth,
+        timestamp: timestamp,
 
-
-export const addMysql = ({ uid, name, email, dateBerth, gender, timestamp }) => {
-  console.log('send', uid, name, email, dateBerth, gender, timestamp)
-  const resp = axios.get("https://hotpal.ru/api/base/vendor/create.php", {
-    params: {
-      uid: uid,
-      email: email,
-      name: name,
-      gender: gender,
-      dateBerth: dateBerth,
-      timestamp: timestamp,
-
-      // goals: jsonString,
-      // imgsAccount: jsonStringI,
-      // interests: `['111', '222', '333']`
-    }
-  }).then(res => {
-
-    console.log('in send', res);
+      }
+    });
+    console.log('Ответ php', response);
     return true;
-    // saveListing({ vertificationSend: true }, account.uid, 'users');
-  });
+  }
+  catch (err) {
+    console.error('Ошибка при отправке данных:', err);
+
+    // Возвращаем false или можем прокинуть ошибку вызывающему коду
+    return false;
+  }
+
 };
 

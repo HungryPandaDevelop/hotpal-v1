@@ -1,18 +1,18 @@
 import { db } from 'default/config/firebase';
 
-import { 
-  getAuth, 
-  signInWithPopup, 
+import {
+  getAuth,
+  signInWithPopup,
   GoogleAuthProvider,
   updateProfile,
 } from 'firebase/auth';
 
 import {
-  doc, 
-  setDoc, 
-  getDoc, 
+  doc,
+  setDoc,
+  getDoc,
   updateDoc,
-  serverTimestamp 
+  serverTimestamp
 } from 'firebase/firestore';
 
 
@@ -63,9 +63,11 @@ export const googleAuth = async (generateId) => {
         vertificationId: generateId,
         timestamp: serverTimestamp(),
       });
+
+
       return ['reg', user.uid];
-      
-    }else{
+
+    } else {
       // toast.success('Авторизация успешна');
 
       const cardsRef = doc(db, 'users', user.uid);
@@ -75,13 +77,16 @@ export const googleAuth = async (generateId) => {
         uid: user.uid,
         timestamp: serverTimestamp(),
       }
+
       await updateDoc(cardsRef, dataForm);
+
+
       return ['auth', user.uid];
-      
+
     }
 
   }
-  catch(error){
+  catch (error) {
     console.log(error)
     return false;
   }
