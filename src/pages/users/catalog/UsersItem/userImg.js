@@ -1,11 +1,19 @@
 
-export const userImg = ( user ) => {
+export const userImg = (user) => {
 
-  if (!user){return false};
- 
-  const img = user.imgsAccount && user.imgsAccount.length > 0 ? user.imgsAccount[0].url : false;
+  if (!user) { return false };
 
-  if(img){
+  let img;
+
+  if (typeof user.imgsAccount === 'object') {
+    img = user.imgsAccount
+  } else {
+    img = JSON.parse(user.imgsAccount);
+  }
+
+  img = img.length > 0 ? img[0].url : false;
+
+  if (img) {
     return { backgroundImage: `url(${img})` }
   }
 

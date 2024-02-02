@@ -7,9 +7,10 @@ import { registrationAccount } from 'services/registrationAccount';
 import { authorizationAccount } from 'services/authorizationAccount';
 
 
-import { getListing } from 'services/getListings';
-import { saveListing } from 'services/saveListing';
-
+// import { getListing } from 'services/getListings';
+import { getByMailMysql } from 'pages/mysql/getByMailMysql';
+// import { saveListing } from 'services/saveListing';
+import { updateMysql } from 'pages/mysql/updateMysql';
 
 
 const CheckStatusVk = () => {
@@ -37,7 +38,7 @@ const CheckStatusVk = () => {
       const email = `${userId}@vk.auth`;
       setCurrentName(userName);
 
-      getListing('users', 'userEmail', email).then((res) => {
+      getByMailMysql(email).then((res) => {
 
         if (res.length === 0) {
           console.log('Регистрация');
@@ -45,7 +46,9 @@ const CheckStatusVk = () => {
           setStatus('Зарегистрированны');
           registrationAccount({ name: userName, email: email, password: userId }).then((res) => {
             console.log('good reg', res); // ok!
-            saveListing({ imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: true }, res.uid, 'users')
+
+            updateMysql(...res, { imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: true });
+            // saveListing({ imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: true }, res.uid, 'users')
           });
         } else {
           console.log('Авторизация');

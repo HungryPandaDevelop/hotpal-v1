@@ -1,5 +1,6 @@
 import { getMaxListing } from 'components/getMaxListing';
 import { getListing } from 'services/getListings';
+
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { toCaseCount } from 'pages/hotels/hooks/toCaseCount'

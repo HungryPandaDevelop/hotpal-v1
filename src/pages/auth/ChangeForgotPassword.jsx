@@ -7,7 +7,10 @@ import RenderForm from 'components/forms/RenderForm';
 import { changePasswordNoAuth } from 'services/changePassword';
 import { settingsPassword } from 'base/forms/authFields';
 import { useSearchParams } from 'react-router-dom';
-import { getSingleListing } from "services/getSingleListing"
+
+// import { getSingleListing } from "services/getSingleListing"
+import { getMysql } from 'pages/mysql/getMysql';
+
 import { useNavigate } from 'react-router-dom';
 
 const ChangeForgotPassword = ({ formData }) => {
@@ -22,7 +25,7 @@ const ChangeForgotPassword = ({ formData }) => {
     console.log('1', searchParams.get('uid'))
 
 
-    getSingleListing('users', searchParams.get('uid')).then((getuser) => {
+    getMysql(searchParams.get('uid')).then((getuser) => {
       console.log(getuser)
       setUser(getuser);
       setLoading(false);

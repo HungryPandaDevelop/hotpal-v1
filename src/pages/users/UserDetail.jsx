@@ -11,6 +11,7 @@ import PersonalInfo from "./detail/PersonalInfo";
 import Btns from "./detail/Btns";
 
 import Travel from 'pages/cabinet/Travel';
+import { getMysql } from 'pages/mysql/getMysql';
 
 const UserDetail = ({ uid, sympathys }) => {
   const { pathname } = useLocation();
@@ -20,8 +21,8 @@ const UserDetail = ({ uid, sympathys }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getSingleListing('users', params.userId).then((getuser) => {
-
+    getMysql(params.userId).then((getuser) => {
+      console.log('getuser', getuser)
       setUser(getuser);
       setLoading(false);
     })
@@ -36,7 +37,7 @@ const UserDetail = ({ uid, sympathys }) => {
         <div className="border-container border-container-user">
           <div className="main-grid">
             <div className="col-4 col-sm-6 col-xs-12 photos-mobile">
-              {user.imgsAccount && <Photos user={user} />}
+              {<Photos user={user} />}
             </div>
             <div className="col-8 col-sm-6 col-xs-12">
 
@@ -69,7 +70,7 @@ const UserDetail = ({ uid, sympathys }) => {
 
             </div>
             <div className="col-4 col-sm-6 hidden-xs">
-              {user.imgsAccount && <Photos user={user} />}
+              {<Photos user={user} />}
             </div>
             <div className="col-12">
               <div className="border-delimetr border-account"></div>

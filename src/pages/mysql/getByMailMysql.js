@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 
-export const getMysql = async (uid) => {
-  console.log('uid', uid)
+export const getByMailMysql = async (email) => {
   try {
-    const response = await axios.get("https://hotpal.ru/api/base/vendor/get_single.php", {
+    const response = await axios.get("https://hotpal.ru/api/base/vendor/get_single_by_mail.php", {
       params: {
-        uid: uid,
+        email: email,
       }
     });
 

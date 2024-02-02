@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import { getListing } from 'services/getListings';
-
+import { getByArrMysql } from 'pages/mysql/getByArrMysql'
 
 import UserItem from 'pages/users/catalog/UsersItem';
 
@@ -22,7 +22,7 @@ const TravelUserList = ({ uid, travelList }) => {
       }
     })
 
-    getListing('users', 'usersArray', [uid, usersArray]).then((res) => {
+    getByArrMysql([uid, ...usersArray]).then((res) => {
 
       setListings(res);
 

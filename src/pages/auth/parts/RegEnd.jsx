@@ -20,12 +20,12 @@ const RegEnd = ({ account, ActionFn }) => {
 
     if (!account.loaded) {
 
-
-      if (account.email && !JSON.parse(account.verificationSend)) {
+      console.log('account', account)
+      if (account.email && account.verificationSend && !JSON.parse(account.verificationSend)) {
 
         sendEmail(account, location);
       }
-      else if (!JSON.parse(account.verificationCheck)) {
+      else if (account.verificationCheck && !JSON.parse(account.verificationCheck)) {
 
         const verificationIdUrl = searchParams.get('verificationId');
         const verificationIdAccount = account.verificationId;
@@ -85,7 +85,7 @@ const RegEnd = ({ account, ActionFn }) => {
   }
 
 
-  if (account.email && JSON.parse(account.verificationCheck)) {
+  if (account.email && account.verificationCheck && JSON.parse(account.verificationCheck)) {
     return renderMailSending()
   }
   else if (account.email) {

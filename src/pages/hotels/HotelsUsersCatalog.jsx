@@ -4,6 +4,7 @@ import moment from "moment";
 import { connect } from 'react-redux';
 
 import { getListing } from 'services/getListings';
+import { getByArrMysql } from 'pages/mysql/getByArrMysql'
 
 import { hotelPage, hotelsDataSingle } from 'pages/hotels/hooks/searchHotels';
 import { toCaseCount } from 'pages/hotels/hooks/toCaseCount'
@@ -79,11 +80,11 @@ const HotelsUsersCatalog = ({ account }) => {
       });
       // console.log('usersArray', usersArray)
       if (usersArray.length > 0) {
-        getListing('users', 'usersArray', usersArray).then((res) => {
+        getByArrMysql(usersArray).then((res) => {
 
 
           let tempUsers = [];
-          res.forEach(el => {
+          res.data.forEach(el => {
             tempUsers.push({ ...users.find(e => e.uid === el.uid), ...el })
           });
 

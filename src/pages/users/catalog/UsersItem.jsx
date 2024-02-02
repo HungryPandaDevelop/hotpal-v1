@@ -20,7 +20,7 @@ const UserItem = ({ user, dateTravel, account, windowSize }) => {
       <div className="users-item-bg" ></div>
       <div className="users-item-info">
 
-        <Link className='users-item-link' to={`/users-catalog/${user.id}`}></Link>
+        <Link className='users-item-link' to={`/users-catalog/${user.uid}`}></Link>
 
         <GoalsUsers
           user={user}

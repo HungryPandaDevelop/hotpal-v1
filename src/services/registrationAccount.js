@@ -1,4 +1,4 @@
-import { db } from 'default/config/firebase';
+// import { db } from 'default/config/firebase';
 
 import {
   getAuth,
@@ -8,11 +8,11 @@ import {
 } from 'firebase/auth';
 
 
-import {
-  doc,
-  setDoc,
-  serverTimestamp
-} from 'firebase/firestore';
+// import {
+//   doc,
+//   setDoc,
+//   serverTimestamp
+// } from 'firebase/firestore';
 
 import { addMysql } from 'pages/mysql/addMysql';
 

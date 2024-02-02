@@ -1,6 +1,9 @@
 import { getMaxListing } from 'components/getMaxListing';
 import { useEffect, useState } from 'react'
+
 import { getListing } from 'services/getListings';
+import { getByArrMysql } from 'pages/mysql/getByArrMysql'
+
 import { userImg } from 'pages/users/catalog/UsersItem/userImg';
 import { Link } from 'react-router-dom';
 const BestUsers = () => {
@@ -24,9 +27,11 @@ const BestUsers = () => {
 
         setLoading(false);
         // console.log(getMaxListing(res, 'userRef').slice(0, 9))
-        // console.log(usersArr)
-        getListing('users', 'usersArray', usersArr).then((res) => {
-          setListings(res)
+
+        // console.log('usersArr', usersArr)
+        getByArrMysql(usersArr).then((res) => {
+          console.log('usersArr', res)
+          setListings(res.data)
 
         })
       }

@@ -1,4 +1,5 @@
-import { getSingleListing } from 'services/getSingleListing';
+// import { getSingleListing } from 'services/getSingleListing';
+import { getMysql } from 'pages/mysql/getMysql';
 import { useState, useEffect } from 'react'
 import { renderStatus } from 'pages/cabinet/parts/LikesItem/renderStatus';
 
@@ -25,7 +26,7 @@ const LikesItem = ({
 
   useEffect(() => {
 
-    getSingleListing('users', userLoadId).then((getuser) => {
+    getMysql(userLoadId).then((getuser) => {
       setUser(getuser);
       setLoading(false);
     });

@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 
-import { getListing } from 'services/getListings';
+// import { getListing } from 'services/getListings';
 
 import { connect } from 'react-redux';
 
 import UsersSearchPanel from 'pages/users/catalog/UsersSearchPanel';
 import UserItem from 'pages/users/catalog/UsersItem';
 import { toCaseCount } from 'pages/hotels/hooks/toCaseCount'
-
+import axios from 'axios';
 const UserCatalog = ({ account }) => {
-  const { uid } = account;
+  // const { uid } = account;
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -20,10 +20,11 @@ const UserCatalog = ({ account }) => {
   useEffect(() => {
 
 
-    getListing('users', 'noUserRef', uid).then((res) => {
+    axios.get("https://hotpal.ru/api/base/vendor/list.php").then(({ data }) => {
       // let dataUser = JSON.stringify(res);
-      // console.log('res', dataUser);
-      let allUsers = res.filter(user => {
+      console.log('res', data);
+
+      let allUsers = data.data.filter(user => {
 
         if (user.setting_founds && (user.setting_founds !== account.orientation) || (user.imgsAccount === undefined || user.imgsAccount.length === 0)) {
           return false;

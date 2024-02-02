@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 const List = () => {
 
-  const [listing, setListing] = useState([]);
+  const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const List = () => {
       }
     }).then(res => {
       setLoading(false);
-      setListing(res.data.data);
+      setListings(res.data.data);
       console.log('in send', res.data.data);
       // saveListing({ vertificationSend: true }, account.uid, 'users');
     });
@@ -28,38 +28,182 @@ const List = () => {
       <div className="stub"></div>
       <div className="main-full">
         <div className="content">
-          <h1>Base</h1>
+          <h1>Base mysql</h1>
           <div>
-            {loading ? 'Load..' : listing.map((item, index) =>
-            (<table key={item.id} border="1" width="100%">
-              {(index === 0) &&
-                (
-                  <tr>
-                    {Object.keys(item).map((el, index) => (
-                      <th key={index} width="25%">
-                        {el}
-                      </th>
-                    ))}
+
+            <div className='table-base'>
+              <table border="1" width="100%">
+                <tr>
+                  <th >
+                    uid
+                  </th>
+                  <th>
+                    name
+                  </th>
+                  <th>
+                    email
+                  </th>
+                  <th>
+                    timestamp
+                  </th>
+                  <th>
+                    dateBerth
+                  </th>
+                  <th>
+                    description
+                  </th>
+                  <th>
+                    goals
+                  </th>
+                  <th>
+                    interests
+                  </th>
+                  <th>
+                    hotelDate
+                  </th>
+                  <th>
+                    hotelFind
+                  </th>
+                  <th>
+                    gender
+                  </th>
+
+                  <th>
+                    imgsAccount
+                  </th>
+
+                  <th>
+                    loaded
+                  </th>
+                  <th>
+                    orientation
+                  </th>
+                  <th>
+                    phone
+                  </th>
+                  <th>
+                    tripPoint
+                  </th>
+                  <th>
+                    verificationId
+                  </th>
+                  <th>
+                    verificationCheck
+                  </th>
+                  <th>
+                    verificationSend
+                  </th>
+                  <th>
+                    work
+                  </th>
+                  <th>
+                    zodiac
+                  </th>
+                  <th>
+                    setting_invites
+                  </th>
+                  <th>
+                    setting_likes
+                  </th>
+                  <th>
+                    setting_messages
+                  </th>
+                  <th>
+                    setting_founds
+                  </th>
+                  <th>
+                    setting_goals
+                  </th>
+                  <th>BTNS</th>
+                </tr>
+                {loading ? 'Load..' : listings.map((item, index) =>
+                  <tr key={index}>
+
+                    <td >
+                      {item.uid}
+                    </td>
+                    <td>
+                      {item.name}
+                    </td>
+                    <td>
+                      {item.email}
+                    </td>
+                    <td>
+                      {JSON.stringify(item.timestamp)}
+                    </td>
+
+                    <td>
+                      {item.dateBerth}
+                    </td>
+                    <td>
+                      {item.description}
+                    </td>
+                    <td>
+                      {JSON.stringify(item.goals)}
+                    </td>
+                    <td>
+                      {JSON.stringify(item.interests)}
+                    </td>
+                    <td>
+                      {item.hotelDate}
+                    </td>
+                    <td>
+                      {item.hotelFind}
+                    </td>
+                    <td>
+                      {item.gender}
+                    </td>
+
+                    <td>
+                      {JSON.stringify(item.imgsAccount)}
+                    </td>
+                    <td>
+                      {item.loaded}
+                    </td>
+                    <td>
+                      {item.orientation}
+                    </td>
+                    <td>
+                      {item.phone}
+                    </td>
+                    <td>
+                      {item.tripPoint}
+                    </td>
+                    <td>
+                      {item.verificationId}
+                    </td>
+                    <td>
+                      {item.verificationCheck}
+                    </td>
+                    <td>
+                      {item.verificationSend}
+                    </td>
+                    <td>
+                      {item.work}
+                    </td>
+                    <td>
+                      {item.zodiac}
+                    </td>
+                    <td>
+                      {item.setting_invites}
+                    </td>
+                    <td>
+                      {item.setting_likes}
+                    </td>
+                    <td>
+                      {item.setting_messages}
+                    </td>
+                    <td>
+                      {item.setting_founds}
+                    </td>
+                    <td>
+                      {item.setting_goals}
+                    </td>
                   </tr>
-                )
-              }
-              <tr>
-                {Object.keys(item).map((el, index) => (
+                )}
+              </table>
+            </div>
 
-                  <td key={index} width="25%">
-                    {item[el]}
-                  </td>
-
-                ))}
-                <td>
-                  редактировать
-                </td>
-                <td>
-                  удалить
-                </td>
-              </tr>
-            </table>)
-            )}
           </div>
           <Link to="/mysql/add" className="btn btn--blue">Добавить</Link>
         </div>

@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 
 import { userImg } from 'pages/users/catalog/UsersItem/userImg';
 
-import { getSingleListing } from 'services/getSingleListing';
-
+// import { getSingleListing } from 'services/getSingleListing';
+import { getMysql } from 'pages/mysql/getMysql';
 import LinkWrap from 'pages/chat/RoomItem/LinkWrap';
 
 import ActionFn from 'store/actions';
@@ -32,7 +32,7 @@ const RoomItem = ({
 
 
   useEffect(() => {
-    getSingleListing('users', invite).then(res => {
+    getMysql(invite).then(res => {
 
       setLoading(false);
       setRoomUserInfo(res);

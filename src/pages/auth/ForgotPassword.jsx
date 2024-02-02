@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { getPass } from 'base/forms/authFields';
 import { connect } from 'react-redux';
 import Popup from 'components/Popup';
-import Section from "pages/main/Section";
-import { getListing } from 'services/getListings';
+import Section from 'pages/main/Section';
+import { getByMailMysql } from 'pages/mysql/getByMailMysql';
+// import { getListing } from 'services/getListings';
+
 import RenderForm from 'components/forms/RenderForm';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -13,6 +15,7 @@ const ForgotPassword = ({ formData }) => {
   const [loading, setLoading] = useState(false);
   const [passSend, setPassSend] = useState(false);
   const [mailSend, setMailSend] = useState('');
+
   const renderMailSend = () => {
     console.log('formData', formData)
     return (
@@ -42,7 +45,7 @@ const ForgotPassword = ({ formData }) => {
 
     const email = formData.values.email;
 
-    getListing('users', 'userEmail', email).then((res) => {
+    getByMailMysql(email).then((res) => {
 
 
 

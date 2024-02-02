@@ -13,9 +13,19 @@ const GoalsUsers = ({ user, account }) => {
     }
   }
 
+  let goalsJson;
+
+  if (typeof goals === 'object') {
+    goalsJson = goals
+  } else {
+    goalsJson = JSON.parse(goals);
+  }
+
+
+
   return (
     <div className="goals-users">
-      {goals.map((item, index) => (
+      {goalsJson.map((item, index) => (
         <div key={index}>
           <div className="goals-users-tag">{renderGoals(item)}</div>
         </div>))

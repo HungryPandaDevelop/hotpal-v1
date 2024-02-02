@@ -26,16 +26,24 @@ const settings = {
 
 const Photos = ({ user }) => {
 
+  let img = false;
+
+  if (typeof user.imgsAccount === 'object') {
+    img = user.imgsAccount
+  } else {
+    img = JSON.parse(user.imgsAccount);
+  }
+
+  if (img === false) { return false; }
 
   return (
     <div className="user-photo">
       <LightgalleryProvider
-
       >
 
 
         <TinySlider settings={settings}>
-          {user.imgsAccount.map((img, index) => (
+          {img.map((img, index) => (
             <LightgalleryItem group="any" src={img.url} key={index} >
               <Link href={img.url}>
                 <img src={img.url} alt={img} />

@@ -304,6 +304,14 @@ section {
   color: #00AEEF;
 }
 
+.table-base table {
+  width: 3000px;
+  border: 1px solid #0B132B;
+}
+.table-base table th, .table-base table td {
+  width: 200px;
+}
+
 @media (max-width: 1400px) {
   .content {
     padding-right: 50px;
