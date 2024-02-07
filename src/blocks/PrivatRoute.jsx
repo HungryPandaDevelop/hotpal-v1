@@ -19,25 +19,10 @@ import BestPanel from 'blocks/BestPanel';
 
 
 
-const PrivateRoute = ({ account, ActionFn }) => {
 
-  // let [searchParams] = useSearchParams()
+const PrivateRoute = ({ account }) => {
 
-  // useEffect(() => {
-  //   // console.log('account', account)
-  //   if (!account.loaded && !account.verificationCheck) {
-  //     const verificationIdUrl = searchParams.get('vertificationId');
-  //     const verificationIdAccount = account.vertificationId;
 
-  //     if (verificationIdUrl) {
-  //       if (verificationIdUrl === verificationIdAccount) {
-
-  //         saveListing({ verificationCheck: true }, account.uid, 'users');
-  //         ActionFn('SET_INFO_ACCOUNT', { verificationCheck: true });
-  //       }
-  //     }
-  //   }
-  // }, [account]);
 
 
   const renderAuthContent = () => {

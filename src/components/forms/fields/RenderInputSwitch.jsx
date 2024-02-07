@@ -1,5 +1,5 @@
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Field } from 'redux-form';
 
 
@@ -7,8 +7,8 @@ const TempateInput = (props) => {
 
   const {
     input,
-    reset,
-    meta: { error }
+    // reset,
+    // meta: { error }
   } = props;
 
   const {

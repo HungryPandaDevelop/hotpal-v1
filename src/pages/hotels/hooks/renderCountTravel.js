@@ -10,3 +10,4 @@ export const renderCountTravel = (travelList,hotel,uid) => {
 
   return count;
 }
+

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { connect } from 'react-redux';
+import ActionFn from 'store/actions';
 
 import RenderForm from 'components/forms/RenderForm';
 import Popup from 'components/Popup';
@@ -13,7 +15,10 @@ import { registrationAccount } from 'services/registrationAccount';
 
 import { v4 as uuidv4 } from 'uuid';
 
-const RegMail = ({ formData }) => {
+import { calculateAge } from 'pages/users/hooks/calculateAge';
+
+
+const RegMail = ({ formData, ActionFn }) => {
 
   const navigate = useNavigate();
 
@@ -27,10 +32,29 @@ const RegMail = ({ formData }) => {
 
     setLoading(true);
     const regValues = { ...formData.values, verificationId: generateId }
+
+    const formattedDate = new Date().toLocaleString('ru-RU', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    regValues.timestamp = formattedDate;
+    regValues.registration = formattedDate;
+    regValues.age = calculateAge(regValues.dateBerth)
+
+
+
+
+
     registrationAccount(regValues).then((res) => {
+      // console.log(regValues);
+
       setLoading(false)
       if (!res) { return false };
-
+      ActionFn('SET_INFO_ACCOUNT', regValues);
       navigate('/reg-end', {
         state:
           { verificationId: generateId }
@@ -67,4 +91,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(RegMail);
+export default connect(mapStateToProps,{ActionFn})(RegMail);

@@ -1,18 +1,18 @@
 import { db } from 'default/config/firebase';
 
 import {
-  collection,
-  query,
-  onSnapshot,
+  // collection,
+  // query,
+  // onSnapshot,
   serverTimestamp,
-  addDoc,
-  getDocs,
-  getDoc,
-  updateDoc,
+  // addDoc,
+  // getDocs,
+  // getDoc,
+  // updateDoc,
   doc,
-  where,
+  // where,
   setDoc,
-  orderBy
+  // orderBy
 } from 'firebase/firestore';
 
 import { v4 as uuidv4 } from 'uuid';
@@ -20,7 +20,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
 
 
-export const addCardsDefault = async (dataForm, baseCards, )=>{
+export const addCardsDefault = async (dataForm, baseCards,) => {
 
   const generateId = uuidv4();
 
@@ -29,9 +29,9 @@ export const addCardsDefault = async (dataForm, baseCards, )=>{
     dataForm['timestamp'] = serverTimestamp();
     dataForm.id = generateId;
 
-    await setDoc(doc(db, baseCards,  generateId), dataForm);
+    await setDoc(doc(db, baseCards, generateId), dataForm);
     // await addDoc(collection(db, baseCards), dataForm);
-  
+
     // toast.success('Элемент добавален');
     return generateId;
 

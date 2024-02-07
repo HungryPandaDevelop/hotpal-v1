@@ -20,12 +20,12 @@ const RegEnd = ({ account, ActionFn }) => {
 
     if (!account.loaded) {
 
-      console.log('account', account)
-      if (account.email && account.verificationSend && !JSON.parse(account.verificationSend)) {
+      // console.log('account', account)
+      if (account.email && account.verificationSend !== '1') {
 
         sendEmail(account, location);
       }
-      else if (account.verificationCheck && !JSON.parse(account.verificationCheck)) {
+      else if (account.verificationCheck !== '1') {
 
         const verificationIdUrl = searchParams.get('verificationId');
         const verificationIdAccount = account.verificationId;
@@ -33,11 +33,13 @@ const RegEnd = ({ account, ActionFn }) => {
         if (verificationIdUrl) {
           if (verificationIdUrl === verificationIdAccount) {
 
+            console.log('verificationIdUrl', verificationIdUrl, 'verificationIdAccount', verificationIdAccount)
+
             // saveListing({ verificationCheck: true }, account.uid, 'users');
 
-            updateMysql({ ...account, verificationCheck: 1 });
+            updateMysql({ ...account, verificationCheck: '1' });
 
-            ActionFn('SET_INFO_ACCOUNT', { verificationCheck: 1 });
+            ActionFn('SET_INFO_ACCOUNT', { verificationCheck: '1' });
           }
         }
       }
@@ -85,7 +87,7 @@ const RegEnd = ({ account, ActionFn }) => {
   }
 
 
-  if (account.email && account.verificationCheck && JSON.parse(account.verificationCheck)) {
+  if (account.email && account.verificationCheck === '1') {
     return renderMailSending()
   }
   else if (account.email) {

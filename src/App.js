@@ -9,8 +9,6 @@ import GlobalRoute from 'blocks/GlobalRoute';
 import GlobalRouteWhite from 'blocks/GlobalRouteWhite';
 
 import ScrollTop from 'components/ScrollTop'
-// import Header from 'blocks/Header';
-// import Footer from 'blocks/footer/Footer';
 
 
 
@@ -31,7 +29,7 @@ import ForgotPassword from 'pages/auth/ForgotPassword';
 import ChangeForgotPassword from 'pages/auth/ChangeForgotPassword';
 import AuthStart from 'pages/auth/AuthStart';
 import RegStart from 'pages/auth/RegStart';
-// import RegPhone from 'pages/auth/RegPhone';
+
 import RegMail from 'pages/auth/RegMail';
 
 import AuthMail from 'pages/auth/AuthMail';
@@ -58,7 +56,7 @@ import PageListNew from 'pages/admin/PageListNew';
 import PageStandart from 'pages/admin/PageStandart';
 
 
-// import VKauth from 'pages/VKauth';
+
 import CookiePopup from 'blocks/CookiePopup'
 import Yslovia from 'pages/default/Yslovia';
 import Konf from 'pages/default/Konf';
@@ -74,7 +72,7 @@ import MysqlDetail from 'pages/mysql/Detail';
 // import MysqlEdit from 'pages/mysql/Edit';
 
 const App = ({ account }) => {
-  // console.log('uid', account)
+
   return (
     <>
 

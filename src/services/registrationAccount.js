@@ -43,26 +43,11 @@ export const registrationAccount = async (formData) => {
     /* add to firestore base */
     const user = userCredential.user;
 
-
-
     const formDataCopy = { ...formData, uid: user.uid };
 
     delete formDataCopy.password;
 
-    // formDataCopy.timestamp = serverTimestamp();
 
-    // Получаем текущую дату и время
-    const formattedDate = new Date().toLocaleString('ru-RU', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-
-    formDataCopy.timestamp = formattedDate;
-
-    console.log('formDataCopy', formDataCopy);
 
     // await setDoc(doc(db, 'users', user.uid), formDataCopy);
     await addMysql(formDataCopy);

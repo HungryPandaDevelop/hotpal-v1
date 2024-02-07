@@ -3,14 +3,13 @@ import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import { useEffect, useRef } from "react";
 
-import { useMask, InputMask } from '@react-input/mask';
+import { InputMask } from '@react-input/mask';
 
 const TempateInput = (props) => {
 
   let dp = useRef(null);
   let inputRef = useRef(null);
 
-  // const InputMask = useMask({ mask: '+0 (___) ___-__-__', replacement: { _: /\d/ } });
 
   const {
     input,
@@ -54,14 +53,6 @@ const TempateInput = (props) => {
     <div className={wrapClass}>
       {label && <label htmlFor={input.name}><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>}
       <div className="data-input-container">
-        {/* <input
-          {...input}
-          placeholder={placeholder}
-          id={input.name}
-          ref={inputRef}
-          // ref={InputMask}
-          className={`input-date input-decorate ${checkErrorSubmit && error && 'input-error'}`}
-        /> */}
 
         <InputMask
           {...input}
@@ -71,6 +62,7 @@ const TempateInput = (props) => {
           mask="__-__-____"
           replacement={{ _: /\d/ }}
           ref={inputRef}
+          readOnly 
         />
 
 

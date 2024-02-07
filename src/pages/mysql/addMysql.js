@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-export const addMysql = async ({ uid, name, email, dateBerth, gender, timestamp }) => {
-  // console.log('send', uid, name, email, dateBerth, gender, timestamp)
+export const addMysql = async ({ uid, name, email, dateBerth, gender, timestamp, registration, verificationId, age }) => {
+  console.log('send',  uid, name, email, dateBerth, gender, timestamp, registration, verificationId, age)
   try {
     const response = await axios.get("https://hotpal.ru/api/base/vendor/create.php", {
       params: {
@@ -12,7 +12,9 @@ export const addMysql = async ({ uid, name, email, dateBerth, gender, timestamp 
         gender: gender,
         dateBerth: dateBerth,
         timestamp: timestamp,
-
+        registration:registration,
+        verificationId: verificationId,
+        age: age
       }
     });
     console.log('Ответ php', response);

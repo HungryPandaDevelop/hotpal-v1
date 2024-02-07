@@ -1,4 +1,3 @@
-import { calculateAge } from 'pages/users/hooks/calculateAge';
 
 const NameUsers = ({ user }) => {
 
@@ -7,7 +6,7 @@ const NameUsers = ({ user }) => {
     <div className="name-users">
       <h3>
         <span>{user?.name}</span>
-        {user.dateBerth ? (<span>, {calculateAge(user.dateBerth)}</span>) : ('')}
+        {user.age ? (<span>, {user.age}</span>) : ('')}
       </h3>
     </div>
   )

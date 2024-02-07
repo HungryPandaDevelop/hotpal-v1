@@ -312,6 +312,18 @@ section {
   width: 200px;
 }
 
+.page-preloader {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  z-index: 7;
+  left: 0;
+  top: 0;
+  background-color: #ffffff;
+  text-align: center;
+  padding-top: 25vh;
+}
+
 @media (max-width: 1400px) {
   .content {
     padding-right: 50px;

@@ -80,7 +80,7 @@ const Desktop = ({
 
         <div className="user-top-info--view">
           <h2>
-            {user.name} {user.verificationCheck ? (<div className="verification-ico"></div>) : ''}{user.dateBerth && ', ' + calculateAge(user.dateBerth)}
+            {user.name} {user.verificationCheck ? (<div className="verification-ico"></div>) : ''}{user.age && ', ' + user.age}
             {!user.verificationCheck && <div className="verification-hint">Вы не верифицированы</div>}
 
           </h2>
@@ -92,7 +92,7 @@ const Desktop = ({
               checkErrorSubmit={checkErrorSubmit}
             />
 
-            {newValue && calculateAge(newValue.values.dateBerth) < 18 && <span className='err-date-cabinet'>Вам нет 18 лет, Ваша анкета не участвует в поиске</span>}
+            {newValue && newValue.values.age < 18 && <span className='err-date-cabinet'>Вам нет 18 лет, Ваша анкета не участвует в поиске</span>}
 
           </div>
           <RenderFields
