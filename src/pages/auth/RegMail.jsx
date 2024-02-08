@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { calculateAge } from 'pages/users/hooks/calculateAge';
 
+import {timestampCustom} from 'services/timestampCustom';
 
 const RegMail = ({ formData, ActionFn }) => {
 
@@ -33,17 +34,11 @@ const RegMail = ({ formData, ActionFn }) => {
     setLoading(true);
     const regValues = { ...formData.values, verificationId: generateId }
 
-    const formattedDate = new Date().toLocaleString('ru-RU', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+    const formattedDate = timestampCustom();
 
     regValues.timestamp = formattedDate;
     regValues.registration = formattedDate;
-    regValues.age = calculateAge(regValues.dateBerth)
+    regValues.age = calculateAge(regValues.dateBerth);
 
 
 

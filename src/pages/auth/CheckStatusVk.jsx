@@ -25,7 +25,7 @@ const CheckStatusVk = () => {
     const payload = urlSearchParams.get('payload');
     console.log('in vk auth')
     if (payload) {
-      console.log('payload')
+      
       // Декодируем JSON из payload
       const decodedPayload = JSON.parse(decodeURIComponent(payload));
 
@@ -33,7 +33,7 @@ const CheckStatusVk = () => {
       const userId = decodedPayload.user.id;
       const userName = decodedPayload.user.first_name;
       const userImg = decodedPayload.user.avatar;
-
+      console.log('payload', decodedPayload)
       // Создаем уникальный email-адрес на основе user.id
       const email = `${userId}@vk.auth`;
       setCurrentName(userName);
@@ -47,7 +47,7 @@ const CheckStatusVk = () => {
           registrationAccount({ name: userName, email: email, password: userId }).then((res) => {
             console.log('good reg', res); // ok!
 
-            updateMysql(...res, { imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: true });
+            updateMysql(...res, { imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: '1' });
             // saveListing({ imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: true }, res.uid, 'users')
           });
         } else {

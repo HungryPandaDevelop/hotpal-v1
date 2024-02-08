@@ -8,9 +8,15 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
+import { addLikes } from 'pages/mysql/addLikes';
+import { deleteLikes } from 'pages/mysql/deleteLikes';
+
+import {timestampCustom} from 'services/timestampCustom';
+
 const BtnLikes = ({
   user,
   uid,
+  name,
   likes,
   showPopup,
   setIdPoup
@@ -62,6 +68,17 @@ const BtnLikes = ({
       'userLikes': userInfo.uid,
     }, base).then(res => {
 
+      console.log('res', timestampCustom())
+
+      addLikes({
+        'id_like': res,
+        'userRefName': name,
+        'userRef': uid,
+        'userLikesName': userInfo.name,
+        'userLikes': userInfo.uid,
+        'timestamp': timestampCustom()
+      });
+
       setIdPoup('likes');
 
       showPopup(true);
@@ -71,6 +88,7 @@ const BtnLikes = ({
 
   const onDelete = () => {
     deleteListing(base, status)
+    deleteLikes(status);
     showPopup(false);
   };
 
@@ -100,6 +118,7 @@ const BtnLikes = ({
 const mapStateToProps = (state) => {
   return {
     uid: state.account.uid,
+    name: state.account.name,
     likes: state.globalState.likes,
   }
 }

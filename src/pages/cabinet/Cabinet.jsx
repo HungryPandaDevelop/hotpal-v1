@@ -25,7 +25,8 @@ const Cabinet = ({ formData, account, ActionFn }) => {
     // console.log(formData.values)
 
     let newValue = {...formData, age: calculateAge(formData.values.dateBerth)};
-    await updateMysql(newValue, account.uid);
+    // console.log('m', newValue.values)
+    await updateMysql(newValue.values, account.uid);
 
     ActionFn('SET_INFO_ACCOUNT', { ...account, ...formData.values });
 
