@@ -199,6 +199,9 @@ const List = () => {
                     <td>
                       {item.setting_goals}
                     </td>
+                    <td>
+                    Удалить
+                    </td>
                   </tr>
                 )}
               </table>
