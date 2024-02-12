@@ -1,7 +1,7 @@
 
 import RenderForm from 'components/forms/RenderFormHotelsSearch';
 
-import { geoSearch, hotelsData } from 'pages/hotels/hooks/searchHotels';
+import {  hotelsData } from 'pages/hotels/hooks/searchHotels';
 
 import { autocompleteSearch } from 'pages/hotels/hooks/searchHotels';
 
@@ -15,7 +15,11 @@ import { hotelsSearchFields } from 'base/forms/hotelsSearchFields';
 
 import { connect } from 'react-redux';
 
+import {addSearch} from 'pages/mysql/addSearch';
+import {timestampCustom} from 'services/timestampCustom';
+
 const HotelSearchPanelMap = ({
+  account,
   formData,
   setListings,
   loading,
@@ -32,7 +36,7 @@ const HotelSearchPanelMap = ({
     // console.log('getHotels formData.values', formData.values)
 
     // let regionId = formData.values.city;
-    let personCount = formData.values.personCount;
+    // let personCount = formData.values.personCount;
 
 
     let currentDate = formData.values.dateRange.split(' - ');
@@ -43,16 +47,23 @@ const HotelSearchPanelMap = ({
     setSearchDate([dateFrom, dateTo]);
     // let longitude = formData.values.geoHotels[1];
     // let latitude = formData.values.geoHotels[0];
+  
+
+if(firstLoad === false){
+// console.log('hotels-search', formData.values)
+  addSearch({uid: account.uid, timestamp: timestampCustom(), type: 'hotels-search', dateRange: formData.values?.dateRange, hotelFind: formData.values?.hotelFind});
+}
 
 
-    console.log("formData", formData)
+
+
 
     autocompleteSearch(formData.values.hotelFind).then(res => {
-      console.log('regions get', res)
+      // console.log('regions get', res)
       setLoading(false)
 
       hotelsData(res.data, 'auto').then(response => {
-        console.log('hotelsData', response)
+        // console.log('hotelsData', response)
         // console.log('travelList', getMaxListing(travelList, 'idHotel'))
         let hotelCount = getMaxListing(travelList, 'idHotel');
         // console.log(hotelCount);
@@ -105,6 +116,7 @@ const HotelSearchPanelMap = ({
 const mapStateToProps = (state) => {
 
   return {
+    account: state.account,
     formData: state.form.hotelsSearch,
   }
 }

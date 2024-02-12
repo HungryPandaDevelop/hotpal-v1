@@ -10,8 +10,10 @@ import RenderFormMini from 'components/forms/RenderFormUsersMiniSearch';
 import { usersSearchFields } from 'base/forms/usersSearchFields';
 import { usersSearchFieldsMini } from 'base/forms/usersSearchFields';
 
-import { connect } from 'react-redux';
+import {addSearch} from 'pages/mysql/addSearch';
 
+import { connect } from 'react-redux';
+import {timestampCustom} from 'services/timestampCustom';
 import Tabs from 'components/forms/formSearch/Tabs';
 
 const UsersSearchPanel = ({
@@ -19,7 +21,8 @@ const UsersSearchPanel = ({
   listings,
   setSearchListing,
   disableTabs,
-  miniPanel
+  miniPanel,
+  account
 }) => {
 
   const startValue = {}
@@ -30,6 +33,9 @@ const UsersSearchPanel = ({
 
     setSearchListing(onUsersSearch(listings, formData.values));
     setShowMobile(false);
+
+    addSearch({uid: account.uid, timestamp: timestampCustom(), type: 'user-search', ...formData.values});
+
   }
   const resetForm = () => {
     setSearchListing(onUsersSearch(listings, startValue));
@@ -72,6 +78,7 @@ const UsersSearchPanel = ({
 const mapStateToProps = (state) => {
 
   return {
+    account: state.account,
     formData: state.form.usersSearch,
   }
 }

@@ -10,7 +10,11 @@ import { hotelsSearchFields } from 'base/forms/hotelsSearchFields';
 
 import { connect } from 'react-redux';
 
+import {addSearch} from 'pages/mysql/addSearch';
+import {timestampCustom} from 'services/timestampCustom';
+
 const HotelSearchPanelMap = ({
+  account,
   formData,
   setListings,
   loading,
@@ -39,6 +43,13 @@ const HotelSearchPanelMap = ({
     setSearchDate([dateFrom, dateTo]);
     let longitude = formData.values.geoHotels[1];
     let latitude = formData.values.geoHotels[0];
+
+
+  if(firstLoad === false){
+  console.log('hotels-search', formData.values)
+    addSearch({uid: account.uid, timestamp: timestampCustom(), type: 'geo-search', dateRange: formData.values?.dateRange, coords: longitude + '-' +latitude});
+  }
+
 
     geoSearch(longitude, latitude, dateFrom, dateTo, personCount).then(res => {
 
@@ -118,6 +129,7 @@ const HotelSearchPanelMap = ({
 const mapStateToProps = (state) => {
 
   return {
+    account: state.account,
     formData: state.form.hotelsSearch,
   }
 }

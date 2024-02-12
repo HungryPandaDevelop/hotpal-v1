@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import { calculateAge } from 'pages/users/hooks/calculateAge';
 // import { getListing } from 'services/getListings';
 
 import { connect } from 'react-redux';
@@ -26,7 +26,7 @@ const UserCatalog = ({ account }) => {
 
       let allUsers = data.data.filter(user => {
 
-        if (user.setting_founds && (user.setting_founds !== account.orientation) || (user.imgsAccount === undefined || user.imgsAccount.length === 0)) {
+        if (user.setting_founds && (user.setting_founds !== account.orientation) || (user.imgsAccount === undefined || user.imgsAccount.length === 0 || calculateAge(user.dateBerth) < 18)) {
           return false;
         } else {
           return user;

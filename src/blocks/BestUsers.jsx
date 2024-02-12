@@ -43,7 +43,7 @@ const BestUsers = () => {
     <div className='best-users'>
       <h3>Топ анкеты:</h3>
       {loading ? 'Load...' : listings.map((user, index) => (
-        <Link to={`/users-catalog/${user.id}`} key={index} className='best-user-item'>
+        <Link to={`/users-catalog/${user.uid}`} key={index} className='best-user-item'>
           <div className="users-item-img img-use-bg" style={userImg(user)}></div>
         </Link>
       ))}

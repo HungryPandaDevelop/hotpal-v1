@@ -24,11 +24,11 @@ const Cabinet = ({ formData, account, ActionFn }) => {
     // saveListing(formData.values, account.uid, 'users');
     // console.log(formData.values)
 
-    let newValue = {...formData, age: calculateAge(formData.values.dateBerth)};
-    // console.log('m', newValue.values)
-    await updateMysql(newValue.values, account.uid);
+    let newValue = {...formData.values, age: calculateAge(formData.values.dateBerth)};
+    console.log('m', newValue)
+    await updateMysql(newValue, account.uid);
 
-    ActionFn('SET_INFO_ACCOUNT', { ...account, ...formData.values });
+    ActionFn('SET_INFO_ACCOUNT', { ...account, ...newValue });
 
 
 
