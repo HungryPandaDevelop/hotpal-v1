@@ -1,39 +1,9 @@
 import axios from 'axios';
 
 
-export const updateMysql = async ({
-  uid,
-  name,
-  email,
-  dateBerth,
-  age,
-  gender,
-  goals,
-  timestamp,
-  registration,
-  imgsAccount,
-  description,
-  hotelDate,
-  hotelFind,
-  work,
-  zodiac,
-  tripPoint,
-  orientation,
-  interests,
-  phone,
-  setting_invites,
-  setting_likes,
-  setting_messages,
-  setting_founds,
-  setting_goals,
-  verificationCheck,
-  verificationSend,
-  verificationId,
+export const updateMysql = async (props) => {
 
-
-}) => {
-
-  console.log('u', uid)
+  console.log('u', props.uid)
 
   try {
 
@@ -42,56 +12,29 @@ export const updateMysql = async ({
     let jsonImgsAccount;
 
     if (typeof goals === 'object') {
-      jsonGoals = JSON.stringify(goals);
+      jsonGoals = JSON.stringify(props.goals);
     } else {
-      jsonGoals = goals;
+      jsonGoals = props.goals;
     }
 
     if (typeof interests === 'object') {
-      jsonInterests = JSON.stringify(interests);
+      jsonInterests = JSON.stringify(props.interests);
     } else {
-      jsonInterests = interests;
+      jsonInterests = props.interests;
     }
 
     if (typeof imgsAccount === 'object') {
-      jsonImgsAccount = JSON.stringify(imgsAccount);
+      jsonImgsAccount = JSON.stringify(props.imgsAccount);
     } else {
-      jsonImgsAccount = imgsAccount;
+      jsonImgsAccount = props.imgsAccount;
     }
 
-
+    const newValue = { ...props, jsonGoals, jsonInterests, jsonImgsAccount }
+    console.log('Все props:', props, props.chats);
     const response = await axios.get("https://hotpal.ru/api/base/vendor/update.php", {
-      params: {
-        uid: uid,
-        email: email,
-        name: name,
-        gender: gender,
-        dateBerth: dateBerth,
-        age: age,
-        registration:registration,
-        timestamp: timestamp,
-        goals: jsonGoals,
-        imgsAccount: jsonImgsAccount,
-        description,
-        phone,
-        hotelDate,
-        hotelFind,
-        work,
-        zodiac,
-        tripPoint,
-        orientation,
-        interests: jsonInterests,
-        setting_invites,
-        setting_likes,
-        setting_messages,
-        setting_founds,
-        setting_goals,
-        verificationCheck,
-        verificationSend,
-        verificationId,
-      }
+      params: newValue
     });
-    console.log('Все ок:', response);
+    console.log('response user:', response);
     return true;
   }
   catch (err) {

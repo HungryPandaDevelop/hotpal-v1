@@ -17,7 +17,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { calculateAge } from 'pages/users/hooks/calculateAge';
 
-import {timestampCustom} from 'services/timestampCustom';
+import { timestampCustom } from 'services/timestampCustom';
 
 const RegMail = ({ formData, ActionFn }) => {
 
@@ -27,12 +27,21 @@ const RegMail = ({ formData, ActionFn }) => {
 
   const [loading, setLoading] = useState(false);
 
+  const [showErrAge, setShowArrAge] = useState(false);
+  const [showErrPhoto, setShowArrPhoto] = useState(false);
+
 
   const submitSuccess = () => {
 
 
     setLoading(true);
-    const regValues = { ...formData.values, verificationId: generateId }
+
+    let imgsAccountCheck = formData.values.imgsAccount ? formData.values.imgsAccount : [];
+    const imgsAccountSize = imgsAccountCheck.length;
+    imgsAccountCheck = JSON.stringify(imgsAccountCheck);
+
+
+    const regValues = { ...formData.values, verificationId: generateId, imgsAccount: imgsAccountCheck }
 
     const formattedDate = timestampCustom();
 
@@ -42,8 +51,20 @@ const RegMail = ({ formData, ActionFn }) => {
 
 
 
+    console.log('regValues.age', regValues.age)
+
+    if (regValues.age < 18) {
+      setShowArrAge(true);
+      return false;
+    }
 
 
+    if (imgsAccountSize < 1) {
+      setShowArrPhoto(true);
+      return false;
+
+    }
+    setLoading(false)
     registrationAccount(regValues).then((res) => {
       // console.log(regValues);
 
@@ -67,6 +88,9 @@ const RegMail = ({ formData, ActionFn }) => {
         linkBack={true}
       >
         <h3>Заполните анкету</h3>
+        {showErrAge && <div className="err-hint">Вам нет 18 лет, регистрация невозможна!</div>}
+        {showErrPhoto && <div className="err-hint">Добавьте хотя бы одно фото!</div>}
+
         <RenderForm
           fields={regFields}
           btnSubmitText={loading ? 'Loading..' : "Регистрация"}
@@ -86,4 +110,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,{ActionFn})(RegMail);
+export default connect(mapStateToProps, { ActionFn })(RegMail);

@@ -1,11 +1,12 @@
 
 import { deleteListing } from 'services/getListings';
-
+import { useNavigate } from 'react-router-dom';
 import EmptyRoom from 'pages/chat/EmptyRoom';
 
 import RoomItem from 'pages/chat/RoomItem';
 import { connect } from 'react-redux';
 
+import { deleteChat } from 'pages/mysql/deleteChat';
 
 const RoomList = ({
   uid,
@@ -13,13 +14,19 @@ const RoomList = ({
   // setChoiseRoom, 
   // setCurrentUser, 
   type,
-  rooms }) => {
+  rooms
+
+}) => {
   // console.log('rooms', rooms)
 
-
+  const navigate = useNavigate();
 
   const onDeleteRoom = (id) => {
     deleteListing('rooms', id);
+    deleteChat(id);
+
+
+    navigate('/cabinet/chat', { replace: true });
   }
 
   return (

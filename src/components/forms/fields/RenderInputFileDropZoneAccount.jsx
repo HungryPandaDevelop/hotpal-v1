@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Field } from 'redux-form';
 
@@ -9,7 +9,7 @@ import { useDropzone } from 'react-dropzone'
 
 import TinySlider from "tiny-slider-react";
 import 'tiny-slider/dist/tiny-slider.css';
-import { type } from '@testing-library/user-event/dist/type';
+// import { type } from '@testing-library/user-event/dist/type';
 
 const settings = {
   // lazyload: true,
@@ -28,7 +28,7 @@ const TemplateFile = (props) => {
 
   const {
     input,
-    meta: { error }
+    // meta: { error }
   } = props;
 
   const {
@@ -169,7 +169,7 @@ const TemplateFile = (props) => {
 
         {nameFile.length === 0 && (
           <div className="tiny-account-stub">
-            <span>Добавить, своё фото</span>
+            <span><b>Добавьте свое фото</b></span>
             <i></i>
           </div>
         )}

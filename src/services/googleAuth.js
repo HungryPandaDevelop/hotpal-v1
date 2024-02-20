@@ -77,6 +77,7 @@ export const googleAuth = async (generateId) => {
       //   timestamp: serverTimestamp(),
       // });
 
+      console.log('user google', user)
 
       await addMysql({
         name: user.displayName,
@@ -87,7 +88,7 @@ export const googleAuth = async (generateId) => {
       });
 
 
-      return ['reg', user.uid];
+      return ['reg', user.uid, user.displayName];
 
     } else {
       // console.log('in 2')
@@ -109,7 +110,7 @@ export const googleAuth = async (generateId) => {
         timestamp: formattedDate
       });
 
-      return ['auth', user.uid];
+      return ['auth', user.uid, user.displayName];
 
     }
 

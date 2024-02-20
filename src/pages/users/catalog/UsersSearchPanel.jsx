@@ -10,10 +10,10 @@ import RenderFormMini from 'components/forms/RenderFormUsersMiniSearch';
 import { usersSearchFields } from 'base/forms/usersSearchFields';
 import { usersSearchFieldsMini } from 'base/forms/usersSearchFields';
 
-import {addSearch} from 'pages/mysql/addSearch';
+import { addSearch } from 'pages/mysql/addSearch';
 
 import { connect } from 'react-redux';
-import {timestampCustom} from 'services/timestampCustom';
+import { timestampCustom } from 'services/timestampCustom';
 import Tabs from 'components/forms/formSearch/Tabs';
 
 const UsersSearchPanel = ({
@@ -32,9 +32,10 @@ const UsersSearchPanel = ({
   const submitSuccess = () => {
 
     setSearchListing(onUsersSearch(listings, formData.values));
+
     setShowMobile(false);
 
-    addSearch({uid: account.uid, timestamp: timestampCustom(), type: 'user-search', ...formData.values});
+    addSearch({ uid: account.uid, timestamp: timestampCustom(), type: 'user-search', ...formData.values });
 
   }
   const resetForm = () => {

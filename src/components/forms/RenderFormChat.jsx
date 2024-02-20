@@ -3,7 +3,11 @@ import RederBtnChatContainer from 'components/forms/formParts/RederBtnChatContai
 
 import { reduxForm } from 'redux-form';
 
-import { useState, useEffect, useRef } from 'react';
+import {
+  useState,
+  // useEffect, 
+  useRef
+} from 'react';
 
 // --------------------------------------------------------------------
 
@@ -19,8 +23,8 @@ const TemplateForm = (props) => {
     colBtn,
     invalid,
     dispatch,
-    account,
-    roomUserInfo
+    // account,
+    // roomUserInfo
   } = props;
 
   const messageRef = useRef(null);

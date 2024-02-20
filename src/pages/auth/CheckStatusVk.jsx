@@ -2,18 +2,18 @@ import Popup from 'components/Popup';
 import Section from 'pages/main/Section';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+import ActionFn from 'store/actions';
 import { registrationAccount } from 'services/registrationAccount';
 import { authorizationAccount } from 'services/authorizationAccount';
-
-
+import { timestampCustom } from 'services/timestampCustom';
+import { connect } from 'react-redux';
 // import { getListing } from 'services/getListings';
 import { getByMailMysql } from 'pages/mysql/getByMailMysql';
 // import { saveListing } from 'services/saveListing';
-import { updateMysql } from 'pages/mysql/updateMysql';
+// import { updateMysql } from 'pages/mysql/updateMysql';
 
 
-const CheckStatusVk = () => {
+const CheckStatusVk = ({ ActionFn }) => {
   const navigate = useNavigate();
 
   const [currentName, setCurrentName] = useState('');
@@ -25,7 +25,7 @@ const CheckStatusVk = () => {
     const payload = urlSearchParams.get('payload');
     console.log('in vk auth')
     if (payload) {
-      
+
       // Декодируем JSON из payload
       const decodedPayload = JSON.parse(decodeURIComponent(payload));
 
@@ -33,6 +33,11 @@ const CheckStatusVk = () => {
       const userId = decodedPayload.user.id;
       const userName = decodedPayload.user.first_name;
       const userImg = decodedPayload.user.avatar;
+
+      const age = JSON.parse(localStorage.getItem('account')).age;
+      const dateBerth = JSON.parse(localStorage.getItem('account')).dateBerth;
+
+
       console.log('payload', decodedPayload)
       // Создаем уникальный email-адрес на основе user.id
       const email = `${userId}@vk.auth`;
@@ -44,10 +49,11 @@ const CheckStatusVk = () => {
           console.log('Регистрация');
           // Регистрируем пользователя в Firebase
           setStatus('Зарегистрированны');
-          registrationAccount({ name: userName, email: email, password: userId }).then((res) => {
+          registrationAccount({ name: userName, email: email, password: userId, registration: timestampCustom(), verificationCheck: '1', imgsAccount: [{ id: 'vk', 'url': userImg }], age: age, dateBerth: dateBerth }).then((res) => {
             console.log('good reg', res); // ok!
-
-            updateMysql(...res, { imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: '1' });
+            if (!res) { return false };
+            ActionFn('SET_INFO_ACCOUNT', { name: userName, email: email, age: age, dateBerth: dateBerth, imgsAccount: [{ id: 'vk', 'url': userImg }], });
+            // updateMysql(...res, { imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: '1' });
             // saveListing({ imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: true }, res.uid, 'users')
           });
         } else {
@@ -94,4 +100,7 @@ const CheckStatusVk = () => {
 
 
 
-export default CheckStatusVk;
+export default connect(null, { ActionFn })(CheckStatusVk);
+
+
+

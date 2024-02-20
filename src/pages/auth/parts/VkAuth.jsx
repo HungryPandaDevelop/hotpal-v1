@@ -1,6 +1,6 @@
 import * as VKID from '@vkid/sdk';
-
-const VkAuth = ({ btnText }) => {
+import { connect } from 'react-redux';
+const VkAuth = ({ btnText, account }) => {
 
   // 1 SQNGs8975Bqb3WXXvVTe
   // 2 cdd89711cdd89711cdd897112bcece28f7ccdd8cdd89711a854a5835481e5726665df3d
@@ -9,11 +9,15 @@ const VkAuth = ({ btnText }) => {
     app: 51822566,
     // Адрес для перехода после авторизации
     redirectUrl: 'https://hotpal.ru/check-vk',
+
   });
+  localStorage.setItem('account', JSON.stringify({ age: account.age, dateBerth: account.dateBerth }));
+
+  console.log(VKID.Config)
 
   const handleClick = () => {
     // Открытие авторизации.
-    VKID.Auth.login()
+    VKID.Auth.login();
   }
 
 
@@ -22,5 +26,11 @@ const VkAuth = ({ btnText }) => {
     <div className='btn btn-reg btn-vk' onClick={handleClick}><i> </i><span>{btnText}</span></div>
   )
 }
+const mapStateToProps = (state) => {
+  return {
+    account: state.account,
+  }
+};
 
-export default VkAuth
+
+export default connect(mapStateToProps)(VkAuth);

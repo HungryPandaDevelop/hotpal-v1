@@ -48,7 +48,7 @@ const Footer = () => {
       </div>
       <div className="main-grid footer-bottom">
 
-        <div className="col-6 col-xs-12 ">© 2023 HotPal. Все права защищены.</div>
+        <div className="col-6 col-xs-12 ">© 2024 HotPal. Все права защищены.</div>
         <div className="col-6 col-xs-12 footer-copyright">
           <a target='_blank' href="https://www.style-you.ru/">Партнёр проекта Style You</a>
         </div>

@@ -31,6 +31,9 @@ import AuthStart from 'pages/auth/AuthStart';
 import RegStart from 'pages/auth/RegStart';
 
 import RegMail from 'pages/auth/RegMail';
+import RegDate from 'pages/auth/RegDate';
+
+import RegGoogle from 'pages/auth/RegGoogle';
 
 import AuthMail from 'pages/auth/AuthMail';
 import RegEndPopup from 'pages/auth/RegEndPopup';
@@ -87,6 +90,8 @@ const App = ({ account }) => {
             <Route path='/auth-start' element={<AuthStart />} ></Route>
             <Route path='/reg-start' element={<RegStart />} ></Route>
             <Route path='/reg-mail' element={<RegMail />} ></Route>
+            <Route path='/reg-google/' element={<RegGoogle />} ></Route>
+            <Route path='/reg-date/:regId' element={<RegDate />} ></Route>
             <Route path='/auth-mail' element={<AuthMail />} ></Route>
             <Route path='/forgot-pass' element={<ForgotPassword />} ></Route>
             <Route path='/change-forgot-pass' element={<ChangeForgotPassword />} ></Route>

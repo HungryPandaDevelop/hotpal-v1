@@ -41,7 +41,6 @@ const Chat = ({ account, roomUserInfo }) => {
                 <ChatForm
                   roomId={params.roomId}
                   type='page'
-                  account={account}
                   roomUserInfo={roomUserInfo}
                 />
               </div>) : ''}

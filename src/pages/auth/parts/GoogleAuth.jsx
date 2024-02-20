@@ -8,6 +8,7 @@ const GoogleAuth = ({ btnText, ActionFn, checkStatus }) => {
 
   const navigate = useNavigate();
   const generateId = uuidv4();
+
   const onGoogleClick = () => {
 
     if (!checkStatus) { return false; }
@@ -17,8 +18,8 @@ const GoogleAuth = ({ btnText, ActionFn, checkStatus }) => {
 
       // localStorage.setItem('account', JSON.stringify({ uid: uid }));
       // setTimeout(() => {
-      ActionFn('SET_INFO_ACCOUNT', { uid: res[1] });
-      // console.log('account', account)
+      ActionFn('SET_INFO_ACCOUNT', { uid: res[1], name: res[2] });
+      console.log('account res', res)
 
       if (res[0] === 'auth') {
         navigate('/cabinet/', { replace: true });

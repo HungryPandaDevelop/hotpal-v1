@@ -1,9 +1,16 @@
 import axios from 'axios';
 
 
-export const addMysql = async ({ uid, name, email, dateBerth, gender, timestamp, registration, verificationId, age }) => {
-  console.log('send',  uid, name, email, dateBerth, gender, timestamp, registration, verificationId, age)
+export const addMysql = async ({ uid, name, email, dateBerth, gender, timestamp, registration, verificationId, age, imgsAccount, verificationCheck }) => {
+  
   try {
+    let jsonImgsAccount = '';
+    if (typeof imgsAccount === 'object') {
+      jsonImgsAccount = JSON.stringify(imgsAccount);
+    } ;
+
+console.log('send',  uid, name, email, dateBerth, gender, timestamp, registration, verificationId, age, jsonImgsAccount, verificationCheck)
+
     const response = await axios.get("https://hotpal.ru/api/base/vendor/create.php", {
       params: {
         uid: uid,
@@ -13,7 +20,9 @@ export const addMysql = async ({ uid, name, email, dateBerth, gender, timestamp,
         dateBerth: dateBerth,
         timestamp: timestamp,
         registration:registration,
+        imgsAccount:jsonImgsAccount,
         verificationId: verificationId,
+        verificationCheck: verificationCheck,
         age: age
       }
     });

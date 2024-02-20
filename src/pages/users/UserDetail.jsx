@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getSingleListing } from "services/getSingleListing"
+// import { getSingleListing } from "services/getSingleListing"
 import { useParams, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -13,7 +13,7 @@ import Btns from "./detail/Btns";
 import Travel from 'pages/cabinet/Travel';
 import { getMysql } from 'pages/mysql/getMysql';
 
-const UserDetail = ({ uid, sympathys }) => {
+const UserDetail = ({ uid }) => {
   const { pathname } = useLocation();
   const params = useParams();
 

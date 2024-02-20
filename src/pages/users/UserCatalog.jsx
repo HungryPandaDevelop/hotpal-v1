@@ -26,7 +26,8 @@ const UserCatalog = ({ account }) => {
 
       let allUsers = data.data.filter(user => {
 
-        if (user.setting_founds && (user.setting_founds !== account.orientation) || (user.imgsAccount === undefined || user.imgsAccount.length === 0 || calculateAge(user.dateBerth) < 18)) {
+        // if (user.setting_founds && (user.setting_founds !== account.orientation) || (user.imgsAccount === undefined || user.imgsAccount.length === 0 || calculateAge(user.dateBerth) < 18)) {
+        if (user.setting_founds && (user.setting_founds !== account.orientation) || (calculateAge(user.dateBerth) < 18)) {
           return false;
         } else {
           return user;

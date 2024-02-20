@@ -10,10 +10,11 @@ import { chatFields } from 'base/forms/chatFields';
 import { sendMessage } from 'services/chatEvents';
 
 
-const Form = ({ formData, uid, roomId, type, account, roomUserInfo, panelState }) => {
+const Form = ({ formData, uid, roomId, type, account, roomUserInfo }) => {
 
 
   const submitSuccess = () => {
+
     sendMessage(roomId, uid, formData.values);
   }
   const submitInvite = (inviteData) => {
@@ -42,6 +43,7 @@ const Form = ({ formData, uid, roomId, type, account, roomUserInfo, panelState }
 const mapStateToProps = (state) => {
 
   return {
+    account: state.account,
     uid: state.account.uid,
     formData: state.form.chatForm,
   }

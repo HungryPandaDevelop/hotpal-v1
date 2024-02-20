@@ -30,7 +30,7 @@ const BestUsers = () => {
 
         // console.log('usersArr', usersArr)
         getByArrMysql(usersArr).then((res) => {
-          console.log('usersArr', res)
+          // console.log('usersArr', res)
           setListings(res.data)
 
         })

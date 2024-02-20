@@ -28,11 +28,11 @@ import RenderInputRadio from './fields/RenderInputRadio';  // radio
 
 import RenderInputSelect from './fields/RenderInputSelect'; // селект
 
-import RenderInputFile from './fields/RenderInputFileChat'; // файл
+// import RenderInputFile from './fields/RenderInputFileChat'; // файл
 
 import RenderInputFileDropZoneAccount from './fields/RenderInputFileDropZoneAccount'; // зона файлов
 
-import RenderInputFilePhoto from './fields/RenderInputFilePhoto'; // фото
+// import RenderInputFilePhoto from './fields/RenderInputFilePhoto'; // фото
 
 
 
@@ -189,12 +189,12 @@ const RenderFields = ({ fields, checkErrorSubmit, type }) => {
             obj={obj}
           />
         );
-      case 'file':
-        return (
-          <RenderInputFile
-            obj={obj}
-          />
-        );
+      // case 'file':
+      //   return (
+      //     <RenderInputFile
+      //       obj={obj}
+      //     />
+      //   );
 
       case 'dropzoneAccount':
         return (
@@ -202,12 +202,12 @@ const RenderFields = ({ fields, checkErrorSubmit, type }) => {
             obj={obj}
           />
         );
-      case 'photo':
-        return (
-          <RenderInputFilePhoto
-            obj={obj}
-          />
-        );
+      // case 'photo':
+      //   return (
+      //     <RenderInputFilePhoto
+      //       obj={obj}
+      //     />
+      //   );
 
 
       case 'complex':

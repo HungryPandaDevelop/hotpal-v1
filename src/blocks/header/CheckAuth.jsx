@@ -11,39 +11,37 @@ import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
 import PageLoader from 'components/PageLoader';
 
+import { getMyRoomsOnline } from 'services/chatEvents';
+import { getMyLikesOnline } from 'services/chatEvents';
+
 const CheckAuth = ({
   ActionFn
 }) => {
+
+  const setRoomOut = (rooms) => {
+    ActionFn('SET_ROOMS', { rooms: rooms });
+
+    // console.log('setRoomCount', rooms.length)
+    setRoomCount(rooms.length);
+  }
+  const setLikesOut = (likes) => {
+    ActionFn('SET_LIKES', { likes: likes });
+
+    setLikeCount(likes.length);
+  }
 
   const auth = getAuth();
 
   // const navigate = useNavigate();
   const [loadpage, setLoadpage] = useState(true);
+  const [roomCount, setRoomCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(0);
+
   useEffect(() => {
     // const user = false;
     onAuthStateChanged(auth, (user) => {
       ActionFn('SET_INFO_ACCOUNT', { loaded: true, });
       if (user) {
-        // console.log('in check', user)
-
-        // getSingleListing('users', user.uid).then(res => {
-        //   // console.log('userInfo', res, userInfo)
-        //   let userInfo = {
-        //     // name: user.displayName,
-        //     email: user.email,
-        //     uid: user.uid,
-        //     loaded: false,
-        //     ...res
-        //   };
-
-
-        //   console.log('get user', res)
-        //   if (res) {
-        //     saveListing(userInfo, user.uid, 'users', true); // обновить время заходу, убрать всплывашку
-        //   }
-        //   // localStorage.setItem('account', JSON.stringify(userInfo));
-        //   ActionFn('SET_INFO_ACCOUNT', userInfo);
-        // });
 
         const fetchData = async () => {
           try {
@@ -54,10 +52,17 @@ const CheckAuth = ({
               email: user.email,
               uid: user.uid,
               loaded: false,
+              chats: roomCount,
+              likes: likeCount,
               ...result
             };
-            console.log('userInfo', userInfo)
+
+
             ActionFn('SET_INFO_ACCOUNT', userInfo);
+
+            getMyRoomsOnline(setRoomOut, user.uid, userInfo);
+
+            getMyLikesOnline(setLikesOut, user.uid, userInfo);
 
           } catch (error) {
             // Обработка ошибок при выполнении запроса

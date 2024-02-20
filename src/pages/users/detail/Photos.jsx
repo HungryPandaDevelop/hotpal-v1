@@ -28,6 +28,8 @@ const Photos = ({ user }) => {
 
   let img = false;
 
+
+
   if (typeof user.imgsAccount === 'object') {
     img = user.imgsAccount
   } else {

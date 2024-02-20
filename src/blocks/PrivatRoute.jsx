@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import Header from 'blocks/Header';
 import Footer from 'blocks/footer/Footer';
 
-import GetRooms from 'pages/chat/getRooms';
+
 import ControlsPanel from 'blocks/ControlsPanel';
 import BestPanel from 'blocks/BestPanel';
 
@@ -28,8 +28,9 @@ const PrivateRoute = ({ account }) => {
   const renderAuthContent = () => {
     return (
       <div className='content'>
+
         <Header />
-        <GetRooms />
+
         <ControlsPanel />
 
         <Outlet />

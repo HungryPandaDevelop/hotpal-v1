@@ -17,7 +17,7 @@ const TemplateFile = (props) => {
 
   const {
     input,
-    meta: { error }
+    // meta: { error }
   } = props;
 
   const {
