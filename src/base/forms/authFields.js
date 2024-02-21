@@ -31,6 +31,7 @@ export const regFields = {
     placeholder: "Выбрать город",
     type: "city",
     wrapClass: "input-box  col-6",
+    validate: []
   },
   imgsAccount: {
     type: "dropzoneAccount",
@@ -42,6 +43,7 @@ export const regFields = {
     maxSize: 52428800,
     textEmpty: "На данный момент фоно не выбрано",
     wrapClass: "col-12 input-photo-container account-item",
+    validate: []
   },
   gender: {
     type: "switch",
@@ -52,6 +54,7 @@ export const regFields = {
       { name: '<div class="woman-ico"></div>', value: "woman" },
     ],
     wrapClass: "input-box  col-6",
+    validate: []
   },
   password: {
     name: "password",

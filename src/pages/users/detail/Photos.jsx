@@ -29,12 +29,16 @@ const Photos = ({ user }) => {
   let img = false;
 
 
+  if (user.imgsAccount) {
 
-  if (typeof user.imgsAccount === 'object') {
-    img = user.imgsAccount
-  } else {
-    img = JSON.parse(user.imgsAccount);
+    if (typeof user.imgsAccount === 'object') {
+      img = user.imgsAccount
+    } else if (user.imgsAccount !== 'Array') {
+      img = JSON.parse(user.imgsAccount);
+    }
   }
+
+  console.log('img', img)
 
   if (img === false) { return false; }
 

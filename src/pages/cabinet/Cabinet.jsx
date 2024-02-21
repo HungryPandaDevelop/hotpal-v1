@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import Tabs from 'pages/cabinet/parts/Tabs';
 import ActionFn from 'store/actions';
 
-import { calculateAge } from 'pages/users/hooks/calculateAge';
+
 
 const Cabinet = ({ formData, account, ActionFn }) => {
 
@@ -24,11 +24,11 @@ const Cabinet = ({ formData, account, ActionFn }) => {
     // saveListing(formData.values, account.uid, 'users');
     // console.log(formData.values)
 
-    let newValue = {...formData.values, age: calculateAge(formData.values.dateBerth)};
-    console.log('m', newValue)
-    await updateMysql(newValue, account.uid);
+    // let newValue = { ...formData.values, age: calculateAge(formData.values.dateBerth) };
+    // console.log('m', newValue)
+    await updateMysql(formData.values, account.uid);
 
-    ActionFn('SET_INFO_ACCOUNT', { ...account, ...newValue });
+    ActionFn('SET_INFO_ACCOUNT', { ...account, ...formData.values });
 
 
 

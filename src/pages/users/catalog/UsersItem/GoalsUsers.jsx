@@ -13,11 +13,11 @@ const GoalsUsers = ({ user, account }) => {
     }
   }
 
-  let goalsJson;
+  let goalsJson = [];
 
   if (typeof goals === 'object') {
     goalsJson = goals
-  } else {
+  } else if (goals !== 'Array') {
     goalsJson = JSON.parse(goals);
   }
 

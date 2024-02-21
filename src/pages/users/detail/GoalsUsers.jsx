@@ -8,7 +8,7 @@ const GoalsUsers = ({ user }) => {
 
   if (typeof goals === 'object') {
     goalsJson = goals
-  } else if (goals.length > 0) {
+  } else if (goals !== 'Array' && goals.length > 0) {
     goalsJson = JSON.parse(goals);
   }
 

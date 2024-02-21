@@ -1,17 +1,13 @@
 import { useState } from 'react';
-// import {
-// useParams,
-// useNavigate
-// } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
 
-import RenderForm from 'components/forms/RenderForm';
+// import RenderForm from 'components/forms/RenderForm';
 import Popup from 'components/Popup';
 
 import { regFieldsGoogle } from 'base/forms/authFields';
-
+import RenderForm from 'components/forms/RenderFormGoogle';
 import Section from "pages/main/Section"
 
 // import { registrationAccount } from 'services/registrationAccount';
@@ -46,15 +42,16 @@ const RegDate = ({ formData, ActionFn }) => {
       {<GoogleAuth btnText="Создать через Gmail" checkStatus={true} />}
     </>)
   }
-
+  let imgsAccountSize;
+  let regValues;
   const submitSuccess = () => {
 
     const { gender, dateBerth, imgsAccount } = formData.values;
 
     let imgsAccountCheck = imgsAccount ? imgsAccount : [];
-    const imgsAccountSize = imgsAccountCheck.length;
+    imgsAccountSize = imgsAccountCheck.length;
     imgsAccountCheck = JSON.stringify(imgsAccountCheck);
-    const regValues = { dateBerth: dateBerth, age: calculateAge(dateBerth), imgsAccount: imgsAccountCheck, gender: gender }
+    regValues = { dateBerth: dateBerth, age: calculateAge(dateBerth), imgsAccount: imgsAccountCheck, gender: gender }
 
     console.log('formData.age', regValues)
 
@@ -71,14 +68,9 @@ const RegDate = ({ formData, ActionFn }) => {
       setShowArrPhoto(false);
     }
 
-    console.log('imgsAccountSize', imgsAccountSize)
+    // console.log('imgsAccountSize', imgsAccountSize)
 
-    if (regValues.age < 18 || imgsAccountSize === 0) {
-      setShowBtn(false)
-    }
-    else {
-      setShowBtn(true)
-    }
+
 
 
     ActionFn('SET_INFO_ACCOUNT', regValues);
@@ -97,15 +89,17 @@ const RegDate = ({ formData, ActionFn }) => {
             <>
               <h3>Введите дату</h3>
               {showErrAge && <div className="err-hint">Вам нет 18 лет, регистрация невозможна!</div>}
-              {showErrPhoto && <div className="err-hint">Добавьте хотя бы одно фото!</div>}
-
 
               <RenderForm
                 fields={regFieldsGoogle}
                 btnSubmitText="Продолжить регистрацию"
+                imgsAccountSize={imgsAccountSize}
+                regValues={regValues}
+                setShowBtn={setShowBtn}
                 submitSuccess={submitSuccess}
-
-              /></>) : renderBtn()}
+                showErrPhoto={showErrPhoto}
+              />
+            </>) : renderBtn()}
 
 
 

@@ -58,9 +58,10 @@ import { required, minLength, minLengthPass, mailCheck } from 'components/forms/
 const RenderFields = ({ fields, checkErrorSubmit, type }) => {
 
   const setValidate = (validate) => {
-    let validateArr = [];
 
-    validate && validate.map((item) => {
+    let validateArr = [];
+    if (!validate) { return validateArr; }
+    validate.map((item) => {
       if (item === 'required') { validateArr.push(required); }
       else if (item === 'minLength') { validateArr.push(minLength); }
       else if (item === 'minLengthPass') { validateArr.push(minLengthPass); }

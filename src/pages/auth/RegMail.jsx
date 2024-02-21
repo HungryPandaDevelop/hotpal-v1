@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
 
-import RenderForm from 'components/forms/RenderForm';
+import RenderForm from 'components/forms/RenderFormMail';
+// import RenderForm from 'components/forms/RenderForm';
 import Popup from 'components/Popup';
 
 import { regFields } from 'base/forms/authFields';
@@ -30,18 +31,20 @@ const RegMail = ({ formData, ActionFn }) => {
   const [showErrAge, setShowArrAge] = useState(false);
   const [showErrPhoto, setShowArrPhoto] = useState(false);
 
-
+  let imgsAccountSize;
+  let regValues;
   const submitSuccess = () => {
-
+    setShowArrAge(false);
+    setShowArrPhoto(false);
 
     setLoading(true);
-
+    console.log('formData.values', formData)
     let imgsAccountCheck = formData.values.imgsAccount ? formData.values.imgsAccount : [];
-    const imgsAccountSize = imgsAccountCheck.length;
+    imgsAccountSize = imgsAccountCheck.length;
     imgsAccountCheck = JSON.stringify(imgsAccountCheck);
 
 
-    const regValues = { ...formData.values, verificationId: generateId, imgsAccount: imgsAccountCheck }
+    regValues = { ...formData.values, verificationId: generateId, imgsAccount: imgsAccountCheck }
 
     const formattedDate = timestampCustom();
 
@@ -88,14 +91,13 @@ const RegMail = ({ formData, ActionFn }) => {
         linkBack={true}
       >
         <h3>Заполните анкету</h3>
-        {showErrAge && <div className="err-hint">Вам нет 18 лет, регистрация невозможна!</div>}
-        {showErrPhoto && <div className="err-hint">Добавьте хотя бы одно фото!</div>}
 
         <RenderForm
           fields={regFields}
-          btnSubmitText={loading ? 'Loading..' : "Регистрация"}
+          btnSubmitText="Регистрацию"
           submitSuccess={submitSuccess}
-
+          showErrPhoto={showErrPhoto}
+          showErrAge={showErrAge}
         />
       </Popup>
       <Section />
