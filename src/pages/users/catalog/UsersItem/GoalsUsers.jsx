@@ -4,8 +4,11 @@ import { renderGoals } from 'pages/users/hooks/renderGoals';
 const GoalsUsers = ({ user, account }) => {
 
   const { goals } = user;
+  // console.log('goals', goals)
 
-  if (goals === undefined || goals.length === 0) { return false; }
+  if (goals === undefined || goals === null || goals === 'null') { return false; }
+
+  if (goals.length === 0) { return false; }
 
   if (user.setting_goals) {
     if (user.setting_goals !== account.orientation) {

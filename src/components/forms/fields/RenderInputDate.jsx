@@ -62,7 +62,7 @@ const TempateInput = (props) => {
           mask="__-__-____"
           replacement={{ _: /\d/ }}
           ref={inputRef}
-          readOnly 
+          readOnly
         />
 
 

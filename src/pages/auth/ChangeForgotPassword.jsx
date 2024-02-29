@@ -9,7 +9,7 @@ import { settingsPassword } from 'base/forms/authFields';
 import { useSearchParams } from 'react-router-dom';
 
 // import { getSingleListing } from "services/getSingleListing"
-import { getMysql } from 'pages/mysql/getMysql';
+import { getUserSingle } from 'servicesMysql/getUserSingle';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ const ChangeForgotPassword = ({ formData }) => {
     console.log('1', searchParams.get('uid'))
 
 
-    getMysql(searchParams.get('uid')).then((getuser) => {
+    getUserSingle(searchParams.get('uid')).then((getuser) => {
       console.log(getuser)
       setUser(getuser);
       setLoading(false);

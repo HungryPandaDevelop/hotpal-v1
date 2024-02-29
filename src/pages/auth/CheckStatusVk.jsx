@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import ActionFn from 'store/actions';
 import { registrationAccount } from 'services/registrationAccount';
 import { authorizationAccount } from 'services/authorizationAccount';
-import { timestampCustom } from 'services/timestampCustom';
+import { timestampCustomDayTime } from 'services/timestampCustom';
 import { connect } from 'react-redux';
 // import { getListing } from 'services/getListings';
 import { getByMailMysql } from 'pages/mysql/getByMailMysql';
@@ -49,17 +49,40 @@ const CheckStatusVk = ({ ActionFn }) => {
           console.log('Регистрация');
           // Регистрируем пользователя в Firebase
           setStatus('Зарегистрированны');
-          registrationAccount({ name: userName, email: email, password: userId, registration: timestampCustom(), verificationCheck: '1', imgsAccount: [{ id: 'vk', 'url': userImg }], age: age, dateBerth: dateBerth }).then((res) => {
+          registrationAccount({
+            name: userName,
+            email: email,
+            password: userId,
+            entranceDate: timestampCustomDayTime(),
+            registerationDate: timestampCustomDayTime(),
+            verificationCheck: '1',
+            imgsAccount: JSON.stringify([{ id: 'vk', 'url': userImg }]),
+            age: age,
+            dateBerth: dateBerth
+
+          }).then((res) => {
             console.log('good reg', res); // ok!
             if (!res) { return false };
-            ActionFn('SET_INFO_ACCOUNT', { name: userName, email: email, age: age, dateBerth: dateBerth, imgsAccount: [{ id: 'vk', 'url': userImg }], });
+            ActionFn('SET_INFO_ACCOUNT', {
+              name: userName,
+              email: email,
+              age: age,
+              dateBerth: dateBerth,
+              imgsAccount: [{ id: 'vk', 'url': userImg }],
+
+            });
             // updateMysql(...res, { imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: '1' });
             // saveListing({ imgsAccount: [{ id: 'vk', 'url': userImg }], verificationCheck: true }, res.uid, 'users')
           });
         } else {
           console.log('Авторизация');
           setStatus('Авторизорованны');
-          authorizationAccount({ name: userName, email: email, password: userId }).then((res) => {
+          authorizationAccount({
+            name: userName,
+            email: email,
+            password: userId,
+            entranceDate: timestampCustomDayTime()
+          }).then((res) => {
             console.log('good auth'); // ok!
           });
         }

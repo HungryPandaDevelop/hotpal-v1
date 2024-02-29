@@ -5808,6 +5808,16 @@ button[data-controls=next]:hover {
   font-size: 14px;
 }
 
+.user-catalog-entrance {
+  position: absolute;
+  padding: 2px 15px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 15px;
+}
+
 @media (max-width: 1240px) {
   .users-item-info {
     padding: 15px;

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-
+import { getCurrentTime } from 'pages/chat/RoomItem/getCurrentTime';
 // import { updateRead } from 'services/chatEvents';
 
 
 import { userImg } from 'pages/users/catalog/UsersItem/userImg';
 
 // import { getSingleListing } from 'services/getSingleListing';
-import { getMysql } from 'pages/mysql/getMysql';
+import { getUserSingle } from 'servicesMysql/getUserSingle';
 import LinkWrap from 'pages/chat/RoomItem/LinkWrap';
 
 import ActionFn from 'store/actions';
@@ -32,7 +32,7 @@ const RoomItem = ({
 
 
   useEffect(() => {
-    getMysql(invite).then(res => {
+    getUserSingle(invite).then(res => {
 
       setLoading(false);
       setRoomUserInfo(res);
@@ -123,9 +123,10 @@ const RoomItem = ({
             <div className="rooms-item-message">
               <span dangerouslySetInnerHTML={{ __html: setLastMessage() }}></span>
             </div>
-            {/* <span className="rooms-item-date">
+            <span className="rooms-item-date">
               {getCurrentTime(roomUserInfo)}
-            </span> */}
+            </span>
+
           </div></>
       </LinkWrap>
 

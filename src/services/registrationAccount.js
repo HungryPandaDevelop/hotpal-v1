@@ -14,7 +14,7 @@ import {
 //   serverTimestamp
 // } from 'firebase/firestore';
 
-import { addMysql } from 'pages/mysql/addMysql';
+import { addUsers } from 'servicesMysql/changeUsers';
 
 import { toast } from 'react-toastify';
 
@@ -50,7 +50,8 @@ export const registrationAccount = async (formData) => {
 
 
     // await setDoc(doc(db, 'users', user.uid), formDataCopy);
-    await addMysql(formDataCopy);
+    console.log('imgsAccount vk', formDataCopy)
+    await addUsers(formDataCopy);
 
 
 

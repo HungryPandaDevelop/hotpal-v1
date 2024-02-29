@@ -7,23 +7,24 @@ import {
   updateProfile,
 } from 'firebase/auth';
 
-import {
-  // doc,
-  // setDoc,
-  // getDoc,
-  // updateDoc,
-  serverTimestamp
-} from 'firebase/firestore';
+// import {
+//   // doc,
+//   // setDoc,
+//   // getDoc,
+//   // updateDoc,
+//   serverTimestamp
+// } from 'firebase/firestore';
 
-import { getMysql } from 'pages/mysql/getMysql';
-import { addMysql } from 'pages/mysql/addMysql';
-import { updateMysql } from 'pages/mysql/updateMysql';
+import { getUserSingle } from 'servicesMysql/getUserSingle';
+
+
+import { addUsers, updateUser } from 'servicesMysql/changeUsers';
 
 // import { toast } from 'react-toastify';
 
 
 
-export const googleAuth = async (generateId) => {
+export const googleAuth = async (generateId, googleValue) => {
 
   try {
 
@@ -52,17 +53,17 @@ export const googleAuth = async (generateId) => {
     // const docRef = doc(db, 'users', user.uid);
     // const docSnap = await getDoc(docRef);
 
-    const docSnap = await getMysql(user.uid);
+    const docSnap = await getUserSingle(user.uid);
     console.log('docSnap', docSnap.length);
     console.log('step 4')
 
-    const formattedDate = new Date().toLocaleString('ru-RU', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+    // const formattedDate = new Date().toLocaleString('ru-RU', {
+    //   day: '2-digit',
+    //   month: '2-digit',
+    //   year: 'numeric',
+    //   hour: '2-digit',
+    //   minute: '2-digit'
+    // });
 
     // if (!docSnap.exists()) {
     if (docSnap.length === 0) {
@@ -77,14 +78,16 @@ export const googleAuth = async (generateId) => {
       //   timestamp: serverTimestamp(),
       // });
 
-      console.log('user google', user)
+      console.log('user google', googleValue)
 
-      await addMysql({
+      await addUsers({
         name: user.displayName,
         email: user.email,
         uid: user.uid,
-        vertificationId: generateId,
-        timestamp: formattedDate
+        verificationId: generateId,
+        ...googleValue
+        // timestamp: formattedDate,
+        // timestamp: formattedDate,
       });
 
 
@@ -100,14 +103,13 @@ export const googleAuth = async (generateId) => {
         name: user.displayName,
         email: user.email,
         uid: user.uid,
-        timestamp: serverTimestamp(),
+        // timestamp: serverTimestamp(),
       }
 
       // await updateDoc(cardsRef, dataForm);
 
-      await updateMysql({
-        ...dataForm,
-        timestamp: formattedDate
+      await updateUser({
+        ...dataForm
       });
 
       return ['auth', user.uid, user.displayName];

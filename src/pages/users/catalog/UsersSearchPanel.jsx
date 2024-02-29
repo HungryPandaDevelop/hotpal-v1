@@ -10,11 +10,14 @@ import RenderFormMini from 'components/forms/RenderFormUsersMiniSearch';
 import { usersSearchFields } from 'base/forms/usersSearchFields';
 import { usersSearchFieldsMini } from 'base/forms/usersSearchFields';
 
-import { addSearch } from 'pages/mysql/addSearch';
+import { addSearch } from 'servicesMysql/changeSearch';
 
 import { connect } from 'react-redux';
-import { timestampCustom } from 'services/timestampCustom';
+import { timestampCustomDayTime } from 'services/timestampCustom';
 import Tabs from 'components/forms/formSearch/Tabs';
+
+import { changeActions } from 'servicesMysql/changeActions';
+import { timestampCustomDay } from 'services/timestampCustom';
 
 const UsersSearchPanel = ({
   formData,
@@ -35,8 +38,13 @@ const UsersSearchPanel = ({
 
     setShowMobile(false);
 
-    addSearch({ uid: account.uid, timestamp: timestampCustom(), type: 'user-search', ...formData.values });
+    addSearch({ uid: account.uid, dateSearch: timestampCustomDayTime(), type: 'user-search', ...formData.values });
 
+    changeActions({
+      'uid': account.uid,
+      'date': timestampCustomDay(),
+      'action': 'searchUsers'
+    });
   }
   const resetForm = () => {
     setSearchListing(onUsersSearch(listings, startValue));

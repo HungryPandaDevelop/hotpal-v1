@@ -1,17 +1,15 @@
 import axios from 'axios';
 
 
-export const updateChat = async (props) => {
-
-
+export const changeActions = async (props) => {
+  console.log(props);
 
   try {
-
-
-    const response = await axios.get("https://hotpal.ru/api/base/vendor/update_chat.php", {
+    const response = await axios.get("https://hotpal.ru/api/base/vendor/actions.php", {
       params: props
     });
-    console.log('Все ок:', response);
+    console.log('Ответ php', response);
+
     return true;
   }
   catch (err) {

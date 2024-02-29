@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify';
 // import { Timestamp } from '@google-cloud/firestore';
 
-import { updateChat } from 'pages/mysql/updateChat';
-import { updateMysql } from 'pages/mysql/updateMysql';
-import { timestampCustom } from 'services/timestampCustom';
+import { updateChat } from 'servicesMysql/changeChats';
+import { updateUser } from 'servicesMysql/changeUsers';
+import { timestampCustomDayTime } from 'services/timestampCustom';
 
 import {
   collection,
@@ -131,7 +131,7 @@ export const getMyRoomsOnline = async (setRoomOut, uid, account) => {
 
   const updateSnap = (listing) => {
     setRoomOut(listing)
-    updateMysql({ ...account, chats: listing.length });
+    // updateUser({ uid: listing.uid, chats: listing.length });
   }
 
   watchListing(q, updateSnap);
@@ -150,7 +150,7 @@ export const getMyLikesOnline = async (setElementOut, uid, account) => {
   const updateSnap = (listing) => {
     // console.log('listing',listing)
     setElementOut(listing);
-    updateMysql({ ...account, likes: listing.length });
+    // updateUser({ uid: listing.uid, likes: listing.length });
   }
 
   watchListing(q, updateSnap);
@@ -201,7 +201,8 @@ export const sendMessage = async (roomId, uid, message) => {
 
     await setDoc(doc(db, 'rooms', roomId), getRoomInfo);
     // console.log('id_chat', roomId, 'messages', getRoomInfo.messages.length, 'lastAdd', timestampCustom())
-    updateChat({ id_chat: roomId, messages: getRoomInfo.messages.length, lastAdd: timestampCustom() });
+
+    updateChat({ id_chat: roomId, messages: getRoomInfo.messages.length, dateLastAddMessage: timestampCustomDayTime() });
 
 
 

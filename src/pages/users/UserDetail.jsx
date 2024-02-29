@@ -11,7 +11,7 @@ import PersonalInfo from "./detail/PersonalInfo";
 import Btns from "./detail/Btns";
 
 import Travel from 'pages/cabinet/Travel';
-import { getMysql } from 'pages/mysql/getMysql';
+import { getUserSingle } from 'servicesMysql/getUserSingle';
 
 const UserDetail = ({ uid }) => {
   const { pathname } = useLocation();
@@ -21,7 +21,7 @@ const UserDetail = ({ uid }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getMysql(params.userId).then((getuser) => {
+    getUserSingle(params.userId).then((getuser) => {
       console.log('getuser', getuser)
       setUser(getuser);
       setLoading(false);

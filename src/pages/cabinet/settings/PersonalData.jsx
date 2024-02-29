@@ -7,20 +7,20 @@ import { getAuth, deleteUser } from 'firebase/auth';
 
 // import { useNavigate } from 'react-router-dom';
 
-import { updateMysql } from 'pages/mysql/updateMysql';
-import { deleteMysql } from 'pages/mysql/deleteMysql';
 
-const PersonalData = ({ formData, uid, account, ActionFn }) => {
+import { updateUser, deleteUsers } from 'servicesMysql/changeUsers';
+
+const PersonalData = ({ formData, account, ActionFn }) => {
 
   // 
 
   const submitSuccess = () => {
 
 
-    let sendData = { ...account, ...formData.values };
+    // let sendData = { ...account, ...formData.values };
 
 
-    updateMysql(sendData);
+    updateUser({ uid: account.uid, ...formData.values });
 
   }
 
@@ -30,7 +30,7 @@ const PersonalData = ({ formData, uid, account, ActionFn }) => {
     try {
       const user = auth.currentUser;
 
-      await deleteMysql(user.uid);
+      await deleteUsers(user.uid);
       await deleteUser(user);
 
       auth.signOut();

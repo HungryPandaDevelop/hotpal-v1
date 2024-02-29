@@ -1,5 +1,5 @@
 // import { getSingleListing } from 'services/getSingleListing';
-import { getMysql } from 'pages/mysql/getMysql';
+import { getUserSingle } from 'servicesMysql/getUserSingle';
 import { useState, useEffect } from 'react'
 import { renderStatus } from 'pages/cabinet/parts/LikesItem/renderStatus';
 
@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 const LikesItem = ({
   like,
   uid,
-  typeLike
+  // typeLike
 }) => {
 
   const [loading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ const LikesItem = ({
 
   useEffect(() => {
 
-    getMysql(userLoadId).then((getuser) => {
+    getUserSingle(userLoadId).then((getuser) => {
       setUser(getuser);
       setLoading(false);
     });

@@ -10,6 +10,7 @@ import { regFieldsGoogle } from 'base/forms/authFields';
 import RenderForm from 'components/forms/RenderFormGoogle';
 import Section from "pages/main/Section"
 
+import { timestampCustomDayTime } from 'services/timestampCustom';
 // import { registrationAccount } from 'services/registrationAccount';
 
 // import { v4 as uuidv4 } from 'uuid';
@@ -34,12 +35,12 @@ const RegDate = ({ formData, ActionFn }) => {
   const [showErrPhoto, setShowArrPhoto] = useState(false);
 
   const [showBtn, setShowBtn] = useState(false);
-
+  const [googleValue, setGoogleValue] = useState([]);
   const renderBtn = () => {
 
     return (<>
       <h3>Регистрация</h3>
-      {<GoogleAuth btnText="Создать через Gmail" checkStatus={true} />}
+      {<GoogleAuth googleValue={googleValue} btnText="Создать через Gmail" checkStatus={true} />}
     </>)
   }
   let imgsAccountSize;
@@ -51,7 +52,17 @@ const RegDate = ({ formData, ActionFn }) => {
     let imgsAccountCheck = imgsAccount ? imgsAccount : [];
     imgsAccountSize = imgsAccountCheck.length;
     imgsAccountCheck = JSON.stringify(imgsAccountCheck);
-    regValues = { dateBerth: dateBerth, age: calculateAge(dateBerth), imgsAccount: imgsAccountCheck, gender: gender }
+
+
+    regValues = {
+      dateBerth: dateBerth,
+      age: calculateAge(dateBerth),
+      imgsAccount: imgsAccountCheck,
+      gender: gender,
+      entranceDate: timestampCustomDayTime(),
+      registerationDate: timestampCustomDayTime(),
+
+    }
 
     console.log('formData.age', regValues)
 
@@ -71,7 +82,7 @@ const RegDate = ({ formData, ActionFn }) => {
     // console.log('imgsAccountSize', imgsAccountSize)
 
 
-
+    setGoogleValue(regValues);
 
     ActionFn('SET_INFO_ACCOUNT', regValues);
 

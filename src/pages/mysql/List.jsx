@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteMysql } from 'pages/mysql/deleteMysql';
+import { deleteUsers } from 'servicesMysql/changeUsers';
 
 
 const List = () => {
@@ -12,7 +12,7 @@ const List = () => {
   const [loading, setLoading] = useState(true);
 
   const deleteUser = (uid) => {
-    deleteMysql(uid)
+    deleteUsers(uid)
     window.location.href = '/mysql/list';
   }
 

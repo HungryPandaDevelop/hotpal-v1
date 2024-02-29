@@ -9,7 +9,7 @@ import { sendEmail } from 'pages/auth/parts/RegEnd/sendEmail'
 
 // import { saveListing } from 'services/saveListing';
 
-import { updateMysql } from 'pages/mysql/updateMysql';
+import { updateUser } from 'servicesMysql/changeUsers';
 
 const RegEnd = ({ account, ActionFn }) => {
 
@@ -37,7 +37,7 @@ const RegEnd = ({ account, ActionFn }) => {
 
             // saveListing({ verificationCheck: true }, account.uid, 'users');
 
-            updateMysql({ ...account, verificationCheck: '1' });
+            updateUser({ uid: account.uid, verificationCheck: '1' });
 
             ActionFn('SET_INFO_ACCOUNT', { verificationCheck: '1' });
           }

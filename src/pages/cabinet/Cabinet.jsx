@@ -5,7 +5,7 @@
 import RenderForm from 'components/forms/RenderFormCabinet';
 
 // import { getSingleListing } from 'services/getSingleListing';
-import { updateMysql } from 'pages/mysql/updateMysql'
+import { updateUser } from 'servicesMysql/changeUsers';
 import { accountFields } from 'base/forms/accountFields';
 
 import { connect } from 'react-redux';
@@ -26,7 +26,7 @@ const Cabinet = ({ formData, account, ActionFn }) => {
 
     // let newValue = { ...formData.values, age: calculateAge(formData.values.dateBerth) };
     // console.log('m', newValue)
-    await updateMysql(formData.values, account.uid);
+    await updateUser({ uid: account.uid, ...formData.values });
 
     ActionFn('SET_INFO_ACCOUNT', { ...account, ...formData.values });
 

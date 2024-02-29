@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
 
-import { getMysql } from 'pages/mysql/getMysql'
+import { getUserSingle } from 'servicesMysql/getUserSingle';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 // import { getSingleListing } from 'services/getSingleListing';
 // import { saveListing } from 'services/saveListing';
 // import axios from 'axios';
-
+import { updateUser } from 'servicesMysql/changeUsers';
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
 import PageLoader from 'components/PageLoader';
-
+import { timestampCustomDayTime } from 'services/timestampCustom';
 import { getMyRoomsOnline } from 'services/chatEvents';
 import { getMyLikesOnline } from 'services/chatEvents';
 
@@ -45,7 +45,7 @@ const CheckAuth = ({
 
         const fetchData = async () => {
           try {
-            const result = await getMysql(user.uid);
+            const result = await getUserSingle(user.uid);
             // Здесь можете выполнить код с полученными данными
             let userInfo = {
               // name: user.displayName,
@@ -57,9 +57,13 @@ const CheckAuth = ({
               ...result
             };
 
+            // if (res) {
+            //   saveListing(userInfo, user.uid, 'users', true); // обновить время заходу, убрать всплывашку
+            // }
+
 
             ActionFn('SET_INFO_ACCOUNT', userInfo);
-
+            // updateUser({ uid: user.uid, entranceDate: timestampCustomDayTime() });
             getMyRoomsOnline(setRoomOut, user.uid, userInfo);
 
             getMyLikesOnline(setLikesOut, user.uid, userInfo);

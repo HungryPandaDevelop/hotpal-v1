@@ -1,7 +1,7 @@
 // import { saveListing } from 'services/saveListing';
 import axios from 'axios';
 
-import { updateMysql } from 'pages/mysql/updateMysql';
+import { updateUser } from 'servicesMysql/changeUsers';
 
 export const sendEmail = (account, location) => {
 
@@ -20,7 +20,7 @@ export const sendEmail = (account, location) => {
     // console.log('generateId', generateId)
     // console.log('state', location.state)
 
-    updateMysql({ ...account, verificationSend: '1' });
+    updateUser({ uid: account.uid, verificationSend: '1' });
     // saveListing({ verificationSend: true }, account.uid, 'users');
   });
 

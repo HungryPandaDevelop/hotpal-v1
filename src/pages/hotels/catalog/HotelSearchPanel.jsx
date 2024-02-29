@@ -1,7 +1,7 @@
 
 import RenderForm from 'components/forms/RenderFormHotelsSearch';
 
-import {  hotelsData } from 'pages/hotels/hooks/searchHotels';
+import { hotelsData } from 'pages/hotels/hooks/searchHotels';
 
 import { autocompleteSearch } from 'pages/hotels/hooks/searchHotels';
 
@@ -15,8 +15,10 @@ import { hotelsSearchFields } from 'base/forms/hotelsSearchFields';
 
 import { connect } from 'react-redux';
 
-import {addSearch} from 'pages/mysql/addSearch';
-import {timestampCustom} from 'services/timestampCustom';
+import { addSearch } from 'servicesMysql/changeSearch';
+import { timestampCustomDay, timestampCustomDayTime } from 'services/timestampCustom';
+
+import { changeActions } from 'servicesMysql/changeActions';
 
 const HotelSearchPanelMap = ({
   account,
@@ -47,12 +49,19 @@ const HotelSearchPanelMap = ({
     setSearchDate([dateFrom, dateTo]);
     // let longitude = formData.values.geoHotels[1];
     // let latitude = formData.values.geoHotels[0];
-  
 
-if(firstLoad === false){
-// console.log('hotels-search', formData.values)
-  addSearch({uid: account.uid, timestamp: timestampCustom(), type: 'hotels-search', dateRange: formData.values?.dateRange, hotelFind: formData.values?.hotelFind});
-}
+
+    if (firstLoad === false) {
+      // console.log('hotels-search', formData.values)
+      addSearch({ uid: account.uid, dateSearch: timestampCustomDayTime(), type: 'hotels-search', dateRange: formData.values?.dateRange, hotelFind: formData.values?.hotelFind });
+
+      changeActions({
+        'uid': account.uid,
+        'date': timestampCustomDay(),
+        'action': 'searchHotels'
+      });
+
+    }
 
 
 

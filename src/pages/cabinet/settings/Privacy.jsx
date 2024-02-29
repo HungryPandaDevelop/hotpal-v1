@@ -1,16 +1,16 @@
 import RenderForm from 'components/forms/RenderForm';
 import { settingsPrivacy } from 'base/forms/settingsFields';
-import { saveListing } from 'services/saveListing';
+// import { saveListing } from 'services/saveListing';
 
-import { updateMysql } from 'pages/mysql/updateMysql'
+import { updateUser } from 'servicesMysql/changeUsers';
 
-const Privacy = ({ formData, uid, account }) => {
+const Privacy = ({ formData, account }) => {
 
   const submitSuccess = () => {
 
-    let sendData = { ...account, ...formData.values };
-    console.log('sendData', sendData)
-    updateMysql(sendData);
+    // let sendData = { ...account, ...formData.values };
+    // console.log('sendData', sendData)
+    updateUser({ uid: account.uid, ...formData.values });
 
     // saveListing(formData.values, uid, 'users');
 

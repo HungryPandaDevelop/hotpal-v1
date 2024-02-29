@@ -4,7 +4,7 @@ import { googleAuth } from 'services/googleAuth';
 import ActionFn from 'store/actions';
 import { v4 as uuidv4 } from 'uuid';
 
-const GoogleAuth = ({ btnText, ActionFn, checkStatus }) => {
+const GoogleAuth = ({ btnText, ActionFn, checkStatus, googleValue }) => {
 
   const navigate = useNavigate();
   const generateId = uuidv4();
@@ -13,7 +13,7 @@ const GoogleAuth = ({ btnText, ActionFn, checkStatus }) => {
 
     if (!checkStatus) { return false; }
 
-    googleAuth(generateId).then(res => {
+    googleAuth(generateId, googleValue).then(res => {
       if (!res[0]) { return false };
 
       // localStorage.setItem('account', JSON.stringify({ uid: uid }));

@@ -69,9 +69,9 @@ import About from 'pages/default/About';
 import Why from 'pages/default/Why';
 
 import MysqlList from 'pages/mysql/List';
-import MysqlListFire from 'pages/mysql/ListUsers';
-import MysqlAdd from 'pages/mysql/AddBase';
-import MysqlDetail from 'pages/mysql/Detail';
+// import MysqlListFire from 'pages/mysql/ListUsers';
+// import MysqlAdd from 'pages/mysql/AddBase';
+// import MysqlDetail from 'pages/mysql/Detail';
 // import MysqlEdit from 'pages/mysql/Edit';
 
 const App = ({ account }) => {
@@ -107,9 +107,9 @@ const App = ({ account }) => {
             <Route path='/why' element={<Why />} ></Route>
 
             <Route path='/mysql/list' element={<MysqlList />}></Route>
-            <Route path='/mysql/list-fire' element={<MysqlListFire />}></Route>
+            {/* <Route path='/mysql/list-fire' element={<MysqlListFire />}></Route>
             <Route path='/mysql/add' element={<MysqlAdd />}></Route>
-            <Route path='/mysql/detail' element={<MysqlDetail />}></Route>
+            <Route path='/mysql/detail' element={<MysqlDetail />}></Route> */}
           </Route>
 
 

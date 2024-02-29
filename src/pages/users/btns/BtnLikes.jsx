@@ -8,10 +8,11 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
-import { addLikes } from 'pages/mysql/addLikes';
-import { deleteLikes } from 'pages/mysql/deleteLikes';
+import { addLikes, deleteLikes } from 'servicesMysql/changeLikes';
 
-import {timestampCustom} from 'services/timestampCustom';
+import { timestampCustom, timestampCustomDay } from 'services/timestampCustom';
+
+import { changeActions } from 'servicesMysql/changeActions';
 
 const BtnLikes = ({
   user,
@@ -76,12 +77,18 @@ const BtnLikes = ({
         'userRef': uid,
         'userLikesName': userInfo.name,
         'userLikes': userInfo.uid,
-        'timestamp': timestampCustom()
+        'date': timestampCustomDay()
+      });
+
+      changeActions({
+        'uid': uid,
+        'date': timestampCustomDay(),
+        'action': 'like'
       });
 
       setIdPoup('likes');
-
       showPopup(true);
+
       setStatus(res);
     });
   };

@@ -6,7 +6,7 @@ import EmptyRoom from 'pages/chat/EmptyRoom';
 import RoomItem from 'pages/chat/RoomItem';
 import { connect } from 'react-redux';
 
-import { deleteChat } from 'pages/mysql/deleteChat';
+import { deleteChat } from 'servicesMysql/changeChats';
 
 const RoomList = ({
   uid,

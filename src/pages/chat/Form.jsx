@@ -15,10 +15,10 @@ const Form = ({ formData, uid, roomId, type, account, roomUserInfo }) => {
 
   const submitSuccess = () => {
 
-    sendMessage(roomId, uid, formData.values);
+    // sendMessage(roomId, uid, formData.values);
   }
   const submitInvite = (inviteData) => {
-    sendMessage(roomId, uid, inviteData);
+    // sendMessage(roomId, uid, inviteData);
   }
 
   return (

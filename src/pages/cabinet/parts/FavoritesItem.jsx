@@ -1,7 +1,7 @@
 // import { getSingleListing } from 'services/getSingleListing';
 import { deleteListing } from 'services/getListings';
 import { useState, useEffect } from 'react'
-import { getMysql } from 'pages/mysql/getMysql';
+import { getUserSingle } from 'servicesMysql/getUserSingle';
 import { userImg } from 'pages/users/catalog/UsersItem/userImg'
 const FavoritesItem = ({ list, listing, setListing, type }) => {
 
@@ -9,7 +9,7 @@ const FavoritesItem = ({ list, listing, setListing, type }) => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    getMysql(list.likeUserRef).then((getuser) => {
+    getUserSingle(list.likeUserRef).then((getuser) => {
 
       setUser(getuser);
       setLoading(false);

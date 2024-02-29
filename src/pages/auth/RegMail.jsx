@@ -18,7 +18,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { calculateAge } from 'pages/users/hooks/calculateAge';
 
-import { timestampCustom } from 'services/timestampCustom';
+import { timestampCustomDayTime } from 'services/timestampCustom';
 
 const RegMail = ({ formData, ActionFn }) => {
 
@@ -26,7 +26,7 @@ const RegMail = ({ formData, ActionFn }) => {
 
   const generateId = uuidv4();
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const [showErrAge, setShowArrAge] = useState(false);
   const [showErrPhoto, setShowArrPhoto] = useState(false);
@@ -37,24 +37,25 @@ const RegMail = ({ formData, ActionFn }) => {
     setShowArrAge(false);
     setShowArrPhoto(false);
 
-    setLoading(true);
+    // setLoading(true);
     console.log('formData.values', formData)
+
     let imgsAccountCheck = formData.values.imgsAccount ? formData.values.imgsAccount : [];
     imgsAccountSize = imgsAccountCheck.length;
     imgsAccountCheck = JSON.stringify(imgsAccountCheck);
 
 
-    regValues = { ...formData.values, verificationId: generateId, imgsAccount: imgsAccountCheck }
+    regValues = {
+      ...formData.values,
+      verificationId: generateId,
+      imgsAccount: imgsAccountCheck,
+      entranceDate: timestampCustomDayTime(),
+      registerationDate: timestampCustomDayTime(),
+      age: calculateAge(formData.values.dateBerth),
+    }
 
-    const formattedDate = timestampCustom();
 
-    regValues.timestamp = formattedDate;
-    regValues.registration = formattedDate;
-    regValues.age = calculateAge(regValues.dateBerth);
-
-
-
-    console.log('regValues.age', regValues.age)
+    // console.log('regValues.age', regValues.age)
 
     if (regValues.age < 18) {
       setShowArrAge(true);
@@ -67,11 +68,11 @@ const RegMail = ({ formData, ActionFn }) => {
       return false;
 
     }
-    setLoading(false)
+    // setLoading(false)
     registrationAccount(regValues).then((res) => {
       // console.log(regValues);
 
-      setLoading(false)
+      // setLoading(false)
       if (!res) { return false };
       ActionFn('SET_INFO_ACCOUNT', regValues);
       navigate('/reg-end', {

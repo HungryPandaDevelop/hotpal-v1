@@ -10,8 +10,10 @@ import { hotelsSearchFields } from 'base/forms/hotelsSearchFields';
 
 import { connect } from 'react-redux';
 
-import {addSearch} from 'pages/mysql/addSearch';
-import {timestampCustom} from 'services/timestampCustom';
+import { addSearch } from 'servicesMysql/changeSearch';
+
+import { changeActions } from 'servicesMysql/changeActions';
+import { timestampCustomDay, timestampCustomDayTime } from 'services/timestampCustom';
 
 const HotelSearchPanelMap = ({
   account,
@@ -45,10 +47,16 @@ const HotelSearchPanelMap = ({
     let latitude = formData.values.geoHotels[0];
 
 
-  if(firstLoad === false){
-  console.log('hotels-search', formData.values)
-    addSearch({uid: account.uid, timestamp: timestampCustom(), type: 'geo-search', dateRange: formData.values?.dateRange, coords: longitude + '-' +latitude});
-  }
+    if (firstLoad === false) {
+      console.log('hotels-search', formData.values)
+      addSearch({ uid: account.uid, dateSearch: timestampCustomDayTime(), type: 'geo-search', dateRange: formData.values?.dateRange, coords: longitude + '-' + latitude });
+
+      changeActions({
+        'uid': account.uid,
+        'date': timestampCustomDay(),
+        'action': 'searchGeo'
+      });
+    }
 
 
     geoSearch(longitude, latitude, dateFrom, dateTo, personCount).then(res => {

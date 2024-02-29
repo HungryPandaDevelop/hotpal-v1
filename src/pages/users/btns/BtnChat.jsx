@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import { createRoom } from 'services/chatEvents';
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
-import {timestampCustom} from 'services/timestampCustom';
+import { timestampCustomDay } from 'services/timestampCustom';
 
-// import { animateScroll as scroll } from 'react-scroll';
+import { changeActions } from 'servicesMysql/changeActions';
 
-import { addChat } from 'pages/mysql/addChat';
+import { addChat } from 'servicesMysql/changeChats';
 
 const BtnChat = ({ user, uid, ActionFn, name }) => {
 
@@ -23,8 +23,14 @@ const BtnChat = ({ user, uid, ActionFn, name }) => {
         'userRef': uid,
         'userLikesName': user.name,
         'userLikes': user.uid,
-        'timestamp': timestampCustom()
+        'dateCreate': timestampCustomDay()
       });
+      changeActions({
+        'uid': uid,
+        'date': timestampCustomDay(),
+        'action': 'chat'
+      });
+
 
       if (window.innerWidth > 576) {
         navigate('/cabinet/chat/' + res, { replace: true });
