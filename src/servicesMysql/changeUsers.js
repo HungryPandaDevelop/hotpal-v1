@@ -72,7 +72,7 @@ export const updateUser = async (props) => {
 
 
 
-    console.log('updateUser start:', newValue);
+    // console.log('updateUser start:', newValue);
     const response = await axios.get("https://hotpal.ru/api/base/vendor/update_user.php", {
       params: newValue
     });
